@@ -13,6 +13,8 @@
     "crawl": "node scripts/crawl-live.mjs",
     "images": "node scripts/fetch-live-images.mjs",
     "og": "node scripts/make-og.mjs",
+    "reviews": "node scripts/refresh-reviews.mjs",
+    "dev:webhook": "node scripts/dev-webhook.mjs",
     "qa:content": "node scripts/qa-content.mjs",
     "qa:headings": "node scripts/qa-headings.mjs --verbose",
     "qa:first-screen": "playwright test",
