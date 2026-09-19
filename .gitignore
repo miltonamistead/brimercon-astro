@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.data/
+.vercel/
+.herenow/
+.DS_Store
+*.log
