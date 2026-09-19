@@ -11,17 +11,15 @@ import { reviewsFor, type Review } from "@/data/reviews";
 interface Props {
   tag?: Review["tags"][number];
   count?: number;
+  /** Must follow the H2 rules in PLAN.md section 3d. No eyebrow label above it. */
   heading?: string;
-  eyebrow?: string;
 }
-const { tag = "general", count = 3, heading = "What homeowners say", eyebrow = "Real reviews from real customers" } =
-  Astro.props;
+const { tag = "general", count = 3, heading = "What homeowners say about our work" } = Astro.props;
 const items = reviewsFor(tag, count);
 ---
 
 <section class="section reviews">
   <div class="wrap">
-    <p class="eyebrow">{eyebrow}</p>
     <h2>{heading}</h2>
     <ul class="reviews__list">
       {

@@ -64,27 +64,78 @@ const crumbs = [
     </div>
   </section>
 
-  <section class="section section--soft">
-    <div class="wrap">
-      <h2>What the work covers</h2>
-      {
-        service.sections.map((section) => (
-          <div class="prose-block">
-            <h3>{section.heading}</h3>
-            <p>{section.copy}</p>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+  {
+    /* One section per topic the live page gives its own H2 (PLAN.md section 3d rule 6):
+       tank, tankless and annual maintenance stay separate rather than being merged. */
+    service.sections.map((section, i) => (
+      <section class={i % 2 === 0 ? "section section--soft" : "section"}>
+        <div class="wrap">
+          <h2>{section.heading}</h2>
+          <p>{section.copy}</p>
+        </div>
+      </section>
+    ))
+  }
 
-  <EmergencyBand heading={`Need a plumber for ${service.shortName.toLowerCase()}?`} />
+  {
+    service.commonIssues && (
+      <section class="section">
+        <div class="wrap">
+          <h2>Common water heater problems we fix</h2>
+          {service.commonIssues.map((issue) => (
+            <div class="prose-block">
+              <h3>{issue.heading}</h3>
+              <p>{issue.copy}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
-  <ReviewsStrip tag="water-heaters" count={2} heading="What homeowners say" eyebrow="Real reviews from real customers" />
+  {
+    service.process && (
+      <section class="section section--soft">
+        <div class="wrap">
+          <h2>What happens when we arrive</h2>
+          <ol class="steps">
+            {service.process.map((item) => (
+              <li>
+                <h3 class="points__title">{item.step}</h3>
+                <p>{item.copy}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    service.whyUs && (
+      <section class="section">
+        <div class="wrap">
+          <h2>Why Truckee homeowners call Brimer</h2>
+          <ul class="points">
+            {service.whyUs.map((item) => (
+              <li>
+                <h3 class="points__title">{item.heading}</h3>
+                <p>{item.copy}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <EmergencyBand heading="Get hot water back on in Truckee" />
+
+  <ReviewsStrip tag="water-heaters" count={2} heading="What homeowners say about water heater work" />
 
   <section class="section">
     <div class="wrap">
-      <h2>Towns we cover</h2>
+      <h2>Towns we cover around Lake Tahoe</h2>
       <ul class="towns">
         {areaTowns.map((town) => <li><a href={`/service-areas/${town.slug}/`}>{town.name}</a></li>)}
       </ul>
@@ -92,11 +143,11 @@ const crumbs = [
     </div>
   </section>
 
-  <Faq faqs={service.faqs} />
+  <Faq heading="Water heater questions we get asked" faqs={service.faqs} />
 
   <section class="section section--soft">
     <div class="wrap">
-      <h2>Related services</h2>
+      <h2>Related plumbing services</h2>
       <ul class="towns">
         {related.map((item) => <li><a href={`/services/${item.slug}/`}>{item.name}</a></li>)}
       </ul>

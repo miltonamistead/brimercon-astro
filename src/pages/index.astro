@@ -146,7 +146,7 @@ const faqs = [
         {
           trustPoints.map((point) => (
             <li>
-              <h2 class="points__title">{point.title}</h2>
+              <h3 class="points__title">{point.title}</h3>
               <p>{point.copy}</p>
             </li>
           ))
@@ -157,8 +157,7 @@ const faqs = [
 
   <section class="section section--soft">
     <div class="wrap">
-      <p class="eyebrow">Outcome-focused craftsmanship</p>
-      <h2>Built for how mountain homes are lived in</h2>
+      <h2>Plumbing built for Truckee mountain homes</h2>
       <p class="lede">
         Steam showers, curated finishes, and high-performance systems require clean execution that protects every
         detail.
@@ -178,8 +177,7 @@ const faqs = [
 
   <section class="section" id="services">
     <div class="wrap">
-      <p class="eyebrow">What we do</p>
-      <h2>How we help</h2>
+      <h2>Water heaters, gas lines, leaks and drains</h2>
       <p class="lede">
         From routine maintenance to emergency repairs, we support the plumbing systems that keep mountain homes
         running.
@@ -193,8 +191,7 @@ const faqs = [
 
   <section class="section section--soft">
     <div class="wrap">
-      <p class="eyebrow">Why mountain homes need a specialist</p>
-      <h2>Built for Tahoe and Truckee</h2>
+      <h2>Why mountain home plumbing is different</h2>
       <p class="lede">
         Mountain homes place higher demands on plumbing systems. Seasonal use, freezing temperatures, hard water, and
         remote coordination all require a plumber who understands the realities of living here.
@@ -214,8 +211,7 @@ const faqs = [
 
   <section class="section">
     <div class="wrap">
-      <p class="eyebrow">What to expect</p>
-      <h2>Our process</h2>
+      <h2>What happens when you call us</h2>
       <ol class="steps">
         {
           process.map((item) => (
@@ -229,14 +225,13 @@ const faqs = [
     </div>
   </section>
 
-  <EmergencyBand />
+  <EmergencyBand heading="Emergency plumber in Truckee and Tahoe" />
 
-  <ReviewsStrip tag="general" count={3} />
+  <ReviewsStrip tag="general" count={3} heading="What Truckee homeowners say about us" />
 
   <section class="section section--soft">
     <div class="wrap">
-      <p class="eyebrow">Towns we serve</p>
-      <h2>Areas we serve</h2>
+      <h2>Towns we serve around North Lake Tahoe</h2>
       <p class="lede">Serving Truckee and the communities around North Lake Tahoe.</p>
       <ul class="towns">
         {featuredTowns.map((town) => <li><a href={`/service-areas/${town.slug}/`}>{town.name}</a></li>)}
@@ -245,12 +240,11 @@ const faqs = [
     </div>
   </section>
 
-  <Faq eyebrow="Common questions" faqs={faqs} />
+  <Faq heading="Common plumbing questions" faqs={faqs} />
 
   <section class="section">
     <div class="wrap">
-      <p class="eyebrow">Get started today</p>
-      <h2>Ready to get started?</h2>
+      <h2>Talk to a Truckee plumber today</h2>
       <p class="lede">
         Share your project goals and timeline. We deliver polished execution, clear communication, and verified
         results.

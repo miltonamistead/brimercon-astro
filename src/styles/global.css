@@ -341,14 +341,8 @@ address {
   color: var(--ink-soft);
 }
 
-.eyebrow {
-  margin: 0 0 0.25rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
+/* No .eyebrow class: eyebrow labels above H2s are banned (PLAN.md section 3d rule 2).
+   The H2 carries the meaning on its own. */
 
 .prose-block {
   margin-bottom: 1.25rem;

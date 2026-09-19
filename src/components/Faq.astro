@@ -2,16 +2,15 @@
 // Accordion with no JavaScript: <details>/<summary> is keyboard accessible for free.
 // Answers here must match the FAQPage schema text exactly.
 interface Props {
+  /** Must follow the H2 rules in PLAN.md section 3d. No eyebrow label above it. */
   heading?: string;
-  eyebrow?: string;
   faqs: Array<{ question: string; answer: string }>;
 }
-const { heading = "Frequently asked questions", eyebrow, faqs } = Astro.props;
+const { heading = "Common plumbing questions", faqs } = Astro.props;
 ---
 
 <section class="section faqs">
   <div class="wrap">
-    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
     <h2>{heading}</h2>
     <div class="faqs__list">
       {

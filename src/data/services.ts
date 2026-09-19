@@ -8,7 +8,16 @@ export type Service = {
   summary: string;
   bullets: string[];
   body: string[];
+  /**
+   * One entry per topic the live page gives its own H2 (PLAN.md section 3d rule 6).
+   * Headings follow the H2 rules: service or query wording, sentence case, under 60
+   * characters, no colon split, no em dash, and roughly half carrying a place name.
+   */
   sections: { heading: string; copy: string }[];
+  /** Live gives "Common issues we resolve" its own H2, so it stays its own section. */
+  commonIssues?: { heading: string; copy: string }[];
+  process?: { step: string; copy: string }[];
+  whyUs?: { heading: string; copy: string }[];
   faqs: { question: string; answer: string }[];
   related: string[];
 };
@@ -37,21 +46,51 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        heading: "Repair in Truckee and North Lake Tahoe",
-        copy: "No hot water, lukewarm output, popping tanks, and pilot or ignition failures are the usual winter calls. Hard water and altitude shorten anode life and stress burners. We test the unit, name the failure, and tell you whether a repair is honest or whether replacement is the cleaner path.",
+        heading: "Tank water heater repair in Truckee",
+        copy: "Tanks are still the most common choice in mountain homes, and they take the most abuse here. No hot water, lukewarm output, a popping or rumbling tank, and pilot or ignition failures are the usual winter calls. Hard water shortens anode life and sediment insulates the burner from the water it is meant to heat. We test the unit, name the actual failure, and tell you whether a repair is honest or whether you are about to pay twice. A replacement needs altitude-ready combustion or the right electric configuration, venting that suits the house, and sizing for real fixture demand rather than a catalog default.",
       },
       {
-        heading: "Replacement and new installation",
-        copy: "A replacement in this climate needs altitude-ready combustion or the right electric configuration, venting that fits the house, and sizing for real fixture demand rather than a catalog default. We coordinate fuel type (natural gas, propane, or electric) and leave the space clean.",
+        heading: "Tankless water heaters at Tahoe altitude",
+        copy: "Tankless suits seasonal homes and houses with high simultaneous demand, because there is no standby loss while nobody is there. But cold inlet water and thinner air both change the sizing math, and a unit specified for sea level will disappoint at 6,000 feet. We size for the fixture count the house actually has, confirm the gas supply can feed it, descale when water quality calls for it, and will tell you plainly when a tank is the better answer.",
       },
       {
-        heading: "Tankless systems",
-        copy: "Tankless can suit seasonal homes and high simultaneous demand, but cold inlet water and elevation change the sizing math. We install and service major brands, descale when water quality requires it, and do not push a conversion if a tank is the better fit.",
+        heading: "Annual water heater maintenance and flushing",
+        copy: "A yearly visit covering a sediment flush, an anode check, a temperature and pressure valve test, and a look at venting and shutoff valves is the cheapest way to catch a tank before it soaks a closet. It matters most in houses that sit empty between visits, where a slow failure has weeks to become a floor replacement.",
+      },
+    ],
+    commonIssues: [
+      {
+        heading: "No hot water or temperature that keeps changing",
+        copy: "Thermostat failures, sediment buildup, or burner problems, and often a unit that has just come back from weeks of sitting unused.",
       },
       {
-        heading: "Annual maintenance",
-        copy: "A yearly visit covering sediment flush, anode check, T&P valve test, and a look at venting and valves is the simplest way to catch a tank before it soaks a closet. Especially useful for homes that sit empty between seasons.",
+        heading: "Tank leaks and corrosion",
+        copy: "Mineral-rich mountain water wears the anode rod and then the tank. Catching it early is the difference between a swap and a water-damage claim.",
       },
+      {
+        heading: "Pilot light and ignition failures",
+        copy: "High-altitude combustion and seasonal shutdowns are hard on ignition components. We diagnose rather than guess at parts.",
+      },
+      {
+        heading: "Sediment buildup and rising bills",
+        copy: "Hard water deposits sit between the burner and the water, so the unit runs longer for less hot water. An annual flush prevents most of it.",
+      },
+      {
+        heading: "Tankless error codes and flow problems",
+        copy: "Tankless units are sensitive to water quality and flow rate. We read the code, find the cause, and restore consistent output.",
+      },
+    ],
+    process: [
+      { step: "We diagnose", copy: "We inspect the unit, test components, and find the root cause before recommending anything." },
+      { step: "You choose", copy: "You get a clear repair or replace recommendation with the price, and no pressure either way." },
+      { step: "We work clean", copy: "We protect floors and finishes, work efficiently, and keep you posted while we do it." },
+      { step: "We verify", copy: "We confirm proper operation, check for leaks, and leave the area as we found it." },
+    ],
+    whyUs: [
+      { heading: "Clean work", copy: "We protect floors, cabinetry, and finishes while we work, and leave the area tidy." },
+      { heading: "Clear options", copy: "You understand the problem, the choices, and the cost before anything starts." },
+      { heading: "Mountain-home experience", copy: "Altitude, seasonal use, and hard water are the normal conditions here, not edge cases." },
+      { heading: "Since 1997", copy: "Nearly three decades working on Truckee and North Lake Tahoe plumbing." },
     ],
     faqs: [
       {

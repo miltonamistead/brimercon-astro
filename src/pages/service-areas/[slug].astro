@@ -109,24 +109,24 @@ const crumbs = [
     ))
   }
 
-  <EmergencyBand heading={`Need a plumber in ${town.name}?`} />
+  <EmergencyBand heading={content.headings.emergency} />
 
-  <ReviewsStrip tag="truckee" count={2} />
+  <ReviewsStrip tag="truckee" count={2} heading={content.headings.reviews} />
 
   <section class="section">
     <div class="wrap">
-      <h2>Popular services in {town.name}</h2>
+      <h2>{content.headings.popular}</h2>
       <ul class="cards">
         {popular.map((service) => <ServiceCard service={service} bullets={2} />)}
       </ul>
     </div>
   </section>
 
-  <Faq faqs={content.faqs} heading={`${town.name} plumbing questions`} />
+  <Faq heading={content.headings.faqs} faqs={content.faqs} />
 
   <section class="section section--soft">
     <div class="wrap">
-      <h2>Talk to a plumber who works in {town.name}</h2>
+      <h2>{content.headings.cta}</h2>
       <p>
         <a class="btn-call" href={site.phoneHref}>
           <span aria-hidden="true">&#9742;</span>
