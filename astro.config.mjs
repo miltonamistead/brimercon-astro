@@ -31,7 +31,8 @@ export default defineConfig({
   ],
   redirects: {
     // Live 404 with a live backlink (sipthestyle.com). Do not invent a third water-heater slug.
-    "/water-heater-services": { status: 301, destination: "/services/water-heaters/" },
+    // trailingSlash: "always" normalises the unslashed form, and vercel.json catches it at
+    // the edge, so declaring both here would collide on one route.
     "/water-heater-services/": { status: 301, destination: "/services/water-heaters/" },
     // Parity with live, which 301s /sitemap.xml to the index.
     "/sitemap.xml": { status: 301, destination: "/sitemap-index.xml" },

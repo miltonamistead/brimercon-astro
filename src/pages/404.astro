@@ -1,0 +1,28 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import { services } from "@/data/services";
+import { site } from "@/data/site";
+---
+
+<Base
+  title={`Page not found | ${site.name}`}
+  description="That page does not exist. Call Brimer Plumbing on 530-587-0733 or pick a service below."
+  noindex
+>
+  <FirstScreen
+    h1="We could not find that page"
+    intro="The link may be out of date. Call us and we will point you the right way, or pick a service below."
+    formLabel="Or send a service request"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Plumbing services</h2>
+      <ul>
+        {services.map((service) => <li><a href={`/services/${service.slug}/`}>{service.name}</a></li>)}
+      </ul>
+      <p><a href="/service-areas/">See the towns we serve</a></p>
+    </div>
+  </section>
+</Base>

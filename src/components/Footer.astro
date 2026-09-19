@@ -1,0 +1,68 @@
+---
+import { site, navPrimary, serviceAreaGroups } from "@/data/site";
+import { services } from "@/data/services";
+import { townName } from "@/data/towns";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <h2>{site.name}</h2>
+        <address>
+          {site.street}<br />
+          {site.city}, {site.region} {site.postal}
+        </address>
+        <p>
+          <a href={site.phoneHref}>{site.phoneDisplay}</a><br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+        <p>{site.hoursLabel}.<br />{site.afterHoursLine}</p>
+        <p>
+          <a href={site.mapsUrl} rel="noopener">Find us on Google Maps</a>
+        </p>
+      </div>
+
+      <div>
+        <h2>Services</h2>
+        <ul>
+          {services.map((service) => <li><a href={`/services/${service.slug}/`}>{service.name}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h2>Service areas</h2>
+        <ul>
+          {
+            serviceAreaGroups.map((group) => (
+              <li>
+                <a href={group.hub ?? `/service-areas/${group.towns[0]}/`}>{group.label}</a>:{" "}
+                {group.towns.map((slug) => townName(slug)).join(", ")}
+              </li>
+            ))
+          }
+        </ul>
+        <p><a href="/service-areas/">All service areas</a></p>
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>{site.cslbLine}</p>
+      <p>
+        {
+          navPrimary.map((item, i) => (
+            <>
+              {i > 0 && " | "}
+              <a href={item.href}>{item.label}</a>
+            </>
+          ))
+        }
+        {" | "}<a href="/privacy-policy/">Privacy Notice</a>
+        {" | "}<a href="/terms-of-use/">Terms of Use</a>
+      </p>
+      <p>&copy; {year} {site.legalName} dba {site.dba}. Established {site.founded}.</p>
+    </div>
+  </div>
+</footer>
