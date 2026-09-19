@@ -125,6 +125,24 @@ Implemented by `src/components/FirstScreen.astro` and `src/components/CallBar.as
 
 Enforced by `scripts/qa-content.mjs` on every build: phone, geography, price, dash and NAP rules across all built HTML.
 
+### 3d. H2 rules (Milton, 2026-09-19)
+
+Source: `docs/source/H2_RULES.md`. Applies to **every page**, and bulk generation inherits it. Headings are what a homeowner scans and what Google reads as the page's topic list, so they are treated as a hard rule rather than a style preference.
+
+| # | Rule |
+|---|---|
+| 1 | Every H2 names the **service** or the **homeowner's question**, in words someone would actually type into Google. Not internal positioning language. |
+| 2 | **No eyebrow labels above H2s.** No "Outcome-focused craftsmanship", "What we do", "What to expect". The H2 carries the meaning by itself. There is deliberately no `.eyebrow` class in `global.css`. |
+| 3 | A town or region name appears in **roughly half** the H2s on a page, and **never all** of them. |
+| 4 | On a town page the H2 carries the **service plus that town's own angle**, so no two towns share a heading frame. This is why the shared blocks (emergency band, reviews, popular services, FAQs, closing call) take their headings from `TownContent.headings` per town instead of interpolating the town name into one template. |
+| 5 | **Sentence case**, **under 60 characters**, **no colon-split** headings, **no em or en dashes**. |
+| 6 | Keep **one section for every H2 topic the live page has**. Do not merge or drop tankless, gas line repair, gas line installation, leak detection, kitchen and bath, frozen pipes, or any other topic live gives its own H2. Live headings per page are recorded in `docs/crawl/pages/` and can be re-extracted with `npm run crawl`. |
+| 7 | **Titles and H1s do not change.** They rank; the H2s are the layer that gets optimised. |
+
+Rules 2, 3 and 5 are enforced mechanically by `scripts/qa-headings.mjs`, which runs in `npm run build` and inspects only H2s inside `<main>` (footer headings are site furniture). `npm run qa:headings` prints every H2 with its length and whether it names a place, which is the fastest way to check rule 3 while writing. Rules 1, 4 and 6 are editorial and reviewed by a human.
+
+Before writing a new page, extract that page's live H2 topics first, then write one section per topic. The golden pages are the worked examples: `/services/water-heaters/` keeps tank, tankless and annual maintenance as three separate H2s because live does, and `/service-areas/truckee/` keeps all nine live service topics in live's order.
+
 ---
 
 ## 4. Route map and redirects

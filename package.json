@@ -6,7 +6,7 @@
   "description": "Parallel noindex Astro rebuild of brimercon.com (live production untouched). See PLAN.md.",
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4321",
-    "build": "astro build && node scripts/qa-content.mjs",
+    "build": "astro build && node scripts/qa-content.mjs && node scripts/qa-headings.mjs",
     "build:only": "astro build",
     "serve": "PORT=4322 HOST=127.0.0.1 node dist/server/entry.mjs",
     "astro": "astro",
@@ -14,6 +14,7 @@
     "images": "node scripts/fetch-live-images.mjs",
     "og": "node scripts/make-og.mjs",
     "qa:content": "node scripts/qa-content.mjs",
+    "qa:headings": "node scripts/qa-headings.mjs --verbose",
     "qa:first-screen": "playwright test",
     "qa:links": "node scripts/qa-links.mjs",
     "qa:form": "node scripts/qa-form.mjs",

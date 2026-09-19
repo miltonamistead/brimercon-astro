@@ -12,12 +12,21 @@
 //   dashes     no em dash or en dash (audit B4: clean dashes only)
 //   nap        street address and CSLB number present on every page
 
-import { readdir, readFile, writeFile, mkdir } from "node:fs/promises";
+import { readdir, readFile, writeFile, mkdir, stat } from "node:fs/promises";
 import { join, relative, dirname } from "node:path";
 
-const ROOT = process.argv.includes("--dir")
-  ? process.argv[process.argv.indexOf("--dir") + 1]
-  : "dist";
+// The Node adapter puts prerendered HTML in dist/client, so resolve to that when present.
+// Reported paths then read as real URLs instead of /client/....
+async function resolveRoot() {
+  if (process.argv.includes("--dir")) return process.argv[process.argv.indexOf("--dir") + 1];
+  try {
+    if ((await stat("dist/client")).isDirectory()) return "dist/client";
+  } catch {
+    /* fall through */
+  }
+  return "dist";
+}
+const ROOT = await resolveRoot();
 const REPORT = process.argv.includes("--report")
   ? process.argv[process.argv.indexOf("--report") + 1]
   : null;
