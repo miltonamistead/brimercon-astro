@@ -18,9 +18,33 @@ export type Service = {
   commonIssues?: { heading: string; copy: string }[];
   process?: { step: string; copy: string }[];
   whyUs?: { heading: string; copy: string }[];
+  /**
+   * Headings for the shared blocks. Written per service rather than templated from the
+   * service name, for the same reason town headings are written per town: interpolating
+   * a name into one string puts the identical frame on every page. Each service also
+   * tunes its own place-name ratio here to stay near half (PLAN.md section 3d rule 3).
+   */
+  headings: {
+    commonIssues: string;
+    process: string;
+    whyUs: string;
+    emergency: string;
+    reviews: string;
+    towns: string;
+    faqs: string;
+    related: string;
+  };
   faqs: { question: string; answer: string }[];
   related: string[];
 };
+
+/** The four reasons live gives on every service page. Same block, same words. */
+const WHY_BRIMER = [
+  { heading: "Clean work", copy: "We protect floors, cabinetry, and finishes while we work, and leave the area tidy." },
+  { heading: "Clear options", copy: "You understand the problem, the choices, and the cost before anything starts." },
+  { heading: "Mountain-home experience", copy: "Altitude, seasonal use, and hard water are the normal conditions here, not edge cases." },
+  { heading: "Since 1997", copy: "Nearly three decades working on Truckee and North Lake Tahoe plumbing." },
+];
 
 export const services: Service[] = [
   {
@@ -86,12 +110,17 @@ export const services: Service[] = [
       { step: "We work clean", copy: "We protect floors and finishes, work efficiently, and keep you posted while we do it." },
       { step: "We verify", copy: "We confirm proper operation, check for leaks, and leave the area as we found it." },
     ],
-    whyUs: [
-      { heading: "Clean work", copy: "We protect floors, cabinetry, and finishes while we work, and leave the area tidy." },
-      { heading: "Clear options", copy: "You understand the problem, the choices, and the cost before anything starts." },
-      { heading: "Mountain-home experience", copy: "Altitude, seasonal use, and hard water are the normal conditions here, not edge cases." },
-      { heading: "Since 1997", copy: "Nearly three decades working on Truckee and North Lake Tahoe plumbing." },
-    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Common water heater problems we fix",
+      process: "What happens when we arrive",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Get hot water back on in Truckee",
+      reviews: "What homeowners say about water heater work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Water heater questions we get asked",
+      related: "Related plumbing services",
+    },
     faqs: [
       {
         question: "How long do water heaters last in mountain homes?",
@@ -134,18 +163,61 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        heading: "If you think a pipe is frozen",
-        copy: "Turn off the main if you can reach it. Open a faucet on the affected line so pressure can relieve when ice lets go. Use only gentle heat. Call us if you cannot find the frozen section or if water is already in a ceiling or wall.",
+        heading: "Emergency burst pipe repair in Truckee",
+        copy: "When a line lets go, the first job is stopping the water. Shut the main if you can reach it safely and call 530-587-0733. On site we contain the leak, work out how far the water travelled, and repair or replace the failed section properly rather than patching it to get through the week.",
       },
       {
-        heading: "Winterization",
-        copy: "Seasonal homes need a real shutdown: drain lines, protect traps, handle the water heater, and confirm exterior hose bibs. We document the work so a caretaker or property manager can reverse it in spring.",
+        heading: "Safe pipe thawing without open flame",
+        copy: "No water at a faucet during a cold snap usually means ice in the line. Do not reach for a torch or a heat gun: rapid heat is what turns a frozen pipe into a split one, and it starts fires in wall cavities. We use controlled heat, work out where the blockage actually sits, and watch for the split that may already be there.",
       },
       {
-        heading: "Prevention",
-        copy: "Heat-trace, insulation, and a monitored shutoff are the usual long-term fixes for houses that freeze in the same place every year. We recommend what the house actually needs.",
+        heading: "Winterizing a Truckee home for the season",
+        copy: "A real shutdown means draining the lines and fixtures, protecting the traps, dealing with the water heater, and clearing the exterior hose bibs. We document what we did so a caretaker, a property manager, or we ourselves can reverse it correctly in spring rather than guessing at what was closed.",
+      },
+      {
+        heading: "Freeze prevention with insulation and heat trace",
+        copy: "Houses tend to freeze in the same place every year. Once we know where, heat trace on that run, better insulation, and sometimes a change to crawl-space ventilation stop the annual repeat. A monitored shutoff on the main is the backstop for a house nobody is watching.",
       },
     ],
+    commonIssues: [
+      {
+        heading: "A pipe that burst while the house was empty",
+        copy: "Water runs until somebody walks in. Fast shutoff and repair is the difference between a plumbing bill and a floor replacement.",
+      },
+      {
+        heading: "A frozen pipe that has not split yet",
+        copy: "No flow at the tap in freezing weather. Controlled thawing gets the water back without turning it into a burst.",
+      },
+      {
+        heading: "Damage left behind after the repair",
+        copy: "Finishes, insulation and framing need assessing once the pipe is fixed. We coordinate with restoration people when that is what it needs.",
+      },
+      {
+        heading: "Pipes in crawl spaces and exterior walls",
+        copy: "The usual casualties. Insulation and heat trace on the exposed runs are what stop it happening again.",
+      },
+      {
+        heading: "A seasonal home with no winterization plan",
+        copy: "Draining the system, protecting fixtures, and adding monitoring before you leave is far cheaper than the alternative.",
+      },
+    ],
+    process: [
+      { step: "Call us", copy: "We talk you through shutting off the water while we are on the way." },
+      { step: "We contain", copy: "We stop the active leak, find how far the water went, and make the situation safe." },
+      { step: "We repair", copy: "The damaged section is repaired or replaced with the right materials, not a temporary fix." },
+      { step: "We prevent", copy: "We recommend insulation, heat trace, or a monitored shutoff so the same run does not go again." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Common freeze problems in mountain homes",
+      process: "What we do when a pipe bursts",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Burst pipe or no water right now",
+      reviews: "What homeowners say about our work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Frozen pipe questions we get asked",
+      related: "Related plumbing services",
+    },
     faqs: [
       {
         question: "What should I do if a pipe freezes?",
@@ -182,14 +254,61 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        heading: "New lines and appliance hookups",
-        copy: "Fireplaces, ranges, dryers, water heaters, and outdoor kitchens each need a correctly sized, tested line. We handle the plumbing side and walk you through inspections.",
+        heading: "Gas line installation for new appliances",
+        copy: "New construction, remodels and appliance additions all need line sized and routed properly. We install gas piping to code for an indoor range, a tankless water heater, a fireplace, or an outdoor living space, and every installation ends with a pressure test and a leak check before the system goes live.",
       },
       {
-        heading: "Leak detection and safety checks",
-        copy: "Pre-winter checks catch loose fittings and tired flex connectors after a season of freeze-thaw. We test, repair, and document.",
+        heading: "Gas appliance hookups for ranges and dryers",
+        copy: "Adding a range, a fireplace insert, a dryer or an outdoor grill means connecting supply to appliance with the right sizing, safe routing and code-compliant fittings. We handle that side and walk you through the inspection when one is required.",
+      },
+      {
+        heading: "Gas leak detection in Truckee and Tahoe",
+        copy: "If you smell gas, leave the house and call the utility first. Then call us. We locate leaks with professional detection equipment and make repairs that last rather than tightening a fitting and hoping. Scheduled safety inspections are worth booking before a seasonal home is occupied again for winter.",
+      },
+      {
+        heading: "Shutoff valves and emergency controls",
+        copy: "Properly placed shutoffs are the difference between a problem and an emergency. We install and upgrade individual appliance shutoffs and whole-home emergency valves, so you and whoever looks after the house have clear control.",
       },
     ],
+    commonIssues: [
+      {
+        heading: "You can smell gas",
+        copy: "This is the one that cannot wait. Leave, call the utility, then call us. We find it with proper equipment and repair it safely.",
+      },
+      {
+        heading: "A new appliance needs a line run",
+        copy: "A range, fireplace, grill or dryer needs correctly sized and routed pipe, not the nearest convenient connection.",
+      },
+      {
+        heading: "Old pipework that no longer meets code",
+        copy: "Older homes often carry gas piping that predates current standards. We inspect, assess, and upgrade what needs it.",
+      },
+      {
+        heading: "Not enough gas pressure for everything",
+        copy: "Several appliances on an undersized line starve each other. We check supply capacity and upsize the piping where needed.",
+      },
+      {
+        heading: "Shutting a second home down and starting it back up",
+        copy: "Seasonal properties need the gas side closed down properly and restarted with testing, not just a valve turned.",
+      },
+    ],
+    process: [
+      { step: "We assess", copy: "We look at the existing system, work out what is needed, and check code compliance." },
+      { step: "You get a scope", copy: "A clear scope of work and a price before anything starts." },
+      { step: "We install", copy: "Work done to code with proper materials, tested connections, and a clean site." },
+      { step: "We pressure test", copy: "Every gas job ends with a pressure test and leak check before it is signed off." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Common gas problems we fix",
+      process: "How a gas job runs from start to test",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Smell gas in your Truckee home",
+      reviews: "What homeowners say about gas work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Gas line questions we get asked",
+      related: "Related plumbing services",
+    },
     faqs: [
       {
         question: "Do you handle gas line work?",
@@ -226,14 +345,65 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        heading: "Repairs and replacements",
-        copy: "Running toilets, tired cartridges, slow baths, and disposal backups are everyday calls. We diagnose, present options, and protect counters and floors.",
+        heading: "Faucet, sink and toilet work in Truckee homes",
+        copy: "From faucets and toilets to shower valves and tub spouts, we install and repair the fixtures people actually use every day. Whether you are upgrading the look or chasing a leak that keeps coming back, we make sure the fit, the function and the finish are all right before we leave.",
       },
       {
-        heading: "Remodels",
-        copy: "Rough-in, fixture setting, and punch-list coordination. We do not take over the general-contractor role; we make the plumbing side clean and inspectable.",
+        heading: "Garbage disposal replacement",
+        copy: "Disposal failures are one of the most common kitchen calls we get. We replace worn units, install new ones, and will tell you which size and feature set actually suits your household rather than upselling the biggest motor on the shelf.",
+      },
+      {
+        heading: "Drain clearing and slow drain repair",
+        copy: "A slow drain that keeps coming back is rarely just hair. Recurring clogs usually point to buildup or a pipe problem further down the line. We clear the blockage, then look at the drain line to work out whether that was the fix or only the symptom.",
+      },
+      {
+        heading: "Remodel rough-in for kitchens and baths",
+        copy: "Planning a renovation means relocating supply lines, repositioning drains and getting everything ready for the finish phase. We work to your contractor's schedule, test every connection, and leave the room inspectable rather than just closed up.",
+      },
+      {
+        heading: "Low water pressure in Tahoe mountain homes",
+        copy: "Inconsistent pressure affects showers, appliances and patience. The cause is usually a partly closed valve, a failing regulator, mineral buildup, or supply lines that were undersized to begin with. We trace it to the actual source rather than guessing, then restore reliable flow.",
       },
     ],
+    commonIssues: [
+      {
+        heading: "Dripping faucets and running toilets",
+        copy: "Beyond the wasted water, both usually mean worn internals that only get worse. We fix the cause rather than the symptom.",
+      },
+      {
+        heading: "Slow or repeatedly clogged drains",
+        copy: "Common in older mountain homes. We clear it, then check whether something deeper in the line is the real problem.",
+      },
+      {
+        heading: "Pressure that is never quite right",
+        copy: "Valves, regulators, fixtures or mineral buildup. We trace it properly instead of swapping parts until it improves.",
+      },
+      {
+        heading: "Leaks under a sink or behind a wall",
+        copy: "Hidden water damages cabinetry, flooring and framing. Finding it early is what keeps a repair from becoming a rebuild.",
+      },
+      {
+        heading: "Plumbing that has to move for a remodel",
+        copy: "Relocating fixtures and rerouting drains needs planning before demolition, not improvisation after it.",
+      },
+    ],
+    process: [
+      { step: "We look", copy: "We inspect the problem or read the remodel plans, then explain what is needed and why." },
+      { step: "You decide", copy: "Scope, timeline and cost are clear before we begin." },
+      { step: "We protect", copy: "Floors covered, cabinetry protected, and clean work, which matters most in a finished room." },
+      { step: "We test", copy: "Every fixture is checked for leaks, pressure and correct operation before we call it done." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Common kitchen and bath problems we fix",
+      process: "How a fixture or remodel job runs",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Leak under a sink right now",
+      reviews: "What homeowners say about our work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Kitchen and bath questions we get asked",
+      related: "Related plumbing services",
+    },
     faqs: [
       {
         question: "Do you install fixtures I already purchased?",
@@ -269,10 +439,61 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        heading: "What we connect",
-        copy: "Dishwashers, refrigerator water and ice lines, clothes washers, and similar plumbing-side appliances. Electrical disconnects stay with your electrician when the code split requires it.",
+        heading: "Dishwasher installation and drain hookup",
+        copy: "Proper installation is more than connecting a water line. We connect supply and drain, get the air gap or high loop right, and run a full cycle to check it before we leave. If the existing valves or connections are past it, we say so and replace them rather than reusing them and hoping.",
+      },
+      {
+        heading: "Refrigerator water lines in Tahoe second homes",
+        copy: "A reliable line means ice and filtered water without a slow leak behind a unit nobody moves. We install copper or braided stainless with a dedicated shutoff valve, which is a small detail that matters a great deal in a house that sits empty between visits.",
+      },
+      {
+        heading: "Washing machine hookups and drain routing",
+        copy: "From the supply valves to the drain standpipe, we set up connections that cope with what a modern high-efficiency machine discharges. Where the laundry sits on an upper floor, the drain routing is the part that deserves the attention.",
+      },
+      {
+        heading: "Ice maker and filtration line setup",
+        copy: "We run dedicated lines for standalone ice makers, under-sink filtration and similar specialty connections. Every one gets an inline shutoff so servicing it later does not mean closing the whole house down.",
       },
     ],
+    commonIssues: [
+      {
+        heading: "A dishwasher that leaks after installation",
+        copy: "Almost always the supply or drain connection. We make every joint secure, routed correctly, and tested.",
+      },
+      {
+        heading: "Slow ice or a wet patch behind the fridge",
+        copy: "Kinked tubing, loose fittings or an undersized line. We fit durable line with a proper shutoff valve.",
+      },
+      {
+        heading: "A washer drain that overflows",
+        copy: "Usually the standpipe size or the routing. We set up a drain that handles a full discharge cycle.",
+      },
+      {
+        heading: "An ice maker with no water at all",
+        copy: "Normally a missing or badly tapped line. We run a dedicated one with an inline shutoff for future servicing.",
+      },
+      {
+        heading: "Getting the old unit out safely",
+        copy: "Disconnecting and capping, gas appliances especially, needs doing properly and to code. We handle removal cleanly.",
+      },
+    ],
+    process: [
+      { step: "We check specs", copy: "We confirm the appliance requirements, look at the existing plumbing, and plan the connection." },
+      { step: "We prepare", copy: "Supply lines, drain routing and shutoff valves installed or upgraded as needed." },
+      { step: "We connect", copy: "The appliance goes in, runs a cycle, and gets checked for leaks." },
+      { step: "We clear up", copy: "Old units disconnected safely and the work area left clean." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Common appliance hookup problems we fix",
+      process: "How an appliance hookup runs",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "An appliance is leaking right now",
+      reviews: "What homeowners say about our work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Appliance hookup questions we get asked",
+      related: "Related plumbing services",
+    },
     faqs: [
       {
         question: "Can you hook up a dishwasher I already bought?",
@@ -303,10 +524,61 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        heading: "Who it is for",
-        copy: "Seasonal owners, caretakers, and anyone who has already had a supply-line failure. Insurers sometimes recognize monitored shutoffs; ask your carrier, because we do not quote those programs.",
+        heading: "Moen Flo installation on your main line",
+        copy: "The device fits directly on the main water supply and monitors flow, pressure and temperature continuously. If it sees a leak, unusual usage or freeze risk, it can shut the water off on its own and alert the app. Installation usually takes a few hours, and we handle the plumbing connection, the network setup, the app configuration and the calibration.",
+      },
+      {
+        heading: "Freeze protection for Truckee winters",
+        copy: "This is the feature that earns its keep at this elevation. The system watches for the temperature and pressure patterns that precede a freeze and can close the valve before a pipe bursts, whether you are upstairs or several hundred miles away.",
+      },
+      {
+        heading: "Remote monitoring for Tahoe second homes",
+        copy: "If the house is a second residence, the app is the visibility you would not otherwise have: real-time usage, alerts when something looks wrong, and a remote shutoff. A property manager or caretaker can be added as a second user so oversight does not depend on one person's phone.",
+      },
+      {
+        heading: "What insurers say about water monitors",
+        copy: "A number of carriers now treat monitored shutoff as a genuine risk reduction, and some offer a premium credit for it. We do not quote insurance programs and cannot promise a discount, so ask your carrier directly. The stronger argument is the claim you never have to file.",
       },
     ],
+    commonIssues: [
+      {
+        heading: "A leak nobody is there to notice",
+        copy: "A small leak in an empty house runs for weeks. The monitor spots the anomaly and closes the main on its own.",
+      },
+      {
+        heading: "Freeze risk while the house is unoccupied",
+        copy: "Temperature and pressure patterns give warning before a pipe bursts, which is warning you can act on remotely.",
+      },
+      {
+        heading: "An insurer asking for water monitoring",
+        copy: "Some carriers now recommend or require it on higher-value properties. An installation can satisfy that request.",
+      },
+      {
+        heading: "Managing a house from out of the area",
+        copy: "Real-time visibility into the plumbing from anywhere, rather than finding out on your next visit.",
+      },
+      {
+        heading: "A slow leak behind a wall",
+        copy: "Subtle flow changes are exactly what a monitor is good at catching, long before there is anything visible.",
+      },
+    ],
+    process: [
+      { step: "We assess", copy: "We look at the plumbing layout and recommend the right system and the right place to put it." },
+      { step: "We install", copy: "The monitor goes on the main line with a dedicated shutoff, then connects to your network." },
+      { step: "We configure", copy: "App set up, alerts configured, and the system calibrated to how the house normally uses water." },
+      { step: "We walk you through", copy: "You leave knowing how to read an alert, use the app, and shut the water off from anywhere." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Problems a smart shutoff catches early",
+      process: "How a Moen Flo install runs",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Water running in an empty house",
+      reviews: "What homeowners say about our work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Smart shutoff questions we get asked",
+      related: "Related plumbing services",
+    },
     faqs: [
       {
         question: "What is a smart leak shutoff system?",

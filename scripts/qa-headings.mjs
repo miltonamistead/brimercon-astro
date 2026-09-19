@@ -86,8 +86,45 @@ const PROPER = new Set([
   // Part of the proper names "North Lake Tahoe" and "North Shore".
   "North",
   "Shore",
+  // Second words of the town names in src/data/towns.ts, so "Martis Camp" and "Tahoe
+  // Vista" are not read as mid-heading capitalisation.
+  "Camp",
+  "Vista",
+  "City",
+  "Summit",
+  "Beach",
+  "Bay",
+  "Point",
+  "Crossing",
+  "Mill",
+  "Springs",
+  "Valley",
+  "Greenwood",
+  "Serene",
+  "Lakes",
+  "Kings",
+  "Agate",
+  "Carnelian",
+  "Dollar",
+  "Soda",
+  "Alpine",
+  "Olympic",
+  "Lahontan",
+  "Northstar",
+  "Glenshire",
+  "Tahoma",
+  "Homewood",
+  "Moen",
+  "Flo",
   "I",
 ]);
+
+/**
+ * Pages exempt from the place-name ratio. Rule 3 exists so marketing pages carry local
+ * signal without stuffing; a privacy notice heading like "What we collect" has no local
+ * intent and should not be forced to name a town. The other rules still apply here.
+ */
+const RATIO_EXEMPT = [/^\/privacy-policy\//, /^\/terms-of-use\//, /^\/thank-you\//, /^\/404/];
 
 const listHtml = async (dir) => {
   const out = [];
@@ -184,7 +221,7 @@ for (const file of files) {
   // Rule 3: place names in roughly half, never all.
   const withPlace = headings.filter((h) => PLACE_WORDS.some((p) => h.includes(p)));
   const share = withPlace.length / headings.length;
-  if (headings.length >= 3) {
+  if (headings.length >= 3 && !RATIO_EXEMPT.some((pattern) => pattern.test(page))) {
     if (share === 1) add("3 places", `every one of ${headings.length} H2s names a place`);
     else if (share > 0.7) add("3 places", `${withPlace.length}/${headings.length} H2s name a place, more than roughly half`);
     else if (share < 0.25) add("3 places", `only ${withPlace.length}/${headings.length} H2s name a place, fewer than roughly half`);

@@ -14,6 +14,7 @@ import ReviewsStrip from "@/components/ReviewsStrip.astro";
 import EmergencyBand from "@/components/EmergencyBand.astro";
 import Faq from "@/components/Faq.astro";
 import Schema from "@/components/Schema.astro";
+import TownLink from "@/components/TownLink.astro";
 import { services, getService } from "@/data/services";
 import { site, napOneLine } from "@/data/site";
 import { towns } from "@/data/towns";
@@ -81,7 +82,7 @@ const crumbs = [
     service.commonIssues && (
       <section class="section">
         <div class="wrap">
-          <h2>Common water heater problems we fix</h2>
+          <h2>{service.headings.commonIssues}</h2>
           {service.commonIssues.map((issue) => (
             <div class="prose-block">
               <h3>{issue.heading}</h3>
@@ -97,7 +98,7 @@ const crumbs = [
     service.process && (
       <section class="section section--soft">
         <div class="wrap">
-          <h2>What happens when we arrive</h2>
+          <h2>{service.headings.process}</h2>
           <ol class="steps">
             {service.process.map((item) => (
               <li>
@@ -115,7 +116,7 @@ const crumbs = [
     service.whyUs && (
       <section class="section">
         <div class="wrap">
-          <h2>Why Truckee homeowners call Brimer</h2>
+          <h2>{service.headings.whyUs}</h2>
           <ul class="points">
             {service.whyUs.map((item) => (
               <li>
@@ -129,25 +130,25 @@ const crumbs = [
     )
   }
 
-  <EmergencyBand heading="Get hot water back on in Truckee" />
+  <EmergencyBand heading={service.headings.emergency} />
 
-  <ReviewsStrip tag="water-heaters" count={2} heading="What homeowners say about water heater work" />
+  <ReviewsStrip count={2} heading={service.headings.reviews} />
 
   <section class="section">
     <div class="wrap">
-      <h2>Towns we cover around Lake Tahoe</h2>
+      <h2>{service.headings.towns}</h2>
       <ul class="towns">
-        {areaTowns.map((town) => <li><a href={`/service-areas/${town.slug}/`}>{town.name}</a></li>)}
+        {areaTowns.map((town) => <li><TownLink slug={town.slug} /></li>)}
       </ul>
       <p><a href="/service-areas/">View all service areas</a></p>
     </div>
   </section>
 
-  <Faq heading="Water heater questions we get asked" faqs={service.faqs} />
+  <Faq heading={service.headings.faqs} faqs={service.faqs} />
 
   <section class="section section--soft">
     <div class="wrap">
-      <h2>Related plumbing services</h2>
+      <h2>{service.headings.related}</h2>
       <ul class="towns">
         {related.map((item) => <li><a href={`/services/${item.slug}/`}>{item.name}</a></li>)}
       </ul>

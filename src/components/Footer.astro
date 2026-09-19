@@ -36,10 +36,11 @@ const year = new Date().getFullYear();
         <h2>Service areas</h2>
         <ul>
           {
+            /* Group labels all point at the hub. Linking the first town in each group
+               would break whenever that town's page has not been built yet. */
             serviceAreaGroups.map((group) => (
               <li>
-                <a href={group.hub ?? `/service-areas/${group.towns[0]}/`}>{group.label}</a>:{" "}
-                {group.towns.map((slug) => townName(slug)).join(", ")}
+                <strong>{group.label}</strong>: {group.towns.map((slug) => townName(slug)).join(", ")}
               </li>
             ))
           }
