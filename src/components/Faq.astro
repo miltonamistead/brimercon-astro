@@ -1,0 +1,27 @@
+---
+// Accordion with no JavaScript: <details>/<summary> is keyboard accessible for free.
+// Answers here must match the FAQPage schema text exactly.
+interface Props {
+  heading?: string;
+  eyebrow?: string;
+  faqs: Array<{ question: string; answer: string }>;
+}
+const { heading = "Frequently asked questions", eyebrow, faqs } = Astro.props;
+---
+
+<section class="section faqs">
+  <div class="wrap">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2>{heading}</h2>
+    <div class="faqs__list">
+      {
+        faqs.map((faq) => (
+          <details class="faq">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+// Real customer words, no rating claim.
+//
+// Live asserts "Google 5.0 (16 reviews)" and "4.9 on Yelp (22 reviews)". The Google
+// Business Profile record says 4.97 across 32. Hard-coding either into a static page
+// guarantees a stale number, so the strip quotes reviews and links to the listings where
+// the current rating actually lives. No AggregateRating schema (docs/design.md section 3).
+import { site } from "@/data/site";
+import { reviewsFor, type Review } from "@/data/reviews";
+
+interface Props {
+  tag?: Review["tags"][number];
+  count?: number;
+  heading?: string;
+  eyebrow?: string;
+}
+const { tag = "general", count = 3, heading = "What homeowners say", eyebrow = "Real reviews from real customers" } =
+  Astro.props;
+const items = reviewsFor(tag, count);
+---
+
+<section class="section reviews">
+  <div class="wrap">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{heading}</h2>
+    <ul class="reviews__list">
+      {
+        items.map((review) => (
+          <li class="review">
+            <blockquote>
+              <p>{review.quote}</p>
+            </blockquote>
+            <p class="review__who">
+              <strong>{review.author}</strong>
+              <span>{review.location}</span>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="reviews__links">
+      <a href={site.googleReviewsUrl} rel="noopener">Read the reviews on Google</a>
+      <span aria-hidden="true"> | </span>
+      <a href={site.yelpUrl} rel="noopener">Read the reviews on Yelp</a>
+    </p>
+  </div>
+</section>

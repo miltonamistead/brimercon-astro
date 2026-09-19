@@ -1,0 +1,108 @@
+---
+/**
+ * Service page template. Water heaters is the golden page for Milton's review.
+ *
+ * GOLDEN_SLUGS is the M0.5 gate: the template is finished, but only the approved page is
+ * generated. Bulk generation of the other five is a one-line change once Milton signs off
+ * (PLAN.md M0.5 and section 3c).
+ */
+import type { GetStaticPaths } from "astro";
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ReviewsStrip from "@/components/ReviewsStrip.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Faq from "@/components/Faq.astro";
+import Schema from "@/components/Schema.astro";
+import { services, getService } from "@/data/services";
+import { site, napOneLine } from "@/data/site";
+import { towns } from "@/data/towns";
+import { GOLDEN_SERVICE_SLUGS } from "@/data/golden";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+
+export const getStaticPaths = (() =>
+  services
+    .filter((service) => GOLDEN_SERVICE_SLUGS.includes(service.slug))
+    .map((service) => ({ params: { slug: service.slug } }))) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+const service = getService(slug!)!;
+const path = `/services/${service.slug}/`;
+
+const related = service.related.map((s) => getService(s)!).filter(Boolean);
+const areaTowns = towns.filter((town) =>
+  ["truckee", "tahoe-city", "kings-beach", "tahoe-donner", "olympic-valley", "donner-lake"].includes(town.slug),
+);
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services/" },
+  { name: service.name, path },
+];
+---
+
+<Base title={service.title} description={service.description}>
+  <Schema
+    slot="head"
+    nodes={[
+      serviceSchema({ name: service.name, description: service.summary, path }),
+      faqSchema(service.faqs),
+      breadcrumbSchema(crumbs),
+    ]}
+  />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <FirstScreen h1={service.h1} intro={service.summary} />
+
+  <section class="section">
+    <div class="wrap">
+      <ul class="ticks">
+        {service.bullets.map((bullet) => <li>{bullet}</li>)}
+      </ul>
+      {service.body.map((para) => <p>{para}</p>)}
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>What the work covers</h2>
+      {
+        service.sections.map((section) => (
+          <div class="prose-block">
+            <h3>{section.heading}</h3>
+            <p>{section.copy}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <EmergencyBand heading={`Need a plumber for ${service.shortName.toLowerCase()}?`} />
+
+  <ReviewsStrip tag="water-heaters" count={2} heading="What homeowners say" eyebrow="Real reviews from real customers" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Towns we cover</h2>
+      <ul class="towns">
+        {areaTowns.map((town) => <li><a href={`/service-areas/${town.slug}/`}>{town.name}</a></li>)}
+      </ul>
+      <p><a href="/service-areas/">View all service areas</a></p>
+    </div>
+  </section>
+
+  <Faq faqs={service.faqs} />
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Related services</h2>
+      <ul class="towns">
+        {related.map((item) => <li><a href={`/services/${item.slug}/`}>{item.name}</a></li>)}
+      </ul>
+      <p class="nap-line">
+        <strong>{site.name}</strong>, {napOneLine()}. {site.hoursLabel}. {site.afterHoursLine}
+      </p>
+    </div>
+  </section>
+</Base>

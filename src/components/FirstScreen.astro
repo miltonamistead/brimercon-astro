@@ -30,6 +30,10 @@ const {
   formHref = "/request-service/",
   formLabel = "Or send a service request",
 } = Astro.props;
+
+// site.afterHoursLine stays the single source of the sentence (audit H8); splitting on the
+// number only lets the markup keep it from wrapping mid-digits on a narrow screen.
+const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
 ---
 
 <section class="first-screen">
@@ -50,7 +54,7 @@ const {
     <a class="first-screen__form-link" href={formHref} data-fs="form-link">{formLabel}</a>
 
     <p class="first-screen__hours" data-fs="hours">
-      {site.hoursLabel}. {site.afterHoursLine}
+      {site.hoursLabel}. {beforePhone}<span class="nowrap">{site.phoneDisplay}</span>{afterPhone}
     </p>
 
     <ul class="trust-strip" data-fs="trust">

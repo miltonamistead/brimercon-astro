@@ -1,0 +1,26 @@
+---
+import type { Service } from "@/data/services";
+
+interface Props {
+  service: Service;
+  /** Show the first N bullets; 0 hides them. */
+  bullets?: number;
+}
+const { service, bullets = 3 } = Astro.props;
+const href = `/services/${service.slug}/`;
+---
+
+<li class="card">
+  <h3 class="card__title"><a href={href}>{service.name}</a></h3>
+  <p class="card__summary">{service.summary}</p>
+  {
+    bullets > 0 && (
+      <ul class="card__bullets">
+        {service.bullets.slice(0, bullets).map((bullet) => (
+          <li>{bullet}</li>
+        ))}
+      </ul>
+    )
+  }
+  <p class="card__more"><a href={href}>Learn more about {service.shortName.toLowerCase()}</a></p>
+</li>
