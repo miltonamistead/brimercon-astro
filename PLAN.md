@@ -219,15 +219,19 @@ Geography matching is **whole-word and case-sensitive**, so "renovation" does no
 - [x] `tests/first-screen.spec.ts` + `playwright.config.ts`
 - **Gate:** `npm run build` green with the content gate passing; first-screen gate green on the templates that exist.
 
-### M0.5 — Golden pages ⛔ **blocked on Milton**
-One home, one service (`/services/water-heaters/`), one town (`/service-areas/truckee/`). Milton reviews screenshots and approves layout and copy **before** any bulk generation. Service and town copy rewrites are unblocked only by that approval (§3c).
+### M0.5 — Golden pages ✅ approved
+Home, `/services/water-heaters/`, `/service-areas/truckee/`. Approved by Milton on 2026-09-19 after the H2 pass, which unblocked service and town copy rewrites (§3c).
 
-### M1 — Core pages + lead capture
-`/`, `/about/`, `/contact/`, `/request-service/`, `/thank-you/`, `/services/` + 6 service pages, `/service-areas/` hub, 3 town pages, `/faqs/`, `/reviews/`; `LeadForm.astro`, `src/pages/api/lead.ts`, `src/lib/leads/*`, `scripts/qa-form.mjs`, `scripts/dev-webhook.mjs`.
-**Gate:** form E2E passes; first-screen gate green on all four targets; content gate green; Lighthouse mobile ≥ 95 on `/` and `/services/water-heaters/`.
+### M1 — Core pages + lead capture ✅ complete
+- 18 pages: `/`, `/about/`, `/contact/`, `/request-service/`, `/thank-you/`, `/services/` + all 6 service pages, `/service-areas/` hub, `/service-areas/truckee/`, `/faqs/`, `/reviews/`, `/privacy-policy/`, `/terms-of-use/`, `404`
+- `LeadForm.astro`, `src/pages/api/lead.ts`, `src/lib/leads.ts`, `scripts/qa-form.mjs`, `scripts/dev-webhook.mjs`
+- Google rating from Places into a committed cache, with a fail-closed refresh script (`docs/design.md` §3)
+- `TownLink` renders a link only for built towns, so a partly built twin has no dead links
+- **Gate met:** content and heading gates green on 19 built files; first-screen gate 20/20 with no skips; form E2E 14/14; fail-closed delivery verified; zero broken internal links.
+- Outstanding for M1 sign-off: Lighthouse mobile ≥ 95, which needs the Vercel preview (M3).
 
 ### M2 — Full URL parity
-Remaining 21 town pages (each against its brief, past the similarity gate), Martis Valley hub, blog collection, `/resources/`, `/membership/` without prices, legal pages, `scripts/qa-links.mjs`.
+Remaining 23 town pages (each against its brief in `docs/town-briefs.md`, past the similarity gate), Martis Valley hub, blog collection, `/resources/`, `/membership/` without prices, `scripts/qa-links.mjs`, `scripts/qa-similarity.mjs`.
 **Gate:** 53/53 parity; link check green; similarity gate green; `docs/url-map.md` status column all ✅.
 
 ### M3 — Staging deploy + QA writeup
