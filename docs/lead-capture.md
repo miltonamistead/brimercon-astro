@@ -1,56 +1,63 @@
 # Lead capture — in-house form replacing GoHighLevel forms
 
-Goal (kickoff #7): contact/lead forms wired to something Milton owns — email plus a structured lead record — with a working end-to-end path on staging and a confirmation. GoHighLevel is **not** cancelled in this phase and nothing on live is changed.
+Goal (kickoff #7): contact and lead forms wired to something Milton owns, with a working end-to-end path on staging and a confirmation. GoHighLevel is **not** cancelled in this phase and nothing on live changes.
 
-Live today: forms on home, contact, request-service, and every service/town page post to GoHighLevel (LeadConnector) with reCAPTCHA v3, then show "Request received" or "Something went wrong — call 530-587-0733". A Granola note records that a real customer hit a submission error and that inquiries were meant to enter the Dream Surge pipeline and trigger an SMS workflow. The twin keeps the user-facing behaviour, removes the GHL dependency from the page, and lets Milton choose where leads go.
+Live today: forms on home, contact, request-service and every service and town page post to GoHighLevel (LeadConnector) with reCAPTCHA v3. A Granola note records a real customer hitting a submission error. The twin keeps the user-facing behaviour, removes the GHL dependency from the page, and lets Milton choose where leads go.
+
+**Calling is the primary action** (`PLAN.md` §3b). This form is the fallback for people who will not phone, so it is short and it never competes with the call button.
 
 ## 1. Form (client)
 
-Component `src/components/LeadForm.astro`, rendered on: `/`, `/contact/`, `/request-service/`, all `/services/*`, all `/service-areas/*` (same placement pattern as live), and `/service-areas/martis-valley/`.
+Component `src/components/LeadForm.astro`, rendered on `/`, `/contact/`, `/request-service/`, all `/services/*` and all `/service-areas/*`.
 
-Fields (mirror live so existing users see nothing new):
+Short by design (audit H3). Three required fields; everything else optional. Every extra required field costs leads, and Brimer can get the rest on the phone.
 
 | Field | `name` | Type | Required | Validation |
 |---|---|---|---|---|
-| Full Name | `name` | text | yes | 2–100 chars |
-| Phone Number | `phone` | tel | yes | 10–11 digits after stripping punctuation; must start with a US area code (not `0`/`1`) |
-| Email Address | `email` | email | no | RFC-ish `x@y.z`, ≤ 200 chars |
-| Service Address | `address` | text | no | ≤ 200 chars |
-| City | `city` | select | yes | one of `formCities` in `site.ts` (CA list + "Other (CA side)") |
-| Describe the Issue | `message` | textarea | yes | 5–3000 chars |
-| Preferred Timing | `timing` | select | no | one of `timingOptions` |
-| This is urgent / emergency | `urgent` | checkbox | no | "Active leak, burst pipe, gas smell, or no water" helper text; when checked, the confirmation panel leads with the phone |
-| (hidden) | `source_path` | hidden | — | set server-side from `Referer`/`Origin` as fallback; client sets `location.pathname` |
-| (hidden) | `service_context` | hidden | — | e.g. `water-heaters` on service pages |
-| (hidden) | `town_context` | hidden | — | e.g. `truckee` on town pages |
-| (hidden) | `company_website` | text, visually hidden, `tabindex=-1`, `autocomplete=off` | — | **honeypot**: must be empty |
-| (hidden) | `ts` | hidden | — | render timestamp; server rejects if submitted < 3 s after render or > 24 h later (also handles static caching: `ts` is set by the enhancer script at load; if JS is off, the server skips the time trap and relies on the honeypot) |
+| Your name | `name` | text | **yes** | 2 to 100 chars |
+| Phone | `phone` | tel | **yes** | 10 to 11 digits after stripping punctuation; US area code |
+| What is wrong? | `message` | textarea | **yes** | 5 to 3000 chars |
+| Email | `email` | email | no | `x@y.z`, ≤ 200 chars |
+| Service address | `address` | text | no | ≤ 200 chars |
+| Town | `town` | text + `<datalist>` | no | Free text. The datalist offers all 24 towns from `src/data/towns.ts`; **prefilled and pre-selected on a town page**. Free text so nobody is blocked by a missing option. |
+| (hidden) | `source_path` | hidden | — | Page path. Server validates it is a same-site path: must start with `/`, no scheme, no `//` (audit H5). |
+| (hidden) | `service_context` | hidden | — | e.g. `water-heaters` |
+| (hidden) | `town_context` | hidden | — | e.g. `truckee` |
+| (hidden) | `company_website` | text, visually hidden, `tabindex="-1"` | — | **honeypot**, must be empty |
+| (hidden) | `ts` | hidden | — | Render timestamp set by the enhancer; server rejects < 3 s or > 24 h. With JS off the field is absent and the time trap is skipped. |
 
-Markup rules: real `<label for>` on every control; `required` and `inputmode`/`autocomplete` attributes; error summary region `aria-live="polite"`; submit button text "Submit Request" (live copy); no reCAPTCHA; no third-party scripts.
+Dropped from the live form: **preferred timing** (audit H3). It shaped no dispatch decision and added a field. Urgency belongs in "what is wrong", and anything genuinely urgent should be a phone call, which the page says.
+
+Markup rules: a real `<label for>` on every control; `inputmode="tel"` and `autocomplete` on phone and name; error summary in an `aria-live="polite"` region; submit reads "Send request"; no reCAPTCHA; no third-party scripts.
 
 ### Progressive enhancement
 
-- **No JavaScript:** `<form method="post" action="/api/lead">`. Server validates. Success → `303 See Other` to `/thank-you/?ref=<leadId>`. Validation failure → `303` back to `<source_path>?form=error#lead-form` (the page shows a generic error + phone). No lead is lost silently: if delivery fails the server still returns the error path, and the response body/redirect carries `?form=unavailable` so the copy says "call 530-587-0733".
-- **JavaScript (≤ 5 KB, `src/scripts/lead-form.ts`, inlined or one file):** intercepts submit, `fetch('/api/lead', { headers: { Accept: 'application/json' } })`, disables the button while pending, then swaps the form for the live "Request received" panel (with the phone line for emergencies) or shows the live "Something went wrong" panel with `tel:` link. Fires `window.dataLayer.push({event:'lead_submit', …})` only if GA4 is enabled.
+- **No JavaScript:** `<form method="post" action="/api/lead/">`. Success → `303` to `/thank-you/?ref=<leadId>`. Failure → `303` back to `<source_path>?form=error#lead-form`, or `?form=unavailable` when delivery failed, so the page can lead with the phone number.
+- **With JavaScript** (≤ 5 KB, `src/scripts/lead-form.ts`): intercepts submit, posts to `/api/lead/` with `Accept: application/json`, disables the button while pending, then swaps in the confirmation panel or the error panel. Both panels carry the call button.
 
-Copy for both panels is taken verbatim from live (`docs/crawl/` text: "Request received — We'll review your request and get back to you as soon as possible. If this is an emergency, please call 530-587-0733 for the fastest response." / "Something went wrong — We couldn't submit your request. Please try again, or call 530-587-0733").
+The endpoint path is always written **with a trailing slash** (`/api/lead/`, audit H4) to match `trailingSlash: 'always'`. A POST to `/api/lead` would take a redirect, and a redirected POST is where form submissions quietly die.
 
-## 2. Endpoint `POST /api/lead`
+## 2. Endpoint `POST /api/lead/`
 
-`src/pages/api/lead.ts`, `export const prerender = false`. Runs as a Vercel serverless function (Node runtime) via `@astrojs/vercel`; locally via `@astrojs/node` or `astro dev`.
+`src/pages/api/lead.ts`, `export const prerender = false`. Runs as a Vercel serverless function via `@astrojs/vercel`; locally via `@astrojs/node` or `astro dev`.
 
-Accepts `application/x-www-form-urlencoded`, `multipart/form-data`, or `application/json`. Content negotiation: if `Accept` includes `application/json` respond JSON, else redirect (see above). `GET` → `405` JSON `{ ok:false, error:'method_not_allowed' }`. Same-origin check: `Origin`/`Referer` host must match the request host when present (blocks cross-site posting; does not break no-JS submits).
+Accepts `application/x-www-form-urlencoded`, `multipart/form-data` or `application/json`. `GET` returns `405`.
+
+**Response format follows the request** (audit H5). If `Accept` includes `application/json`, respond JSON. Otherwise respond with a **real HTML page** carrying the same layout, an apology, and a full-width `Call 530-587-0733` button — never a bare JSON error body in a browser window. Same rule for `405`, `400` and `503`.
+
+Same-origin check: when `Origin` or `Referer` is present its host must match the request host. `source_path` is validated as a same-site path and is otherwise discarded.
 
 Pipeline (`src/lib/leads/`):
 
-1. `parse.ts` — body → plain object regardless of encoding.
-2. `validate.ts` — rules from the table; returns `{ ok, lead, errors }`. Spam signals: honeypot non-empty → respond **as if success** (200/303 to thank-you) but do not deliver (do not teach bots); time trap → same. Normalizes phone to E.164 `+1XXXXXXXXXX` and keeps the raw string.
-3. `enrich.ts` — `id` (`ld_` + 12 base32 chars from `crypto.randomUUID()`), `receivedAt` ISO, `sourcePath`, `serviceContext`, `townContext`, `userAgent`, `ipHash` (SHA-256 of IP + daily salt; no raw IP stored), `outOfArea` = true when city is "Other (CA side)" **and** address/message contains `NV`, `Nevada`, `Incline`, `Crystal Bay`, `Stateline` — tagged, never auto-rejected; a human answers.
-4. `deliver.ts` — run every configured adapter with `Promise.allSettled`, 8 s timeout each. Result `{ email:'sent'|'skipped'|'failed', webhook:…, store:… }`.
-5. Decide: if at least one adapter `sent`, or `LEAD_REQUIRE_DELIVERY !== 'true'`, return success; otherwise return `503` (`?form=unavailable`) so the page shows the phone. Log a one-line JSON record to stdout either way (Vercel function logs are Milton's audit trail even with zero adapters).
-6. Rate limit: in-memory map per `ipHash`, 5 submissions / 10 min (best-effort on serverless; real protection is the honeypot + validation).
+1. `parse.ts` — body to a plain object regardless of encoding.
+2. `validate.ts` — rules above. Honeypot filled or time trap tripped: respond as success but deliver nothing. Phone normalised to E.164, raw string kept.
+3. `enrich.ts` — `id` (`ld_` + 12 chars), `receivedAt`, `sourcePath`, `serviceContext`, `townContext`, `userAgent`, `ipHash` (SHA-256 of IP plus a daily salt; no raw IP stored).
+4. `deliver.ts` — every configured adapter via `Promise.allSettled`, 8 s timeout each.
+5. Decide (audit H2): if **no delivery channel accepted the lead** and `LEAD_REQUIRE_DELIVERY` is true, return `503` and render the call-us page. Never show "Request received" for a lead that went nowhere.
+6. Always write one JSON line to stdout, so Vercel function logs hold a record even when every adapter fails.
+7. Soft rate limit: 5 submissions per `ipHash` per 10 minutes.
 
-Lead record shape (`LeadRecord` in `src/lib/leads/types.ts`):
+Lead record (`src/lib/leads/types.ts`):
 
 ```json
 {
@@ -61,51 +68,64 @@ Lead record shape (`LeadRecord` in `src/lib/leads/types.ts`):
   "phoneRaw": "(530) 555-1234",
   "email": "jane@example.com",
   "address": "123 Example Ln",
-  "city": "Truckee",
+  "town": "Truckee",
   "message": "No hot water since Tuesday",
-  "timing": "As soon as possible",
-  "urgent": false,
   "sourcePath": "/services/water-heaters/",
   "serviceContext": "water-heaters",
   "townContext": null,
-  "outOfArea": false,
-  "userAgent": "…",
-  "ipHash": "…",
+  "userAgent": "...",
+  "ipHash": "...",
   "site": "brimercon-astro-staging"
 }
 ```
 
-## 3. Delivery adapters (all optional; configured by env vars)
+## 3. Delivery channels
 
-| Adapter | Env vars | Behaviour | Production readiness |
+**A file store is not delivery** (audit H2). `LEAD_STORE=file` writes JSONL for local QA only; Vercel's filesystem is ephemeral, so a lead written there in production is gone. It never satisfies `LEAD_REQUIRE_DELIVERY`.
+
+| Channel | Env vars | Counts as delivery | Notes |
 |---|---|---|---|
-| **Email** (Resend HTTP API, no SDK — one `fetch`) | `RESEND_API_KEY`, `LEAD_TO_EMAIL` (default `service@brimerplumbing.com`), `LEAD_FROM_EMAIL` (default `Brimer Website <onboarding@resend.dev>`), optional `LEAD_CC_EMAIL` | Subject `New service request — {city} — {name}{ urgent ? ' — URGENT' : ''}`; text + HTML body with every field, `reply-to` = lead email when present. | Works immediately with Resend's test sender for QA. Sending from `@brimerplumbing.com` or another domain Milton controls requires DKIM/SPF DNS records **on that domain**. Do **not** add records to `brimercon.com` in this phase (live zone). Decision D5. |
-| **Webhook** (generic JSON POST) | `LEAD_WEBHOOK_URL`, optional `LEAD_WEBHOOK_SECRET` | `POST` the `LeadRecord` as JSON; header `X-Brimer-Signature: sha256=<HMAC(body, secret)>` when a secret is set; 2 attempts. | Lets Milton point leads at: a **GHL inbound webhook** (keeps the SMS follow-up workflow alive without GHL scripts on the page — D6), Zapier/Make, a Google Sheets Apps Script web app, Housecall Pro later. |
-| **Store** | `LEAD_STORE=file` + `LEAD_STORE_PATH` (default `.data/leads.jsonl`) | Appends one JSON line per lead. | **Local/QA only** — Vercel's filesystem is ephemeral. `LEAD_STORE=none` on Vercel. Durable options for M4: Vercel Blob (`@vercel/blob`, one dashboard click), Vercel Postgres, or the Sheets webhook above. The adapter interface (`store.ts: append(lead)`) is written so adding Blob is one file. |
-| **Log** | always on | One JSON line per attempt to stdout (`vercel logs`). Never contains the raw IP. | Audit trail even with no adapters configured. |
+| **Email** (Resend HTTP API, one `fetch`, no SDK) | `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `LEAD_FROM_EMAIL`, optional `LEAD_CC_EMAIL` | yes | Subject `New service request - {town} - {name}`. Full body, `reply-to` set to the lead's email when given. Sending from a Brimer domain needs DKIM/SPF on a domain Milton controls; **not** on `brimercon.com`, which is the live zone (decision D5). |
+| **Webhook** (generic JSON POST) | `LEAD_WEBHOOK_URL`, optional `LEAD_WEBHOOK_SECRET` | yes | `X-Brimer-Signature: sha256=<HMAC>` when a secret is set; 2 attempts. Intended targets: **Zapier or Make into a Google Sheet**, or **Housecall Pro**. |
+| **Store** | `LEAD_STORE=file`, `LEAD_STORE_PATH` | **no** | QA scaffolding. Set `LEAD_STORE=none` on Vercel. Durable options for M4: Vercel Blob, Vercel Postgres, or the Sheet via the webhook. |
+| **Log** | always on | no | One JSON line per attempt to stdout. |
 
-`LEAD_REQUIRE_DELIVERY` — set `true` on Vercel once at least one real adapter is configured. On a bare staging preview with no keys, leave unset so the form still shows the confirmation (the function log is the record) — and say so in `docs/qa/staging.md`.
+**No new GoHighLevel webhook** (audit H7, decision D6). GHL belongs to the outgoing agency; pointing the new site's leads into an account Brimer does not own would rebuild the dependency this project exists to remove. GHL is not cancelled and live is untouched — the twin simply does not depend on it.
+
+`LEAD_REQUIRE_DELIVERY` **defaults to true**. Two independent channels (email plus Sheet or HCP) must be live and tested before the swap, so one provider outage cannot silently swallow a lead.
+
+### Ownership
+
+| Thing | Owner today | After the swap |
+|---|---|---|
+| GoHighLevel account and webhooks | Outgoing agency | Not used by the twin; Milton decides separately whether to cancel |
+| Resend account and API key | — | Milton |
+| Zapier/Make and the Google Sheet, or Housecall Pro | — | Milton |
+| Vercel project and env vars | — | Milton |
+| Lead records | GHL (agency-controlled) | Milton's inbox plus Milton's Sheet or HCP |
+
+Also recorded in `docs/swap-runbook.md`.
 
 ## 4. How Milton configures the destination (no code changes)
 
-In the **new** Vercel project for this repo (never the live one): Settings → Environment Variables. Set for Preview (and later Production):
+In the **new** Vercel project for this repo, never the live one: Settings → Environment Variables.
 
-1. Pick email: create a free Resend account, create an API key, set `RESEND_API_KEY` and `LEAD_TO_EMAIL=service@brimerplumbing.com`. Until a sending domain is verified, mail arrives from `onboarding@resend.dev` (Resend limits test-sender mail to the account owner's address — for QA, set `LEAD_TO_EMAIL` to the Resend account email; switch to `service@` after domain verification).
-2. Optional sheet or pipeline: create a Google Sheets Apps Script web app **or** a GHL inbound webhook **or** a Zapier/Make catch hook; paste its URL into `LEAD_WEBHOOK_URL`; optionally set `LEAD_WEBHOOK_SECRET` and verify the signature on the receiving side.
-3. Set `LEAD_STORE=none` and `LEAD_REQUIRE_DELIVERY=true` once step 1 or 2 works.
-4. Redeploy (Vercel → Deployments → Redeploy) so the function picks up the variables.
-5. Submit a test from the preview URL and check the inbox/sheet and `vercel logs`.
+1. **Email.** Create a Resend account and an API key. Set `RESEND_API_KEY` and `LEAD_TO_EMAIL`. Until a sending domain is verified, Resend's test sender only delivers to the account owner's own address, so set `LEAD_TO_EMAIL` to that address for QA and switch to `service@brimerplumbing.com` after verification.
+2. **Second channel.** Create a Zapier or Make catch hook that appends a row to a Google Sheet Milton owns (or a Housecall Pro intake endpoint). Paste the URL into `LEAD_WEBHOOK_URL`. Optionally set `LEAD_WEBHOOK_SECRET` and verify the signature on the receiving side.
+3. Set `LEAD_STORE=none`. Leave `LEAD_REQUIRE_DELIVERY=true`.
+4. Redeploy so the function picks up the variables.
+5. Submit a test from the preview URL and confirm it arrives in both the inbox and the Sheet, then check `vercel logs`.
 
-Everything above is reversible and touches only the new project.
+All reversible, all inside the new project.
 
-## 5. Spam and abuse posture
+## 5. Spam and abuse
 
-Honeypot + time trap + strict validation + soft rate limit + same-origin check. No Google reCAPTCHA (removes a third-party script and the "not a robot" friction that can cost real leads from older homeowners). If spam appears after the swap, add Cloudflare Turnstile (`PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`) — it is invisible for most users and the adapter slot is reserved in `validate.ts`.
+Honeypot, time trap, strict validation, soft rate limit, same-origin check. No Google reCAPTCHA: it is a third-party script on every page and it costs real leads from older homeowners. If spam appears after the swap, add Cloudflare Turnstile (`PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`); the adapter slot is reserved in `validate.ts`.
 
 ## 6. Privacy
 
-Collects only what the form asks. No raw IP stored (hashed with a daily salt). No third-party trackers on staging. The privacy notice text on `/privacy-policy/` is ported from live; references to GHL/reCAPTCHA are removed if the twin does not load them. Lead retention is Milton's policy; the file store is QA-only.
+Only what the form asks. No raw IP stored. No third-party trackers on staging. `/privacy-policy/` is ported from live with GHL and reCAPTCHA references removed if the twin does not load them. Retention is Milton's policy; the file store is QA only.
 
-## 7. QA (details in `docs/qa-plan.md` §3)
+## 7. QA
 
-`scripts/qa-form.mjs` starts a local webhook receiver (`scripts/dev-webhook.mjs`) and runs against a running twin: valid JSON submit → 200 + record in JSONL + webhook received; valid form-encoded submit with `Accept: text/html` → 303 to `/thank-you/?ref=`; honeypot filled → 200 but **no** delivery; missing phone → 400 with field error; `GET` → 405. Writes `docs/qa/form-e2e.md` with timestamps and redacted payloads. A browser pass on the Vercel preview (desktop + mobile viewport) confirms the inline panel and tap-to-call.
+`docs/qa-plan.md` §4 lists the cases: valid JSON, valid form-encoded with no JS, honeypot, time trap, missing phone, missing message, `GET`, delivery-failure-with-`LEAD_REQUIRE_DELIVERY`, and a browser pass on the preview at desktop and 390px.

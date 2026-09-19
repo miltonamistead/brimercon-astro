@@ -1,53 +1,55 @@
 # PLAN — brimercon-astro parallel twin
 
-Status: **planning complete, execution not started beyond M0 foundations.**
-Written 2026-09-19 from `uploads/KICKOFF.md`, the three 2026-08-31 plan/SEO/snapshot files, a fresh read-only crawl of https://www.brimercon.com/ (see `docs/crawl/`), the Truckee GBP record via Paige (hours, service areas, review stats), and Granola meeting notes (phone, CSLB footer, "keep existing URL structure").
+Status: **planning complete; M0 foundations built; page templates paused pending Milton's golden-page approval.**
+
+Written 2026-09-19 from `docs/source/KICKOFF.md`, the three 2026-08-31 plan/SEO/snapshot files, a read-only crawl of https://www.brimercon.com/ (`docs/crawl/`, reproducible with `npm run crawl`), the Truckee GBP record via Paige, and Granola meeting notes. Revised the same day to apply the **Claude Fable audit** that Milton accepted (`docs/source/APPLY_AUDIT.md`, `docs/source/AUDIT_ACCEPTED_SUMMARY.md`); see §15 for where each audit item landed.
 
 Owner: Milton Armistead, Clearline Services LLC dba Brimer Plumbing.
-Repo: `github.com/miltonamistead/brimercon-astro` (private). Branch for this work: `cursor/astro-rebuild-d8c5`.
-
-Supporting documents (read in this order):
+Repo: `github.com/miltonamistead/brimercon-astro` (**private**). Branch: `cursor/astro-rebuild-d8c5`.
 
 | Doc | What it decides |
 |---|---|
 | `docs/url-map.md` | Every live path, what the twin does with it, redirects, additive routes |
-| `docs/lead-capture.md` | In-house form + `/api/lead` design replacing GoHighLevel forms; how Milton configures the destination |
-| `docs/technical-seo-checklist.md` | Titles, H1s, canonicals, robots, sitemap, schema, OG, images, headers — with verification method |
-| `docs/qa-plan.md` | Phone/NAP gate, form E2E, link parity, Lighthouse twin-vs-live, Search Atlas / Paige measurement hooks |
-| `docs/swap-runbook.md` | Future production cutover steps. **Not to be executed in this phase.** |
+| `docs/lead-capture.md` | In-house form + `/api/lead/` replacing GoHighLevel forms; how Milton configures the destination |
+| `docs/design.md` | Image carry-forward, first-screen layout, what the photo shoot replaces |
+| `docs/town-briefs.md` | Per-town brief template and the similarity gate that stops 24 clones |
+| `docs/technical-seo-checklist.md` | Titles, H1s, canonicals, robots, sitemap, schema, OG, images |
+| `docs/qa-plan.md` | First-screen gate, content gate, form E2E, link parity, Lighthouse, measurement hooks |
+| `docs/swap-runbook.md` | Future production cutover. **Not to be executed in this phase.** |
 | `docs/crawl/README.md` | What was crawled, when, how to re-run |
+| `docs/source/` | The briefs this plan answers to, committed verbatim |
 
 ---
 
 ## 0. Non-negotiables (fail the task if violated)
 
 1. Never email, message, ticket, or otherwise contact Hunter / Dream Surge.
-2. Never change live production: no edits to brimercon.com origin, DNS (Cloudflare), registrar (GoDaddy), the live Vercel project, or the Cloudflare OTTO worker.
-3. Staging is **noindex, nofollow** by default through two independent mechanisms (build-time meta + host header) and ships no sitemap. Canonicals point at the live `https://www.brimercon.com/<path>`.
-4. Phone: **530-587-0733** only (`tel:+15305870733`). No other phone number appears anywhere except the Southwest Gas emergency line inside gas-leak safety copy, which is a utility, not Brimer.
-5. California only. Nevada, Incline Village, Crystal Bay, Stateline, South Lake Tahoe, Heavenly, Reno never appear as service claims. The only permitted Nevada string is the exclusion sentence.
-6. No public dollar prices on marketing pages. `/membership/` is rebuilt without dollar amounts (see decision D2).
-7. No OTTO deploy, no Search Atlas writes, no GBP writes, no GHL cancellation. Search Atlas and Paige are **read-only measurement** later.
-8. Do not change `/service-areas/homewood/` targeting (title, H1, intent). Rebuild it from its own facts only.
-9. Do not invent facts: hours, AggregateRating, town utilities, elevations. Everything factual comes from `docs/crawl/` or the GBP record, and the source is cited in the data module.
+2. Never change live production: no edits to the brimercon.com origin, DNS (Cloudflare), registrar (GoDaddy), the live Vercel project, or the Cloudflare OTTO worker.
+3. Repo stays private. Staging is `noindex, nofollow` via meta tag **and** `X-Robots-Tag`, ships no sitemap, canonicals point at live, and sits behind Vercel Deployment Protection.
+4. Phone **530-587-0733** only (`tel:+15305870733`). The single exception is the Southwest Gas emergency line inside gas-leak safety copy, which is a utility number, not Brimer's.
+5. California towns only. No out-of-area place names in customer copy (§3c).
+6. No public dollar prices on marketing pages. `/membership/` is rebuilt without dollar amounts.
+7. No OTTO deploy, no Search Atlas writes, no GBP writes, no GHL cancellation, and **no new GHL webhook** (the agency owns that account and is on the way out).
+8. Do not change `/service-areas/homewood/` targeting (title, H1, intent).
+9. Do not invent facts. Hours, ratings, town utilities, elevations and permit authorities come from `docs/crawl/` or the GBP record.
+10. Calling is the primary action on every important template (§3b).
 
-A build-time QA gate (`scripts/qa-phones.mjs`, M0) scans `dist/` and fails on any violation of 4, 5, or 6.
+`npm run build` runs `scripts/qa-content.mjs` after `astro build` and fails on any breach of 4, 5, 6 or the copy policy.
 
 ---
 
 ## 1. What exists today (evidence summary)
 
-- Stack: Astro v5.18.0 static HTML on Vercel, behind Cloudflare DNS/edge, with the Search Atlas OTTO Cloudflare worker on every HTML response (0 deployed fixes). GoDaddy is registrar only. GoHighLevel is tracking + forms (`link.msgsndr.com`, reCAPTCHA v3), not the host.
+- Stack: Astro v5.18.0 static HTML on Vercel, behind Cloudflare DNS/edge, with the Search Atlas OTTO Cloudflare worker on every HTML response (0 deployed fixes). GoDaddy is registrar only. GoHighLevel is tracking plus forms (`link.msgsndr.com`, reCAPTCHA v3), not the host.
 - URL surface: 53 URLs in `sitemap-0.xml`, all HTTP 200 on 2026-09-19. 24 California town pages, 6 service pages, 10 blog posts, hub/legal/utility pages. Full table: `docs/url-map.md`.
-- Known dead paths: `/service-areas/martis-valley/` (nav label, 404) and `/water-heater-services/` (404, still has a live backlink from sipthestyle.com).
-- `/thank-you/` exists on live (200, `noindex, nofollow`, title "Order — Brimer Plumbing", not in sitemap). The twin reuses this path as the form confirmation page.
-- `og:image` on every page points at `/images/og-default.jpg`, which is 404.
-- JSON-LD: `Plumber` on home/contact (four CA cities in `areaServed`, no `logo`/`image`), `Service + FAQPage + BreadcrumbList` on the six service pages (breadcrumb last item lacks a URL), `Service + BreadcrumbList` on town pages, nothing on hubs/reviews/about.
-- NAP truth: `10647 Manchester Dr, Truckee, CA 96161`, `530-587-0733`, `service@brimerplumbing.com`, CSLB `1149344`, founded 1997. Site JSON-LD and GBP agree. (A Granola transcript rendered the email as "brammerplumbing" — transcription error; live site and GBP both say `brimerplumbing.com`.)
-- Hours: live `/contact/`, live JSON-LD, and the GBP record (Paige `get_business_hours`, 2026-09-19) all say **7:00 AM – 8:00 PM, every day**. The internal pack says Mon–Fri 8–6. The twin uses the three-source public truth and flags the conflict (decision D1). It does not invent a third schedule.
-- Reviews: GBP 4.97 average across 32 reviews, 100% replied (Paige, 2026-09-19). Live pages show "5.0 (16 reviews)" Google and "4.9 (22 reviews)" Yelp, quoting named reviewers. The twin quotes the same public reviews and links out; it does **not** add `AggregateRating` (Google no longer surfaces self-serving LocalBusiness review markup and the SEO file says do not invent it).
-- GBP service areas (Paige): Norden, Homewood, Tahoe City, Kings Beach, Tahoe Vista, Tahoma, Truckee, Tahoe Pines, Dollar Point, Soda Springs, Carnelian Bay, Alpine Meadows, Olympic Valley, Donner Lake Village — all CA. The site's 24 towns are a superset. Nothing in Nevada on either list.
-- GSC (18–26 Aug 2026): money queries land on the homepage; `truckee plumber` pos 1 / 98 impressions / 0 clicks; water-heater repair/install queries pos ~25 on the homepage rather than `/services/water-heaters/`; `emergency plumber truckee` lands on Homewood. These are the reasons for the M1 emphasis on `/services/water-heaters/`, `/service-areas/truckee/`, and `/services/frozen-burst-pipes/`.
+- Dead paths: `/service-areas/martis-valley/` (nav label, 404) and `/water-heater-services/` (404, still linked from sipthestyle.com).
+- `/thank-you/` exists on live (200, `noindex, nofollow`, title "Order — Brimer Plumbing", not in the sitemap). The twin reuses the path as the form confirmation.
+- Images: 32 referenced across the site. 31 resolve; `og:image` (`/images/og-default.jpg`) is 404 on every page, so every share card is broken today. Detail and carry decision: `docs/design.md`.
+- JSON-LD: `Plumber` on home/contact (four CA cities in `areaServed`, no `logo`/`image`), `Service + FAQPage + BreadcrumbList` on service pages (breadcrumb last item lacks a URL), `Service + BreadcrumbList` on town pages, nothing on hubs/reviews/about.
+- NAP truth: `10647 Manchester Dr, Truckee, CA 96161`, `530-587-0733`, `service@brimerplumbing.com`, CSLB `1149344`, founded 1997. Site JSON-LD and GBP agree. (A Granola transcript rendered the email as "brammerplumbing" — transcription error; live and GBP both say `brimerplumbing.com`.)
+- Hours: **ruled by Milton** — 7:00 AM to 8:00 PM daily, he answers evenings and weekends, a missed call goes to voicemail. Live `/contact/`, live JSON-LD and the GBP record already agree on 7 to 20 daily.
+- Reviews: GBP 4.97 across 32 reviews, all replied (Paige, 2026-09-19). Live pages show Google "5.0 (16)" and Yelp "4.9 (22)" with named quotes. Reviews and a map are required on the rebuild (`docs/technical-seo-checklist.md` §D, `docs/design.md`); **no `AggregateRating` schema**.
+- GSC (18–26 Aug 2026): money queries land on the homepage; `truckee plumber` pos 1 / 98 impressions / 0 clicks; water-heater queries pos ~25 on the homepage rather than `/services/water-heaters/`; `emergency plumber truckee` lands on Homewood. This drives the M1 emphasis on water heaters, Truckee, and frozen/burst pipes — and the rule that the **homepage keeps its live title and copy** (§3c).
 
 ---
 
@@ -55,208 +57,244 @@ A build-time QA gate (`scripts/qa-phones.mjs`, M0) scans `dist/` and fails on an
 
 | # | Decision | Why |
 |---|---|---|
-| A1 | **Astro 7.x** (current stable; live is 5.18). `output: 'static'`, `trailingSlash: 'always'`, `build.format: 'directory'`. | Same URL shape as live (`/about/`). Astro 7's Rust compiler is strict about HTML — write valid markup. `compressHTML` defaults to `'jsx'`; leave it. |
-| A2 | Adapter switch: `@astrojs/vercel` when `process.env.VERCEL` is set, otherwise `@astrojs/node` (standalone). | Vercel is the deploy target. The Node adapter lets `npm run build && npm run serve` run the **full site including `/api/lead`** locally, so form E2E and Lighthouse run against production-equivalent output without Vercel. |
-| A3 | Exactly one on-demand route: `src/pages/api/lead.ts` with `export const prerender = false`. Everything else prerendered. | Marketing pages stay pure static HTML (fast, cacheable). The form endpoint becomes one Vercel serverless function. |
-| A4 | Zero client-side JavaScript on marketing pages except one ≤ 5 KB progressive-enhancement script for the lead form and one ≤ 1 KB nav toggle. No frameworks, no islands. | Live homepage HTML is 133 KB with third-party scripts. Speed is a stated success criterion. |
-| A5 | Content model: TypeScript data modules for `site`, `services`, `towns`, `faqs`, `reviews`, `resources` (typed, composable into copy **and** JSON-LD); Astro **content collection** (Markdown) for blog posts. | Data modules keep NAP/phone in one place and feed schema. Markdown blog is what Milton will actually edit. |
-| A6 | Single source of truth for NAP/phone/hours/CSLB: `src/data/site.ts`. Every component imports it; no literals in templates. | Rule 4/6 enforcement and the "hours: pick one" fix become a one-line change. |
-| A7 | Redirects declared in `astro.config.mjs` `redirects` with `status: 301`. With an adapter in static mode Astro emits real HTTP 301s (verified in Astro 7 config reference). Mirror them in `vercel.json` for belt-and-braces; verify on preview with `curl -I`. | `/water-heater-services/` backlink equity; `/sitemap.xml` → `/sitemap-index.xml` parity with live. |
-| A8 | Trailing-slash redirects for prerendered pages are the host's job: `vercel.json` `"trailingSlash": true`. | Astro docs: static-page slash redirects are handled by the platform, not `trailingSlash`. |
-| A9 | Images: Brimer's logo only in M1, plus a generated 1200×630 `og-default.jpg` placeholder. **No live stock/lifestyle images are copied** (license unknown; one is a Heavenly/South Lake frame). Town heroes are CSS until the photo shoot. | Kickoff: photo shoot is out of scope; placeholders must be noted. Avoids the out-of-area image leak. |
-| A10 | No third-party scripts on staging: no GHL `msgsndr` tracking, no reCAPTCHA, no OTTO meta tag, GA4 off unless `PUBLIC_GA4_ID` is set. | Staging traffic must not pollute live analytics; OTTO is a swap-time decision; GHL stays alive on live, untouched. |
-| A11 | Security/robots headers in `vercel.json`: `X-Robots-Tag: noindex, nofollow` (staging), `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`. | Second, config-level key for noindex (see §5). |
+| A1 | **Astro 7.x**, `output: 'static'`, `trailingSlash: 'always'`, `build.format: 'directory'`. | Same URL shape as live. Astro 7's Rust compiler is strict about HTML; `compressHTML` defaults to `'jsx'`. Node ≥ 22.12. |
+| A2 | Adapter switch: `@astrojs/vercel` when `process.env.VERCEL` is set, otherwise `@astrojs/node` standalone. | Vercel is the deploy target; the Node adapter lets `npm run build && npm run serve` exercise the **whole site including `/api/lead/`** locally, which is how the form E2E, first-screen and Lighthouse gates run without Vercel. |
+| A3 | Exactly one on-demand route: `src/pages/api/lead.ts` (`prerender = false`). Everything else prerendered. | Marketing pages stay static; the form endpoint is one serverless function. |
+| A4 | No client JavaScript on marketing pages beyond a ≤ 5 KB form enhancer. Navigation and the call bar are CSS only. | Live home ships 133 KB of HTML plus third-party scripts. Speed is a success criterion, and the call path must work with JS off. |
+| A5 | Data modules (`site`, `services`, `towns`, `faqs`, `reviews`, `resources`) feed both copy and JSON-LD; blog posts are a Markdown content collection. | One source for NAP/phone/hours; Markdown is what Milton will actually edit. |
+| A6 | Single source of truth in `src/data/site.ts`. No NAP, phone, hours or licence literals in templates. | Makes rules 4 and 6 enforceable and the hours ruling a one-line change. |
+| A7 | Redirects in `astro.config.mjs` with `status: 301`, mirrored in `vercel.json`. | Backlink equity on `/water-heater-services/`; `/sitemap.xml` parity. |
+| A8 | Trailing-slash redirects for prerendered pages are the host's job: `vercel.json` `"trailingSlash": true`. | Astro docs: static-page slash redirects are handled by the platform. |
+| A9 | **Carry Brimer's existing images forward** (30 files, 29 unique), dropping only the Heavenly gondola frame. Generate a real `og-default.jpg`. Photo shoot replaces them later without blocking. | Reversed after the audit: a rebuild with no photography is worse than one with the client's current photography. Detail and the excluded file: `docs/design.md`. |
+| A10 | No third-party scripts on staging: no GHL tracking, no reCAPTCHA, no OTTO meta, GA4 only if `PUBLIC_GA4_ID` is set. | Staging must not pollute live analytics; GHL stays alive on live, untouched. |
+| A11 | Security and robots headers in `vercel.json`. | Config-level key for noindex (§5). |
+| A12 | First-screen contract is a component (`FirstScreen.astro`) plus a Playwright gate, not a convention. | A convention drifts; a gate does not (§3b). |
 
 ---
 
 ## 3. Information architecture
 
-Navigation (matches live grouping; no new top-level sections):
+Navigation matches the live grouping; no new top-level sections.
 
-- **Services** → `/services/` hub → six service pages
-- **Service areas** → `/service-areas/` hub → 24 towns grouped: Truckee · Martis Valley · North Shore · West Shore & Tahoe City · Donner Summit
-- **About**, **Reviews**, **FAQs**, **Resources**, **Blog**, **Membership** (footer/secondary), **Contact**, **Request service** (primary CTA)
-- Persistent header CTA: `Call 530-587-0733` (`tel:+15305870733`) + `Request service`
-- Footer on every page: logo, NAP (street, city, state, ZIP) as visible text, phone, email, hours line, CSLB line (`CA CSLB License #: 1149344 · Licensed in California only. Not licensed in Nevada.`), service-area groups, legal links.
-
-Page templates (one Astro layout, `src/layouts/Base.astro`, plus section components):
+- **Services** → `/services/` → six service pages
+- **Service areas** → `/service-areas/` → 24 towns in five groups: Truckee · Martis Valley · North Shore · West Shore and Tahoe City · Donner Summit
+- **About**, **Reviews**, **FAQs**, **Resources**, **Blog**, **Membership**, **Contact**, **Request service**
+- Header: logo plus the phone number. Footer: NAP, phone, email, hours, after-hours line, CSLB line, service-area groups, legal links.
 
 | Template | Used by | Distinctive blocks |
 |---|---|---|
-| Home | `/` | Hero (H1 unchanged), 4 trust points, 6 service cards, "why mountain homes", process, reviews (quoted), area grid, FAQ (with `FAQPage` schema), lead form, **visible street NAP** |
-| Service | `/services/{slug}/` | H1, summary bullets, sections, common issues, process, related services, area links, FAQ, lead form pre-tagged with `service_context` |
-| Town | `/service-areas/{slug}/` | H1 `Plumber in {Town}, CA`, lede + overview from `town-facts.json`, per-service sections written against the town's real facts (elevation, water/sewer district, permit authority), 6 town FAQs, popular services, lead form pre-tagged with `town_context`, `Service` + `FAQPage` + `BreadcrumbList` |
-| Hub | `/services/`, `/service-areas/`, `/service-areas/martis-valley/` | Card grids + exclusion sentence |
-| Core | about, faqs, reviews, resources, membership, contact, request-service | Page-specific sections; contact carries Plumber JSON-LD and hours |
-| Blog | `/blog/`, `/blog/{slug}/` | Content collection; `BlogPosting` schema; date, tags |
+| Home | `/` | First screen, six service cards, why mountain homes, process, reviews, map, area grid, FAQ, lead form, visible street NAP |
+| Service | `/services/{slug}/` | First screen, summary bullets, sections, common issues, process, related services, area links, FAQ, lead form tagged with `service_context` |
+| Town | `/service-areas/{slug}/` | First screen with the town name in the area line, per-town brief (`docs/town-briefs.md`), 6 town FAQs, popular services, lead form prefilled with the town |
+| Hub | `/services/`, `/service-areas/`, `/service-areas/martis-valley/` | Card grids |
+| Core | about, faqs, reviews, resources, membership, contact, request-service | Page-specific; contact carries `Plumber` JSON-LD and hours |
+| Blog | `/blog/`, `/blog/{slug}/` | Content collection; `BlogPosting` |
 | Legal | privacy-policy, terms-of-use | Ported text |
-| Utility | `/thank-you/` (always noindex), `404` | Phone CTA on both |
+| Utility | `/thank-you/` (always noindex), `404` | Call CTA on both |
 
-Town template differentiation rule (SEO file: live towns are a "tight template", OTTO content score 28): every town section must reference at least two town-specific facts from `docs/crawl/town-facts.json` (elevation, utility district, permit authority, housing character, neighborhood names). Section order varies by group (e.g. lakefront towns lead with freeze/leak monitoring; Truckee leads with water heaters). Shared boilerplate is limited to the CTA and exclusion sentence.
+### 3a. Route-level rules
+
+Same path string for every live URL, trailing slash always, canonical to `https://www.brimercon.com/<path>`. No new town URLs. `/api/lead/` is always written **with** a trailing slash (audit H4) so it matches `trailingSlash: 'always'` and never eats a redirect on POST.
+
+### 3b. First-screen contract (audit B1)
+
+On every important template, at 390px wide, the first ~640px must contain, in this order:
+
+1. **H1** — `data-fs="h1"`
+2. **Service-area line** — the town name on a town page, otherwise a line naming towns, linked to `/service-areas/` — `data-fs="area"`
+3. **Full-width call button**, `Call 530-587-0733`, `href="tel:+15305870733"` — `data-fs="call"`
+4. **Hours line** including the after-hours sentence — `data-fs="hours"`
+5. **Trust strip**: since 1997, CA CSLB #1149344, Google reviews link — `data-fs="trust"`
+
+The form link (`data-fs="form-link"`) sits directly under the call button at text weight and must be visually smaller than it. A fixed bottom call bar (`data-fs="call-bar"`) is pinned on mobile, CSS only, no JavaScript. Images and marketing photography sit **below** the first screen on mobile.
+
+Implemented by `src/components/FirstScreen.astro` and `src/components/CallBar.astro`. Enforced by `tests/first-screen.spec.ts` (`npm run qa:first-screen`) against `/`, one service page, one town page, `/contact/`, and the 404 template, at 390×844 on the machine's Chrome. Targets that do not exist yet are reported as skipped, never as passes.
+
+### 3c. Copy policy (audit B4)
+
+| Rule | Detail |
+|---|---|
+| Homepage copy is frozen | Keep the live title, H1 and body copy. It ranks position 1 for `truckee plumber`; the only permitted edit is dash cleanup. |
+| Service and town copy | May be rewritten **only after Milton approves the golden home, service and town pages**. Until then, `src/data/services.ts` holds corrected copy and no page templates ship. |
+| No em or en dashes | Write "rather than", a comma, or a full stop. Applies to literal characters and `&mdash;`/`&ndash;` entities. |
+| No unapproved speed claims | "same day", "priority", "fastest response", "24/7" are out unless Milton approves each one. Milton answers evenings and weekends; a missed call goes to voicemail. |
+| After-hours line | Exactly: *Call 530-587-0733 any time. If we miss you, leave a message.* (`site.afterHoursLine`) |
+| No dollar prices | Marketing pages never show a dollar figure. `priceRange: "$$"` in JSON-LD is a schema token, not a price. |
+| Name towns, do not exclude a state | "California side only" and "Not licensed in Nevada" are gone from customer copy. The footer keeps the CSLB number without a Nevada sentence. Say where Brimer works: Truckee, Tahoe Donner, Donner Lake, Tahoe City, Kings Beach and the rest. |
+| No internal voice | Never leak policy or process language ("we do not publish prices on this page") into customer copy. |
+
+Enforced by `scripts/qa-content.mjs` on every build: phone, geography, price, dash and NAP rules across all built HTML.
 
 ---
 
 ## 4. Route map and redirects
 
-Full table with per-URL action and milestone: `docs/url-map.md`.
-
-Summary:
-
-- **53/53 live sitemap paths are rebuilt at identical paths.** Titles are preserved by default (they already rank); H1 changes are limited to the ones the SEO file calls for (`/services/water-heaters/`).
-- **Redirects (301):** `/water-heater-services/` → `/services/water-heaters/`; `/water-heater-services` → same; `/sitemap.xml` → `/sitemap-index.xml`.
-- **Additive routes (not in live sitemap, not in twin sitemap):** `/thank-you/` (exists on live, repurposed, always noindex), `/service-areas/martis-valley/` (live 404 → real short CA hub page, decision D3), `/api/lead` (POST only, `Disallow` in robots), `/404`.
-- **No new town URLs.** No emergency URL in this phase (decision D4).
-- Apex → www 308 stays a host-level concern for the swap; staging has one host.
+Full table: `docs/url-map.md`. Summary: 53/53 live paths rebuilt at identical paths; titles preserved by default; one H1 change (`/services/water-heaters/`). 301s for `/water-heater-services/` and `/sitemap.xml`. Additive, non-indexed routes: `/thank-you/`, `/service-areas/martis-valley/`, `/api/lead/`, `404`.
 
 ---
 
-## 5. Staging noindex strategy (two keys, three signals)
+## 5. Staging noindex strategy (audit H1)
 
-| Layer | Staging (default) | Production (only after Milton names the swap) | Where |
-|---|---|---|---|
-| `<meta name="robots">` | `noindex, nofollow` on every page | omitted (except `/thank-you/`, `404`) | `Base.astro`, driven by `PUBLIC_INDEXABLE` (defaults false) |
-| `X-Robots-Tag` header | `noindex, nofollow` on `/(.*)` | block removed in `vercel.json` | `vercel.json` (committed; changing it is a reviewed code change) |
-| `robots.txt` | `User-agent: *` / `Disallow: /` and no `Sitemap:` line | mirrors live: `Allow: /` + `Sitemap: https://www.brimercon.com/sitemap-index.xml` | `src/pages/robots.txt.ts` (env-driven) |
-| Sitemap | not generated | `sitemap-index.xml` + `sitemap-0.xml`, excludes `/thank-you/`, `/api/*`, 404 | `@astrojs/sitemap` `filter` |
-| Canonical | `https://www.brimercon.com/<path>` (live) | same string, now self-referencing | `PUBLIC_CANONICAL_ORIGIN` |
-| Host protection | Vercel Deployment Protection (Vercel Authentication or password) recommended; Vercel also adds `x-robots-tag: noindex` on `*.vercel.app` previews automatically | n/a | Vercel dashboard (Milton) |
+| Layer | Staging (default) | Production (only after Milton names the swap) |
+|---|---|---|
+| Deployment Protection | **Required.** Vercel Authentication or password on the staging project. This is the control that actually keeps the public out. | Off |
+| `<meta name="robots">` | `noindex, nofollow` on every page | omitted, except `/thank-you/` and `404` |
+| `X-Robots-Tag` header | `noindex, nofollow` on `/(.*)` in `vercel.json` | block removed |
+| `robots.txt` | `User-agent: *` / **`Allow: /`** / `Disallow: /api/`, no `Sitemap:` line | same, plus the `Sitemap:` line |
+| Sitemap | not generated | `sitemap-index.xml` + `sitemap-0.xml` |
+| Canonical | `https://www.brimercon.com/<path>` | same string, now self-referencing |
 
-Flipping to indexable requires **two** deliberate changes (env var + `vercel.json` edit) and is documented only in `docs/swap-runbook.md`. Accidental indexation would need two independent mistakes.
+**Why staging allows crawling.** A crawler blocked by `robots.txt` never fetches the page, so it never sees the `noindex` meta tag or the header, and the URL can still surface as a bare link. Blocking and noindexing at once is self-defeating. Crawling is allowed so the noindex is readable; Deployment Protection is what makes the host unreachable.
 
-Lighthouse's SEO category will report "page is blocked from indexing" on staging — expected. The SEO score is measured on a local `PUBLIC_INDEXABLE=true` build (never deployed) per `docs/qa-plan.md`.
+Flipping to indexable takes **two** deliberate changes: `PUBLIC_INDEXABLE=true` and removing the `X-Robots-Tag` block from `vercel.json`. Documented only in `docs/swap-runbook.md`.
+
+**Never promote the staging project to a Vercel production domain before the swap.** Preview deployments only; no custom domain attached.
+
+**QA against a protected preview:** generate a Protection Bypass token (Vercel → Settings → Deployment Protection → Protection Bypass for Automation) and pass it as `VERCEL_PROTECTION_BYPASS`; `playwright.config.ts` sends it as the `x-vercel-protection-bypass` header, and `curl -H 'x-vercel-protection-bypass: <token>'` works for the header checks. Never commit the token.
 
 ---
 
 ## 6. Lead capture (replaces GoHighLevel forms)
 
-Design is in `docs/lead-capture.md`. Summary:
+Full design: `docs/lead-capture.md`. Summary:
 
-- One `LeadForm` component on home, contact, request-service, every service page, every town page (same placement pattern as live). Fields mirror live: name, phone, email, service address, city (CA list + "Other (CA side)"), issue, preferred timing, urgent flag. Hidden context: `source_path`, `service_context`, `town_context`, honeypot, render timestamp.
-- Works **without JavaScript** (`POST /api/lead` → `303` to `/thank-you/?ref=…`) and **with JavaScript** (fetch → inline "Request received" panel, live copy). Error state shows the phone.
-- `POST /api/lead` validates server-side, then fans out to configured deliveries: **email** (Resend HTTP API), **webhook** (generic JSON POST — can target a GHL inbound webhook, Zapier/Make, Google Sheets Apps Script, Housecall Pro later), and a **store** (JSONL file locally for QA; durable store adapter is M4). In production `LEAD_REQUIRE_DELIVERY=true` makes the endpoint fail loudly (form shows the call-us fallback) if no delivery succeeded — leads are never silently dropped.
-- Spam: honeypot + minimum-time trap + strict validation + per-IP soft limit. No Google reCAPTCHA. Cloudflare Turnstile is an optional later add.
-- GHL is **not** cancelled and the live site's GHL forms are untouched. The twin simply does not load GHL.
-- Milton configures the destination entirely through Vercel environment variables; step-by-step in the doc.
+- Short form (audit H3): **name, phone, and what is wrong** are the only required fields. Optional: email, address, town. Town is a free-text-plus-datalist field covering all 24 towns, prefilled on town pages. The timing dropdown is gone.
+- Calling stays primary; the form is the fallback for people who will not phone.
+- Works without JavaScript (`POST /api/lead/` → `303` to `/thank-you/`) and with it (fetch → inline confirmation). Non-JSON errors render a real HTML page carrying the call button, never a bare JSON body (audit H5). `source_path` is validated as same-site.
+- `POST /api/lead/` validates, then fans out to configured deliveries: **email** (Resend) and **webhook** (Zapier→Sheet or Housecall Pro). A file store is QA scaffolding and **does not count as delivery**.
+- `LEAD_REQUIRE_DELIVERY` defaults to **true** (audit H2): if no real channel accepts the lead, the endpoint fails loudly and the page tells the person to call. Two independent channels must be live before the swap.
+- **No new GoHighLevel webhook** (audit H7): that account belongs to the outgoing agency. GHL is not cancelled here, but the twin does not build a new dependency on it.
 
 ---
 
-## 7. Phone, NAP, CA-only, no-prices — enforced, not hoped
+## 7. Phone, NAP, geography, prices — enforced, not hoped
 
-- `src/data/site.ts` is the only place the phone, address, email, hours, and CSLB are written. Components render `<PhoneLink>` / `<Nap>`.
-- `scripts/qa-phones.mjs` (M0) walks `dist/` HTML and fails on: any phone-shaped string other than `530-587-0733` (allowlist: Southwest Gas `1-877-860-6020` only inside gas-leak safety copy), any `tel:` other than `+15305870733`, any page without at least one `tel:+15305870733`, forbidden strings (`Incline Village`, `Crystal Bay`, `Stateline`, `South Lake`, `Heavenly`, `Reno`, `Nevada`) outside the exact exclusion sentence, and `$` followed by a digit on any page.
-- `npm run build` runs the gate after `astro build`; CI/Vercel builds fail if it fails.
+`src/data/site.ts` is the only place the phone, address, email, hours, after-hours line and CSLB are written. `scripts/qa-content.mjs` walks the built HTML and fails on: a phone number other than 530-587-0733 (Southwest Gas allowed only where it is named), a `tel:` other than `+15305870733`, a page with no click-to-call, out-of-area place names, `" NV "`, a dollar figure, an em or en dash, or a page missing the street address or CSLB number.
+
+Geography matching is **whole-word and case-sensitive**, so "renovation" does not trip "Reno". **"Nevada County" and "Sierra Nevada" are allowed** — both are California names, and Norden and Soda Springs genuinely permit through the Nevada County Community Development Agency (audit B2). The gate does not require any exclusion sentence.
 
 ---
 
 ## 8. Technical SEO
 
-Checklist with verification method per item: `docs/technical-seo-checklist.md`. Headline fixes versus live: working `og:image`, `Plumber` node gains `logo`/`image` and `areaServed` for all 24 CA towns, `FAQPage` on home and `/faqs/`, breadcrumb items all carry URLs, `Service` nodes on the hub, hours identical in HTML and JSON-LD, honest image alts, real JPEG/WebP with matching `Content-Type`, no empty `<img>`, custom 404, security headers.
-
----
+`docs/technical-seo-checklist.md`. Headline fixes versus live: working `og:image`, `Plumber` node gains `logo`/`image` and all 24 CA towns in `areaServed`, `FAQPage` on home and `/faqs/`, breadcrumb items all carry URLs, `Service` nodes on the hub, hours identical in HTML and JSON-LD, honest image alts (24 town heroes currently ship empty alts), custom 404, security headers. Reviews and a map are on-page; `AggregateRating` is not.
 
 ## 9. Speed QA
 
-Procedure in `docs/qa-plan.md` §4: Lighthouse (mobile + desktop, 3 runs, median) on the twin (`node dist/server/entry.mjs` locally, then the Vercel preview) versus live for `/`, `/services/water-heaters/`, `/service-areas/truckee/`, `/contact/`. Report to `docs/qa/speed-report.md` with HTML bytes, requests, JS bytes, LCP, CLS, TBT, scores. Budget: mobile Performance ≥ 95, JS ≤ 6 KB, CSS ≤ 25 KB, HTML ≤ 60 KB on home.
-
----
+`docs/qa-plan.md` §5: Lighthouse mobile and desktop, 3 runs, median, on the twin (local Node server, then the Vercel preview) versus live for `/`, `/services/water-heaters/`, `/service-areas/truckee/`, `/contact/`. Budget: mobile Performance ≥ 95, JS ≤ 6 KB, CSS ≤ 25 KB, home HTML ≤ 60 KB.
 
 ## 10. Measurement hooks (later; read-only)
 
-`docs/qa-plan.md` §6 records the baselines to compare after a future swap: Search Atlas project 149351 site-explorer numbers (organic traffic 134, keywords 58, domain power 8, backlinks 292, ref domains 166 on 2026-08-31), GSC query rows from 18–26 Aug, and GBP performance via Paige (last 28 days through 29 Aug: 20 calls, 24 website clicks, 59 direction requests, 501 impressions). Staging produces **no** ranking signal; nothing in this repo may claim a ranking win until the swap has run for weeks. GBP's website link carries `?utm_source=google&utm_medium=organic&utm_campaign=gbp`; the twin must serve those URLs (static, fine) and the lead record stores the landing path so GBP-sourced leads are attributable.
+`docs/qa-plan.md` §7 records the Search Atlas, GSC and GBP baselines to compare after a future swap. Staging produces no ranking signal and nothing in this repo may claim a ranking win.
 
 ---
 
-## 11. Milestones (execute in order; each has a gate)
+## 11. Milestones
 
-### M0 — Foundations (partially on this branch already)
-- [x] `package.json` + `package-lock.json` (Astro 7.3.3, `@astrojs/sitemap` 3.7, `@astrojs/vercel` 11, `@astrojs/node` 11, `sharp` dev), `.nvmrc` = 22, `tsconfig.json`, `.env.example`, `.gitignore`. Node ≥ 22.12 required by Astro 7; a transitive `undici@8` warns below 22.19 but loads and works on 22.14 (verified). Vercel's Node 22 runtime satisfies both.
-- [x] `astro.config.mjs` (static, trailing slash, adapter switch, 301 redirects, sitemap filter)
-- [x] `src/data/site.ts` (NAP/phone/hours/CSLB/nav/groups/form lists), `src/data/services.ts` (six services with copy + FAQs)
-- [ ] `vercel.json` (headers incl. `X-Robots-Tag`, trailingSlash, redirects mirror)
-- [ ] `src/layouts/Base.astro` (head: title, description, canonical → live, robots, OG/Twitter, JSON-LD slot; skip link; header/footer)
-- [ ] `Header`, `Footer`, `Nap`, `PhoneLink`, `Schema` components; `src/lib/seo.ts`, `src/lib/schema.ts`
-- [ ] `src/pages/robots.txt.ts`, `404.astro`, `public/images/brimer-logo.png`, `scripts/make-og.mjs` → `public/images/og-default.jpg`
-- [ ] `scripts/qa-phones.mjs` wired into `npm run build`
-- **Gate:** `npm install && npm run build` green with a placeholder index; `robots.txt` shows `Disallow: /`; every page has the noindex meta; phone gate passes.
+### M0 — Foundations ✅ complete
+- [x] Astro 7.3.3, adapter switch, 301s, env-gated sitemap, `vercel.json`, lockfile, `.nvmrc`
+- [x] `src/data/site.ts`, `services.ts`, `towns.ts` (24 towns with elevation, permit authority, utilities)
+- [x] `Base.astro`, `Header`, `Footer`, `FirstScreen`, `CallBar`, `global.css`
+- [x] `robots.txt.ts` (Allow on staging), `404.astro`, `favicon.svg`, generated `og-default.jpg`
+- [x] 30 live images carried into `public/images/`, gondola excluded
+- [x] `scripts/crawl-live.mjs`, `fetch-live-images.mjs`, `make-og.mjs`, `qa-content.mjs`
+- [x] `tests/first-screen.spec.ts` + `playwright.config.ts`
+- **Gate:** `npm run build` green with the content gate passing; first-screen gate green on the templates that exist.
+
+### M0.5 — Golden pages ⛔ **blocked on Milton**
+One home, one service (`/services/water-heaters/`), one town (`/service-areas/truckee/`). Milton reviews screenshots and approves layout and copy **before** any bulk generation. Service and town copy rewrites are unblocked only by that approval (§3c).
 
 ### M1 — Core pages + lead capture
-- `/`, `/about/`, `/contact/`, `/request-service/`, `/thank-you/`, `/services/` + 6 service pages, `/service-areas/` hub, `/service-areas/truckee/`, `/service-areas/tahoe-city/`, `/service-areas/kings-beach/`, `/faqs/`, `/reviews/`
-- `src/data/towns.ts` generated from `docs/crawl/town-facts.json` (all 24 entries present so hub links resolve; only the 3 M1 towns get full pages in this milestone — the rest render in M2 from the same data)
-- `LeadForm.astro` + `src/pages/api/lead.ts` + `src/lib/leads/*` + `scripts/qa-form.mjs` + `scripts/dev-webhook.mjs`
-- **Gate:** form E2E passes locally (JSON + form-encoded + honeypot rejection + validation rejection; lead lands in JSONL and in the local webhook receiver); Lighthouse mobile ≥ 95 on `/` and `/services/water-heaters/`; phone gate passes; `docs/qa/form-e2e.md` drafted.
+`/`, `/about/`, `/contact/`, `/request-service/`, `/thank-you/`, `/services/` + 6 service pages, `/service-areas/` hub, 3 town pages, `/faqs/`, `/reviews/`; `LeadForm.astro`, `src/pages/api/lead.ts`, `src/lib/leads/*`, `scripts/qa-form.mjs`, `scripts/dev-webhook.mjs`.
+**Gate:** form E2E passes; first-screen gate green on all four targets; content gate green; Lighthouse mobile ≥ 95 on `/` and `/services/water-heaters/`.
 
 ### M2 — Full URL parity
-- Remaining 21 town pages from `towns.ts`; `/service-areas/martis-valley/` hub; blog collection (10 posts, rewritten from live) + `/blog/`; `/resources/`; `/membership/` (no prices); `/privacy-policy/`; `/terms-of-use/`
-- `scripts/qa-links.mjs`: every path in `docs/crawl/sitemap-urls.txt` exists in `dist/`; every internal href resolves; redirect config contains the three 301s
-- **Gate:** 53/53 parity + additive routes; link check green; `docs/url-map.md` status column all ✅.
+Remaining 21 town pages (each against its brief, past the similarity gate), Martis Valley hub, blog collection, `/resources/`, `/membership/` without prices, legal pages, `scripts/qa-links.mjs`.
+**Gate:** 53/53 parity; link check green; similarity gate green; `docs/url-map.md` status column all ✅.
 
 ### M3 — Staging deploy + QA writeup
-- Milton connects the repo to a **new** Vercel project (steps in `README.md`); sets env vars; enables Deployment Protection. No domain attached.
-- Verify on the preview URL: `curl -I` shows `x-robots-tag: noindex, nofollow`; HTML has the robots meta; `/robots.txt` disallows; `/sitemap-index.xml` is 404; the three 301s work; `/about` → `/about/`; `/images/og-default.jpg` is 200.
-- Browser test on the preview: submit the form (desktop + mobile viewport), confirm the panel and the delivery; tap-to-call resolves to `tel:+15305870733`.
-- Lighthouse on preview vs live → `docs/qa/speed-report.md`; `docs/qa/technical-seo-audit.md`; `docs/qa/phone-check.md`; `docs/qa/staging.md` (URL, protection mode, env vars set).
-- **Gate:** all four QA docs complete with artifacts; PR ready for Sierra QA.
+Milton connects a **new** Vercel project, enables Deployment Protection, sets env vars. Verify headers, robots, redirects, OG image on the preview. Lighthouse vs live. QA docs in `docs/qa/`.
 
-### M4 — Later (needs Milton decisions; not this run)
-Photo shoot assets + honest alts; hours decision (D1); membership pricing (D2); emergency URL (D4); Homewood IA; sending-domain DKIM for email; durable lead store (Vercel Blob/Postgres or Sheets); GA4 on; optional Turnstile; swap runbook execution.
-
-Executor handoff: any capable coding agent (Composer/Codex/Opus) can implement M0–M3 from these docs. Each milestone should be one or more commits on `cursor/astro-rebuild-d8c5` (or a branch off it), pushed, with the draft PR updated. Do not skip gates; do not touch anything in §0.
+### M4 — Later
+Photo shoot assets and honest alts; membership pricing decision; emergency URL; Homewood IA; DKIM for the sending domain; durable lead store; GA4; swap runbook execution.
 
 ---
 
-## 12. Decisions for Milton (the twin ships with the default; nothing here blocks M0–M3)
+## 12. Decisions
 
-| ID | Question | Twin default | Why |
-|---|---|---|---|
-| D1 | Hours: 7 AM–8 PM daily (live + GBP) or Mon–Fri 8–6 + emergencies (pack)? | 7 AM–8 PM daily, one constant, identical in HTML and JSON-LD | Three public sources agree; changing is a one-line edit in `site.ts` |
-| D2 | `/membership/` prices: keep public dollars (live exception) or remove? | Removed; tiers + benefits + "contact for pricing" | Hard rule: no public prices on marketing pages |
-| D3 | `/service-areas/martis-valley/`: real hub page or leave 404? | Short real CA hub linking the six Martis Valley communities | Nav already labels it; a dead URL is the one thing the plan forbids |
-| D4 | Emergency landing URL for `emergency plumber truckee` (currently Homewood) | `/services/frozen-burst-pipes/` is written as the emergency page; Homewood untouched; no new URL | SEO file: flag only, do not retarget in this pass |
-| D5 | Lead email sending domain | Resend test sender until DKIM is added on a domain Milton controls (`brimerplumbing.com` is separate from the live site domain) | Adding DNS records on `brimercon.com` would touch the live zone |
-| D6 | Keep GHL pipeline + SMS follow-up? | Twin can POST to a GHL inbound webhook via `LEAD_WEBHOOK_URL` | Preserves the SMS workflow if wanted, without GHL scripts on the page |
-| D7 | GA4 `G-JN4WLJHEZJ` on the twin? | Off on staging; env-gated | Staging must not pollute live analytics |
-| D8 | Vercel Deployment Protection mode | Vercel Authentication (team only) or password | Extra layer beyond noindex |
-| D9 | Keep the OTTO Cloudflare worker in front after swap? | Out of scope; documented in the runbook as a decision point | No OTTO deploys either way |
+Ruled by Milton in the accepted audit:
+
+| ID | Question | Ruling |
+|---|---|---|
+| D1 | Hours | **7:00 AM to 8:00 PM daily.** Milton answers evenings and weekends; a missed call goes to voicemail. No "same day" or "priority" language without explicit approval. |
+| D3 | `/service-areas/martis-valley/` | Build a real CA hub page for the group. No dead URL under a nav label. |
+| D6 | Lead pipeline | **No new GHL webhook.** Second channel is Zapier→Sheet or Housecall Pro. |
+| D7 | GA4 on the twin | Off on staging; env-gated. |
+| D8 | Deployment Protection | **Required**, not optional. |
+| D10 | Images | Carry the existing 30 (29 unique), drop the gondola. Real photos later do not block. |
+| D11 | Reviews and map | Both required on the rebuild. Google reviews pulled at build time. No `AggregateRating` schema. |
+| D12 | Town pages | Must be genuinely different from each other: briefs plus type-specific structures, with a similarity gate. |
+
+Still open, and none of them block M0.5 or M1:
+
+| ID | Question | Twin default until ruled |
+|---|---|---|
+| D2 | `/membership/` dollar amounts | Removed; tiers, benefits and "contact for pricing" at the same URL |
+| D4 | Emergency landing URL (`emergency plumber truckee` currently ranks Homewood) | `/services/frozen-burst-pipes/` reads as the emergency page; Homewood untouched; no new URL |
+| D5 | Lead email sending domain | Resend test sender until DKIM exists on a domain Milton controls. Adding DNS to `brimercon.com` would touch the live zone. |
+| D9 | OTTO Cloudflare worker after the swap | Out of scope; a decision point in the runbook. No OTTO deploys either way. |
 
 ---
 
-## 13. Out of scope (from the kickoff)
+## 13. Out of scope
 
-Contacting Hunter; live DNS / production cutover; OTTO Cloudflare deploy; GBP posts or edits; cancelling GHL or the Hunter contract; photo shoot replacements (placeholders noted); new town URLs; Nevada anything.
+Contacting Hunter; live DNS or production cutover; OTTO deploys; GBP writes; cancelling GHL or the Hunter contract; new town URLs; a public repo.
 
 ---
 
-## 14. Planned repository layout
+## 14. Repository layout
 
 ```
 brimercon-astro/
-├── PLAN.md                      # this file
-├── README.md                    # run / deploy / configure
+├── PLAN.md  APPLY_STATUS.md  README.md
 ├── docs/
-│   ├── url-map.md               # 53 live paths + redirects + additive routes
-│   ├── lead-capture.md          # form + /api/lead spec, Milton config
-│   ├── technical-seo-checklist.md
-│   ├── qa-plan.md               # phone gate, form E2E, links, Lighthouse, measurement
-│   ├── swap-runbook.md          # DO NOT EXECUTE in this phase
-│   ├── crawl/                   # 2026-09-19 read-only crawl artifacts (source of facts)
-│   └── qa/                      # M3 artifacts: form-e2e.md, phone-check.md, speed-report.md,
-│                                #   technical-seo-audit.md, staging.md
-├── astro.config.mjs  vercel.json  package.json  tsconfig.json  .env.example
-├── public/images/{brimer-logo.png, og-default.jpg}  public/favicon.svg
-├── scripts/{qa-phones,qa-links,qa-form,qa-lighthouse,make-og,dev-webhook}.mjs
+│   ├── source/              # KICKOFF, Aug 31 plan/SEO/snapshot, APPLY_AUDIT, AUDIT_ACCEPTED_SUMMARY
+│   ├── crawl/               # live inventory, per-URL page text, town facts, image inventory
+│   ├── url-map.md  lead-capture.md  design.md  town-briefs.md
+│   ├── technical-seo-checklist.md  qa-plan.md  swap-runbook.md
+│   └── qa/                  # M3 artifacts
+├── astro.config.mjs  vercel.json  playwright.config.ts  package.json  .env.example  .nvmrc
+├── public/images/           # 30 carried files + generated og-default.jpg
+├── scripts/                 # crawl-live, fetch-live-images, make-og, qa-content, qa-links,
+│                            #   qa-form, qa-lighthouse, dev-webhook
+├── tests/first-screen.spec.ts
 └── src/
-    ├── data/{site,services,towns,faqs,reviews,resources}.ts
-    ├── content/blog/*.md + content.config.ts
+    ├── data/{site,services,towns}.ts        # faqs, reviews, resources to come
     ├── layouts/Base.astro
-    ├── components/{Header,Footer,Nap,PhoneLink,LeadForm,Faq,Breadcrumbs,Schema,ServiceCard,TownCard,Cta,Hero}.astro
-    ├── lib/{seo,schema}.ts  lib/leads/{validate,deliver,store}.ts
+    ├── components/{Header,Footer,FirstScreen,CallBar}.astro   # LeadForm etc. to come
     ├── styles/global.css
-    └── pages/
-        ├── index, about, contact, request-service, thank-you, faqs, reviews, resources,
-        │   membership, privacy-policy, terms-of-use, 404  (.astro)
-        ├── robots.txt.ts
-        ├── services/{index,[slug]}.astro
-        ├── service-areas/{index,martis-valley,[slug]}.astro
-        ├── blog/{index,[slug]}.astro
-        └── api/lead.ts          # the only on-demand route
+    └── pages/{404.astro, robots.txt.ts}     # page templates gated on M0.5
 ```
+
+---
+
+## 15. Audit traceability
+
+| Item | Where it landed |
+|---|---|
+| B1 first-screen contract | §3b; `FirstScreen.astro`, `CallBar.astro`, `global.css`; `tests/first-screen.spec.ts`; `docs/qa-plan.md` §2 |
+| B2 geography gate | §7; `scripts/qa-content.mjs` (whole-word, case-sensitive, Nevada County and Sierra Nevada allowed, `" NV "` forbidden, no exclusion sentence required); wording removed from `site.ts` and `services.ts` |
+| B3 sources in repo | `docs/source/`; `scripts/crawl-live.mjs`; `docs/crawl/pages/` (53 page bodies), `images.json` |
+| B4 copy policy | §3c; `services.ts` cleaned; dash check in the build gate |
+| B5 private repo | Done by Sierra before this pass |
+| H1 staging | §5: Deployment Protection required, `Allow: /`, no production domain, bypass header documented |
+| H2 delivery | §6; `docs/lead-capture.md` §3: `LEAD_REQUIRE_DELIVERY` defaults true, file store is not delivery, two channels before swap |
+| H3 shorter form | §6; `docs/lead-capture.md` §1: three required fields, town prefill, all 24 towns, no timing |
+| H4 `/api/lead/` | §3a; used with the trailing slash throughout |
+| H5 error rendering | `docs/lead-capture.md` §2: HTML error page with a call button; `source_path` validated same-site |
+| H6 images | A9 reversed; `docs/design.md`; 30 files carried, gondola dropped, images below the first screen on mobile |
+| H7 no new GHL webhook | §0.7, D6; ownership table in `docs/swap-runbook.md` |
+| H8 after-hours copy | `site.afterHoursLine`, used by `FirstScreen` and the footer |
+| H9 CA-side wording | Removed from `site.ts` and `services.ts`; footer CSLB line has no Nevada sentence |
+| H10 reviews and map | D11; `docs/technical-seo-checklist.md` §D and §E; `docs/design.md` |
+| H11 town uniqueness | D12; `docs/town-briefs.md` (brief template, type structures, similarity gate) |

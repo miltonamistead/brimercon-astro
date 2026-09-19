@@ -1,12 +1,13 @@
 # URL map — live brimercon.com → Astro twin
 
-Source: `docs/crawl/sitemap-urls.txt` and `docs/crawl/live-inventory.json`, crawled read-only on 2026-09-19 (all 53 returned HTTP 200; no `robots` meta on any of them; every `og:image` points at `/images/og-default.jpg`, which is 404). Titles/descriptions/H1s per URL are in the JSON; this table lists H1 and the twin's action.
+Source: `docs/crawl/`, regenerated read-only with `npm run crawl` on 2026-09-19 (all 53 returned HTTP 200; no `robots` meta on any of them; every `og:image` points at `/images/og-default.jpg`, which is 404). Per-URL titles, descriptions, H1s and JSON-LD types are in `live-inventory.json`; the main-content text of each page is in `docs/crawl/pages/`. This table lists H1 and the twin's action.
 
 Rules applied here:
 
 - Same path string for every live URL. Trailing slash always. Canonical `https://www.brimercon.com/<path>`.
-- Titles preserved by default. H1 changes only where `uploads/2026-08-31_website_seo_for_rebuild.md` calls for one.
-- No new town URLs. No Nevada. No public prices.
+- Titles preserved by default. H1 changes only where `docs/source/2026-08-31_website_seo_for_rebuild.md` calls for one.
+- **The homepage keeps its live title, H1 and body copy** (it ranks position 1 for `truckee plumber`); dash cleanup is the only permitted edit. Service and town copy may be rewritten only after Milton approves the golden pages. See `PLAN.md` §3c.
+- No new town URLs. No out-of-area place names. No public prices.
 - Status column is filled in by the executor (✅ built and parity-checked by `scripts/qa-links.mjs`).
 
 ## 1. Live sitemap paths (53)
@@ -84,9 +85,9 @@ Host-level (not in this repo's control on staging): apex `brimercon.com` → `ww
 |---|---|---|---|
 | `/thank-you/` | 200, `noindex, nofollow`, title "Order — Brimer Plumbing" (GHL artifact) | Form confirmation page: "Request received" copy, phone CTA, `?ref=` shows the lead id | Never |
 | `/service-areas/martis-valley/` | 404 (nav grouping label) | Short real hub page for the Martis Valley group (Martis Camp, Lahontan, Northstar, Schaffer's Mill, Gray's Crossing, Old Greenwood) — CA, Placer/Nevada County. Not a 25th town clone. Decision D3. | Follows site flag |
-| `/api/lead` | n/a | `POST` only; on-demand route; `GET` returns 405 JSON; `Disallow: /api/` in robots | Never |
+| `/api/lead/` | n/a | `POST` only; the one on-demand route; `GET` returns 405; browser requests get an HTML error page with a call button, not raw JSON. Always referenced **with** the trailing slash so a POST never takes a redirect (audit H4). `Disallow: /api/` in robots. | Never |
 | `/404` | Vercel default | Custom 404 with phone and links | Never |
-| `/robots.txt`, `/sitemap-index.xml`, `/sitemap-0.xml`, `/images/og-default.jpg`, `/favicon.svg` | robots 200; sitemaps 200; og 404 | robots generated per env; sitemaps only when indexable; og image real | n/a |
+| `/robots.txt`, `/sitemap-index.xml`, `/sitemap-0.xml`, `/images/og-default.jpg`, `/favicon.svg` | robots 200; sitemaps 200; og:image **404** | robots generated per env (`Allow: /` on staging so the noindex is readable, audit H1); sitemaps only when indexable; og image generated and real | n/a |
 
 Not carried over: `/join/` (404 on live), `join.brimercon.com` (never fetched; out of scope).
 

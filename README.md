@@ -7,42 +7,60 @@ Parallel **noindex** Astro rebuild of [brimercon.com](https://www.brimercon.com)
 ## Rules (also enforced by the build)
 
 - Never contact Hunter / Dream Surge. Never touch live production, DNS, Cloudflare, GoDaddy, or the live Vercel project.
-- Staging is `noindex, nofollow` (build-time meta + `X-Robots-Tag` header), no sitemap, canonicals point at live.
-- Phone **530-587-0733** only. California only — never Nevada / Incline / Crystal Bay / Stateline / South Lake as service claims.
-- No public prices on marketing pages. No OTTO deploys. No GBP writes. GoHighLevel is not cancelled.
+- Repo stays private. Staging is `noindex, nofollow` (meta tag plus `X-Robots-Tag`), ships no sitemap, canonicals point at live, and sits behind Vercel Deployment Protection. Staging `robots.txt` says `Allow: /` on purpose, so crawlers can read the noindex.
+- Phone **530-587-0733** only. Calling is the primary action on every page.
+- California towns only, named rather than excluding a state. No out-of-area place names.
+- No public prices. No em or en dashes. No unapproved speed claims. No OTTO deploys, no GBP writes, no new GoHighLevel webhook.
 - NAP: 10647 Manchester Dr, Truckee, CA 96161 · CA CSLB #1149344 · service@brimerplumbing.com.
+- Hours: 7:00 AM to 8:00 PM daily. After hours: *Call 530-587-0733 any time. If we miss you, leave a message.*
 
-`npm run build` runs `scripts/qa-phones.mjs` and fails on any foreign phone number, Nevada service string, or `$`-price in the built HTML.
+`npm run build` runs `scripts/qa-content.mjs` and fails the build on a wrong phone number, an out-of-area place name, a dollar figure, an em/en dash, or a page missing the street address or CSLB number.
 
 ## Run locally
 
+Node 22 or newer (Astro 7 requires ≥ 22.12; `.nvmrc` pins 22).
+
 ```bash
 npm install
-cp .env.example .env          # defaults are staging-safe (noindex, file lead store)
+cp .env.example .env          # defaults are staging-safe (noindex, delivery required)
 npm run dev                    # http://127.0.0.1:4321  (form endpoint works in dev)
-npm run build                  # static pages + /api/lead function; then the phone/NAP gate
-npm run serve                  # production-equivalent local server (Node adapter): http://127.0.0.1:4322
+npm run build                  # builds, then runs the content gate
+npm run serve                  # production-equivalent local server: http://127.0.0.1:4322
 ```
 
-QA scripts (see `docs/qa-plan.md`): `npm run qa:phones`, `npm run qa:links`, `npm run qa:form` (needs `npm run serve` + `node scripts/dev-webhook.mjs`), `npm run qa:lighthouse`.
+QA and tooling (see `docs/qa-plan.md`):
+
+| Command | What it does |
+|---|---|
+| `npm run qa:content` | Phone, geography, price, dash and NAP gate over the build. Runs automatically in `npm run build`. |
+| `npm run qa:first-screen` | Playwright first-screen contract at 390×844. Needs `npm run serve` running. Uses the machine's Chrome, so no browser download. |
+| `npm run crawl` | Re-crawls live brimercon.com into `docs/crawl/` (read-only). |
+| `npm run images` | Copies Brimer's existing images from live into `public/images/`. |
+| `npm run og` | Regenerates `public/images/og-default.jpg`. |
+| `npm run qa:links` / `qa:form` / `qa:lighthouse` | Route parity, lead form E2E, speed. Land with M1 to M3. |
+
+Against a protected Vercel preview: `BASE_URL=https://<preview> VERCEL_PROTECTION_BYPASS=<token> npm run qa:first-screen`.
 
 ## Deploy to staging (Milton; new Vercel project, never the live one)
 
-1. Vercel → Add New Project → import `miltonamistead/brimercon-astro`. Framework preset: Astro (auto-detected). Build command `npm run build`, output handled by the adapter. Do **not** add a custom domain.
-2. Settings → Deployment Protection → enable Vercel Authentication (or a password). Preview URLs on `*.vercel.app` also get Vercel's own `x-robots-tag: noindex`.
-3. Settings → Environment Variables (Preview): leave `PUBLIC_INDEXABLE` unset (defaults to noindex). Add lead delivery variables per `docs/lead-capture.md` §4 when ready (`RESEND_API_KEY`, `LEAD_TO_EMAIL`, `LEAD_WEBHOOK_URL`, `LEAD_STORE=none`, then `LEAD_REQUIRE_DELIVERY=true`).
-4. Deploy the `cursor/astro-rebuild-d8c5` branch (or `main` after merge). Record the preview URL in `docs/qa/staging.md`.
-5. Verify: `curl -I https://<preview>/` shows `x-robots-tag: noindex, nofollow`; `/robots.txt` says `Disallow: /`; `/sitemap-index.xml` is 404; `/images/og-default.jpg` is 200; `/water-heater-services/` 301s to `/services/water-heaters/`.
+1. Vercel → Add New Project → import `miltonamistead/brimercon-astro`. Framework preset: Astro (auto-detected). Build command `npm run build`. Do **not** add a custom domain, and do not promote this project to a production domain before the swap.
+2. Settings → Deployment Protection → enable Vercel Authentication (or a password). **Required, not optional.** For automated QA, issue a Protection Bypass for Automation token and keep it out of the repo.
+3. Settings → Environment Variables (Preview): leave `PUBLIC_INDEXABLE` unset (defaults to noindex). Add lead delivery per `docs/lead-capture.md` §4 (`RESEND_API_KEY`, `LEAD_TO_EMAIL`, `LEAD_WEBHOOK_URL`, `LEAD_STORE=none`). `LEAD_REQUIRE_DELIVERY` defaults to true, so configure at least one real channel before testing the form.
+4. Deploy the `cursor/astro-rebuild-d8c5` branch. Record the preview URL in `docs/qa/staging.md`.
+5. Verify: `curl -I https://<preview>/` shows `x-robots-tag: noindex, nofollow`; every page carries the robots meta; `/robots.txt` says `Allow: /` with no `Sitemap:` line; `/sitemap-index.xml` is 404; `/images/og-default.jpg` is 200; `/water-heater-services/` 301s to `/services/water-heaters/`.
 
 Flipping the site to indexable is deliberately a two-step change (env var **and** a `vercel.json` edit) documented only in `docs/swap-runbook.md`.
 
 ## Editing content
 
-- NAP, phone, hours, CSLB, nav groups, form city list: `src/data/site.ts` (single source; JSON-LD and visible text both read from it).
-- Services: `src/data/services.ts`. Towns: `src/data/towns.ts` (facts from `docs/crawl/town-facts.json`). FAQs/reviews/resources: `src/data/*.ts`.
-- Blog posts: Markdown files in `src/content/blog/` (frontmatter: `title`, `description`, `pubDate`, `tags`).
-- Placeholders to replace after the photo shoot: `public/images/og-default.jpg` (generated card), town heroes (CSS), service photos (none yet).
+- NAP, phone, hours, after-hours line, CSLB, nav groups, trust strip: `src/data/site.ts`. Single source; visible text and JSON-LD both read from it.
+- Services: `src/data/services.ts`. Towns: `src/data/towns.ts` (facts from `docs/crawl/town-facts.json`).
+- Blog posts: Markdown in `src/content/blog/` (M2).
+- Copy policy before editing anything customer-facing: `PLAN.md` §3c.
+- Placeholder to replace after the photo shoot: `public/images/og-default.jpg`. The 24 town heroes carried from live still need real alt text (`docs/design.md`).
 
 ## Status
 
-Planning complete (`PLAN.md`). M0 foundations: config and data constants committed; no pages generated yet. See `PLAN.md` §11 for milestone gates.
+Planning complete and the accepted Claude Fable audit applied: see `APPLY_STATUS.md` for exactly what changed and what is waiting on Milton.
+
+M0 foundations are built and green: config, data modules, layout, header/footer, first-screen component, fixed call bar, robots, 404, generated OG image, 30 carried images, and two working gates (content, first screen). **Page templates are paused at M0.5 pending Milton's approval of the golden home, service and town pages.** Milestone gates: `PLAN.md` §11.

@@ -1,15 +1,18 @@
 # Technical SEO checklist — Astro twin
 
-Each item lists the rule, where it lives in the code, and how it is verified. Verification is automated where possible (`scripts/qa-*.mjs`) and written up in `docs/qa/technical-seo-audit.md` at M3. "Live" facts come from `docs/crawl/live-inventory.json` and `uploads/2026-08-31_website_seo_for_rebuild.md`.
+Each item lists the rule, where it lives in the code, and how it is verified. Verification is automated where possible (`scripts/qa-*.mjs`, `tests/`) and written up in `docs/qa/technical-seo-audit.md` at M3. "Live" facts come from `docs/crawl/` and `docs/source/2026-08-31_website_seo_for_rebuild.md`.
+
+Boxes ticked here are done and verified in the current build; unticked items belong to a later milestone.
 
 ## A. Indexing controls (staging must never compete with live)
 
-- [ ] **Robots meta** — `noindex, nofollow` on every page unless `PUBLIC_INDEXABLE=true`; always on `/thank-you/` and `404`. Code: `Base.astro` via `src/lib/seo.ts`. Verify: grep `dist/` — count of `<meta name="robots" content="noindex, nofollow">` equals page count.
+- [x] **Robots meta** — `noindex, nofollow` on every page unless `PUBLIC_INDEXABLE=true`; always on `/thank-you/` and `404`. Code: `Base.astro`. Verify: count of `<meta name="robots" content="noindex, nofollow">` in the build equals page count.
 - [ ] **`X-Robots-Tag` header** — `noindex, nofollow` on `/(.*)` in `vercel.json` while staging. Verify: `curl -I <preview>/` shows it. Removal is a swap-runbook step.
-- [ ] **robots.txt** — staging: `User-agent: *` / `Disallow: /` and `Disallow: /api/`, no `Sitemap:`. Production: `Allow: /`, `Disallow: /api/`, `Sitemap: https://www.brimercon.com/sitemap-index.xml` (mirrors `docs/crawl/live-robots.txt`; the AI-bot blocks on live are Cloudflare-managed, not origin). Code: `src/pages/robots.txt.ts`. Verify: `curl <preview>/robots.txt`.
+- [x] **robots.txt allows crawling on staging** (audit H1) — staging: `User-agent: *` / `Allow: /` / `Disallow: /api/`, no `Sitemap:` line. Production adds the `Sitemap:` line. Code: `src/pages/robots.txt.ts`. Verify: `curl <preview>/robots.txt`.
+  A crawler blocked by `robots.txt` never fetches the page, so it never reads the `noindex` meta tag or header, and the URL can still appear as a bare result. Allowing the crawl is what makes the noindex work. Public reachability is handled by **Vercel Deployment Protection**, which is required on the staging project, not optional.
+- [ ] **Deployment Protection** — Vercel Authentication or password on the staging project; no production domain attached before the swap. A Protection Bypass token may be issued for automated QA (`x-vercel-protection-bypass`); never commit it. Record the mode in `docs/qa/staging.md`.
 - [ ] **Sitemap** — none on staging; on indexable builds `sitemap-index.xml` + `sitemap-0.xml` with the 53 canonical URLs + `/service-areas/martis-valley/`, excluding `/thank-you/`, `/api/*`, `404`. Code: `@astrojs/sitemap` `filter` + `customPages`. Verify: local `PUBLIC_INDEXABLE=true npm run build`, diff `sitemap-0.xml` locs against `docs/crawl/sitemap-urls.txt` (expect +1 Martis Valley, 0 missing).
 - [ ] **Canonical** — `<link rel="canonical" href="https://www.brimercon.com/<path>">` absolute, www, trailing slash, one per page. Code: `canonicalUrl()` in `site.ts`. Verify: every page has exactly one canonical and it starts with the canonical origin.
-- [ ] **Vercel Deployment Protection** — recommended on the staging project (D8). Verify: unauthenticated `curl` returns 401 when enabled; note mode in `docs/qa/staging.md`.
 
 ## B. Titles, descriptions, headings
 
@@ -28,7 +31,7 @@ Each item lists the rule, where it lives in the code, and how it is verified. Ve
 
 ## D. Structured data (JSON-LD, one `<script type="application/ld+json">` per node, built in `src/lib/schema.ts`)
 
-- [ ] **`Plumber`** (`@id: https://www.brimercon.com/#business`) on every page (compact) and in full on `/` and `/contact/`: `name`, `legalName` (Clearline Services LLC), `url`, `telephone: +15305870733`, `email`, `address` (Manchester), `geo`, `identifier` (CSLB 1149344 as `PropertyValue`), **`logo` + `image`** (live gap), `foundingDate: 1997`, `priceRange: $$` (schema token as on live — not a dollar price), `openingHoursSpecification` 07:00–20:00 Mon–Sun (same constant as visible text), `sameAs` (Google Maps place URL, Yelp), **`areaServed`: all 24 CA towns as `City` with `containedInPlace` `State: California`** (live has four). **Never** Nevada. **No `AggregateRating`/`Review`** (not invented; Google does not surface self-serving LocalBusiness review markup).
+- [ ] **`Plumber`** (`@id: https://www.brimercon.com/#business`) on every page (compact) and in full on `/` and `/contact/`: `name`, `legalName` (Clearline Services LLC), `url`, `telephone: +15305870733`, `email`, `address` (Manchester), `geo`, `identifier` (CSLB 1149344 as `PropertyValue`), **`logo` + `image`** (live gap), `foundingDate: 1997`, `priceRange: $$` (schema token as on live, not a dollar price), `openingHoursSpecification` 07:00 to 20:00 Mon to Sun (same constant as visible text, decision D1), `sameAs` (Google Maps place URL, Yelp), **`areaServed`: all 24 CA towns as `City` with `containedInPlace` `State: California`** (live has four). **No `AggregateRating`/`Review`** (audit H10: reviews appear on the page, not as self-serving markup).
 - [ ] **`Service`** on each service page: `name`, `serviceType`, `provider → #business`, `areaServed` (the CA town list), `url`, `description`. Also an `ItemList` of six on `/services/` (live hub has none).
 - [ ] **`FAQPage`** wherever FAQs are visible: `/`, `/faqs/`, six service pages, 24 town pages (six Q&As each from `town-facts.json`). Answers must match visible text exactly.
 - [ ] **`BreadcrumbList`** on services, towns, blog posts — **every `ListItem` has `item` URL** (live drops the last one).
@@ -42,11 +45,18 @@ Each item lists the rule, where it lives in the code, and how it is verified. Ve
 
 ## F. Images and media
 
-- [ ] Only Brimer's logo (`/images/brimer-logo.png`, real PNG 564×210) plus the generated OG card in M1–M3. No live stock/lifestyle JPEG-in-PNG files; **the Heavenly/South Lake "reliability-for-every-season.png" is never copied.**
-- [ ] Every `<img>` has explicit `width`/`height`, honest `alt` (empty only for decorative), `loading="lazy"` below the fold, `decoding="async"`; hero logo `fetchpriority="high"`.
+Carry decision and defect list: `docs/design.md` §1 (audit H6 reverses the earlier "no live images" plan).
+
+- [x] Brimer's existing images carried into `public/images/`: **30 files, 29 unique**. `scripts/fetch-live-images.mjs` reproduces it from `docs/crawl/images.json`.
+- [x] **`reliability-for-every-season.png` excluded** — a Heavenly gondola at South Lake Tahoe, out of area, and its live alt text describes a different scene. It is referenced on 22 live pages, so each of those blocks needs a replacement image or none.
+- [x] **`og-default.jpg` generated** (1200×630, ~45 KB) by `scripts/make-og.mjs`. Live 404s on this file, so every share card on brimercon.com is currently blank. Placeholder until the photo shoot.
+- [ ] Every `<img>` has explicit `width`/`height`, honest `alt` (empty only for decorative), `loading="lazy"` below the fold, `decoding="async"`; header logo `fetchpriority="high"`.
+- [ ] **Town hero alts written per town** — all 24 ship empty `alt` on live. The alt describes the actual frame; the brief in `docs/town-briefs.md` §3 has a field for it.
+- [ ] Re-encode the five JPEG-bytes-in-a-`.png`-filename marketing files to WebP/JPEG with matching `Content-Type` and correct intrinsic dimensions (`design-forward-fixture-performance.png` is declared 1024×1024 and is actually 1024×682). `sharp` is already a dependency.
+- [ ] Collapse the duplicate background (`footer-bg-premium.png` and `ready-to-get-started-bg.png` are byte-identical) to one path.
 - [ ] No empty-`src` avatar images (live has one).
-- [ ] When the photo shoot lands (M4): JPEG/WebP with matching `Content-Type`, `srcset`, alts that describe the file; town heroes get real alts (live heroes have empty alts).
-- [ ] `favicon.svg` + `apple-touch-icon` present.
+- [ ] Images sit **below** the first screen on mobile so they never push the call button down (`PLAN.md` §3b).
+- [x] `favicon.svg` present; `apple-touch-icon` to add.
 
 ## G. Performance-related technical items (details in `docs/qa-plan.md` §4)
 
@@ -60,14 +70,14 @@ Each item lists the rule, where it lives in the code, and how it is verified. Ve
 
 - [ ] `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`, `X-Frame-Options: DENY` (no embeds needed). CSP deferred to M4 (needs GA4/Turnstile decisions).
 
-## I. NAP consistency (also enforced by `scripts/qa-phones.mjs`)
+## I. NAP consistency (enforced by `scripts/qa-content.mjs`)
 
-- [ ] Visible footer NAP on every page: `10647 Manchester Dr, Truckee, CA 96161` (live shows the street only on `/contact/`).
-- [ ] Phone `530-587-0733` visible + `tel:+15305870733` on every page; header CTA + footer + emergency band.
-- [ ] Email `service@brimerplumbing.com`.
-- [ ] CSLB line on every page: `CA CSLB License #: 1149344 · Licensed in California only. Not licensed in Nevada.`
-- [ ] Hours string identical in footer, `/contact/`, and JSON-LD (single constant; D1).
-- [ ] Off-site NAP note for Milton (not a site task): CATT directory lists PO Box 9297 and `http://` — align when an editor can.
+- [x] Visible footer NAP on every page: `10647 Manchester Dr, Truckee, CA 96161` (live shows the street only on `/contact/`).
+- [x] Phone `530-587-0733` visible and `tel:+15305870733` linked on every page: header, first-screen call button, fixed call bar, footer.
+- [x] Email `service@brimerplumbing.com`.
+- [x] CSLB line on every page: `CA CSLB License #: 1149344`. **No Nevada sentence** (audit B2/H9): the twin names the California towns it serves instead of excluding a state.
+- [x] Hours identical in the footer, the first screen, and (once built) JSON-LD, from one constant in `site.ts` (decision D1), with the after-hours line: *Call 530-587-0733 any time. If we miss you, leave a message.*
+- [ ] Off-site NAP note for Milton (not a site task): the CATT directory lists PO Box 9297 and an `http://` URL. Align when an editor can.
 
 ## J. Accessibility (Lighthouse a11y 100 target)
 
@@ -76,8 +86,9 @@ Each item lists the rule, where it lives in the code, and how it is verified. Ve
 ## K. Things this twin deliberately does **not** do
 
 - No `AggregateRating` or `Review` schema.
-- No Nevada/Incline/Crystal Bay/Stateline/South Lake/Reno/Heavenly strings except the exclusion sentence.
+- No out-of-area place names in customer copy at all. There is no exclusion sentence to carve out any more: "Nevada County" and "Sierra Nevada" are the only permitted matches, because both are California names.
 - No dollar prices; `priceRange: "$$"` schema token only.
+- No em or en dashes, and no unapproved speed claims ("same day", "priority", "fastest", "24/7") — `PLAN.md` §3c.
 - No OTTO meta tag; no Search Atlas snippet (the Granola note about installing the "Search Atlas auto snippet" predates the "review before deploy" hold — swap-time decision D9).
 - No change to `/service-areas/homewood/` title/H1/intent.
 - No new town or emergency URLs.
