@@ -1,0 +1,65 @@
+---
+// Ported from the live Terms of Use (docs/crawl/pages/terms-of-use.txt). Substance
+// unchanged; the Google Maps clause stays because the twin links to Google Maps.
+import Base from "@/layouts/Base.astro";
+import { site } from "@/data/site";
+
+const title = "Terms of Use | Brimer Plumbing";
+const description = "Terms governing use of the Brimer Plumbing website and its third-party content.";
+---
+
+<Base title={title} description={description}>
+  <section class="section">
+    <div class="wrap prose">
+      <h1>Terms of Use</h1>
+      <p class="lede">These terms govern your use of the Brimer Plumbing website.</p>
+      <p><strong>Last updated:</strong> September 19, 2026</p>
+      <p>By using this website you agree to these terms. If you do not agree, please do not use the site.</p>
+
+      <h2>Website information</h2>
+      <p>
+        This site provides general information about Brimer Plumbing and its services. Nothing here is a binding
+        estimate, a guarantee of availability, or a substitute for an on-site diagnosis. Scope, timing, and price are
+        confirmed with each customer directly.
+      </p>
+
+      <h2>Permitted use</h2>
+      <p>
+        You may use the site to learn about Brimer Plumbing and to submit genuine service enquiries. You may not
+        interfere with the site, attempt unauthorized access, submit unlawful or misleading information, or use
+        automated means that place an unreasonable burden on it.
+      </p>
+
+      <h2>Third-party services and content</h2>
+      <p>
+        The site links to third-party services including Google Maps. Use of Google Maps content is subject to Google's
+        additional terms of service and privacy policy. Other third-party sites are governed by their own terms.
+      </p>
+
+      <h2>Reviews</h2>
+      <p>
+        Customer reviews shown on this site were published by their authors on Google or Yelp and remain their
+        property. Ratings and review counts are read from Google and are accurate as of the date they were fetched.
+      </p>
+
+      <h2>Intellectual property</h2>
+      <p>
+        The site's original text, design, branding, and other materials belong to Brimer Plumbing or are used with
+        permission. Third-party names, reviews, and logos remain the property of their owners.
+      </p>
+
+      <h2>Site availability</h2>
+      <p>
+        We work to keep the site accurate and available but cannot guarantee uninterrupted or error-free access. We may
+        update, suspend, or remove features at any time.
+      </p>
+
+      <h2>Licence and contact</h2>
+      <p>
+        {site.legalName} dba {site.dba}. {site.cslbLine}.<br />
+        Questions about these terms can go to <a href={`mailto:${site.email}`}>{site.email}</a> or
+        <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+      </p>
+    </div>
+  </section>
+</Base>

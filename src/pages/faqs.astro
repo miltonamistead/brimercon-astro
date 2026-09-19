@@ -1,0 +1,45 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Faq from "@/components/Faq.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { faqs } from "@/data/faqs";
+import { site } from "@/data/site";
+import { faqSchema, breadcrumbSchema } from "@/lib/schema";
+
+const title = "FAQs | Plumbing Questions for Tahoe & Truckee Homeowners | Brimer Plumbing";
+const description =
+  "Answers to common plumbing questions for Tahoe and Truckee homeowners. Winterization, water heaters, emergency service, smart leak shutoff, and more.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "FAQs", path: "/faqs/" },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[faqSchema(faqs), breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="Frequently asked questions"
+    intro="Answers to what Tahoe and Truckee homeowners ask us most. If yours is not here, call and ask."
+  />
+
+  <Faq heading="Plumbing questions Truckee homeowners ask" faqs={faqs} />
+
+  <EmergencyBand heading="Still have a question" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Ask us directly</h2>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+    </div>
+  </section>
+</Base>

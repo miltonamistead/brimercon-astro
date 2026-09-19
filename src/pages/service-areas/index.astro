@@ -1,0 +1,88 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import TownLink from "@/components/TownLink.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import ReviewsStrip from "@/components/ReviewsStrip.astro";
+import Schema from "@/components/Schema.astro";
+import { site, serviceAreaGroups } from "@/data/site";
+import { towns } from "@/data/towns";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Service Areas | California Side of Tahoe & Truckee | Brimer Plumbing";
+const description = `Brimer Plumbing serves Truckee and the communities around North Lake Tahoe. See the full list of ${towns.length} towns we cover. Call 530-587-0733.`;
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Service areas", path: "/service-areas/" },
+];
+
+// Group headings name places because that is the page's whole purpose. The non-place
+// headings around them keep the ratio inside the rule (PLAN.md section 3d rule 3).
+const groupHeadings: Record<string, string> = {
+  Truckee: "Truckee, Tahoe Donner, Glenshire and Donner Lake",
+  "Martis Valley": "Martis Camp, Lahontan, Northstar and the Martis Valley clubs",
+  "North Shore": "Kings Beach, Tahoe Vista and the north shore",
+  "West Shore and Tahoe City": "Tahoe City, Homewood and the west shore",
+  "Donner Summit": "Soda Springs, Norden and Donner Summit",
+};
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="Service areas"
+    areaLabel={`${towns.length} communities around Truckee and North Lake Tahoe`}
+    areaHref="#areas"
+    intro="From Donner Summit down to the west shore, and everywhere between."
+  />
+
+  <section class="section" id="areas">
+    <div class="wrap">
+      <h2>Every town we cover</h2>
+      <p class="lede">
+        Brimer Plumbing is a licensed California contractor working across {towns.length} communities in Placer and
+        Nevada County and the Town of Truckee.
+      </p>
+    </div>
+  </section>
+
+  {
+    serviceAreaGroups.map((group, i) => (
+      <section class={i % 2 === 0 ? "section section--soft" : "section"}>
+        <div class="wrap">
+          <h2>{groupHeadings[group.label] ?? group.label}</h2>
+          <ul class="towns">
+            {group.towns.map((slug) => (
+              <li>
+                <TownLink slug={slug} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <EmergencyBand heading="Not sure if we come to you" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Do not see your town</h2>
+      <p>
+        If you are in this part of the Sierra and your community is not listed, call anyway. The list covers where we
+        work most, not a boundary fence. We will tell you straight away if you are outside what we can reach.
+      </p>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+    </div>
+  </section>
+
+  <ReviewsStrip count={2} heading="What homeowners say about our work" />
+</Base>

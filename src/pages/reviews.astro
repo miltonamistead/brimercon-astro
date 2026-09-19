@@ -1,0 +1,52 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import ReviewsStrip from "@/components/ReviewsStrip.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { reviews, ratingSummary } from "@/data/reviews";
+import { site } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Reviews | What Homeowners Say About Brimer Plumbing | Truckee & Tahoe";
+const description =
+  "Read what Truckee and North Lake Tahoe homeowners say about Brimer Plumbing. Clear communication, clean work, and dependable outcomes since 1997.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Reviews", path: "/reviews/" },
+];
+
+const rating = ratingSummary();
+// No AggregateRating schema here on purpose, even though this is the reviews page.
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="What homeowners say"
+    intro={
+      rating
+        ? `${rating.display} from ${rating.total} Google reviews, plus what people have written on Yelp.`
+        : "What homeowners across Truckee and North Lake Tahoe say about working with us."
+    }
+  />
+
+  <ReviewsStrip count={reviews.length} heading="Reviews from Truckee and Tahoe homeowners" />
+
+  <EmergencyBand heading="Emergency plumber in Truckee and Tahoe" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>See why homeowners call us back</h2>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+    </div>
+  </section>
+</Base>

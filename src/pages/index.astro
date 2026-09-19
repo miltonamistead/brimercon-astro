@@ -20,9 +20,11 @@ import ReviewsStrip from "@/components/ReviewsStrip.astro";
 import EmergencyBand from "@/components/EmergencyBand.astro";
 import Faq from "@/components/Faq.astro";
 import Schema from "@/components/Schema.astro";
+import TownLink from "@/components/TownLink.astro";
 import { services } from "@/data/services";
 import { site, napOneLine } from "@/data/site";
 import { towns } from "@/data/towns";
+import { faqs as allFaqs } from "@/data/faqs";
 import { plumberSchema, faqSchema } from "@/lib/schema";
 
 const title = "Brimer Plumbing | Truckee & North Lake Tahoe Plumber | Since 1997";
@@ -105,31 +107,16 @@ const featuredTownSlugs = [
 ];
 const featuredTowns = featuredTownSlugs.map((slug) => towns.find((town) => town.slug === slug)!);
 
-const faqs = [
-  {
-    question: "What areas do you serve?",
-    answer:
-      "We serve Truckee and North Lake Tahoe, including Truckee, Tahoe City, Kings Beach, Tahoe Vista, Carnelian Bay, Homewood, Tahoma, Olympic Valley, Alpine Meadows, Dollar Point, Donner Lake, Tahoe Donner, Glenshire, and the surrounding communities.",
-  },
-  {
-    question: "Do you offer emergency plumbing service?",
-    answer: `Yes. For urgent issues like burst pipes, active leaks, or gas concerns, call us at ${site.phoneDisplay}. ${site.afterHoursLine}`,
-  },
-  {
-    question: "Do you work with property managers?",
-    answer:
-      "Absolutely. We regularly coordinate with property managers for seasonal homes, providing winterization, spring startup, emergency response, and ongoing maintenance.",
-  },
-  {
-    question: "What does your service process look like?",
-    answer:
-      "We diagnose the issue carefully, present clear options with pricing before work begins, protect your home's finishes while we work, and verify everything is working properly before we leave.",
-  },
-  {
-    question: "Are you licensed and insured?",
-    answer: `Yes. We are licensed plumbing contractors in California, fully insured, and have been serving the Truckee and North Lake Tahoe area since ${site.founded}.`,
-  },
+// The same five questions live puts on the home page, taken from the shared set so the
+// wording cannot drift between here and /faqs/.
+const HOME_FAQS = [
+  "What areas do you serve?",
+  "Do you offer emergency plumbing service?",
+  "Do you work with property managers?",
+  "What does your service process look like?",
+  "Are you licensed and insured?",
 ];
+const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === question)!);
 ---
 
 <Base title={title} description={description}>
@@ -227,14 +214,14 @@ const faqs = [
 
   <EmergencyBand heading="Emergency plumber in Truckee and Tahoe" />
 
-  <ReviewsStrip tag="general" count={3} heading="What Truckee homeowners say about us" />
+  <ReviewsStrip count={3} heading="What Truckee homeowners say about us" />
 
   <section class="section section--soft">
     <div class="wrap">
       <h2>Towns we serve around North Lake Tahoe</h2>
       <p class="lede">Serving Truckee and the communities around North Lake Tahoe.</p>
       <ul class="towns">
-        {featuredTowns.map((town) => <li><a href={`/service-areas/${town.slug}/`}>{town.name}</a></li>)}
+        {featuredTowns.map((town) => <li><TownLink slug={town.slug} /></li>)}
       </ul>
       <p><a href="/service-areas/">View all service areas</a></p>
     </div>
