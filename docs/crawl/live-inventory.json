@@ -7,9 +7,9 @@
   "h1": "Plumbing, water heaters, and gas service in Truckee and Lake Tahoe.",
   "description": "Licensed plumbing contractors serving Truckee and North Lake Tahoe, CA. Water heaters, gas services, emergency repairs, and smart leak protection for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "City",
    "ContactPoint",
    "GeoCoordinates",
@@ -18,7 +18,8 @@
    "PostalAddress",
    "PropertyValue"
   ],
-  "html_bytes": 133304,
+  "htmlBytes": 132937,
+  "lastModified": "Sat, 19 Sep 2026 12:19:24 GMT",
   "published": null
  },
  {
@@ -29,10 +30,11 @@
   "h1": "Serving Truckee and North Lake Tahoe since 1997",
   "description": "Learn about Brimer Plumbing — licensed plumbing contractors serving Truckee and North Lake Tahoe since 1997. Clean work, clear communication, and mountain-home expertise.",
   "canonical": "https://www.brimercon.com/about/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 60854,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 60487,
+  "lastModified": "Thu, 10 Sep 2026 02:16:38 GMT",
   "published": null
  },
  {
@@ -43,10 +45,11 @@
   "h1": "Blog",
   "description": "Practical plumbing tips for Tahoe and Truckee mountain homeowners. Winterization, water heaters, freeze prevention, and more from Brimer Plumbing.",
   "canonical": "https://www.brimercon.com/blog/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 70412,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 70045,
+  "lastModified": "Sat, 19 Sep 2026 12:19:26 GMT",
   "published": null
  },
  {
@@ -57,17 +60,18 @@
   "h1": "Common Kitchen Plumbing Problems in Older Tahoe Homes | Brimer Plumbing Blog",
   "description": "Galvanized pipes, low pressure, disposal and drain issues common in older Tahoe mountain construction—and how to address them.",
   "canonical": "https://www.brimercon.com/blog/common-kitchen-plumbing-problems-older-tahoe-homes/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 59331,
-  "published": "2025-08-22"
+  "htmlBytes": 58964,
+  "lastModified": "Thu, 10 Sep 2026 06:14:33 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/gas-line-safety-checks-before-winter/",
@@ -77,17 +81,18 @@
   "h1": "Gas Line Safety Checks Before Winter | Brimer Plumbing Blog",
   "description": "Why pre-winter gas inspections matter for Tahoe homes. What a safety check includes and signs of gas line issues to watch for.",
   "canonical": "https://www.brimercon.com/blog/gas-line-safety-checks-before-winter/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 58616,
-  "published": "2025-04-08"
+  "htmlBytes": 58249,
+  "lastModified": "Thu, 10 Sep 2026 06:10:29 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/how-property-managers-prevent-plumbing-emergencies/",
@@ -97,17 +102,18 @@
   "h1": "How Property Managers Can Prevent Plumbing Emergencies | Brimer Plumbing Blog",
   "description": "Tips for Tahoe property managers: seasonal checklists, smart monitoring, and establishing a plumber relationship to prevent emergencies.",
   "canonical": "https://www.brimercon.com/blog/how-property-managers-prevent-plumbing-emergencies/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 59812,
-  "published": "2025-09-10"
+  "htmlBytes": 59445,
+  "lastModified": "Thu, 10 Sep 2026 06:11:28 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/how-to-winterize-plumbing-tahoe-second-home/",
@@ -117,17 +123,18 @@
   "h1": "How to Winterize Plumbing for a Tahoe Second Home | Brimer Plumbing Blog",
   "description": "A practical guide to winterizing your Tahoe second home plumbing: draining lines, protecting fixtures, and preventing costly freeze damage.",
   "canonical": "https://www.brimercon.com/blog/how-to-winterize-plumbing-tahoe-second-home/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 58601,
-  "published": "2025-01-15"
+  "htmlBytes": 58234,
+  "lastModified": "Thu, 10 Sep 2026 06:16:56 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/preparing-plumbing-before-leaving-for-season/",
@@ -137,17 +144,18 @@
   "h1": "Preparing Your Plumbing Before Leaving for the Season | Brimer Plumbing Blog",
   "description": "Checklist for Tahoe homeowners leaving their mountain home: water heater, main shutoff, drain traps, and monitoring setup.",
   "canonical": "https://www.brimercon.com/blog/preparing-plumbing-before-leaving-for-season/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 59238,
-  "published": "2025-07-14"
+  "htmlBytes": 58871,
+  "lastModified": "Thu, 10 Sep 2026 06:11:01 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/signs-of-hidden-leak-what-to-do/",
@@ -157,17 +165,18 @@
   "h1": "Signs of a Hidden Leak (and What to Do First) | Brimer Plumbing Blog",
   "description": "Learn to spot hidden leaks: water bill spikes, musty smells, stains. Immediate steps and when to call a plumber in Tahoe and Truckee.",
   "canonical": "https://www.brimercon.com/blog/signs-of-hidden-leak-what-to-do/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 58662,
-  "published": "2025-03-12"
+  "htmlBytes": 58295,
+  "lastModified": "Thu, 10 Sep 2026 06:19:04 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/tankless-vs-tank-water-heaters-cold-climates/",
@@ -177,17 +186,18 @@
   "h1": "Tankless vs. Tank Water Heaters in Cold Climates | Brimer Plumbing Blog",
   "description": "Compare tankless and tank water heaters for mountain homes. Pros, cons, and considerations for altitude, cold inlet temps, and seasonal use.",
   "canonical": "https://www.brimercon.com/blog/tankless-vs-tank-water-heaters-cold-climates/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 58224,
-  "published": "2025-02-03"
+  "htmlBytes": 57857,
+  "lastModified": "Sat, 19 Sep 2026 12:27:36 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/water-heater-maintenance-tahoe-homeowner/",
@@ -197,17 +207,18 @@
   "h1": "Water Heater Maintenance Every Tahoe Homeowner Should Know | Brimer Plumbing Blog",
   "description": "Annual water heater tasks: flushing sediment, checking anode rod, testing pressure relief valve. When to call a pro in Tahoe and Truckee.",
   "canonical": "https://www.brimercon.com/blog/water-heater-maintenance-tahoe-homeowner/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 58884,
-  "published": "2025-10-28"
+  "htmlBytes": 58517,
+  "lastModified": "Thu, 10 Sep 2026 06:18:13 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/what-to-do-when-pipe-freezes/",
@@ -217,17 +228,18 @@
   "h1": "What to Do When a Pipe Freezes | Brimer Plumbing Blog",
   "description": "Step-by-step guide when a pipe freezes: safe thawing methods, identifying the frozen section, and when to call a professional plumber.",
   "canonical": "https://www.brimercon.com/blog/what-to-do-when-pipe-freezes/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 59000,
-  "published": "2025-05-20"
+  "htmlBytes": 58633,
+  "lastModified": "Thu, 10 Sep 2026 06:08:40 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/blog/why-smart-leak-shutoff-matters-mountain-homes/",
@@ -235,19 +247,20 @@
   "status": 200,
   "title": "Why Smart Leak Shutoff Systems Matter for Mountain Homes | Brimer Plumbing Blog",
   "h1": "Why Smart Leak Shutoff Systems Matter for Mountain Homes | Brimer Plumbing Blog",
-  "description": "How Moen Flo and similar smart leak shutoff systems work, why they're valuable for seasonal homes, and insurance benefits for Tahoe homeowners.",
+  "description": "How Moen Flo and similar smart leak shutoff systems work, why they",
   "canonical": "https://www.brimercon.com/blog/why-smart-leak-shutoff-matters-mountain-homes/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BlogPosting",
    "BreadcrumbList",
    "ListItem",
    "Organization",
    "WebPage"
   ],
-  "html_bytes": 58865,
-  "published": "2025-06-05"
+  "htmlBytes": 58498,
+  "lastModified": "Thu, 10 Sep 2026 06:16:55 GMT",
+  "published": null
  },
  {
   "url": "https://www.brimercon.com/contact/",
@@ -257,9 +270,9 @@
   "h1": "Contact us",
   "description": "Contact Brimer Plumbing for plumbing service in Truckee and North Lake Tahoe, CA. Call 530-587-0733, email us, or submit a service request online.",
   "canonical": "https://www.brimercon.com/contact/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "City",
    "ContactPoint",
    "GeoCoordinates",
@@ -268,7 +281,8 @@
    "PostalAddress",
    "PropertyValue"
   ],
-  "html_bytes": 66292,
+  "htmlBytes": 65925,
+  "lastModified": "Thu, 10 Sep 2026 02:18:49 GMT",
   "published": null
  },
  {
@@ -279,14 +293,15 @@
   "h1": "Frequently asked questions",
   "description": "Answers to common plumbing questions for Tahoe and Truckee homeowners. Winterization, water heaters, emergency service, smart leak shutoff, and more.",
   "canonical": "https://www.brimercon.com/faqs/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Answer",
    "FAQPage",
    "Question"
   ],
-  "html_bytes": 82299,
+  "htmlBytes": 81932,
+  "lastModified": "Fri, 18 Sep 2026 03:07:31 GMT",
   "published": null
  },
  {
@@ -297,14 +312,15 @@
   "h1": "Priority plumbing service in Truckee & Lake Tahoe.",
   "description": "Join Brimer Membership for priority plumbing service, member pricing, and proactive care for homes, second homes, and HOA properties across Truckee and North Lake Tahoe.",
   "canonical": "https://www.brimercon.com/membership/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Offer",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 74359,
+  "htmlBytes": 73992,
+  "lastModified": "Thu, 10 Sep 2026 02:21:03 GMT",
   "published": null
  },
  {
@@ -313,12 +329,13 @@
   "status": 200,
   "title": "Privacy Notice | Brimer Plumbing | Truckee & North Lake Tahoe",
   "h1": "Privacy Notice",
-  "description": "Brimer Plumbing's privacy notice — how we collect, use, and protect the information you share when you contact us or request plumbing service.",
+  "description": "Brimer Plumbing",
   "canonical": "https://www.brimercon.com/privacy-policy/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 57195,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 56828,
+  "lastModified": "Sun, 13 Sep 2026 21:51:43 GMT",
   "published": null
  },
  {
@@ -327,12 +344,13 @@
   "status": 200,
   "title": "Request Plumbing Service | Truckee & North Lake Tahoe | Brimer Plumbing",
   "h1": "Request service",
-  "description": "Request plumbing service in Truckee and North Lake Tahoe, CA. Fill out our form and we'll respond promptly. For emergencies, call 530-587-0733.",
+  "description": "Request plumbing service in Truckee and North Lake Tahoe, CA. Fill out our form and we",
   "canonical": "https://www.brimercon.com/request-service/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 63332,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 62965,
+  "lastModified": "Sat, 19 Sep 2026 12:19:25 GMT",
   "published": null
  },
  {
@@ -343,10 +361,11 @@
   "h1": "Resources",
   "description": "Free plumbing resources for Tahoe and Truckee homeowners. Winterization checklist, emergency shutoff guide, seasonal home checklist, and water heater maintenance calendar.",
   "canonical": "https://www.brimercon.com/resources/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 68061,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 67694,
+  "lastModified": "Thu, 10 Sep 2026 02:18:19 GMT",
   "published": null
  },
  {
@@ -357,10 +376,11 @@
   "h1": "What homeowners say",
   "description": "Read what Truckee and North Lake Tahoe homeowners say about Brimer Plumbing. Clear communication, clean work, and dependable outcomes since 1997.",
   "canonical": "https://www.brimercon.com/reviews/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 78215,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 77848,
+  "lastModified": "Sat, 19 Sep 2026 12:19:25 GMT",
   "published": null
  },
  {
@@ -371,10 +391,11 @@
   "h1": "Service areas",
   "description": "Brimer Plumbing serves the California side of Truckee and North Lake Tahoe. See our full list of service areas. Not licensed in Nevada. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 88932,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 88565,
+  "lastModified": "Thu, 10 Sep 2026 02:26:00 GMT",
   "published": null
  },
  {
@@ -385,16 +406,17 @@
   "h1": "Plumber in Agate Bay, CA",
   "description": "Trusted plumbing services in Agate Bay, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/agate-bay/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93639,
+  "htmlBytes": 93272,
+  "lastModified": "Thu, 10 Sep 2026 02:34:33 GMT",
   "published": null
  },
  {
@@ -405,16 +427,17 @@
   "h1": "Plumber in Alpine Meadows, CA",
   "description": "Trusted plumbing services in Alpine Meadows, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/alpine-meadows/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 94482,
+  "htmlBytes": 94115,
+  "lastModified": "Thu, 17 Sep 2026 11:08:25 GMT",
   "published": null
  },
  {
@@ -425,16 +448,17 @@
   "h1": "Plumber in Carnelian Bay, CA",
   "description": "Trusted plumbing services in Carnelian Bay, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/carnelian-bay/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93344,
+  "htmlBytes": 92977,
+  "lastModified": "Thu, 10 Sep 2026 02:42:29 GMT",
   "published": null
  },
  {
@@ -445,16 +469,17 @@
   "h1": "Plumber in Dollar Point, CA",
   "description": "Trusted plumbing services in Dollar Point, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/dollar-point/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93773,
+  "htmlBytes": 93406,
+  "lastModified": "Thu, 10 Sep 2026 11:16:31 GMT",
   "published": null
  },
  {
@@ -465,16 +490,17 @@
   "h1": "Plumber in Donner Lake, CA",
   "description": "Trusted plumbing services in Donner Lake, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/donner-lake/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 92761,
+  "htmlBytes": 92394,
+  "lastModified": "Thu, 10 Sep 2026 02:34:59 GMT",
   "published": null
  },
  {
@@ -485,16 +511,17 @@
   "h1": "Plumber in Donner Summit / Serene Lakes, CA",
   "description": "Trusted plumbing services in Donner Summit and Serene Lakes, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/donner-summit-serene-lakes/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 96199,
+  "htmlBytes": 95832,
+  "lastModified": "Thu, 10 Sep 2026 02:43:47 GMT",
   "published": null
  },
  {
@@ -505,16 +532,17 @@
   "h1": "Plumber in Glenshire, CA",
   "description": "Trusted plumbing services in Glenshire, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/glenshire/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 92147,
+  "htmlBytes": 91780,
+  "lastModified": "Thu, 10 Sep 2026 02:36:05 GMT",
   "published": null
  },
  {
@@ -523,18 +551,19 @@
   "status": 200,
   "title": "Plumber in Gray's Crossing, CA | Brimer Plumbing | Truckee & Tahoe",
   "h1": "Plumber in Gray's Crossing, CA",
-  "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Gray's Crossing homes in Truckee. Serving Truckee-Tahoe since 1997.",
+  "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Gray",
   "canonical": "https://www.brimercon.com/service-areas/grays-crossing/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 96743,
+  "htmlBytes": 96376,
+  "lastModified": "Thu, 10 Sep 2026 02:28:01 GMT",
   "published": null
  },
  {
@@ -545,16 +574,17 @@
   "h1": "Plumber in Homewood, CA",
   "description": "Trusted plumbing services in Homewood, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/homewood/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93458,
+  "htmlBytes": 93091,
+  "lastModified": "Thu, 10 Sep 2026 02:35:36 GMT",
   "published": null
  },
  {
@@ -565,16 +595,17 @@
   "h1": "Plumber in Kings Beach, CA",
   "description": "Trusted plumbing services in Kings Beach, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/kings-beach/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93814,
+  "htmlBytes": 93447,
+  "lastModified": "Thu, 10 Sep 2026 02:42:36 GMT",
   "published": null
  },
  {
@@ -585,16 +616,17 @@
   "h1": "Plumber in Lahontan, CA",
   "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Lahontan homes in Truckee. Serving Truckee-Tahoe since 1997.",
   "canonical": "https://www.brimercon.com/service-areas/lahontan/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 97392,
+  "htmlBytes": 97025,
+  "lastModified": "Thu, 10 Sep 2026 02:34:16 GMT",
   "published": null
  },
  {
@@ -605,16 +637,17 @@
   "h1": "Plumber in Martis Camp, CA",
   "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Martis Camp homes. Serving Truckee-Tahoe since 1997.",
   "canonical": "https://www.brimercon.com/service-areas/martis-camp/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 97835,
+  "htmlBytes": 97468,
+  "lastModified": "Sat, 19 Sep 2026 12:22:53 GMT",
   "published": null
  },
  {
@@ -625,16 +658,17 @@
   "h1": "Plumber in Meeks Bay, CA",
   "description": "Plumbing repairs, water heaters, propane appliance hookups, leak detection, and freeze protection for Meeks Bay homes. Serving Truckee-Tahoe since 1997.",
   "canonical": "https://www.brimercon.com/service-areas/meeks-bay/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 98800,
+  "htmlBytes": 98433,
+  "lastModified": "Sat, 19 Sep 2026 12:22:53 GMT",
   "published": null
  },
  {
@@ -645,16 +679,17 @@
   "h1": "Plumber in Norden, CA",
   "description": "Trusted plumbing services in Norden, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/norden/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 95768,
+  "htmlBytes": 95401,
+  "lastModified": "Sat, 19 Sep 2026 12:22:53 GMT",
   "published": null
  },
  {
@@ -665,16 +700,17 @@
   "h1": "Plumber in Northstar, CA",
   "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Northstar homes and condos. Serving Truckee-Tahoe since 1997.",
   "canonical": "https://www.brimercon.com/service-areas/northstar/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 96896,
+  "htmlBytes": 96529,
+  "lastModified": "Thu, 10 Sep 2026 02:29:18 GMT",
   "published": null
  },
  {
@@ -685,16 +721,17 @@
   "h1": "Plumber in Old Greenwood, CA",
   "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Old Greenwood homes in Truckee. Serving Truckee-Tahoe since 1997.",
   "canonical": "https://www.brimercon.com/service-areas/old-greenwood/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 96323,
+  "htmlBytes": 95956,
+  "lastModified": "Tue, 15 Sep 2026 21:40:23 GMT",
   "published": null
  },
  {
@@ -705,16 +742,17 @@
   "h1": "Plumber in Olympic Valley, CA",
   "description": "Trusted plumbing services in Olympic Valley, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/olympic-valley/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 97594,
+  "htmlBytes": 97227,
+  "lastModified": "Thu, 17 Sep 2026 08:48:59 GMT",
   "published": null
  },
  {
@@ -723,18 +761,19 @@
   "status": 200,
   "title": "Plumber in Schaffer's Mill, CA | Brimer Plumbing | Truckee & Tahoe",
   "h1": "Plumber in Schaffer's Mill, CA",
-  "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Schaffer's Mill homes in Truckee. Serving Truckee-Tahoe since 1997.",
+  "description": "Plumbing repairs, water heaters, gas lines, leak detection, and freeze protection for Schaffer",
   "canonical": "https://www.brimercon.com/service-areas/schaffers-mill/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 96682,
+  "htmlBytes": 96315,
+  "lastModified": "Thu, 10 Sep 2026 02:34:32 GMT",
   "published": null
  },
  {
@@ -745,16 +784,17 @@
   "h1": "Plumber in Soda Springs, CA",
   "description": "Trusted plumbing services in Soda Springs, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/soda-springs/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 95505,
+  "htmlBytes": 95138,
+  "lastModified": "Thu, 10 Sep 2026 02:45:35 GMT",
   "published": null
  },
  {
@@ -765,16 +805,17 @@
   "h1": "Plumber in Tahoe City, CA",
   "description": "Trusted plumbing services in Tahoe City, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/tahoe-city/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93844,
+  "htmlBytes": 93477,
+  "lastModified": "Sat, 19 Sep 2026 12:22:53 GMT",
   "published": null
  },
  {
@@ -785,16 +826,17 @@
   "h1": "Plumber in Tahoe Donner, CA",
   "description": "Trusted plumbing services in Tahoe Donner, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/tahoe-donner/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 95798,
+  "htmlBytes": 95431,
+  "lastModified": "Sun, 13 Sep 2026 02:29:25 GMT",
   "published": null
  },
  {
@@ -805,16 +847,17 @@
   "h1": "Plumber in Tahoe Vista, CA",
   "description": "Trusted plumbing services in Tahoe Vista, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/tahoe-vista/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93386,
+  "htmlBytes": 93019,
+  "lastModified": "Thu, 10 Sep 2026 02:43:25 GMT",
   "published": null
  },
  {
@@ -825,16 +868,17 @@
   "h1": "Plumber in Tahoma, CA",
   "description": "Trusted plumbing services in Tahoma, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/tahoma/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 93760,
+  "htmlBytes": 93393,
+  "lastModified": "Thu, 17 Sep 2026 11:08:42 GMT",
   "published": null
  },
  {
@@ -845,16 +889,17 @@
   "h1": "Plumber in Truckee, CA",
   "description": "Trusted plumbing services in Truckee, CA. Water heaters, gas lines, leak repair, and emergency service for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/service-areas/truckee/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "BreadcrumbList",
    "City",
    "ListItem",
    "Plumber",
    "Service"
   ],
-  "html_bytes": 98954,
+  "htmlBytes": 98587,
+  "lastModified": "Tue, 15 Sep 2026 21:44:14 GMT",
   "published": null
  },
  {
@@ -865,10 +910,11 @@
   "h1": "Our services",
   "description": "Professional plumbing services in Truckee and North Lake Tahoe, CA. Water heaters, gas lines, kitchen and bath plumbing, smart leak shutoff, and emergency repairs. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/services/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 87227,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 86860,
+  "lastModified": "Thu, 10 Sep 2026 02:16:37 GMT",
   "published": null
  },
  {
@@ -879,9 +925,9 @@
   "h1": "Appliance Installation",
   "description": "Professional appliance installation in Truckee and North Lake Tahoe. Dishwashers, refrigerator water lines, washing machines, and ice makers. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/services/appliance-installation/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Answer",
    "BreadcrumbList",
    "FAQPage",
@@ -892,7 +938,8 @@
    "Service",
    "State"
   ],
-  "html_bytes": 85978,
+  "htmlBytes": 85611,
+  "lastModified": "Thu, 10 Sep 2026 02:26:21 GMT",
   "published": null
  },
  {
@@ -903,9 +950,9 @@
   "h1": "Frozen & Burst Pipes",
   "description": "Emergency frozen and burst pipe repair in Truckee and North Lake Tahoe. Safe thawing, burst repairs, winterization, and freeze prevention. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/services/frozen-burst-pipes/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Answer",
    "BreadcrumbList",
    "FAQPage",
@@ -916,7 +963,8 @@
    "Service",
    "State"
   ],
-  "html_bytes": 88592,
+  "htmlBytes": 88225,
+  "lastModified": "Thu, 10 Sep 2026 02:28:00 GMT",
   "published": null
  },
  {
@@ -927,9 +975,9 @@
   "h1": "Gas Services",
   "description": "Professional gas line installation, appliance hookups, leak detection, and safety inspections in Truckee and North Lake Tahoe. Licensed California plumbers. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/services/gas-services/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Answer",
    "BreadcrumbList",
    "FAQPage",
@@ -940,7 +988,8 @@
    "Service",
    "State"
   ],
-  "html_bytes": 86278,
+  "htmlBytes": 85911,
+  "lastModified": "Thu, 10 Sep 2026 02:23:28 GMT",
   "published": null
  },
  {
@@ -951,9 +1000,9 @@
   "h1": "Kitchen & Bath Plumbing",
   "description": "Professional kitchen and bathroom plumbing in Truckee and North Lake Tahoe. Faucets, toilets, showers, disposals, remodel rough-in, and pressure issues. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/services/kitchen-bath-plumbing/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Answer",
    "BreadcrumbList",
    "FAQPage",
@@ -964,7 +1013,8 @@
    "Service",
    "State"
   ],
-  "html_bytes": 86366,
+  "htmlBytes": 85999,
+  "lastModified": "Thu, 10 Sep 2026 05:52:22 GMT",
   "published": null
  },
  {
@@ -975,9 +1025,9 @@
   "h1": "Smart Leak Shutoff",
   "description": "Protect your Tahoe or Truckee home with smart leak detection and automatic water shutoff. Moen Flo installation and monitoring. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/services/smart-leak-shutoff/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Answer",
    "BreadcrumbList",
    "FAQPage",
@@ -988,7 +1038,8 @@
    "Service",
    "State"
   ],
-  "html_bytes": 88485,
+  "htmlBytes": 88118,
+  "lastModified": "Wed, 16 Sep 2026 00:05:04 GMT",
   "published": null
  },
  {
@@ -999,9 +1050,9 @@
   "h1": "Water Heaters",
   "description": "Expert water heater service in Truckee and North Lake Tahoe. Tank and tankless repair, replacement, and annual maintenance for mountain homes. Call 530-587-0733.",
   "canonical": "https://www.brimercon.com/services/water-heaters/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [
    "Answer",
    "BreadcrumbList",
    "FAQPage",
@@ -1012,7 +1063,8 @@
    "Service",
    "State"
   ],
-  "html_bytes": 85649,
+  "htmlBytes": 85282,
+  "lastModified": "Thu, 10 Sep 2026 02:26:22 GMT",
   "published": null
  },
  {
@@ -1023,10 +1075,11 @@
   "h1": "Terms of Use",
   "description": "Terms governing use of the Brimer Plumbing website and its third-party content.",
   "canonical": "https://www.brimercon.com/terms-of-use/",
-  "robots_meta": null,
-  "og_image": "https://www.brimercon.com/images/og-default.jpg",
-  "jsonld_types": [],
-  "html_bytes": 53147,
+  "robotsMeta": null,
+  "ogImage": "https://www.brimercon.com/images/og-default.jpg",
+  "jsonLdTypes": [],
+  "htmlBytes": 52780,
+  "lastModified": "Sun, 13 Sep 2026 21:51:33 GMT",
   "published": null
  }
 ]
