@@ -71,11 +71,14 @@ export function napOneLine(): string {
   return `${site.street}, ${site.city}, ${site.region} ${site.postal}`;
 }
 
-/** Trust strip shown inside the first screen on every important template (audit B1). */
+/**
+ * First two items of the first-screen trust strip (audit B1). The third is the Google
+ * rating, which FirstScreen builds from the reviews cache so it can fall back to a plain
+ * link when no rating has been fetched.
+ */
 export const trustPoints = [
   { label: `Serving Truckee since ${site.founded}` },
   { label: site.cslbLine },
-  { label: "Google reviews", href: site.googleReviewsUrl },
 ] as const;
 
 export const navPrimary = [

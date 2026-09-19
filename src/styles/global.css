@@ -662,6 +662,36 @@ address {
   font-size: 0.95rem;
 }
 
+/* ---------- google rating ---------- */
+
+.stars {
+  letter-spacing: 0.04em;
+  color: #e8a33d;
+}
+
+.stars__off {
+  color: var(--line);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.reviews__rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.reviews__rating span {
+  color: var(--ink-soft);
+}
+
 /* ---------- faqs ---------- */
 
 .faqs__list {

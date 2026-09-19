@@ -45,7 +45,12 @@ The contract is specified in `PLAN.md` §3b and enforced by `tests/first-screen.
 
 Both are required on the rebuild and neither belongs in the first screen.
 
-- **Reviews**: pull Google reviews at build time via the Places API into a committed cache (`src/data/reviews.ts` plus a refresh script), so pages stay static and no third-party widget runs in the browser. Until the API key exists, the quoted reviews already on live are the stub content, attributed as they are today. **No `AggregateRating` or `Review` schema** — the SEO brief forbids inventing it and Google does not surface self-serving review markup for a LocalBusiness.
+- **Reviews and the star rating**: built and wired. `scripts/refresh-reviews.mjs` (`npm run reviews`) calls Places Details (New) at `https://places.googleapis.com/v1/places/{placeId}` with `X-Goog-FieldMask: id,displayName,rating,userRatingCount,reviews`, and writes `src/data/reviews-cache.json`, which is **committed**. The site build makes no network call, so a Places outage can neither break nor slow a deploy, and the page can never show a number nobody fetched.
+  - **Fail closed.** Missing key, failed request, or a response without a numeric rating leaves the cache untouched and exits non-zero. `ratingSummary()` returns null when the cache has no usable rating, and the trust strip silently falls back to a plain "Google reviews" link.
+  - **Where it shows.** Trust strip inside the first screen: a five-star row plus "5.0 from 32 Google reviews", linked to the listing. Review cards sit after the first screen so they never push the call button down.
+  - **Held-back reviews survive a refresh.** `HOLD_BACK` patterns in `src/data/reviews.ts` filter on text, so a review mentioning radiant heating (kept off the site by the SEO brief) or describing an arrival time (reads as an unapproved response-time promise) is dropped whether it came from the seed or from the API.
+  - **No `AggregateRating` or `Review` schema**, on any page including `/reviews/`.
+  - **Current cache is a seed.** `GOOGLE_PLACES_API_KEY` was not available, so rating 4.97 from 32 came from the Truckee Google Business Profile record read on 2026-09-19, and the review text is quoted from live. Real and dated, not estimated, and the provenance is in the file. The first successful refresh replaces the whole file and sets `source` to `google-places-api-v1`.
 - **Map**: a static, lazily-loaded map image or a click-to-load embed near the NAP block on `/contact/` and the home page. Never an eagerly-loaded iframe: that alone would cost the Lighthouse budget.
 
 ## 4. Type and colour

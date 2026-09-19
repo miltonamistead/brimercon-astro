@@ -10,6 +10,8 @@
  * them without updating that gate.
  */
 import { site, serviceAreaLine, trustPoints } from "@/data/site";
+import { ratingSummary } from "@/data/reviews";
+import Stars from "@/components/Stars.astro";
 
 interface Props {
   h1: string;
@@ -34,6 +36,10 @@ const {
 // site.afterHoursLine stays the single source of the sentence (audit H8); splitting on the
 // number only lets the markup keep it from wrapping mid-digits on a narrow screen.
 const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
+
+// Null when no rating has been fetched, in which case the strip shows a plain link
+// instead of a number nobody verified (audit H10).
+const rating = ratingSummary();
 ---
 
 <section class="first-screen">
@@ -58,11 +64,21 @@ const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
     </p>
 
     <ul class="trust-strip" data-fs="trust">
-      {
-        trustPoints.map((point) => (
-          <li>{point.href ? <a href={point.href} rel="noopener">{point.label}</a> : point.label}</li>
-        ))
-      }
+      {trustPoints.map((point) => <li>{point.label}</li>)}
+      <li>
+        <a class="rating" href={site.googleReviewsUrl} rel="noopener">
+          {
+            rating ? (
+              <>
+                <Stars rating={rating.rating} />
+                <span class="nowrap">{rating.display} from {rating.total} Google reviews</span>
+              </>
+            ) : (
+              "Google reviews"
+            )
+          }
+        </a>
+      </li>
     </ul>
   </div>
 </section>
