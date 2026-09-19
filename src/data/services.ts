@@ -28,12 +28,12 @@ export const services: Service[] = [
       "Repair and replacement for tank and tankless units",
       "High-altitude configuration for Truckee elevations",
       "Annual flush, anode, and safety-valve service",
-      "Same-day diagnosis on many no-hot-water calls",
+      "Diagnosis before any recommendation",
     ],
     body: [
-      "Water heaters in Truckee and on the California side of North Lake Tahoe work harder than the same equipment at sea level. Groundwater arrives cold for much of the year, elevation changes combustion on gas units, and seasonal vacancy lets sediment settle in tanks that sit unused for weeks. Repair, replacement, and tankless conversions all start from those conditions.",
+      "Water heaters in Truckee and around North Lake Tahoe work harder than the same equipment at sea level. Groundwater arrives cold for much of the year, elevation changes combustion on gas units, and seasonal vacancy lets sediment settle in tanks that sit unused for weeks. Repair, replacement, and tankless conversions all start from those conditions.",
       "We diagnose first. A leaking tank, a failed thermocouple, a tankless error code, or a unit that never recovered after a long vacancy each has a different next step. You get options before work starts. We protect floors and closets, then verify hot water at the fixtures before we leave.",
-      "Permits, when required, run through the Town of Truckee or the applicable California county building department. We do not publish prices on this page. You get a clear recommendation after we see the unit and the home.",
+      "Permits, when required, run through the Town of Truckee or the applicable California county building department. You get a clear recommendation and a price after we see the unit and the home.",
     ],
     sections: [
       {
@@ -42,7 +42,7 @@ export const services: Service[] = [
       },
       {
         heading: "Replacement and new installation",
-        copy: "A replacement in this climate needs altitude-ready combustion or the right electric configuration, venting that fits the house, and sizing for real fixture demand — not a catalog default. We coordinate fuel type (natural gas, propane, or electric) and leave the space clean.",
+        copy: "A replacement in this climate needs altitude-ready combustion or the right electric configuration, venting that fits the house, and sizing for real fixture demand rather than a catalog default. We coordinate fuel type (natural gas, propane, or electric) and leave the space clean.",
       },
       {
         heading: "Tankless systems",
@@ -50,19 +50,19 @@ export const services: Service[] = [
       },
       {
         heading: "Annual maintenance",
-        copy: "A yearly visit — sediment flush, anode check, T&P valve test, and a look at venting and valves — is the simplest way to catch a tank before it soaks a closet. Especially useful for homes that sit empty between seasons.",
+        copy: "A yearly visit covering sediment flush, anode check, T&P valve test, and a look at venting and valves is the simplest way to catch a tank before it soaks a closet. Especially useful for homes that sit empty between seasons.",
       },
     ],
     faqs: [
       {
         question: "How long do water heaters last in mountain homes?",
         answer:
-          "Tank units often last 8–12 years here; hard water and altitude can shorten that. Tankless units often last 15–20 years with regular descaling. Annual inspections catch failures early.",
+          "Tank units often last 8 to 12 years here; hard water and altitude can shorten that. Tankless units often last 15 to 20 years with regular descaling. Annual inspections catch failures early.",
       },
       {
         question: "Should I switch from a tank to a tankless water heater?",
         answer:
-          "It depends on usage, home size, fuel, venting, and whether the house sits empty. We give honest pros and cons for your house — not a one-size pitch.",
+          "It depends on usage, home size, fuel, venting, and whether the house sits empty. We give honest pros and cons for your house rather than a one-size pitch.",
       },
       {
         question: "Do you service all water heater brands?",
@@ -81,17 +81,17 @@ export const services: Service[] = [
       "Emergency frozen and burst pipe repair in Truckee and North Lake Tahoe. Safe thawing, burst repairs, winterization, and freeze prevention. Call 530-587-0733.",
     h1: "Frozen and burst pipe repair in Truckee and North Lake Tahoe",
     summary:
-      "Emergency response, controlled thawing, burst repair, and winterization for California-side mountain homes.",
+      "Emergency response, controlled thawing, burst repair, and winterization for mountain homes in Truckee and North Lake Tahoe.",
     bullets: [
-      "Priority response for active leaks and burst lines",
-      "Controlled thawing — no open flame",
+      "Burst lines and active leaks stopped and repaired",
+      "Controlled thawing, never an open flame",
       "Repair or replace the failed section cleanly",
       "Winterization and freeze-prevention follow-up",
     ],
     body: [
       "Freeze events are a normal winter risk at this elevation: crawl-space runs, hose bibs, and vacant houses that were not shut down. If a pipe is frozen or already open, call 530-587-0733. Shut the main if you can do it safely. Do not use a torch.",
       "We locate the failure, thaw only when it is safe, stop the water, and repair the damaged section. After the emergency we can talk insulation, heat-trace on exposed runs, and whether a smart shutoff belongs on the main.",
-      "Emergency calls for burst pipes, active leaks, and no water anywhere on the California side of Truckee and North Lake Tahoe come to the same number: 530-587-0733. If you smell gas, leave the house and call the gas utility first, then call us.",
+      "Burst pipes, active leaks, and no water all come to the same number, whether the house is in Truckee, Donner Lake, Tahoe City, Kings Beach, or Olympic Valley: 530-587-0733. If you smell gas, leave the house and call the gas utility first, then call us.",
     ],
     sections: [
       {
@@ -116,7 +116,7 @@ export const services: Service[] = [
       {
         question: "Do you offer emergency plumbing service?",
         answer:
-          "Yes. Burst pipes, active leaks, and gas concerns get priority. Call 530-587-0733 for the fastest response. We can often be on site the same day.",
+          "Yes. Burst pipes, active leaks, and gas concerns are what the phone is for. Call 530-587-0733 any time. If we miss you, leave a message.",
       },
     ],
     related: ["smart-leak-shutoff", "water-heaters", "gas-services"],
@@ -130,7 +130,7 @@ export const services: Service[] = [
       "Professional gas line installation, appliance hookups, leak detection, and safety inspections in Truckee and North Lake Tahoe. Licensed California plumbers. Call 530-587-0733.",
     h1: "Gas line installation, leak detection, and safety",
     summary:
-      "Gas lines, appliance hookups, leak checks, and permit-aware work for California-side homes.",
+      "Gas lines, appliance hookups, leak checks, and permit-aware work for Truckee and North Lake Tahoe homes.",
     bullets: [
       "Leak detection and pressure testing",
       "New runs for ranges, fireplaces, and dryers",
@@ -174,7 +174,7 @@ export const services: Service[] = [
       "Kitchen and bathroom plumbing in Truckee and North Lake Tahoe. Faucets, toilets, showers, disposals, remodel rough-in, and pressure issues. Call 530-587-0733.",
     h1: "Kitchen and bathroom plumbing",
     summary:
-      "Fixtures, drains, remodel rough-in, and pressure correction — clean work that protects finishes.",
+      "Fixtures, drains, remodel rough-in, and pressure correction, with finishes protected while we work.",
     bullets: [
       "Faucets, toilets, showers, and disposals",
       "Drain clearing and fixture resets",
@@ -217,7 +217,7 @@ export const services: Service[] = [
     description:
       "Appliance installation in Truckee and North Lake Tahoe. Dishwashers, refrigerator water lines, washing machines, and ice makers. Call 530-587-0733.",
     h1: "Plumbing appliance installation",
-    summary: "Dishwashers, fridge lines, washers, and ice makers — hooked up cleanly and tested for leaks.",
+    summary: "Dishwashers, fridge lines, washers, and ice makers, hooked up cleanly and tested for leaks.",
     bullets: [
       "Dishwasher supply and drain",
       "Refrigerator and ice-maker lines",
@@ -225,7 +225,7 @@ export const services: Service[] = [
       "Leak check after every hookup",
     ],
     body: [
-      "A new appliance is only as good as the valves and lines behind it. We replace tired stops, use the right supply lines, and test before we leave — especially in vacant second homes where a slow drip sits unnoticed.",
+      "A new appliance is only as good as the valves and lines behind it. We replace tired stops, use the right supply lines, and test before we leave. That matters most in vacant second homes where a slow drip sits unnoticed.",
       "If a gas range or dryer is part of the same visit, see gas services. We will not leave a connection untested.",
     ],
     sections: [
@@ -251,7 +251,7 @@ export const services: Service[] = [
       "Protect your Tahoe or Truckee home with smart leak detection and automatic water shutoff. Moen Flo installation and monitoring. Call 530-587-0733.",
     h1: "Smart leak detection and automatic shutoff",
     summary:
-      "Whole-home monitors that watch flow, pressure, and freeze risk — and can shut the water when you are away.",
+      "Whole-home monitors that watch flow, pressure, and freeze risk, and can shut the water off when you are away.",
     bullets: [
       "Moen Flo and similar whole-home monitors",
       "Automatic shutoff on leak or freeze risk",
@@ -260,12 +260,12 @@ export const services: Service[] = [
     ],
     body: [
       "A vacant mountain home can leak for days before anyone walks in. A monitor on the main line watches flow and temperature and can close the valve. That is why second-home owners and property managers ask for this work.",
-      "We install on the main, confirm app access, and walk you through away-mode. It is not a substitute for winterization when a house will sit through a deep freeze with the heat down, but it is the best remote backstop we put on a California-side house.",
+      "We install on the main, confirm app access, and walk you through away-mode. It is not a substitute for winterization when a house will sit through a deep freeze with the heat down, but it is the best remote backstop we put on a mountain house.",
     ],
     sections: [
       {
         heading: "Who it is for",
-        copy: "Seasonal owners, caretakers, and anyone who has already had a supply-line failure. Insurers sometimes recognize monitored shutoffs; we do not quote those programs here — ask your carrier.",
+        copy: "Seasonal owners, caretakers, and anyone who has already had a supply-line failure. Insurers sometimes recognize monitored shutoffs; ask your carrier, because we do not quote those programs.",
       },
     ],
     faqs: [
