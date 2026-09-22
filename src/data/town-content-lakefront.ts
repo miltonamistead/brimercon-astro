@@ -169,7 +169,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "New gas lines for fireplaces and ranges",
         paragraphs: [
-          "New gas runs in Tahoe Vista commonly support fireplace installations, appliance upgrades, kitchen remodels and fuel-source conversions. The work requires proper sizing, code-compliant installation, a pressure test, and coordination with Southwest Gas for meter capacity.",
+          "In Tahoe Vista, new gas piping usually goes in for a fireplace, a range or cooktop upgrade, or a remodel that moves fixtures. The run has to be sized for the load, installed to code, pressure tested, and matched to meter capacity in coordination with Southwest Gas.",
           "We handle gas line installation from planning through final pressure testing, file permits through Placer County, and coordinate with general contractors and designers when the work is part of a larger renovation.",
         ],
         link: { label: "More on gas line installation", href: "/services/gas-services/" },
@@ -185,16 +185,16 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Leak detection for homes empty between seasons",
         paragraphs: [
-          "A significant share of Tahoe Vista properties sit empty for weeks or months between seasons. A slow leak behind a wall or a supply line failure during a cold snap can go undetected until the damage has spread, and nobody is walking the house to catch it.",
-          "A monitor on the main water supply line watches flow, pressure and temperature continuously and can shut the water off on its own when something is wrong. For an owner managing the property remotely, it is the difference between a phone alert and a spring discovery.",
+          "A slow leak behind a wall, or a supply line that lets go during a cold snap, can run for weeks in a house nobody walks through. By the time anyone visits, the damage has traveled from a cabinet to a subfloor.",
+          "A monitor on the main water supply line watches flow, pressure and temperature continuously and can shut the water off on its own when something is wrong. For an owner managing the property remotely, the value is simple: a phone alert instead of a spring surprise.",
         ],
         link: { label: "More on smart leak shutoff", href: "/services/smart-leak-shutoff/" },
       },
       {
         heading: "Frozen pipes in Tahoe Vista's quiet months",
         paragraphs: [
-          "Heavy snowfall and sustained freezing temperatures arrive on schedule here. Exposed pipe runs in crawl spaces, exterior walls and uninsulated areas are the most vulnerable, and homes that are closed up for portions of winter without proper winterization are at the highest risk.",
-          "We respond with targeted diagnostics to locate the failure point, controlled thawing where possible, and clean repair or replacement of damaged sections. For homes with recurring freeze risk we assess insulation improvements and monitoring solutions that fit how the house is actually used.",
+          "The snowfall is heavy and the freezes are sustained, and the houses most exposed are the ones sitting closed up between seasons. Pipes in crawl spaces, exterior walls and uninsulated runs freeze first when a cold snap lands on an unwinterized home.",
+          "Our first step is diagnostics that pinpoint the failure, not guesswork that opens walls. From there it is controlled thawing where safe and a clean repair or replacement of the damaged section, then insulation and monitoring options sized to how often the house sits empty.",
         ],
         link: { label: "More on frozen and burst pipes", href: "/services/frozen-burst-pipes/" },
       },
@@ -217,17 +217,17 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         question: "Who provides water and sewer service in Tahoe Vista?",
         answer:
-          "Water and sewer collection in Tahoe Vista is provided by North Tahoe Public Utility District (NTPUD), which manages water distribution and sewer collection across the North Shore communities it serves, including Kings Beach, Tahoe Vista, Carnelian Bay and Agate Bay. Regional wastewater treatment is handled by the Tahoe-Truckee Sanitation Agency (TTSA). Natural gas is provided by Southwest Gas. Electricity in the Tahoe Vista area is provided by Liberty Utilities.",
+          "NTPUD handles water distribution and sewer collection for Tahoe Vista, as it does for the other North Shore communities in its service area: Kings Beach, Carnelian Bay and Agate Bay. Wastewater then goes to the Tahoe-Truckee Sanitation Agency (TTSA) for regional treatment. Gas comes from Southwest Gas and electric service in the area comes from Liberty Utilities.",
       },
       {
         question: "Do I need a high-altitude water heater in Tahoe Vista?",
         answer:
-          "Yes. Tahoe Vista sits at approximately 6,250 to 6,300 feet. At that elevation, reduced oxygen levels affect combustion in gas-fired water heaters. Units installed without proper high-altitude adjustments run less efficiently, produce more carbon monoxide, and wear out faster. Most manufacturers offer factory-configured high-altitude models or conversion kits. The cold groundwater supplied by NTPUD adds further stress on heating elements and burners, requiring a larger temperature rise to reach standard output.",
+          "The extra southern sun Tahoe Vista gets does not change the combustion math. At roughly 6,250 to 6,300 feet, gas-fired water heaters burn with thinner air than their sea-level ratings assume, so a unit installed without a high-altitude kit or a factory-configured model wastes fuel, produces more carbon monoxide and wears out early. On top of that, the cold groundwater NTPUD supplies forces a larger temperature rise than most equipment expects, and in vacation condos and second homes the idle stretches between seasons let scale and corrosion compound the altitude stress.",
       },
       {
         question: "How do I protect my Tahoe Vista home's plumbing when I'm away?",
         answer:
-          "The most effective approach combines smart leak detection with proper winterization. A Moen Flo system monitors your water supply line continuously and can shut off water automatically if it detects a leak or abnormal flow. For extended vacancies, maintaining minimum heat levels and insulating vulnerable pipe runs reduces freeze risk. Shoulder season months carry particular risk, because temperatures can still drop below freezing while homes sit vacant between ski season and summer use.",
+          "Start with leak detection on the main water supply line. A Moen Flo system watches flow, pressure and temperature around the clock and shuts the water off on its own when readings go wrong, which is the main line of defense for an owner who visits a few times a year. Pair it with minimum heat and winterized hose bibs before you close up. The danger window is the shoulder season, when nights can freeze while the condo sits empty between ski season and summer use.",
       },
       {
         question: "Do I need a permit for plumbing work in Tahoe Vista?",
@@ -287,7 +287,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Gas line sizing for remodels and fuel switches",
         paragraphs: [
-          "New gas line runs in Carnelian Bay commonly support fireplace installations, appliance upgrades, kitchen remodels and fuel-source conversions. Each one requires proper sizing, code-compliant installation, a pressure test, and coordination with Southwest Gas for meter capacity.",
+          "Carnelian Bay gas additions usually tie into a remodel: a fireplace, a new range or cooktop, an appliance fuel switch. We size the run for the total load, install to code, pressure test, and work with Southwest Gas on meter capacity where it is needed.",
           "Gas line installation runs from planning through final pressure testing, with permits filed through Placer County. When the work sits inside a larger renovation we coordinate with the general contractor and designer.",
         ],
         link: { label: "More on gas line installation", href: "/services/gas-services/" },
@@ -303,7 +303,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Moen Flo monitoring between seasons",
         paragraphs: [
-          "Second homes spend long stretches unmonitored between ski season and summer use. A slow leak behind a wall or a supply line failure during a cold snap can go undetected until the damage has spread, and an owner managing from a distance finds out weeks later.",
+          "Between ski season and summer, many Carnelian Bay homes go weeks without anyone inside. A leak behind a wall or a supply failure in a cold snap can run that whole time, and a distant owner learns about it from a utility bill or a neighbor's call.",
           "Moen Flo goes on the main water supply line and watches flow, pressure and temperature around the clock. It can shut the water off automatically when something is wrong and sends real-time alerts to your phone, which is exactly the coverage a house needs when nobody is in it.",
         ],
         link: { label: "More on smart leak shutoff", href: "/services/smart-leak-shutoff/" },
@@ -311,7 +311,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Frozen and burst pipe repair in Carnelian Bay",
         paragraphs: [
-          "Heavy snowfall and sustained freezing temperatures are the winter norm at this elevation. Exposed pipe runs in crawl spaces, exterior walls and uninsulated areas are the most vulnerable, and homes that are closed up for portions of winter without proper winterization are at the highest risk.",
+          "At 6,325 feet the winter norm is heavy snow and long freezes, and an unoccupied second home is the riskiest house on the street. The first pipes to freeze are the exposed runs in crawl spaces, exterior walls and uninsulated areas, especially in a house closed up without proper winterization.",
           "We answer with targeted diagnostics to locate the failure point, controlled thawing where it can be done safely, and clean repair or replacement of the damaged sections. Where freeze risk keeps recurring, we look at insulation improvements and monitoring options.",
         ],
         link: { label: "More on frozen and burst pipes", href: "/services/frozen-burst-pipes/" },
@@ -340,12 +340,12 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         question: "Do I need a high-altitude water heater in Carnelian Bay?",
         answer:
-          "Yes. Carnelian Bay sits at approximately 6,325 feet. At that elevation, reduced oxygen levels affect combustion in gas-fired water heaters. Units installed without proper high-altitude adjustments run less efficiently, produce more carbon monoxide, and wear out faster. Most manufacturers offer factory-configured high-altitude models or conversion kits. The cold groundwater supplied by NTPUD adds further stress on heating elements and burners, requiring a larger temperature rise to reach standard output.",
+          "Yes, and Carnelian Bay makes the case clearly at about 6,325 feet, the highest lakefront elevation on the North Shore. Thinner air derates gas-fired combustion, so an unadjusted unit burns dirtier, heats less efficiently and wears out sooner. The cold inlet water from NTPUD compounds it with a larger temperature rise, and the second-home cycle of hard family use followed by months of sitting gives corrosion every opening it needs.",
       },
       {
         question: "How do I protect my Carnelian Bay home's plumbing when I'm away?",
         answer:
-          "The most effective approach combines smart leak detection with proper winterization. A Moen Flo system monitors your water supply line continuously and can shut off water automatically if it detects a leak or abnormal flow. For extended vacancies, maintaining minimum heat levels and insulating vulnerable pipe runs reduces freeze risk. Shoulder season months carry particular risk, because temperatures can still drop below freezing while homes sit vacant between ski season and summer use.",
+          "Continuous monitoring is the backbone. A Moen Flo system on the main supply line watches flow, pressure and temperature at all hours and shuts the water off by itself when something is wrong. Back that up with minimum heat and insulated runs before the vacancy. The shoulder seasons are the real test, when freezing nights arrive while the house sits unused between ski season and summer.",
       },
       {
         question: "Do I need a permit for plumbing work in Carnelian Bay?",
@@ -405,7 +405,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "New gas lines for patios, pools and fireplaces",
         paragraphs: [
-          "New gas runs on the peninsula often support the outdoor life the community is built around: patio heaters, pool equipment, fireplaces and appliance upgrades. Each run needs correct sizing, code-compliant installation, a pressure test, and coordination with Southwest Gas when meter capacity is involved.",
+          "Outdoor gas is the signature job on the peninsula: patio heaters, pool equipment, a fireplace, a grill stub. The community's outdoor life runs on these, and each run still needs proper sizing, code-compliant installation, a pressure test, and Southwest Gas coordination where meter capacity is in play.",
           "We handle gas line installation from planning through final pressure testing, file permits through Placer County, and coordinate with general contractors and designers when the work is part of a larger project.",
         ],
         link: { label: "More on gas line installation", href: "/services/gas-services/" },
@@ -421,7 +421,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Leak monitoring for empty second homes",
         paragraphs: [
-          "A significant share of Dollar Point properties are second homes that sit empty for weeks at a time. A slow leak behind a wall or a supply line failure during a cold snap can go undetected until the damage has spread, and in the larger homes the water has further to travel.",
+          "Many Dollar Point homes sit empty for weeks at a stretch, and in a larger house a leak has more rooms to reach before anyone notices. A slow failure behind a wall or a line that lets go in a cold snap can run unnoticed until the damage is spread across the lower level.",
           "A monitor on the main water supply line watches flow, pressure and temperature continuously and can shut the water off on its own when something is wrong, with real-time alerts to your phone. For an owner managing from a distance, it is the practical answer to the empty-house problem.",
         ],
         link: { label: "More on smart leak shutoff", href: "/services/smart-leak-shutoff/" },
@@ -429,7 +429,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Frozen pipe repair in Dollar Point winters",
         paragraphs: [
-          "Heavy snowfall and sustained freezing temperatures are the winter norm on the peninsula. Exposed pipe runs in crawl spaces, exterior walls and uninsulated areas are the most vulnerable, and homes that are closed up for portions of winter without proper winterization are at the highest risk.",
+          "Winter on the peninsula means heavy snow and sustained freezes, and the houses closed up without winterization take the worst of it. Crawl space runs, exterior walls and uninsulated areas are where the first failures show up.",
           "Our response is targeted diagnostics to find the failure point, controlled thawing where possible, and clean repair or replacement of what is damaged. For homes that freeze repeatedly, we assess insulation upgrades and monitoring.",
         ],
         link: { label: "More on frozen and burst pipes", href: "/services/frozen-burst-pipes/" },
@@ -458,12 +458,12 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         question: "Do I need a high-altitude water heater in Dollar Point?",
         answer:
-          "Yes. Dollar Point sits at roughly 6,480 feet. At that elevation, reduced oxygen levels affect combustion in gas-fired water heaters. Units installed without proper high-altitude adjustments run less efficiently, produce more carbon monoxide, and wear out faster. Most manufacturers offer factory-configured high-altitude models or conversion kits. The cold groundwater supplied by TCPUD adds further stress on heating elements and burners, requiring a larger temperature rise to reach standard output.",
+          "Yes. Dollar Point sits near 6,480 feet, and the peninsula's larger homes make the derating harder to ignore: more bathrooms, longer pipe runs and simultaneous draws all stacked on thinner-air combustion. A unit installed without a high-altitude kit or factory-configured model burns less efficiently, produces more carbon monoxide and wears out faster, and the cold groundwater TCPUD supplies forces a bigger temperature rise than the rating assumes.",
       },
       {
         question: "How do I protect my Dollar Point home's plumbing when I'm away?",
         answer:
-          "The most effective approach combines smart leak detection with proper winterization. A Moen Flo system monitors your water supply line continuously and can shut off water automatically if it detects a leak or abnormal flow. For extended vacancies, maintaining minimum heat levels and insulating vulnerable pipe runs reduces freeze risk. Shoulder season months carry particular risk, because temperatures can still drop below freezing while homes sit vacant between ski season and summer use.",
+          "With larger homes and longer runs, monitoring earns its keep here. A Moen Flo system on the main line watches flow, pressure and temperature continuously and shuts the water off automatically when something is wrong. For the weeks the house sits empty, keep minimum heat on and pipe runs insulated, and pay attention to the shoulder season, when freezes arrive while the house is vacant between ski season and beach season.",
       },
       {
         question: "Do I need a permit for plumbing work in Dollar Point?",
@@ -523,7 +523,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Adding gas for a fireplace or kitchen remodel",
         paragraphs: [
-          "New gas line runs in Agate Bay commonly support fireplace installations, appliance upgrades, kitchen remodels and fuel-source conversions. The work requires proper sizing, code-compliant installation, a pressure test, and coordination with Southwest Gas for meter capacity.",
+          "In Agate Bay, new gas usually arrives with a fireplace or a kitchen update: a range, a cooktop, an appliance switch. We size the run for the load, install it to code, pressure test, and coordinate meter capacity with Southwest Gas.",
           "Gas line installation is handled from planning through final pressure testing. Permits are filed through Placer County, and we coordinate with general contractors and designers when the work belongs to a larger renovation.",
         ],
         link: { label: "More on gas line installation", href: "/services/gas-services/" },
@@ -576,12 +576,12 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         question: "Do I need a high-altitude water heater in Agate Bay?",
         answer:
-          "Yes. Agate Bay sits at approximately 6,250 to 6,300 feet. At that elevation, reduced oxygen levels affect combustion in gas-fired water heaters. Units installed without proper high-altitude adjustments run less efficiently, produce more carbon monoxide, and wear out faster. Most manufacturers offer factory-configured high-altitude models or conversion kits. The cold groundwater supplied by Agate Bay Water Company adds further stress on heating elements and burners, requiring a larger temperature rise to reach standard output.",
+          "The banana belt microclimate does not excuse the altitude. Agate Bay sits around 6,250 to 6,300 feet, and at that height gas-fired water heaters need a high-altitude kit or a factory-configured model to burn safely and efficiently. Skip it and the unit runs dirtier, wears out faster and heats less. The cold groundwater from the Agate Bay Water Company adds a larger temperature rise on top, and the rental turnover between vacancies piles heavy-use cycles onto the same equipment.",
       },
       {
         question: "How do I protect my Agate Bay home's plumbing when I'm away?",
         answer:
-          "The most effective approach combines smart leak detection with proper winterization. A Moen Flo system monitors your water supply line continuously and can shut off water automatically if it detects a leak or abnormal flow. For extended vacancies, maintaining minimum heat levels and insulating vulnerable pipe runs reduces freeze risk. Many Agate Bay homes are used as short-term rentals, which means plumbing cycles between heavy guest use and periods of vacancy, and continuous monitoring protects regardless of occupancy pattern.",
+          "Short-term rentals need monitoring that does not depend on anyone being home. A Moen Flo system on the main supply line tracks flow, pressure and temperature continuously and shuts the water off automatically when something is wrong, so the house is covered between turnovers and in the vacant stretches. Minimum heat and insulated runs cover the cold nights, and remote alerts mean the owner hears about trouble before the next guest does.",
       },
       {
         question: "Do I need a permit for plumbing work in Agate Bay?",
@@ -812,12 +812,12 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         question: "Do I need a high-altitude water heater in Homewood?",
         answer:
-          "Yes. Homewood sits at approximately 6,225 feet at the lakefront, with homes upslope sitting higher. At that elevation, reduced oxygen levels affect combustion in gas-fired water heaters. Units installed without proper high-altitude adjustments run less efficiently, produce more carbon monoxide, and wear out faster. Most manufacturers offer factory-configured high-altitude models or conversion kits. The cold groundwater supplied by TCPUD adds further stress on heating elements and burners, requiring a larger temperature rise to reach standard output.",
+          "Yes. Homewood sits near 6,225 feet at the lakefront with the hillside homes higher still, and thinner air derates every gas-fired unit. A high-altitude kit or factory-configured model is what keeps combustion safe and efficient; without it the unit burns dirtier, heats less and fails sooner. TCPUD's cold groundwater adds a larger temperature rise, and in the 1960s and 1970s homes the original-era venting often has to be rethought before a new unit goes in.",
       },
       {
         question: "How do I protect my Homewood home's plumbing when I'm away?",
         answer:
-          "The most effective approach combines smart leak detection with proper winterization. A Moen Flo system monitors your water supply line continuously and can shut off water automatically if it detects a leak or abnormal flow. For extended vacancies, maintaining minimum heat levels and insulating vulnerable pipe runs reduces freeze risk. Many Homewood homes have older plumbing routed through crawl spaces and exterior walls that are particularly vulnerable during cold snaps.",
+          "Older crawl space plumbing makes unattended cold snaps the main threat here. A Moen Flo system on the main water supply line monitors flow, pressure and temperature continuously and shuts the water off by itself when something is wrong. For long vacancies, keep minimum heat on and protect the vulnerable runs, and lean toward monitoring over a full seasonal shutdown if the house will see mid-winter visits.",
       },
       {
         question: "Do I need a permit for plumbing work in Homewood?",
@@ -901,7 +901,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         heading: "Frozen pipe repair in Tahoma",
         paragraphs: [
-          "Heavy snowfall and sustained freezing temperatures are the winter norm here. Exposed pipe runs in crawl spaces, exterior walls and uninsulated areas are the most vulnerable, and homes that are closed up for portions of winter without proper winterization are at the highest risk.",
+          "Sustained freezes and heavy snow are the winter norm on the west shore, and Tahoma's crawl space plumbing is right in the path. The runs through crawl spaces, exterior walls and uninsulated areas freeze first, and houses closed up without proper winterization carry the highest risk.",
           "We start with targeted diagnostics to find the failure point, thaw in a controlled way where possible, and repair or replace the damaged sections cleanly. Recurring freeze risk calls for an assessment of insulation improvements and monitoring.",
         ],
         link: { label: "More on frozen and burst pipes", href: "/services/frozen-burst-pipes/" },
@@ -930,12 +930,12 @@ export const townContentLakefront: Record<string, TownContent> = {
       {
         question: "Do I need a high-altitude water heater in Tahoma?",
         answer:
-          "Yes. Tahoma sits at approximately 6,225 feet at the lakefront. At that elevation, reduced oxygen levels affect combustion in gas-fired water heaters. Units installed without proper high-altitude adjustments run less efficiently, produce more carbon monoxide, and wear out faster. Most manufacturers offer factory-configured high-altitude models or conversion kits. The cold groundwater supplied by TCPUD adds further stress on heating elements and burners, requiring a larger temperature rise to reach standard output.",
+          "Yes. Tahoma sits around 6,225 feet, and that is enough altitude to derate gas-fired combustion. An unadjusted unit runs less efficiently, produces more carbon monoxide and wears out faster, which is why manufacturers sell high-altitude kits and factory-configured models. TCPUD's cold groundwater adds a bigger temperature rise, and staged cabin renovations are the moment to get both the sizing and the venting right.",
       },
       {
         question: "How do I protect my Tahoma home's plumbing when I'm away?",
         answer:
-          "The most effective approach combines smart leak detection with proper winterization. A Moen Flo system monitors your water supply line continuously and can shut off water automatically if it detects a leak or abnormal flow. For extended vacancies, maintaining minimum heat levels and insulating vulnerable pipe runs reduces freeze risk. Many Tahoma cabins have crawl space plumbing and older supply lines that are particularly vulnerable during winter cold snaps.",
+          "Crawl space plumbing you cannot see needs monitoring you do not have to watch. A Moen Flo system on the main supply line tracks flow, pressure and temperature around the clock and shuts the water off automatically when something is wrong. Keep minimum heat through the vacancy, insulate the exposed runs, and remember the older supply lines are the ones most likely to let go in a hard cold snap.",
       },
       {
         question: "Do I need a permit for plumbing work in Tahoma?",

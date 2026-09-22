@@ -27,3 +27,10 @@ last. The canonical history is the git log on `cursor/astro-rebuild-d8c5`.
   changed, re-shoot needed at review); qa-headings word lists extended for 24 towns.
 - Similarity gate: 7 pairs over 0.45 on first run (east-shore lakefront cluster +
   homewood/tahoma); lakefront agent rewriting now.
+- M3 QA: `qa:links` green (56 pages, 2206 links); `qa:similarity` caught 7
+  over-similar pairs (east-shore cluster + homewood/tahoma), lakefront rewrite
+  in progress; form E2E 14/14 (`docs/qa/form-e2e.md`); phone-check report green
+  on 56 pages; static first-screen marker gate green on 8 templates (Playwright
+  run blocked by sandbox Chrome, needs a real run on the preview);
+  `qa-lighthouse.mjs` built, static budgets pass (0 B JS, 7.8 KB CSS, 23.7 KB
+  home HTML, 0 third-party), full-surface curl check saved.

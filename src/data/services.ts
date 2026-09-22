@@ -53,7 +53,7 @@ export const services: Service[] = [
     shortName: "Water heaters",
     title: "Water Heater Repair, Replacement & Installation | Truckee & Tahoe | Brimer Plumbing",
     description:
-      "Water heater repair, replacement, and installation in Truckee and North Lake Tahoe. Tank and tankless service sized for altitude and cold inlet water. Call 530-587-0733.",
+      "Water heater repair, replacement, and installation in Truckee and North Lake Tahoe. Tank and tankless sized for altitude. Call 530-587-0733.",
     h1: "Water heater repair and installation in Truckee and North Lake Tahoe",
     summary:
       "Tank and tankless repair, replacement, and annual maintenance sized for mountain-home altitude and cold inlet water.",
@@ -238,7 +238,7 @@ export const services: Service[] = [
     shortName: "Gas",
     title: "Gas Line Installation, Leak Detection & Safety | Truckee & Tahoe | Brimer Plumbing",
     description:
-      "Professional gas line installation, appliance hookups, leak detection, and safety inspections in Truckee and North Lake Tahoe. Licensed California plumbers. Call 530-587-0733.",
+      "Gas line installation, appliance hookups, leak detection, and safety inspections in Truckee and North Lake Tahoe. Call 530-587-0733.",
     h1: "Gas line installation, leak detection, and safety",
     summary:
       "Gas lines, appliance hookups, leak checks, and permit-aware work for Truckee and North Lake Tahoe homes.",
