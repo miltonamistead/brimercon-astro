@@ -158,7 +158,7 @@ export const services: Service[] = [
     ],
     body: [
       "Freeze events are a normal winter risk at this elevation: crawl-space runs, hose bibs, and vacant houses that were not shut down. If a pipe is frozen or already open, call 530-587-0733. Shut the main if you can do it safely. Do not use a torch.",
-      "We locate the failure, thaw only when it is safe, stop the water, and repair the damaged section. After the emergency we can talk insulation, heat-trace on exposed runs, and whether a smart shutoff belongs on the main.",
+      "We locate the failure, thaw only when it is safe, stop the water, and repair the damaged section. After the emergency we can talk insulation on exposed runs, and whether a smart shutoff belongs on the main.",
       "Burst pipes, active leaks, and no water all come to the same number, whether the house is in Truckee, Donner Lake, Tahoe City, Kings Beach, or Olympic Valley: 530-587-0733. If you smell gas, leave the house and call the gas utility first, then call us.",
     ],
     sections: [
@@ -175,8 +175,8 @@ export const services: Service[] = [
         copy: "A real shutdown means draining the lines and fixtures, protecting the traps, dealing with the water heater, and clearing the exterior hose bibs. We document what we did so a caretaker, a property manager, or we ourselves can reverse it correctly in spring rather than guessing at what was closed.",
       },
       {
-        heading: "Freeze prevention with insulation and heat trace",
-        copy: "Houses tend to freeze in the same place every year. Once we know where, heat trace on that run, better insulation, and sometimes a change to crawl-space ventilation stop the annual repeat. A monitored shutoff on the main is the backstop for a house nobody is watching.",
+        heading: "Freeze prevention with insulation and monitoring",
+        copy: "Houses tend to freeze in the same place every year. Once we know where, better insulation on that run, and sometimes a change to crawl-space ventilation stop the annual repeat. A monitored shutoff on the main is the backstop for a house nobody is watching.",
       },
     ],
     commonIssues: [
@@ -194,7 +194,7 @@ export const services: Service[] = [
       },
       {
         heading: "Pipes in crawl spaces and exterior walls",
-        copy: "The usual casualties. Insulation and heat trace on the exposed runs are what stop it happening again.",
+        copy: "The usual casualties. Insulation and protection on the exposed runs are what stop it happening again.",
       },
       {
         heading: "A seasonal home with no winterization plan",
@@ -205,7 +205,7 @@ export const services: Service[] = [
       { step: "Call us", copy: "We talk you through shutting off the water while we are on the way." },
       { step: "We contain", copy: "We stop the active leak, find how far the water went, and make the situation safe." },
       { step: "We repair", copy: "The damaged section is repaired or replaced with the right materials, not a temporary fix." },
-      { step: "We prevent", copy: "We recommend insulation, heat trace, or a monitored shutoff so the same run does not go again." },
+      { step: "We prevent", copy: "We recommend insulation, pipe protection, or a monitored shutoff so the same run does not go again." },
     ],
     whyUs: WHY_BRIMER,
     headings: {

@@ -6,8 +6,13 @@
 // suits it. Section headings deliberately differ between towns so the 24 pages do not
 // read as one template with the name swapped.
 //
-// Only Truckee is filled in: it is the golden page for the "town" type, awaiting Milton's
-// approval before the other 23 are written (PLAN.md M0.5).
+// Only Truckee was filled in at M0.5. The other 23 towns were written in M2 from
+// per-town briefs (docs/town-briefs/<slug>.md) and merged here from the per-type
+// modules below. All 24 cleared the similarity gate (scripts/qa-similarity.mjs).
+
+import { townContentLakefront } from "./town-content-lakefront";
+import { townContentGatedResort } from "./town-content-gated-resort";
+import { townContentTownSummit } from "./town-content-town-summit";
 
 export interface TownSection {
   heading: string;
@@ -111,7 +116,7 @@ export const townContent: Record<string, TownContent> = {
         heading: "Frozen and burst pipe repair in Truckee winters",
         paragraphs: [
           "Hard freezes are routine here, not exceptional. The vulnerable points are consistent: exposed runs under raised foundations, exterior hose bibs, and supply lines in uninsulated crawl spaces. Houses closed up for winter without a proper shutdown are the highest risk, but occupied homes split pipes too during long cold snaps well below zero.",
-          "If a pipe has already gone, shut the main and call. We locate the failure, thaw only where it is safe, and repair or replace the damaged section. For a house that freezes in the same spot every winter, heat trace on that run is what stops the annual repeat.",
+          "If a pipe has already gone, shut the main and call. We locate the failure, thaw only where it is safe, and repair or replace the damaged section. For a house that freezes in the same spot every winter, insulation and protection on that run is what stops the annual repeat.",
         ],
         link: { label: "More on frozen and burst pipes", href: "/services/frozen-burst-pipes/" },
       },
@@ -149,12 +154,12 @@ export const townContent: Record<string, TownContent> = {
       {
         question: "What should I do if my pipes freeze in Truckee?",
         answer:
-          "Turn off the main water supply first, so that if a pipe has already cracked it does not flood when the ice releases. Do not use an open flame or a heat gun. Gentle heat from a hair dryer, or towels soaked in warm water, is safe. If you cannot find the frozen section, or a pipe has already burst, call 530-587-0733. For a house with recurring freeze problems, heat trace on the vulnerable runs is the reliable long-term fix.",
+          "Turn off the main water supply first, so that if a pipe has already cracked it does not flood when the ice releases. Do not use an open flame or a heat gun. Gentle heat from a hair dryer, or towels soaked in warm water, is safe. If you cannot find the frozen section, or a pipe has already burst, call 530-587-0733. For a house with recurring freeze problems, added insulation and protection on the vulnerable runs is the reliable long-term fix.",
       },
       {
         question: "How do I protect my Truckee home when I am away?",
         answer:
-          "Proper winterization plus smart leak detection. A monitor on the supply line watches continuously and can shut the water off if it sees a leak or abnormal flow. For long winter vacancies, keeping minimum heat on, insulating vulnerable runs and adding heat trace to exposed lines cuts the freeze risk considerably. We can walk the house and tell you which of those it actually needs.",
+          "Proper winterization plus smart leak detection. A monitor on the supply line watches continuously and can shut the water off if it sees a leak or abnormal flow. For long winter vacancies, keeping minimum heat on, insulating vulnerable runs and protecting exposed lines cuts the freeze risk considerably. We can walk the house and tell you which of those it actually needs.",
       },
       {
         question: "What does winterizing a Truckee home involve?",
@@ -164,6 +169,9 @@ export const townContent: Record<string, TownContent> = {
     ],
     popularServices: ["water-heaters", "frozen-burst-pipes", "gas-services", "smart-leak-shutoff"],
   },
+  ...townContentLakefront,
+  ...townContentGatedResort,
+  ...townContentTownSummit,
 };
 
 export function getTownContent(slug: string): TownContent | undefined {

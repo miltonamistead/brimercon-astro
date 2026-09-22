@@ -1,0 +1,88 @@
+---
+/**
+ * Blog index. Lists every post newest first with title, date and description.
+ * Card headings are H3: the post titles are frozen live titles (PLAN.md section 3d
+ * rule 7) and their title case does not meet the H2 sentence-case rule.
+ */
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Schema from "@/components/Schema.astro";
+import { breadcrumbSchema } from "@/lib/schema";
+import { canonicalUrl } from "@/data/site";
+
+const title = "Plumbing Blog | Tips for Tahoe & Truckee Homeowners | Brimer Plumbing";
+const description =
+  "Practical plumbing guidance for mountain homeowners, property managers, and anyone who wants to keep their Tahoe or Truckee home running smoothly.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog/" },
+];
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+function displayDate(d: Date) {
+  return d.toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+// Live's blog hub has no JSON-LD; an ItemList of the posts is the cheap fix.
+const itemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Brimer Plumbing blog",
+  itemListElement: posts.map((post, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: post.data.title.replace(/\s*\|\s*Brimer Plumbing Blog\s*$/, ""),
+    url: canonicalUrl(`/blog/${post.id}/`),
+  })),
+};
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[itemList, breadcrumbSchema(crumbs)]} />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <FirstScreen
+    h1="Plumbing blog"
+    intro="Insights and guides for Tahoe and Truckee homeowners: winterization, water heaters, leak prevention, and keeping a mountain home running smoothly."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <ul class="cards">
+        {
+          posts.map((post) => {
+            const name = post.data.title.replace(/\s*\|\s*Brimer Plumbing Blog\s*$/, "");
+            return (
+              <li class="card">
+                <p class="card__meta">
+                  <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
+                    {displayDate(post.data.pubDate)}
+                  </time>
+                </p>
+                <h3 class="card__title">
+                  <a href={`/blog/${post.id}/`}>{name}</a>
+                </h3>
+                <p class="card__summary">{post.data.description}</p>
+                <p class="card__more">
+                  <a href={`/blog/${post.id}/`}>Read article</a>
+                </p>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </section>
+</Base>

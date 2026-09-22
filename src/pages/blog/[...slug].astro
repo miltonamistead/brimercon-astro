@@ -1,0 +1,124 @@
+---
+/**
+ * Blog post template. Paths match live exactly: /blog/<slug>/.
+ * H1 is the live post title; the "| Brimer Plumbing Blog" suffix stays on the
+ * <title> tag only. Related services come from the live post footer, linked to
+ * the rebuilt service pages.
+ */
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Schema from "@/components/Schema.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import { breadcrumbSchema } from "@/lib/schema";
+import { site, canonicalUrl } from "@/data/site";
+import { getService } from "@/data/services";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const { title, description, pubDate } = post.data;
+// Live titles end with " | Brimer Plumbing Blog"; the H1 is the post name alone.
+const h1 = title.replace(/\s*\|\s*Brimer Plumbing Blog\s*$/, "");
+const path = `/blog/${post.id}/`;
+const isoDate = pubDate.toISOString().slice(0, 10);
+const displayDate = pubDate.toLocaleDateString("en-US", {
+  timeZone: "UTC",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog/" },
+  { name: h1, path },
+];
+
+// Related services as named in each live post's footer.
+const relatedSlugs: Record<string, string[]> = {
+  "how-to-winterize-plumbing-tahoe-second-home": ["frozen-burst-pipes", "smart-leak-shutoff"],
+  "tankless-vs-tank-water-heaters-cold-climates": ["water-heaters", "gas-services"],
+  "signs-of-hidden-leak-what-to-do": ["smart-leak-shutoff", "kitchen-bath-plumbing"],
+  "gas-line-safety-checks-before-winter": ["gas-services", "water-heaters"],
+  "what-to-do-when-pipe-freezes": ["frozen-burst-pipes", "smart-leak-shutoff"],
+  "why-smart-leak-shutoff-matters-mountain-homes": ["smart-leak-shutoff", "frozen-burst-pipes"],
+  "preparing-plumbing-before-leaving-for-season": ["frozen-burst-pipes", "smart-leak-shutoff", "water-heaters"],
+  "common-kitchen-plumbing-problems-older-tahoe-homes": ["kitchen-bath-plumbing", "appliance-installation"],
+  "how-property-managers-prevent-plumbing-emergencies": ["smart-leak-shutoff", "frozen-burst-pipes", "water-heaters"],
+  "water-heater-maintenance-tahoe-homeowner": ["water-heaters", "gas-services"],
+};
+const related = (relatedSlugs[post.id] ?? [])
+  .map((slug) => getService(slug))
+  .filter((s) => s !== undefined);
+
+const blogPosting = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: h1,
+  description,
+  datePublished: isoDate,
+  author: { "@type": "Organization", name: site.name, url: canonicalUrl("/") },
+  publisher: {
+    "@type": "Organization",
+    name: site.name,
+    logo: { "@type": "ImageObject", url: canonicalUrl("/images/brimer-logo.png") },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl(path) },
+};
+---
+
+<Base title={title} description={description} ogType="article">
+  <Schema slot="head" nodes={[blogPosting, breadcrumbSchema(crumbs)]} />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <FirstScreen
+    h1={h1}
+    intro={`Published ${displayDate}. Practical plumbing guidance from Brimer Plumbing for Tahoe and Truckee homeowners.`}
+  />
+
+  <article class="section">
+    <div class="wrap">
+      <Content />
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="section section--soft">
+        <div class="wrap">
+          <h2>Related services</h2>
+          <ul class="cards">
+            {related.map((service) => (
+              <ServiceCard service={service} bullets={0} />
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Need plumbing help in Truckee or Tahoe</h2>
+      <p>We are here for homeowners across Truckee and North Lake Tahoe. Call and describe what is going on, and we will take it from there.</p>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link">
+        <a href="/request-service/">Or send a service request</a>
+      </p>
+    </div>
+  </section>
+</Base>

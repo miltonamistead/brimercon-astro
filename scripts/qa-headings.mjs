@@ -53,6 +53,16 @@ const PLACE_WORDS = [
   "Sierra",
   "Gateway",
   "Prosser",
+  // M2: remaining town names, so all 24 town pages count their own name as a place.
+  "Agate",
+  "Dollar",
+  "Meeks",
+  "Gray",
+  "Schaffer",
+  "Greenwood",
+  "Old",
+  "Serene",
+  "Lakes",
 ];
 
 // Words that legitimately stay capitalised mid-heading: proper nouns and initialisms.
@@ -117,6 +127,28 @@ const PROPER = new Set([
   "Moen",
   "Flo",
   "I",
+  // M2: real local place names used in town-page H2s (verified against town facts).
+  "Bear",
+  "Creek",
+  "Gold",
+  "Coast",
+  "Emerald",
+  "El",
+  "Dorado",
+  "Pass",
+  "Highlands",
+  "View",
+  "Ridge",
+  "Mountain",
+  "Lodge",
+  "Cedars",
+  "Road",
+  "Village",
+  "Gray",
+  "Schaffer",
+  "Meeks",
+  "Brockway",
+  "I-80",
 ]);
 
 /**

@@ -24,7 +24,32 @@ export const GOLDEN_SERVICE_SLUGS = [
 // Towns stay deliberately at one. The remaining 23 need a written brief each
 // (docs/town-briefs.md) and must clear the similarity gate. Shipping 23 near-identical
 // pages is the exact failure this project exists to avoid.
-export const GOLDEN_TOWN_SLUGS = ["truckee"];
+export const GOLDEN_TOWN_SLUGS = [
+  "truckee",
+  "kings-beach",
+  "tahoe-vista",
+  "carnelian-bay",
+  "dollar-point",
+  "agate-bay",
+  "donner-lake",
+  "homewood",
+  "tahoma",
+  "meeks-bay",
+  "martis-camp",
+  "lahontan",
+  "schaffers-mill",
+  "grays-crossing",
+  "old-greenwood",
+  "tahoe-donner",
+  "northstar",
+  "olympic-valley",
+  "alpine-meadows",
+  "glenshire",
+  "tahoe-city",
+  "donner-summit-serene-lakes",
+  "soda-springs",
+  "norden",
+];
 
 /**
  * Whether a town has a page in this build. The service-area hub, the footer and the

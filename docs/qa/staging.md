@@ -16,7 +16,7 @@
 
 | Date | Branch / SHA | URL | State | Notes |
 |---|---|---|---|---|
-| 2026-09-22 | `cursor/astro-rebuild-d8c5` @ `ef6838c` | `brimercon-astro-staging-7rpiq0b6c-miltons-projects-7102dcb1.vercel.app` | building | M1 baseline (18 pages). Deployment `dpl_7xw4kw3w57QbQqznEwioF5pccDrY`, target preview. |
+| 2026-09-22 | `cursor/astro-rebuild-d8c5` @ `ef6838c` | `brimercon-astro-staging-7rpiq0b6c-miltons-projects-7102dcb1.vercel.app` | READY | M1 baseline (18 pages). Deployment `dpl_7xw4kw3w57QbQqznEwioF5pccDrY`, target preview. |
 
 ## Verification checklist (per README deploy section)
 
