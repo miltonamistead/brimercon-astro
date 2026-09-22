@@ -54,12 +54,16 @@ async function builtFileFor(urlPath) {
   if (!p.startsWith("/")) return null;
   if (p === "/") p = "/index.html";
   else if (p.endsWith("/")) p = p + "index.html";
-  const full = join(ROOT, decodeURIComponent(p.slice(1)));
-  try {
-    return (await stat(full)).isFile() ? full : null;
-  } catch {
-    return null;
+  const candidates = [p, p + ".html"]; // e.g. /404 -> 404.html
+  for (const cand of candidates) {
+    const full = join(ROOT, decodeURIComponent(cand.slice(1)));
+    try {
+      if ((await stat(full)).isFile()) return full;
+    } catch {
+      // try next candidate
+    }
   }
+  return null;
 }
 
 /** Live paths from the url-map table (first column, backticked). */
@@ -87,6 +91,7 @@ if (pages.length === 0) fail("no HTML pages found under " + ROOT);
 for (const livePath of await livePaths()) {
   if (REDIRECTS.has(livePath)) continue;
   if (livePath === "/404/" || livePath === "/thank-you/") continue; // additive utility routes
+  if (livePath === "/api/lead/") continue; // on-demand API route, covered by qa-form
   const file = await builtFileFor(livePath);
   if (!file) fail(`parity: live path ${livePath} has no built page`);
 }
