@@ -7,7 +7,7 @@ Parallel **noindex** Astro rebuild of [brimercon.com](https://www.brimercon.com)
 ## Rules (also enforced by the build)
 
 - Never contact Hunter / Dream Surge. Never touch live production, DNS, Cloudflare, GoDaddy, or the live Vercel project.
-- Repo stays private. Staging is `noindex, nofollow` (meta tag plus `X-Robots-Tag`), ships no sitemap, canonicals point at live, and sits behind Vercel Deployment Protection. Staging `robots.txt` says `Allow: /` on purpose, so crawlers can read the noindex.
+- Repo is public (Milton made it public 2026-09-21 to unblock build access; brief's "private" preference is superseded). Staging is `noindex, nofollow` (meta tag plus `X-Robots-Tag`), ships no sitemap, canonicals point at live, and sits behind Vercel Deployment Protection. Staging `robots.txt` says `Allow: /` on purpose, so crawlers can read the noindex.
 - Phone **530-587-0733** only. Calling is the primary action on every page.
 - California towns only, named rather than excluding a state. No out-of-area place names.
 - No public prices. No em or en dashes. No unapproved speed claims. No OTTO deploys, no GBP writes, no new GoHighLevel webhook.
@@ -63,4 +63,4 @@ Flipping the site to indexable is deliberately a two-step change (env var **and*
 
 Planning complete and the accepted Claude Fable audit applied: see `APPLY_STATUS.md` for exactly what changed and what is waiting on Milton.
 
-M0 foundations are built and green: config, data modules, layout, header/footer, first-screen component, fixed call bar, robots, 404, generated OG image, 30 carried images, and two working gates (content, first screen). **Page templates are paused at M0.5 pending Milton's approval of the golden home, service and town pages.** Milestone gates: `PLAN.md` §11.
+M0 foundations are built and green: config, data modules, layout, header/footer, first-screen component, fixed call bar, robots, 404, generated OG image, 30 carried images, and two working gates (content, first screen). **M0.5 golden pages approved by Milton 2026-09-19; M1 core pages + lead capture complete.** Milestone gates: `PLAN.md` §11.

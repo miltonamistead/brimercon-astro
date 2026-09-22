@@ -1,6 +1,6 @@
 # PLAN — brimercon-astro parallel twin
 
-Status: **planning complete; M0 foundations built; page templates paused pending Milton's golden-page approval.**
+Status: **M0.5 golden pages approved by Milton 2026-09-19; M1 core pages + lead capture complete; M2 in progress.**
 
 Written 2026-09-19 from `docs/source/KICKOFF.md`, the three 2026-08-31 plan/SEO/snapshot files, a read-only crawl of https://www.brimercon.com/ (`docs/crawl/`, reproducible with `npm run crawl`), the Truckee GBP record via Paige, and Granola meeting notes. Revised the same day to apply the **Claude Fable audit** that Milton accepted (`docs/source/APPLY_AUDIT.md`, `docs/source/AUDIT_ACCEPTED_SUMMARY.md`); see §15 for where each audit item landed.
 
