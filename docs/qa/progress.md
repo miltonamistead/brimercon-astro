@@ -34,3 +34,13 @@ last. The canonical history is the git log on `cursor/astro-rebuild-d8c5`.
   run blocked by sandbox Chrome, needs a real run on the preview);
   `qa-lighthouse.mjs` built, static budgets pass (0 B JS, 7.8 KB CSS, 23.7 KB
   home HTML, 0 third-party), full-surface curl check saved.
+- M3: technical SEO audit written (`docs/qa/technical-seo-audit.md`): sitemap
+  54 URLs (0 missing, +1 Martis Valley), canonicals/robots-meta/OG/JSON-LD/H1
+  all verified, 6 meta descriptions trimmed to <=160 chars, security headers
+  declared. Swap runbook re-read (do not execute; preconditions: gates green,
+  Milton decisions D2/D5/D9, two live lead channels, Sierra sign-off).
+- Open blockers: (1) GitHub token is read-only, branch cannot be pushed, PR
+  cannot be opened; (2) Vercel preview still serves the M1 baseline until the
+  branch deploys; (3) visual first-screen + browser QA need a working browser
+  on the preview; (4) Lighthouse full runs need working Chrome;
+  (5) lead email channel needs Milton's Resend key (precondition 3).
