@@ -50,3 +50,9 @@ last. The canonical history is the git log on `cursor/astro-rebuild-d8c5`.
   duplicate background removed. Branch is ahead of origin and cannot be
   pushed (token read-only) — PR, preview redeploy, and preview QA are blocked
   on Milton granting Contents write or reconnecting with a repo-scoped token.
+- 2026-09-22 15:29 PDT: push unblocked. Milton granted Contents write on the
+  fine-grained token; all 12 commits pushed through the GitHub API (blob/tree/
+  commit objects recreated, branch ref fast-forwarded). Remote SHAs differ
+  from local ones (GitHub appends a trailing newline to commit messages) but
+  all trees are byte-identical; local branch reset to origin tip 993d94d.
+  Open blockers now: PR review, preview redeploy, preview QA, Resend key.
