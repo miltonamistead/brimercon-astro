@@ -20,7 +20,8 @@
     "qa:first-screen": "playwright test",
     "qa:links": "node scripts/qa-links.mjs",
     "qa:form": "node scripts/qa-form.mjs",
-    "qa:lighthouse": "node scripts/qa-lighthouse.mjs"
+    "qa:lighthouse": "node scripts/qa-lighthouse.mjs",
+    "qa:similarity": "node scripts/qa-similarity.mjs"
   },
   "engines": {
     "node": ">=22.12"

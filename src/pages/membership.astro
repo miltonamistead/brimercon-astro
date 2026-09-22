@@ -1,0 +1,149 @@
+---
+/**
+ * Membership page, rebuilt WITHOUT dollar amounts (PLAN.md D2, url-map).
+ * Tiers, benefits and "contact for pricing" at the same URL. No "priority"
+ * language anywhere: it is an unapproved speed claim under the copy policy.
+ */
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { site } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Brimer Membership | Plumbing Service Plan in Truckee & Lake Tahoe";
+const description =
+  "A standing service relationship with a local plumber who knows your property. Membership tiers for homeowners, second homes, and HOA properties. Contact for pricing.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Membership", path: "/membership/" },
+];
+
+const tiers = [
+  {
+    name: "Essential",
+    blurb: "For homeowners who want a standing relationship and straightforward savings when something comes up.",
+    benefits: [
+      "Member pricing on all plumbing service",
+      "No diagnostic fee on service visits",
+      "Scheduled ahead of one-time service calls",
+    ],
+  },
+  {
+    name: "Steward",
+    blurb: "For homeowners who want proactive care and a clear picture of their plumbing system.",
+    benefits: [
+      "Everything in Essential",
+      "Annual whole-home plumbing review",
+      "Member access for after-hours emergencies, active leaks, floods, and freeze events",
+    ],
+  },
+  {
+    name: "Concierge",
+    blurb: "For homeowners who want complete coverage including water heater care.",
+    benefits: [
+      "Everything in Steward",
+      "Annual water heater maintenance included",
+    ],
+  },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <FirstScreen
+    h1="Brimer membership"
+    intro="A standing relationship with a local plumber who knows your property and helps you stay ahead of the failures that cost the most."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Why membership</h2>
+      <p class="lede">
+        In Truckee and Lake Tahoe, the gap between a small plumbing issue and serious
+        water damage is shorter than most homeowners expect. Freeze risk, seasonal
+        vacancy, aging crawlspace systems, and the distance from a trusted contractor all
+        compound the exposure. A one-off service call is not the same as having someone
+        who knows your home.
+      </p>
+      <p>
+        Membership creates an ongoing service relationship. Members get preferred
+        pricing and regular visibility into their plumbing so small issues get caught
+        before they become expensive ones. For second-home owners and property managers,
+        that continuity is especially valuable.
+      </p>
+    </div>
+  </section>
+
+  {
+    tiers.map((tier, i) => (
+      <section class={i % 2 === 0 ? "section section--soft" : "section"}>
+        <div class="wrap">
+          <h2>{tier.name}</h2>
+          <p class="lede">{tier.blurb}</p>
+          <ul>
+            {tier.benefits.map((benefit) => (
+              <li>{benefit}</li>
+            ))}
+          </ul>
+          <p>
+            <a class="btn-call" href={site.phoneHref}>
+              <span aria-hidden="true">&#9742;</span>
+              <span>Call {site.phoneDisplay}</span>
+            </a>
+          </p>
+          <p class="first-screen__form-link">
+            <a href="/request-service/">Ask about {tier.name} pricing</a>
+          </p>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section">
+    <div class="wrap">
+      <h2>For HOA boards and condo communities</h2>
+      <p>
+        The same model at building scale: recurring unit-level benefits plus project
+        pricing for water-damage prevention upgrades, including smart leak shutoff
+        installations. After-hours emergency response is included as a member benefit for
+        HOA properties. In many condo communities each unit has its own water main and
+        plumbing conditions, so protection is usually needed at the unit level rather
+        than only at the building level.
+      </p>
+      <ul>
+        <li>Annual maintenance visit</li>
+        <li>Member pricing on all plumbing service</li>
+        <li>No diagnostic fee on service visits</li>
+        <li>Member access for after-hours emergencies</li>
+      </ul>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link">
+        <a href="/request-service/">Ask about HOA pricing</a>
+      </p>
+    </div>
+  </section>
+
+  <EmergencyBand heading="A member plan starts with a conversation" />
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Contact for pricing</h2>
+      <p>
+        Membership is annual, per home, with monthly options available. Call and we will
+        walk through which tier fits your property. {site.hoursLabel}.{" "}
+        {site.afterHoursLine}
+      </p>
+    </div>
+  </section>
+</Base>

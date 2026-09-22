@@ -1,0 +1,160 @@
+---
+/**
+ * Martis Valley hub. Additive route: the nav label is a 404 on live (PLAN.md D3),
+ * so this page has no live title or H1 to preserve. It groups the six Martis Valley
+ * towns (five gated communities plus Northstar) for homeowners who think of the
+ * valley as one place.
+ */
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import TownLink from "@/components/TownLink.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import ReviewsStrip from "@/components/ReviewsStrip.astro";
+import Faq from "@/components/Faq.astro";
+import Schema from "@/components/Schema.astro";
+import { site } from "@/data/site";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
+
+const title = "Martis Valley Plumber | Brimer Plumbing | Truckee & Tahoe";
+const description = `Plumbing service for Martis Camp, Lahontan, Northstar, Schaffer's Mill, Gray's Crossing and Old Greenwood. Call ${site.phoneDisplay}.`;
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Service areas", path: "/service-areas/" },
+  { name: "Martis Valley", path: "/service-areas/martis-valley/" },
+];
+
+const faqs = [
+  {
+    question: "Do you work inside the gated communities?",
+    answer:
+      "Yes. We coordinate entry with the gate and with your estate manager or HOA contact before the visit, so the appointment runs on time. Give us the gate instructions when you book and we handle the rest.",
+  },
+  {
+    question: "Our home sits empty for weeks at a time. What should we worry about?",
+    answer:
+      "Supply lines under pressure in an empty house. A small leak can run for days before anyone sees it. Smart leak detection with automatic shutoff is the standard answer for Martis Valley second homes, paired with proper winterization before the first hard freeze.",
+  },
+  {
+    question: "Can you winterize a large home with multiple zones?",
+    answer:
+      "Yes. We walk the whole system, drain and protect each zone, document what was done, and reverse it in spring. Larger homes take longer because there is more to cover, and we price the visit after seeing the house, never before.",
+  },
+  {
+    question: "Do you work with our builder or estate manager?",
+    answer:
+      "Regularly. We coordinate with general contractors, designers and estate managers on remodels, new fixtures and ongoing maintenance, and we document everything so the next person who touches the system knows what was done.",
+  },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs), faqSchema(faqs)]} />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <FirstScreen
+    h1="Plumber in Martis Valley, CA"
+    areaLabel="Martis Camp, Lahontan, Northstar and the valley clubs"
+    areaHref="/service-areas/"
+    intro="Estate-scale plumbing for the valley's gated communities and resort neighborhoods."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="lede">
+        Martis Valley holds some of the largest and most complex homes in our service area:
+        gated estates, club communities and resort neighborhoods where the plumbing runs
+        long, the mechanical rooms are serious, and the house often sits empty between visits.
+        We work here the way the valley asks to be worked: coordinated entry, documented
+        systems, and leak protection sized for houses nobody is watching.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Water heaters for larger Martis Valley homes</h2>
+      <p>
+        Big houses mean big hot water demand: multiple primary suites, guest wings, spa
+        bathrooms and outdoor kitchens drawing at once. We size for the fixtures the house
+        actually has, confirm the gas supply can feed the load, and verify output at
+        several draw points before we leave.
+      </p>
+      <p><a href="/services/water-heaters/">More on water heater installation</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Freeze protection when the house sits empty</h2>
+      <p>
+        An empty house in January is where freeze damage happens. Exposed runs in
+        crawlspaces and garages, hose bibs nobody drained, a heating setback that drifted
+        too low. We winterize zone by zone and document it, so spring startup is a
+        reversal, not a discovery.
+      </p>
+      <p><a href="/services/frozen-burst-pipes/">More on freeze protection</a></p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Leak detection for homes nobody is watching</h2>
+      <p>
+        A supply-line leak in an occupied house gets noticed in hours. In a second home it
+        can run for weeks. Smart leak shutoff watches flow continuously and closes the
+        main when something looks wrong, which is why so many Martis Valley owners treat
+        it as standard equipment rather than an upgrade.
+      </p>
+      <p><a href="/services/smart-leak-shutoff/">More on smart leak shutoff</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Gas lines for outdoor kitchens and fire features</h2>
+      <p>
+        Outdoor living is a big part of why people buy in the valley, and most of it runs
+        on gas. We size and run new lines for kitchens, fire pits and heaters, pressure
+        test everything, and coordinate with Southwest Gas on meter capacity.
+      </p>
+      <p><a href="/services/gas-services/">More on gas line work</a></p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Communities we serve in the valley</h2>
+      <ul class="towns">
+        <li><TownLink slug="martis-camp" /></li>
+        <li><TownLink slug="lahontan" /></li>
+        <li><TownLink slug="northstar" /></li>
+        <li><TownLink slug="schaffers-mill" /></li>
+        <li><TownLink slug="grays-crossing" /></li>
+        <li><TownLink slug="old-greenwood" /></li>
+      </ul>
+    </div>
+  </section>
+
+  <EmergencyBand heading="A leak in an empty house cannot wait" />
+
+  <ReviewsStrip count={2} heading="What valley homeowners say" />
+
+  <Faq heading="Martis Valley plumbing questions" faqs={faqs} />
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Call before the next freeze</h2>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+      <p>{site.hoursLabel}. {site.afterHoursLine}</p>
+    </div>
+  </section>
+</Base>
