@@ -44,3 +44,9 @@ last. The canonical history is the git log on `cursor/astro-rebuild-d8c5`.
   branch deploys; (3) visual first-screen + browser QA need a working browser
   on the preview; (4) Lighthouse full runs need working Chrome;
   (5) lead email channel needs Milton's Resend key (precondition 3).
+- End of local work 2026-09-22: 11 Muse commits on `cursor/astro-rebuild-d8c5`,
+  all gates green on 56 pages (content, headings, links 2206/0 failures,
+  similarity 0 failures). Image wins: apple-touch-icon added, unreferenced
+  duplicate background removed. Branch is ahead of origin and cannot be
+  pushed (token read-only) — PR, preview redeploy, and preview QA are blocked
+  on Milton granting Contents write or reconnecting with a repo-scoped token.
