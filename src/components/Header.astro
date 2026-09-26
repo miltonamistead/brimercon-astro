@@ -1,0 +1,20 @@
+---
+import { site, navPrimary } from "@/data/site";
+---
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="site-header__logo" href="/" aria-label={`${site.name} home`}>
+      <img src="/images/brimer-logo.png" alt={site.name} width="564" height="210" fetchpriority="high" />
+    </a>
+    <a class="site-header__call" href={site.phoneHref}>
+      <span aria-hidden="true">&#9742;</span>
+      <span>{site.phoneDisplay}</span>
+    </a>
+  </div>
+  <nav class="site-nav wrap" aria-label="Primary">
+    <ul>
+      {navPrimary.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+    </ul>
+  </nav>
+</header>

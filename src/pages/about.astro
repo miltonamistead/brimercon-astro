@@ -1,0 +1,132 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import ReviewsStrip from "@/components/ReviewsStrip.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { site, napOneLine } from "@/data/site";
+import { towns } from "@/data/towns";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "About Brimer Plumbing | Truckee & North Lake Tahoe";
+const description =
+  "Brimer Plumbing: licensed plumbers serving Truckee and North Lake Tahoe since 1997. Clean work, clear communication, mountain-home expertise.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about/" },
+];
+
+const clients = [
+  {
+    title: "Homeowners",
+    copy: "Full-time residents who want a plumber they can call for routine maintenance and for the thing that goes wrong at the worst moment.",
+  },
+  {
+    title: "Second-home owners",
+    copy: "Seasonal residents who need winterization, monitoring, and someone reliable to call when they are three hours away.",
+  },
+  {
+    title: "Property managers",
+    copy: "Professionals running several properties who need clear communication, dependable scheduling, and coordinated access.",
+  },
+];
+
+const values = [
+  { title: "Options before work begins", copy: "You understand the issue, the choices, and the cost before we start." },
+  { title: "Protect the home", copy: "We cover floors, protect finishes, and leave the space cleaner than we found it." },
+  { title: "Verified outcomes", copy: "Every job ends with testing and confirmation, not an assumption." },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="Serving Truckee and North Lake Tahoe since 1997"
+    intro="Licensed plumbing contractors who have spent nearly three decades on the homes and rental properties of this region."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>How Brimer Plumbing started in Truckee</h2>
+      <p>
+        Brimer Plumbing was founded in 1997 with a straightforward goal: provide the kind of plumbing service mountain
+        homeowners deserve. Professional, clean, and honest. That has not changed.
+      </p>
+      <p>
+        We have grown alongside the communities we serve, from Truckee and Tahoe City out to the smaller neighborhoods
+        around Donner Lake, Olympic Valley and the west shore. Altitude, hard winters and seasonal use place demands on
+        plumbing that equipment specified for anywhere else does not expect, and we build our work around those realities.
+      </p>
+      <p>
+        Whether it is a routine fixture replacement or a burst pipe in the middle of January, the approach is the same:
+        careful diagnosis, clear options, clean execution, and a verified result.
+      </p>
+      <dl class="facts">
+        <div>
+          <dt>Founded</dt>
+          <dd>{site.founded}</dd>
+        </div>
+        <div>
+          <dt>Towns served</dt>
+          <dd>{towns.length} communities in California</dd>
+        </div>
+        <div>
+          <dt>Licence</dt>
+          <dd>{site.cslbLine}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>What guides the work</h2>
+      <ul class="points">
+        {
+          values.map((value) => (
+            <li>
+              <h3 class="points__title">{value.title}</h3>
+              <p>{value.copy}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Homeowners, second homes and property managers</h2>
+      <ul class="points">
+        {
+          clients.map((client) => (
+            <li>
+              <h3 class="points__title">{client.title}</h3>
+              <p>{client.copy}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <EmergencyBand heading="Emergency plumber in Truckee and Tahoe" />
+
+  <ReviewsStrip count={3} heading="What homeowners say about our work" />
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Talk to a plumber who knows the area</h2>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+      <p class="nap-line"><strong>{site.name}</strong>, {napOneLine()}. {site.hoursLabel}.</p>
+    </div>
+  </section>
+</Base>

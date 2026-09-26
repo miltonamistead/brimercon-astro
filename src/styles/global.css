@@ -1,0 +1,734 @@
+/* Design tokens and base styles. No webfonts: system stack keeps the first screen fast.
+   Layout rules that matter for the audit are marked with the B1 first-screen contract. */
+
+:root {
+  --ink: #12181f;
+  --ink-soft: #46535f;
+  --line: #d9e0e6;
+  --bg: #ffffff;
+  --bg-soft: #f4f7f9;
+  --brand: #12466e;
+  --brand-dark: #0d3453;
+  --accent: #b4441f;
+  --focus: #12466e;
+  --radius: 8px;
+  --wrap: 68rem;
+  --call-bar-h: 4rem;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* Room for the fixed mobile call bar so it never covers page content. */
+@media (max-width: 47.99em) {
+  body {
+    padding-bottom: var(--call-bar-h);
+  }
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 5.2vw, 2.4rem);
+}
+
+h2 {
+  font-size: clamp(1.3rem, 3.6vw, 1.75rem);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--brand);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--brand);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+}
+
+.site-header__logo img {
+  display: block;
+  width: auto;
+  height: 2.25rem;
+}
+
+.site-header__call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0.75rem;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+/* Nav sits below the fold-critical block on small screens so the first screen
+   stays: H1, area, call, hours, trust (B1). */
+@media (max-width: 47.99em) {
+  .site-nav {
+    display: none;
+  }
+}
+
+/* ---------- first screen (audit B1) ---------- */
+
+.first-screen {
+  padding: 1.25rem 0 1.5rem;
+}
+
+.first-screen__area {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.first-screen__area a {
+  color: var(--brand);
+}
+
+.first-screen__intro {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+}
+
+/* Full-width call button: the primary action on every important template. */
+.btn-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.btn-call:hover {
+  background: #93361a;
+}
+
+/* Form link is text weight and sits under the call button, never competing with it. */
+.first-screen__form-link {
+  display: block;
+  margin: 0.6rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.first-screen__hours {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.trust-strip li {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (min-width: 48em) {
+  .first-screen {
+    padding: 2rem 0 2.25rem;
+  }
+
+  .btn-call {
+    width: auto;
+    min-width: 20rem;
+  }
+
+  .first-screen__form-link {
+    text-align: left;
+  }
+}
+
+/* ---------- fixed mobile call bar (CSS only, audit B1) ---------- */
+
+.call-bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: var(--call-bar-h);
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 -2px 10px rgb(0 0 0 / 18%);
+}
+
+@media (min-width: 48em) {
+  .call-bar {
+    display: none;
+  }
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  margin-top: 2.5rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--line);
+  background: var(--bg-soft);
+  font-size: 0.95rem;
+}
+
+.site-footer h2 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .site-footer__grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+}
+
+.site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer li + li {
+  margin-top: 0.2rem;
+}
+
+.site-footer a {
+  color: var(--brand);
+}
+
+.site-footer__legal {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+address {
+  font-style: normal;
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  padding: 1.75rem 0;
+}
+
+.section--soft {
+  background: var(--bg-soft);
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+/* No .eyebrow class: eyebrow labels above H2s are banned (PLAN.md section 3d rule 2).
+   The H2 carries the meaning on its own. */
+
+.prose-block {
+  margin-bottom: 1.25rem;
+}
+
+.prose-block h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.nap-line {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* Keeps a phone number from breaking across lines mid-digits. */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* ---------- breadcrumbs ---------- */
+
+.breadcrumbs {
+  padding-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 0.35rem;
+  color: var(--line);
+}
+
+/* ---------- lists and grids ---------- */
+
+.points,
+.cards,
+.showcase,
+.steps,
+.towns,
+.ticks,
+.reviews__list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.points,
+.cards,
+.showcase,
+.steps {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40em) {
+  .points,
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards,
+  .showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 60em) {
+  .points,
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards,
+  .showcase {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.points__title {
+  font-size: 1rem;
+  margin-bottom: 0.15rem;
+}
+
+.points li p,
+.steps li p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.steps {
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  padding-left: 2.25rem;
+  position: relative;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.card__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.card__title a {
+  text-decoration: none;
+}
+
+.card__title a:hover {
+  text-decoration: underline;
+}
+
+.card__summary {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.card__bullets {
+  margin: 0 0 0.6rem;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.card__more {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.showcase__caption {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.towns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+.ticks {
+  font-size: 0.95rem;
+}
+
+.ticks li {
+  padding-left: 1.4rem;
+  position: relative;
+  margin-bottom: 0.3rem;
+}
+
+.ticks li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.facts {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 40em) {
+  .facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.facts dt {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.facts dd {
+  margin: 0.15rem 0 0;
+}
+
+/* ---------- emergency band ---------- */
+
+.band {
+  padding: 1.25rem 0;
+  background: var(--brand-dark);
+  color: #fff;
+}
+
+.band__inner {
+  display: grid;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (min-width: 48em) {
+  .band__inner {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.band__heading {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.band__note {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  color: #cfe0ec;
+}
+
+.band__call {
+  margin: 0;
+}
+
+/* ---------- reviews ---------- */
+
+.reviews__list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .reviews__list {
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+}
+
+.review {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.review blockquote {
+  margin: 0;
+}
+
+.review blockquote p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.review__who {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.review__who strong {
+  color: var(--ink);
+}
+
+.review__who span::before {
+  content: " \00b7 ";
+}
+
+.reviews__links {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- google rating ---------- */
+
+.stars {
+  letter-spacing: 0.04em;
+  color: #e8a33d;
+}
+
+.stars__off {
+  color: var(--line);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.reviews__rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.reviews__rating span {
+  color: var(--ink-soft);
+}
+
+/* ---------- faqs ---------- */
+
+.faqs__list {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.faq {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  padding: 0.85rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.faq[open] summary::after {
+  content: "\2013";
+}
+
+.faq p {
+  margin: 0 0 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}

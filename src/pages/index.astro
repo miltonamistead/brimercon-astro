@@ -1,0 +1,256 @@
+---
+/**
+ * Home page. Golden template for Milton's review (PLAN.md M0.5).
+ *
+ * Copy is the live homepage copy, deliberately. It ranks position 1 for "truckee plumber"
+ * and the copy policy freezes it (PLAN.md section 3c). Every deviation from live is a hard
+ * rule overriding the freeze, and each one is listed in GOLDEN_STATUS.md:
+ *   - em and en dashes cleaned
+ *   - "California side only" and "not licensed in Nevada" replaced by naming towns
+ *   - "fastest response" and "often respond same-day" removed from the emergency FAQ
+ *   - no star rating or review count asserted
+ *   - the Heavenly gondola image dropped
+ * The structure changes in one place: the live hero is replaced by the first-screen
+ * contract (PLAN.md section 3b), which puts the call button above the fold.
+ */
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import ReviewsStrip from "@/components/ReviewsStrip.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Faq from "@/components/Faq.astro";
+import Schema from "@/components/Schema.astro";
+import TownLink from "@/components/TownLink.astro";
+import { services } from "@/data/services";
+import { site, napOneLine } from "@/data/site";
+import { towns } from "@/data/towns";
+import { faqs as allFaqs } from "@/data/faqs";
+import { plumberSchema, faqSchema } from "@/lib/schema";
+
+const title = "Plumber in Truckee & North Lake Tahoe | Brimer Plumbing";
+const description =
+  "Licensed plumbers serving Truckee and North Lake Tahoe, CA. Water heaters, gas services, emergency repairs, smart leak protection. Call 530-587-0733.";
+
+const trustPoints = [
+  { title: "Licensed Plumbing Contractors", copy: "Fully insured and qualified" },
+  { title: "Finish-First Standards", copy: "We protect your home while we work" },
+  { title: "Clear Communication", copy: "Options before work begins" },
+  { title: "Mountain-Home Expertise", copy: `Serving Tahoe and Truckee since ${site.founded}` },
+];
+
+const specialisms = [
+  {
+    title: "Seasonal use expertise",
+    copy: "Winterization, spring startup, and monitoring for homes that sit empty between visits.",
+  },
+  {
+    title: "Freeze risk management",
+    copy: "Pipe insulation, freeze protection, and smart shutoff systems that protect your home in extreme cold.",
+  },
+  {
+    title: "Remote coordination",
+    copy: "We work with owners, caretakers, and property managers, wherever you are.",
+  },
+];
+
+const process = [
+  { step: "Diagnose", copy: "We assess the issue carefully before recommending anything. No guesswork, no rush." },
+  { step: "Present options", copy: "You'll understand the choices and costs before work begins. Clear pricing, no surprises." },
+  {
+    step: "Protect and execute",
+    copy: "We safeguard finishes, work cleanly, and communicate throughout. Your home is treated with care.",
+  },
+  { step: "Verify and close", copy: "We confirm everything works and leave your home spotless. The job isn't done until it's verified." },
+];
+
+// Live shows three lifestyle cards. The third used the Heavenly gondola frame, which is
+// South Lake Tahoe and out of area, so it is replaced by another of Brimer's own files
+// with its honest alt text (docs/design.md section 1).
+const showcase = [
+  {
+    src: "/images/spa-grade-bath-experiences.png",
+    alt: "Luxury mountain bathroom with stone and wood finishes.",
+    caption: "Spa-grade bath experiences",
+    width: 1024,
+    height: 1024,
+  },
+  {
+    src: "/images/design-forward-fixture-performance.png",
+    alt: "High-end kitchen with premium fixture finishes.",
+    caption: "Design-forward fixture performance",
+    width: 1024,
+    height: 682,
+  },
+  {
+    src: "/images/ready-to-get-started-bg.png",
+    alt: "Lakeside mountain residence with mature pines.",
+    caption: "Reliability for every season",
+    width: 1024,
+    height: 683,
+  },
+];
+
+// The 12 towns the live homepage links, by slug.
+const featuredTownSlugs = [
+  "truckee",
+  "tahoe-city",
+  "kings-beach",
+  "tahoe-vista",
+  "carnelian-bay",
+  "homewood",
+  "olympic-valley",
+  "tahoe-donner",
+  "donner-lake",
+  "dollar-point",
+  "alpine-meadows",
+  "glenshire",
+];
+const featuredTowns = featuredTownSlugs.map((slug) => towns.find((town) => town.slug === slug)!);
+
+// The same five questions live puts on the home page, taken from the shared set so the
+// wording cannot drift between here and /faqs/.
+const HOME_FAQS = [
+  "What areas do you serve?",
+  "Do you offer emergency plumbing service?",
+  "Do you work with property managers?",
+  "What does your service process look like?",
+  "Are you licensed and insured?",
+];
+const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === question)!);
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[plumberSchema(), faqSchema(faqs)]} />
+
+  <FirstScreen
+    h1="Plumbing, water heaters, and gas service in Truckee and Lake Tahoe."
+    intro="Precision planning, finish-first execution, and verified performance for homes in Truckee and North Lake Tahoe."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <ul class="points">
+        {
+          trustPoints.map((point) => (
+            <li>
+              <h3 class="points__title">{point.title}</h3>
+              <p>{point.copy}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Plumbing built for Truckee mountain homes</h2>
+      <p class="lede">
+        Steam showers, curated finishes, and high-performance systems require clean execution that protects every
+        detail.
+      </p>
+      <ul class="showcase">
+        {
+          showcase.map((item) => (
+            <li>
+              <img src={item.src} alt={item.alt} width={item.width} height={item.height} loading="lazy" decoding="async" />
+              <p class="showcase__caption">{item.caption}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <h2>Water heaters, gas lines, leaks and drains</h2>
+      <p class="lede">
+        From routine maintenance to emergency repairs, we support the plumbing systems that keep mountain homes
+        running.
+      </p>
+      <ul class="cards">
+        {services.map((service) => <ServiceCard service={service} />)}
+      </ul>
+      <p><a href="/services/">View all services</a></p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Why mountain home plumbing is different</h2>
+      <p class="lede">
+        Mountain homes place higher demands on plumbing systems. Seasonal use, freezing temperatures, hard water, and
+        remote coordination all require a plumber who understands the realities of living here.
+      </p>
+      <ul class="points">
+        {
+          specialisms.map((item) => (
+            <li>
+              <h3 class="points__title">{item.title}</h3>
+              <p>{item.copy}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What happens when you call us</h2>
+      <ol class="steps">
+        {
+          process.map((item) => (
+            <li>
+              <h3 class="points__title">{item.step}</h3>
+              <p>{item.copy}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <EmergencyBand heading="Emergency plumber in Truckee and Tahoe" />
+
+  <ReviewsStrip count={3} heading="What Truckee homeowners say about us" />
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Towns we serve around North Lake Tahoe</h2>
+      <p class="lede">Serving Truckee and the communities around North Lake Tahoe.</p>
+      <ul class="towns">
+        {featuredTowns.map((town) => <li><TownLink slug={town.slug} /></li>)}
+      </ul>
+      <p><a href="/service-areas/">View all service areas</a></p>
+    </div>
+  </section>
+
+  <Faq heading="Common plumbing questions" faqs={faqs} />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Talk to a Truckee plumber today</h2>
+      <p class="lede">
+        Share your project goals and timeline. We deliver polished execution, clear communication, and verified
+        results.
+      </p>
+      <ul class="ticks">
+        <li>Clear communication throughout</li>
+        <li>Finish protection and tidy jobsite</li>
+        <li>Verified result before we wrap</li>
+      </ul>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+      <p class="nap-line">
+        <strong>{site.name}</strong>, {napOneLine()}. {site.hoursLabel}.
+      </p>
+    </div>
+  </section>
+</Base>

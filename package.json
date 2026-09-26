@@ -1,0 +1,39 @@
+{
+  "name": "brimercon-astro",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Parallel noindex Astro rebuild of brimercon.com (live production untouched). See PLAN.md.",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build && node scripts/qa-content.mjs && node scripts/qa-headings.mjs",
+    "build:only": "astro build",
+    "serve": "PORT=4322 HOST=127.0.0.1 node dist/server/entry.mjs",
+    "astro": "astro",
+    "crawl": "node scripts/crawl-live.mjs",
+    "images": "node scripts/fetch-live-images.mjs",
+    "og": "node scripts/make-og.mjs",
+    "reviews": "node scripts/refresh-reviews.mjs",
+    "dev:webhook": "node scripts/dev-webhook.mjs",
+    "qa:content": "node scripts/qa-content.mjs",
+    "qa:headings": "node scripts/qa-headings.mjs --verbose",
+    "qa:first-screen": "playwright test",
+    "qa:links": "node scripts/qa-links.mjs",
+    "qa:form": "node scripts/qa-form.mjs",
+    "qa:lighthouse": "node scripts/qa-lighthouse.mjs",
+    "qa:similarity": "node scripts/qa-similarity.mjs"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "dependencies": {
+    "@astrojs/node": "^11.1.6",
+    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/vercel": "^11.0.10",
+    "astro": "^7.3.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "sharp": "^0.35.4"
+  }
+}

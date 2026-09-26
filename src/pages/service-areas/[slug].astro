@@ -1,0 +1,142 @@
+---
+/**
+ * Town page template. Truckee is the golden page for the "town" type.
+ *
+ * GOLDEN_SLUGS is the M0.5 gate. The other 23 towns are written one brief at a time
+ * (docs/town-briefs.md), one golden per town type, and must clear the similarity gate
+ * before bulk generation. Copy and section order come from src/data/town-content.ts, so a
+ * town with no content entry cannot accidentally ship as a clone of this one.
+ */
+import type { GetStaticPaths } from "astro";
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ReviewsStrip from "@/components/ReviewsStrip.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Faq from "@/components/Faq.astro";
+import Schema from "@/components/Schema.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import { towns, getTown } from "@/data/towns";
+import { getTownContent } from "@/data/town-content";
+import { getService } from "@/data/services";
+import { site, napOneLine } from "@/data/site";
+import { GOLDEN_TOWN_SLUGS } from "@/data/golden";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+
+export const getStaticPaths = (() =>
+  towns
+    .filter((town) => GOLDEN_TOWN_SLUGS.includes(town.slug) && getTownContent(town.slug))
+    .map((town) => ({ params: { slug: town.slug } }))) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+const town = getTown(slug!)!;
+const content = getTownContent(slug!)!;
+const path = `/service-areas/${town.slug}/`;
+
+const popular = content.popularServices.map((s) => getService(s)!).filter(Boolean);
+
+const title = `Plumber in ${town.name.replace(" / ", "/")}, CA | Brimer Plumbing`;
+const description = `Plumbing service in ${town.name}, CA. Water heaters, gas lines, leak repair, and freeze protection for mountain homes. Call ${site.phoneDisplay}.`;
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Service areas", path: "/service-areas/" },
+  { name: town.name, path },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema
+    slot="head"
+    nodes={[
+      serviceSchema({
+        name: `Plumbing services in ${town.name}`,
+        description,
+        path,
+        areaTown: town.name,
+      }),
+      faqSchema(content.faqs),
+      breadcrumbSchema(crumbs),
+    ]}
+  />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <FirstScreen
+    h1={`Plumber in ${town.name}, CA`}
+    areaLabel={`Serving ${town.name} and nearby communities`}
+    areaHref="/service-areas/"
+    intro={content.lede}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="lede">{content.overview}</p>
+      <dl class="facts">
+        {town.elevationFt && (
+          <div>
+            <dt>Elevation</dt>
+            <dd>{town.elevationFt} ft</dd>
+          </div>
+        )}
+        <div>
+          <dt>Utilities</dt>
+          <dd>{town.utilities.join(", ")}</dd>
+        </div>
+        <div>
+          <dt>Permits</dt>
+          <dd>{town.permitAuthority}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  {
+    content.sections.map((section, i) => (
+      <section class={i % 2 === 0 ? "section section--soft" : "section"}>
+        <div class="wrap">
+          <h2>{section.heading}</h2>
+          {section.paragraphs.map((para) => (
+            <p>{para}</p>
+          ))}
+          {section.link && (
+            <p>
+              <a href={section.link.href}>{section.link.label}</a>
+            </p>
+          )}
+        </div>
+      </section>
+    ))
+  }
+
+  <EmergencyBand heading={content.headings.emergency} />
+
+  <ReviewsStrip tag="truckee" count={2} heading={content.headings.reviews} />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>{content.headings.popular}</h2>
+      <ul class="cards">
+        {popular.map((service) => <ServiceCard service={service} bullets={2} />)}
+      </ul>
+    </div>
+  </section>
+
+  <Faq heading={content.headings.faqs} faqs={content.faqs} />
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>{content.headings.cta}</h2>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+      <p class="nap-line">
+        <strong>{site.name}</strong>, {napOneLine()}. {site.hoursLabel}. {site.afterHoursLine}
+      </p>
+    </div>
+  </section>
+</Base>
