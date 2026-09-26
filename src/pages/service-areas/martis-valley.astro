@@ -14,7 +14,7 @@ import ReviewsStrip from "@/components/ReviewsStrip.astro";
 import Faq from "@/components/Faq.astro";
 import Schema from "@/components/Schema.astro";
 import { site } from "@/data/site";
-import { breadcrumbSchema, faqSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 
 const title = "Martis Valley Plumber | Brimer Plumbing | Truckee & Tahoe";
 const description = `Plumbing service for Martis Camp, Lahontan, Northstar, Schaffer's Mill, Gray's Crossing and Old Greenwood. Call ${site.phoneDisplay}.`;
@@ -50,7 +50,19 @@ const faqs = [
 ---
 
 <Base title={title} description={description}>
-  <Schema slot="head" nodes={[breadcrumbSchema(crumbs), faqSchema(faqs)]} />
+  <Schema
+    slot="head"
+    nodes={[
+      serviceSchema({
+        name: "Plumbing services in Martis Valley",
+        description,
+        path: "/service-areas/martis-valley/",
+        areaTown: "Martis Valley",
+      }),
+      breadcrumbSchema(crumbs),
+      faqSchema(faqs),
+    ]}
+  />
 
   <Breadcrumbs crumbs={crumbs} />
 

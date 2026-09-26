@@ -1,5 +1,5 @@
 ---
-title: "Signs of a Hidden Leak (and What to Do First) | Brimer Plumbing Blog"
+title: "Signs of a Hidden Leak (and What to Do First)"
 description: "Learn to spot hidden leaks: water bill spikes, musty smells, stains. Immediate steps and when to call a plumber in Tahoe and Truckee."
 pubDate: 2025-03-12
 tags: ["leak detection", "water damage", "home maintenance"]

@@ -1,5 +1,5 @@
 ---
-title: "Preparing Your Plumbing Before Leaving for the Season | Brimer Plumbing Blog"
+title: "Preparing Your Plumbing Before Leaving for the Season"
 description: "Checklist for Tahoe homeowners leaving their mountain home: water heater, main shutoff, drain traps, and monitoring setup."
 pubDate: 2025-07-14
 tags: ["seasonal homes", "winterization", "home maintenance"]

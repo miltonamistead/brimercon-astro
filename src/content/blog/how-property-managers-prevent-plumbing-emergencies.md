@@ -1,5 +1,5 @@
 ---
-title: "How Property Managers Can Prevent Plumbing Emergencies | Brimer Plumbing Blog"
+title: "How Property Managers Can Prevent Plumbing Emergencies"
 description: "Tips for Tahoe property managers: seasonal checklists, smart monitoring, and establishing a plumber relationship to prevent emergencies."
 pubDate: 2025-09-10
 tags: ["property management", "preventive maintenance", "second homes"]

@@ -35,7 +35,7 @@ const path = `/service-areas/${town.slug}/`;
 
 const popular = content.popularServices.map((s) => getService(s)!).filter(Boolean);
 
-const title = `Plumber in ${town.name}, CA | Brimer Plumbing | Truckee & Tahoe`;
+const title = `Plumber in ${town.name.replace(" / ", "/")}, CA | Brimer Plumbing`;
 const description = `Plumbing service in ${town.name}, CA. Water heaters, gas lines, leak repair, and freeze protection for mountain homes. Call ${site.phoneDisplay}.`;
 
 const crumbs = [

@@ -1,8 +1,9 @@
 ---
 /**
  * Blog post template. Paths match live exactly: /blog/<slug>/.
- * H1 is the live post title; the "| Brimer Plumbing Blog" suffix stays on the
- * <title> tag only. Related services come from the live post footer, linked to
+ * <title> is the post title trimmed to 60 chars (the old live
+ * "| Brimer Plumbing Blog" suffix was dropped site-wide in the SEO title
+ * trim). Related services come from the live post footer, linked to
  * the rebuilt service pages.
  */
 import type { GetStaticPaths } from "astro";
@@ -25,7 +26,8 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const { title, description, pubDate } = post.data;
-// Live titles end with " | Brimer Plumbing Blog"; the H1 is the post name alone.
+// The H1 is the post title; the regex is kept for safety in case a title
+// ever carries the old " | Brimer Plumbing Blog" suffix again.
 const h1 = title.replace(/\s*\|\s*Brimer Plumbing Blog\s*$/, "");
 const path = `/blog/${post.id}/`;
 const isoDate = pubDate.toISOString().slice(0, 10);

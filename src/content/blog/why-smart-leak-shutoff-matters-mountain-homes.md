@@ -1,5 +1,5 @@
 ---
-title: "Why Smart Leak Shutoff Systems Matter for Mountain Homes | Brimer Plumbing Blog"
+title: "Why Smart Leak Shutoff Systems Matter for Mountain Homes"
 description: "How Moen Flo and similar smart leak shutoff systems work, why they're valuable for seasonal homes, and insurance benefits for Tahoe homeowners."
 pubDate: 2025-06-05
 tags: ["smart home", "leak prevention", "second homes"]

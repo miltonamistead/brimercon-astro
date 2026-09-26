@@ -1,5 +1,5 @@
 ---
-title: "Common Kitchen Plumbing Problems in Older Tahoe Homes | Brimer Plumbing Blog"
+title: "Common Kitchen Plumbing Problems in Older Tahoe Homes"
 description: "Galvanized pipes, low pressure, disposal and drain issues common in older Tahoe mountain construction, and how to address them."
 pubDate: 2025-08-22
 tags: ["kitchen plumbing", "older homes", "repairs"]

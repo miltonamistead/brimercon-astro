@@ -1,5 +1,5 @@
 ---
-title: "Gas Line Safety Checks Before Winter | Brimer Plumbing Blog"
+title: "Gas Line Safety Checks Before Winter"
 description: "Why pre-winter gas inspections matter for Tahoe homes. What a safety check includes and signs of gas line issues to watch for."
 pubDate: 2025-04-08
 tags: ["gas safety", "winter preparation", "home maintenance"]

@@ -1,5 +1,5 @@
 ---
-title: "How to Winterize Plumbing for a Tahoe Second Home | Brimer Plumbing Blog"
+title: "How to Winterize Plumbing for a Tahoe Second Home"
 description: "A practical guide to winterizing your Tahoe second home plumbing: draining lines, protecting fixtures, and preventing costly freeze damage."
 pubDate: 2025-01-15
 tags: ["winterization", "second homes", "freeze prevention"]

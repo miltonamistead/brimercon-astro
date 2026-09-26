@@ -1,5 +1,5 @@
 ---
-title: "Water Heater Maintenance Every Tahoe Homeowner Should Know | Brimer Plumbing Blog"
+title: "Water Heater Maintenance Every Tahoe Homeowner Should Know"
 description: "Annual water heater tasks: flushing sediment, checking anode rod, testing pressure relief valve. When to call a pro in Tahoe and Truckee."
 pubDate: 2025-10-28
 tags: ["water heaters", "maintenance", "home care"]

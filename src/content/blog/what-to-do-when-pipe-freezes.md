@@ -1,5 +1,5 @@
 ---
-title: "What to Do When a Pipe Freezes | Brimer Plumbing Blog"
+title: "What to Do When a Pipe Freezes"
 description: "Step-by-step guide when a pipe freezes: safe thawing methods, identifying the frozen section, and when to call a professional plumber."
 pubDate: 2025-05-20
 tags: ["frozen pipes", "emergency", "winter"]

@@ -1,5 +1,5 @@
 ---
-title: "Tankless vs. Tank Water Heaters in Cold Climates | Brimer Plumbing Blog"
+title: "Tankless vs. Tank Water Heaters in Cold Climates"
 description: "Compare tankless and tank water heaters for mountain homes. Pros, cons, and considerations for altitude, cold inlet temps, and seasonal use."
 pubDate: 2025-02-03
 tags: ["water heaters", "energy efficiency", "cold climate"]

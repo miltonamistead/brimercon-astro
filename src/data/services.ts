@@ -51,7 +51,7 @@ export const services: Service[] = [
     slug: "water-heaters",
     name: "Water Heaters",
     shortName: "Water heaters",
-    title: "Water Heater Repair, Replacement & Installation | Truckee & Tahoe | Brimer Plumbing",
+    title: "Water Heater Replacement & Repair | Truckee & Tahoe",
     description:
       "Water heater repair, replacement, and installation in Truckee and North Lake Tahoe. Tank and tankless sized for altitude. Call 530-587-0733.",
     h1: "Water heater repair and installation in Truckee and North Lake Tahoe",
@@ -144,7 +144,7 @@ export const services: Service[] = [
     slug: "frozen-burst-pipes",
     name: "Frozen & Burst Pipes",
     shortName: "Frozen pipes",
-    title: "Frozen & Burst Pipe Repair | Emergency Service | Truckee & Tahoe | Brimer Plumbing",
+    title: "Frozen & Burst Pipe Repair | Truckee & Tahoe",
     description:
       "Emergency frozen and burst pipe repair in Truckee and North Lake Tahoe. Safe thawing, burst repairs, winterization, and freeze prevention. Call 530-587-0733.",
     h1: "Frozen and burst pipe repair in Truckee and North Lake Tahoe",
@@ -236,7 +236,7 @@ export const services: Service[] = [
     slug: "gas-services",
     name: "Gas Services",
     shortName: "Gas",
-    title: "Gas Line Installation, Leak Detection & Safety | Truckee & Tahoe | Brimer Plumbing",
+    title: "Gas Line Installation & Leak Detection | Truckee & Tahoe",
     description:
       "Gas line installation, appliance hookups, leak detection, and safety inspections in Truckee and North Lake Tahoe. Call 530-587-0733.",
     h1: "Gas line installation, leak detection, and safety",
@@ -327,7 +327,7 @@ export const services: Service[] = [
     slug: "kitchen-bath-plumbing",
     name: "Kitchen & Bath Plumbing",
     shortName: "Kitchen & bath",
-    title: "Kitchen & Bathroom Plumbing Services | Truckee & Tahoe | Brimer Plumbing",
+    title: "Kitchen & Bathroom Plumbing | Truckee & Tahoe",
     description:
       "Kitchen and bathroom plumbing in Truckee and North Lake Tahoe. Faucets, toilets, showers, disposals, remodel rough-in, and pressure issues. Call 530-587-0733.",
     h1: "Kitchen and bathroom plumbing",
@@ -422,7 +422,7 @@ export const services: Service[] = [
     slug: "appliance-installation",
     name: "Appliance Installation",
     shortName: "Appliances",
-    title: "Plumbing Appliance Installation | Dishwashers, Fridges & More | Truckee & Tahoe | Brimer Plumbing",
+    title: "Plumbing Appliance Installation | Truckee & Tahoe",
     description:
       "Appliance installation in Truckee and North Lake Tahoe. Dishwashers, refrigerator water lines, washing machines, and ice makers. Call 530-587-0733.",
     h1: "Plumbing appliance installation",
@@ -506,7 +506,7 @@ export const services: Service[] = [
     slug: "smart-leak-shutoff",
     name: "Smart Leak Shutoff",
     shortName: "Smart shutoff",
-    title: "Smart Leak Detection & Auto Shutoff | Moen Flo | Truckee & Tahoe | Brimer Plumbing",
+    title: "Smart Leak Detection & Moen Flo | Truckee & Tahoe",
     description:
       "Protect your Tahoe or Truckee home with smart leak detection and automatic water shutoff. Moen Flo installation and monitoring. Call 530-587-0733.",
     h1: "Smart leak detection and automatic shutoff",
