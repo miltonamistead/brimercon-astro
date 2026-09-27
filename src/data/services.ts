@@ -33,6 +33,7 @@ export type Service = {
     towns: string;
     faqs: string;
     related: string;
+    map: string;
   };
   faqs: { question: string; answer: string }[];
   related: string[];
@@ -120,6 +121,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Water heater questions we get asked",
       related: "Related plumbing services",
+      map: "Where we service water heaters around Tahoe",
     },
     faqs: [
       {
@@ -217,6 +219,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Tankless questions we get asked",
       related: "Related plumbing services",
+      map: "Tankless installs across our Truckee service area",
     },
     faqs: [
       {
@@ -319,6 +322,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Winterization questions we get asked",
       related: "Related plumbing services",
+      map: "Winterization visits across the Truckee region",
     },
     faqs: [
       {
@@ -421,6 +425,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Drain cleaning questions we get asked",
       related: "Related plumbing services",
+      map: "Drain cleaning across Truckee and North Tahoe",
     },
     faqs: [
       {
@@ -523,6 +528,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Frozen pipe questions we get asked",
       related: "Related plumbing services",
+      map: "Burst pipe response across our service area",
     },
     faqs: [
       {
@@ -614,6 +620,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Gas line questions we get asked",
       related: "Related plumbing services",
+      map: "Gas line work across Truckee and the north shore",
     },
     faqs: [
       {
@@ -709,6 +716,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Kitchen and bath questions we get asked",
       related: "Related plumbing services",
+      map: "Kitchen and bath work across our Tahoe service area",
     },
     faqs: [
       {
@@ -799,6 +807,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Appliance hookup questions we get asked",
       related: "Related plumbing services",
+      map: "Appliance installs across Truckee and North Tahoe",
     },
     faqs: [
       {
@@ -884,6 +893,7 @@ export const services: Service[] = [
       towns: "Towns we cover around Lake Tahoe",
       faqs: "Smart shutoff questions we get asked",
       related: "Related plumbing services",
+      map: "Smart shutoff installs across our service area",
     },
     faqs: [
       {

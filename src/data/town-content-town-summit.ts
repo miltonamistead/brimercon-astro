@@ -95,6 +95,7 @@ export const townContentTownSummit: Record<string, TownContent> = {
       popular: "Work we do most in Glenshire",
       faqs: "Questions about full-time mountain living",
       cta: "Call a plumber who knows Glenshire",
+      map: "Our coverage map for Glenshire and nearby",
     },
     faqs: [
       {
@@ -213,6 +214,7 @@ export const townContentTownSummit: Record<string, TownContent> = {
       popular: "Jobs we do most around Tahoe City",
       faqs: "Altitude, permits and TRPA questions",
       cta: "Talk to us about your Tahoe City place",
+      map: "Find our plumbers across Tahoe City",
     },
     faqs: [
       {
@@ -331,6 +333,7 @@ export const townContentTownSummit: Record<string, TownContent> = {
       popular: "The work we do most at 7,000 feet",
       faqs: "What Serene Lakes owners ask us",
       cta: "Call a summit plumber before the next storm",
+      map: "Our Donner Summit and Serene Lakes plumbing service area",
     },
     faqs: [
       {
@@ -449,6 +452,7 @@ export const townContentTownSummit: Record<string, TownContent> = {
       popular: "The jobs Soda Springs cabins bring us",
       faqs: "Questions about permits, propane and vacancy",
       cta: "Call for help in Soda Springs",
+      map: "Where we work in Soda Springs",
     },
     faqs: [
       {
@@ -567,6 +571,7 @@ export const townContentTownSummit: Record<string, TownContent> = {
       popular: "What we get called for in Norden",
       faqs: "What Norden owners ask before winter",
       cta: "Ask about your Norden cabin",
+      map: "Our coverage map for Norden and nearby",
     },
     faqs: [
       {

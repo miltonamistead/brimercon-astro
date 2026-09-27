@@ -92,6 +92,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "Jobs we do most inside the gates",
       faqs: "Estate-scale questions we hear often",
       cta: "Get a Martis Camp plumber on the phone",
+      map: "Where we work in Martis Camp",
     },
     faqs: [
       {
@@ -210,6 +211,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "The jobs Lahontan homes call us for",
       faqs: "Questions about altitude, permits and vacancy",
       cta: "Call for a Lahontan plumber",
+      map: "Our coverage map for Lahontan and nearby",
     },
     faqs: [
       {
@@ -328,6 +330,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "Jobs we do most from Mountain Lodge to Alpine Ridge",
       faqs: "Questions we get from Mill homeowners",
       cta: "Get a Schaffer's Mill plumber on the phone",
+      map: "Find our plumbers across Schaffer's Mill",
     },
     faqs: [
       {
@@ -446,6 +449,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "The work Gray's Crossing homes need most",
       faqs: "Altitude, permits and freeze questions, answered",
       cta: "Talk to a plumber who knows Gray's Crossing",
+      map: "Our Gray's Crossing plumbing service area",
     },
     faqs: [
       {
@@ -564,6 +568,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "Jobs we do most across the property types",
       faqs: "Questions about fractional ownership and permits",
       cta: "Get an Old Greenwood plumber on the phone",
+      map: "Where we work in Old Greenwood",
     },
     faqs: [
       {
@@ -682,6 +687,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "Jobs we do most in the association",
       faqs: "Seasonal ownership questions we hear often",
       cta: "Call the plumber Tahoe Donner owners use",
+      map: "Our coverage map for Tahoe Donner and nearby",
     },
     faqs: [
       {
@@ -800,6 +806,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "Jobs we do most across the resort",
       faqs: "Rental, HOA and altitude questions answered",
       cta: "Get a Northstar plumber on the phone",
+      map: "Find our plumbers across Northstar",
     },
     faqs: [
       {
@@ -918,6 +925,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "Jobs we do most in the valley and its condos",
       faqs: "Questions about 6,200 feet, permits and vacancy",
       cta: "Get an Olympic Valley plumber on the phone",
+      map: "Our Olympic Valley plumbing service area",
     },
     faqs: [
       {
@@ -1036,6 +1044,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
       popular: "Jobs we do most from canyon mouth to lodge",
       faqs: "Canyon cold, access and permit questions",
       cta: "Get an Alpine Meadows plumber on the phone",
+      map: "Where we work in Alpine Meadows",
     },
     faqs: [
       {

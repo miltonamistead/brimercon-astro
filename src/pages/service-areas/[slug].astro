@@ -15,6 +15,7 @@ import ReviewsStrip from "@/components/ReviewsStrip.astro";
 import EmergencyBand from "@/components/EmergencyBand.astro";
 import Faq from "@/components/Faq.astro";
 import Schema from "@/components/Schema.astro";
+import ServiceAreaMap from "@/components/ServiceAreaMap.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
 import { towns, getTown } from "@/data/towns";
 import { getTownContent } from "@/data/town-content";
@@ -121,6 +122,8 @@ const crumbs = [
       </ul>
     </div>
   </section>
+
+  <ServiceAreaMap heading={content.headings.map} />
 
   <Faq heading={content.headings.faqs} faqs={content.faqs} />
 

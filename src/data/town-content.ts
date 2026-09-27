@@ -40,6 +40,7 @@ export interface TownContent {
     popular: string;
     faqs: string;
     cta: string;
+    map: string;
   };
   faqs: Array<{ question: string; answer: string }>;
   /** Service slugs worth surfacing on this town page, most relevant first. */
@@ -134,6 +135,7 @@ export const townContent: Record<string, TownContent> = {
       popular: "Jobs we do most in Truckee neighborhoods",
       faqs: "Questions we get about altitude and permits",
       cta: "Get a Truckee plumber on the phone",
+      map: "Our Truckee plumbing service area",
     },
     faqs: [
       {

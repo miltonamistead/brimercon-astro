@@ -14,6 +14,7 @@ import ReviewsStrip from "@/components/ReviewsStrip.astro";
 import EmergencyBand from "@/components/EmergencyBand.astro";
 import Faq from "@/components/Faq.astro";
 import Schema from "@/components/Schema.astro";
+import ServiceAreaMap from "@/components/ServiceAreaMap.astro";
 import TownLink from "@/components/TownLink.astro";
 import { services, getService } from "@/data/services";
 import { site, napOneLine } from "@/data/site";
@@ -143,6 +144,8 @@ const crumbs = [
       <p><a href="/service-areas/">View all service areas</a></p>
     </div>
   </section>
+
+  <ServiceAreaMap heading={service.headings.map} />
 
   <Faq heading={service.headings.faqs} faqs={service.faqs} />
 

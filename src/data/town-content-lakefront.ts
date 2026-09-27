@@ -94,6 +94,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "The work Kings Beach calls us for",
       faqs: "Rentals, winter and water questions",
       cta: "Talk to a Kings Beach plumber",
+      map: "Our Kings Beach plumbing service area",
     },
     faqs: [
       {
@@ -212,6 +213,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "Jobs we do most in Tahoe Vista",
       faqs: "Permits, altitude and second home questions",
       cta: "Call a Tahoe Vista plumber",
+      map: "Where we work in Tahoe Vista",
     },
     faqs: [
       {
@@ -330,6 +332,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "Work Carnelian Bay asks for most",
       faqs: "What owners ask before calling",
       cta: "Reach a Carnelian Bay plumber",
+      map: "Our coverage map for Carnelian Bay and nearby",
     },
     faqs: [
       {
@@ -448,6 +451,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "Jobs Dollar Point calls about most",
       faqs: "Utilities, permits and winter questions",
       cta: "Call a Dollar Point plumber",
+      map: "Find our plumbers across Dollar Point",
     },
     faqs: [
       {
@@ -566,6 +570,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "The plumbing Agate Bay needs most",
       faqs: "Water company, permits and winter questions",
       cta: "Talk to a plumber who knows Agate Bay",
+      map: "Our Agate Bay plumbing service area",
     },
     faqs: [
       {
@@ -684,6 +689,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "Work Donner Lake asks for first",
       faqs: "Altitude, permits and winter questions",
       cta: "Call a Donner Lake plumber",
+      map: "Where we work in Donner Lake",
     },
     faqs: [
       {
@@ -802,6 +808,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "Jobs we do most in Homewood",
       faqs: "Water system, permits and altitude questions",
       cta: "Call a Homewood plumber",
+      map: "Our coverage map for Homewood and nearby",
     },
     faqs: [
       {
@@ -920,6 +927,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "The work Tahoma needs most",
       faqs: "Permits, water and winter questions",
       cta: "Talk to a Tahoma plumber",
+      map: "Find our plumbers across Tahoma",
     },
     faqs: [
       {
@@ -1038,6 +1046,7 @@ export const townContentLakefront: Record<string, TownContent> = {
       popular: "Jobs Meeks Bay calls about",
       faqs: "Propane, permits and water questions",
       cta: "Call a Meeks Bay plumber",
+      map: "Our Meeks Bay plumbing service area",
     },
     faqs: [
       {
