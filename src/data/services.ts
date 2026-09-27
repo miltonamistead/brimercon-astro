@@ -138,7 +138,109 @@ export const services: Service[] = [
           "Yes. We service and install major tank and tankless brands commonly found in Truckee and North Lake Tahoe homes.",
       },
     ],
-    related: ["gas-services", "frozen-burst-pipes", "smart-leak-shutoff"],
+    related: ["tankless-water-heaters", "gas-services", "frozen-burst-pipes", "smart-leak-shutoff"],
+  },
+  {
+    slug: "tankless-water-heaters",
+    name: "Tankless Water Heaters",
+    shortName: "Tankless water heaters",
+    title: "Tankless Water Heater Installation | Truckee & Tahoe",
+    description:
+      "Tankless water heater installation and replacement in Truckee and North Lake Tahoe. Sized for altitude and cold inlet water. Call 530-587-0733.",
+    h1: "Tankless water heater installation in Truckee and North Lake Tahoe",
+    summary:
+      "Endless hot water with no standby loss, sized for mountain altitude, cold groundwater, and the way Tahoe homes are actually used.",
+    bullets: [
+      "Tankless installation, replacement, and conversions",
+      "Sizing corrected for altitude and cold inlet water",
+      "Gas line and venting upgrades when the house needs them",
+      "Descaling and annual maintenance for hard water",
+    ],
+    body: [
+      "A tankless water heater fits a lot of Truckee and North Lake Tahoe homes, especially seasonal ones. There is no tank of hot water sitting and cooling while nobody is there for weeks, and high demand households stop running out. But the sizing math that works at sea level does not work at 6,000 feet, and cold groundwater narrows the margin further.",
+      "We start with the house, not the catalog. Fixture count, simultaneous use, the gas supply available, venting routes, and water quality all decide which unit is honest and which one will disappoint. If a tank is the better answer for your home, we will tell you that instead.",
+      "Conversions from tank to tankless sometimes need a larger gas line, new venting, or a condensate drain. We price the whole job after seeing the home, and we verify hot water at every fixture before we leave.",
+    ],
+    sections: [
+      {
+        heading: "Tankless water heater installation in Truckee",
+        copy: "Most installs here are conversions from an aging tank, and the house decides how simple that is. We confirm the gas meter and line can feed the unit at full fire, plan a venting route that suits the structure, and handle condensate where the unit produces it. You get a clear scope and price before anything is disconnected, and the old unit is hauled away.",
+      },
+      {
+        heading: "Sizing a tankless unit for Tahoe altitude",
+        copy: "Thinner air derates gas combustion and cold inlet water demands a bigger temperature rise, so a unit rated for a sea level home can fall short here. We size from your fixture count and realistic simultaneous use, then confirm against the manufacturer's altitude guidance. An undersized tankless is the most common disappointment we are called to fix.",
+      },
+      {
+        heading: "Tankless vs tank for seasonal Tahoe homes",
+        copy: "Seasonal vacancy is where tankless earns its keep, because there is no standby heat loss during the weeks nobody is home. Tanks still win on simplicity and lower upfront cost, and in homes with modest demand the math can favor them. We lay out both honestly for your house rather than pitching one answer.",
+      },
+      {
+        heading: "Tankless maintenance and descaling",
+        copy: "Hard mountain water leaves scale inside any tankless heat exchanger, and scale is what kills efficiency and triggers error codes. An annual descale and inspection keeps output steady and stretches the life of the unit. It is a short visit and the cheapest insurance a tankless owner can buy.",
+      },
+    ],
+    commonIssues: [
+      {
+        heading: "Cold water sandwich and temperature swings",
+        copy: "Usually a sizing or flow issue, sometimes a recirculation question. We find the cause rather than swapping parts.",
+      },
+      {
+        heading: "Error codes and shutdowns",
+        copy: "Tankless units protect themselves when something is wrong. We read the code, trace it to scale, venting, gas supply, or sensors, and fix the root cause.",
+      },
+      {
+        heading: "Scale buildup from hard water",
+        copy: "Mineral deposits coat the heat exchanger and choke performance. Regular descaling prevents most of it.",
+      },
+      {
+        heading: "Unit undersized for the house",
+        copy: "A tankless that cannot keep up at full demand was specified wrong, often for sea level. We assess honestly whether the unit or the sizing is the problem.",
+      },
+      {
+        heading: "Ignition failures at altitude",
+        copy: "Combustion components work harder in thin air. We diagnose ignition problems instead of guessing.",
+      },
+    ],
+    process: [
+      { step: "We assess", copy: "We look at demand, gas supply, venting, and water quality, and confirm tankless is right for the house." },
+      { step: "You choose", copy: "You get a clear recommendation and price for the whole job, including any gas or venting work." },
+      { step: "We install clean", copy: "We protect the work area, mount and plumb the unit, and handle venting and condensate properly." },
+      { step: "We verify", copy: "We commission the unit, confirm hot water at every fixture, and walk you through basic care." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Tankless problems we fix in Truckee",
+      process: "What a tankless install looks like",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Talk to us about going tankless",
+      reviews: "What homeowners say about tankless work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Tankless questions we get asked",
+      related: "Related plumbing services",
+    },
+    faqs: [
+      {
+        question: "Is a tankless water heater worth it in Truckee?",
+        answer:
+          "Often yes for seasonal homes and high demand households, because there is no standby loss while the house sits empty. For modest, year round demand a tank can still be the better value. We size the answer to your house.",
+      },
+      {
+        question: "How long do tankless water heaters last?",
+        answer:
+          "Typically 15 to 20 years with regular descaling, roughly twice a tank in mountain conditions. Skipping maintenance shortens that considerably.",
+      },
+      {
+        question: "Can you convert my tank to tankless?",
+        answer:
+          "Usually. Most conversions need a gas supply check and new venting, and some need a condensate drain. We confirm all of it during the assessment so the price has no surprises.",
+      },
+      {
+        question: "Do tankless units need yearly maintenance?",
+        answer:
+          "Yes, especially here. Annual descaling and inspection counter hard water scale and keep the unit running at full output.",
+      },
+    ],
+    related: ["water-heaters", "gas-services", "smart-leak-shutoff"],
   },
   {
     slug: "frozen-burst-pipes",

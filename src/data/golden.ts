@@ -14,6 +14,7 @@
 // live page gives an H2, plus common issues, process and why-us blocks.
 export const GOLDEN_SERVICE_SLUGS = [
   "water-heaters",
+  "tankless-water-heaters",
   "frozen-burst-pipes",
   "gas-services",
   "kitchen-bath-plumbing",
