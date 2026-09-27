@@ -345,6 +345,108 @@ export const services: Service[] = [
     related: ["frozen-burst-pipes", "smart-leak-shutoff", "water-heaters"],
   },
   {
+    slug: "drain-cleaning",
+    name: "Drain Cleaning",
+    shortName: "Drain cleaning",
+    title: "Drain Cleaning & Clog Removal | Truckee & Tahoe",
+    description:
+      "Drain cleaning and clog removal in Truckee and North Lake Tahoe. Kitchen, bathroom, and laundry drains cleared right. Call 530-587-0733.",
+    h1: "Drain cleaning and clog removal in Truckee and North Lake Tahoe",
+    summary:
+      "Slow or backed up drains cleared without damage to your pipes, and honest diagnosis when a clog keeps coming back.",
+    bullets: [
+      "Kitchen, bathroom, and laundry drain clearing",
+      "Recurring clog diagnosis, not just symptom relief",
+      "Buildup and root assessment for older lines",
+      "Clean work, verified flow before we leave",
+    ],
+    body: [
+      "A slow drain is usually a warning, not the problem itself. In Truckee and North Lake Tahoe homes we see the same culprits again and again: kitchen grease that solidifies in cold crawlspace runs, hair and soap in bathroom lines, and older cabins where decades of buildup have narrowed cast iron and galvanized pipe.",
+      "We clear the blockage and then look for why it happened. A drain that clogs in the same spot twice is telling you something about the pipe, and clearing it a third time without asking is how a small job becomes a Saturday emergency.",
+      "Chemical drain cleaners are not the answer. They rarely clear a real blockage, they can damage older pipes and finishes, and they make the eventual professional visit harder. Call before the bottle, not after.",
+    ],
+    sections: [
+      {
+        heading: "Drain cleaning in Truckee",
+        copy: "We clear kitchen, bathroom, laundry, and floor drains with the right cable and head for the pipe, not a one size approach. Shoe covers on, drop cloths down, and we run water to verify full flow before we pack up. If the line has a deeper problem, you hear about it plainly with options.",
+      },
+      {
+        heading: "Kitchen drain clogs and grease buildup",
+        copy: "Grease goes down liquid and comes back solid, especially in runs through cold crawlspaces. Garbage disposals grind food finer but do not make grease disappear. We clear the line and tell you what habits are feeding it, because a cleared grease clog without a habit change is a repeat visit.",
+      },
+      {
+        heading: "Bathroom and laundry drain blockages",
+        copy: "Hair, soap, and lint are the usual suspects, and they compact over time into something a plunger cannot move. Slow tubs, standing shower water, and gurgling sinks are the early signs. We clear them and check the venting when drainage is sluggish across multiple fixtures.",
+      },
+      {
+        heading: "When a drain keeps clogging in Tahoe homes",
+        copy: "Repeat clogs in the same drain point to the pipe, not the clog: bellies that hold water, root intrusion at joints, or pipe narrowed by decades of scale. We say so honestly and lay out the real fix instead of selling you another clearing.",
+      },
+    ],
+    commonIssues: [
+      {
+        heading: "Slow draining sinks and tubs",
+        copy: "Buildup narrowing the line over time. Clearing restores flow; we check whether buildup or pipe condition is the deeper cause.",
+      },
+      {
+        heading: "Kitchen sink backing up",
+        copy: "Usually grease solidified downstream, sometimes a disposal feeding a line that was already marginal. We clear it and address the cause.",
+      },
+      {
+        heading: "Standing water in showers",
+        copy: "Hair and soap compacted in the trap arm or beyond. Quick to clear, worth checking for venting issues if it recurs.",
+      },
+      {
+        heading: "Gurgling drains",
+        copy: "Air struggling past a partial blockage, or a venting problem. We find which one before clearing.",
+      },
+      {
+        heading: "The same drain clogging again",
+        copy: "The clearest signal the pipe needs attention, not just the clog. We diagnose the line honestly.",
+      },
+    ],
+    process: [
+      { step: "We diagnose", copy: "We find the blockage and check whether the pipe itself is the reason it keeps happening." },
+      { step: "You choose", copy: "Clearing now, a deeper fix, or both, with a clear price before work starts." },
+      { step: "We clear", copy: "The right cable and head for your pipe, with floors and finishes protected." },
+      { step: "We verify", copy: "We run water and confirm full drainage before we leave." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Drain problems we clear in Truckee",
+      process: "What a drain cleaning visit looks like",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Get your drains flowing in Truckee",
+      reviews: "What homeowners say about drain cleaning",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Drain cleaning questions we get asked",
+      related: "Related plumbing services",
+    },
+    faqs: [
+      {
+        question: "How much does drain cleaning cost?",
+        answer:
+          "It depends on the drain, the blockage, and how accessible the line is. We price it after seeing the drain so there are no surprises.",
+      },
+      {
+        question: "Can I use chemical drain cleaner first?",
+        answer:
+          "We advise against it. Chemical cleaners rarely clear a real blockage, they can damage older pipes and fixture finishes, and they make the professional visit harder and less safe.",
+      },
+      {
+        question: "Why does the same drain keep clogging?",
+        answer:
+          "Usually the pipe, not the clog: a belly holding water, roots at a joint, or decades of buildup narrowing the line. Clearing treats the symptom. We diagnose the pipe so you can decide on the real fix.",
+      },
+      {
+        question: "What if the clog comes back after you clear it?",
+        answer:
+          "A quick recurrence tells us the blockage was not the whole story. Call us back and we will look deeper at the line itself rather than just clearing it again.",
+      },
+    ],
+    related: ["kitchen-bath-plumbing", "appliance-installation", "frozen-burst-pipes"],
+  },
+  {
     slug: "frozen-burst-pipes",
     name: "Frozen & Burst Pipes",
     shortName: "Frozen pipes",
