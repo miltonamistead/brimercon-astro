@@ -7,6 +7,7 @@
  * (PLAN.md M0.5 and section 3c).
  */
 import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import FirstScreen from "@/components/FirstScreen.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
@@ -41,6 +42,26 @@ const crumbs = [
   { name: "Services", path: "/services/" },
   { name: service.name, path },
 ];
+
+// Resource articles embedded per service (hub-and-spoke internal linking).
+const posts = await getCollection("blog");
+const postTitle = new Map(posts.map((p) => [p.id, p.data.title]));
+const serviceArticles: Record<string, string[]> = {
+  "tankless-water-heaters": ["tankless-vs-tank-water-heaters-cold-climates", "water-heater-maintenance-tahoe-homeowner"],
+  "water-heaters": ["tankless-vs-tank-water-heaters-cold-climates", "water-heater-maintenance-tahoe-homeowner", "what-affects-plumbing-costs-truckee"],
+  "winterization": ["how-to-winterize-plumbing-tahoe-second-home", "preparing-plumbing-before-leaving-for-season", "what-to-do-when-pipe-freezes"],
+  "frozen-burst-pipes": ["what-to-do-when-pipe-freezes", "how-to-winterize-plumbing-tahoe-second-home", "why-smart-leak-shutoff-matters-mountain-homes"],
+  "drain-cleaning": ["what-affects-plumbing-costs-truckee"],
+  "leak-detection": ["signs-of-hidden-leak-what-to-do", "why-smart-leak-shutoff-matters-mountain-homes"],
+  "emergency-plumber": ["what-to-do-when-pipe-freezes", "signs-of-hidden-leak-what-to-do"],
+  "gas-services": ["gas-line-safety-checks-before-winter"],
+  "kitchen-bath-plumbing": ["common-kitchen-plumbing-problems-older-tahoe-homes"],
+  "smart-leak-shutoff": ["why-smart-leak-shutoff-matters-mountain-homes", "how-property-managers-prevent-plumbing-emergencies"],
+  "appliance-installation": ["what-affects-plumbing-costs-truckee"],
+};
+const articles = (serviceArticles[service.slug] ?? [])
+  .map((id) => ({ id, title: postTitle.get(id) }))
+  .filter((a): a is { id: string; title: string } => a.title !== undefined);
 ---
 
 <Base title={service.title} description={service.description}>
@@ -148,6 +169,17 @@ const crumbs = [
   <ServiceAreaMap heading={service.headings.map} />
 
   <Faq heading={service.headings.faqs} faqs={service.faqs} />
+
+  {articles.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <h2>Related resources</h2>
+        <ul>
+          {articles.map((a) => <li><a href={`/blog/${a.id}/`}>{a.title}</a></li>)}
+        </ul>
+      </div>
+    </section>
+  )}
 
   <section class="section section--soft">
     <div class="wrap">
