@@ -1190,6 +1190,26 @@ export const services: Service[] = [
         answer:
           "That is where it earns its keep. A leak in an empty house is the expensive kind. Pair it with heat and winterization when you will be gone through winter.",
       },
+      {
+        question: "What is the best smart leak monitoring for a mountain home?",
+        answer:
+          "A whole-home monitor on the main water line that tracks flow, pressure, and temperature, and shuts the water off automatically. For mountain homes the freeze detection matters as much as the leak detection.",
+      },
+      {
+        question: "Can it tell normal use from a leak?",
+        answer:
+          "Yes. It learns your household patterns and flags what does not fit, like continuous flow at 2 a.m. or pressure drops that suggest a burst pipe. You get the alert on your phone.",
+      },
+      {
+        question: "Does it work during a power outage?",
+        answer:
+          "It needs power and internet to alert you and to shut off remotely. That is why it pairs with, not replaces, winterization for homes that sit empty through storms.",
+      },
+      {
+        question: "Do I still need winterization with a smart shutoff?",
+        answer:
+          "Yes. The monitor catches problems fast, but draining and winterizing removes the water that would do the damage. The two together are the strongest protection for a second home.",
+      },
     ],
     related: ["frozen-burst-pipes", "water-heaters", "kitchen-bath-plumbing"],
   },
