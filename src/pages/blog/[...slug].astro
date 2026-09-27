@@ -56,6 +56,7 @@ const relatedSlugs: Record<string, string[]> = {
   "common-kitchen-plumbing-problems-older-tahoe-homes": ["kitchen-bath-plumbing", "appliance-installation"],
   "how-property-managers-prevent-plumbing-emergencies": ["smart-leak-shutoff", "frozen-burst-pipes", "water-heaters"],
   "water-heater-maintenance-tahoe-homeowner": ["water-heaters", "gas-services"],
+  "frozen-pipe-prevention-checklist-tahoe": ["frozen-burst-pipes", "winterization"],
 };
 const related = (relatedSlugs[post.id] ?? [])
   .map((slug) => getService(slug))
