@@ -139,6 +139,16 @@ export const services: Service[] = [
         answer:
           "Yes. We service and install major tank and tankless brands commonly found in Truckee and North Lake Tahoe homes.",
       },
+      {
+        question: "Should I repair or replace my water heater?",
+        answer:
+          "It comes down to age, the failure, and what a repair buys you. A young tank with a failed thermocouple is a repair. A ten year old tank with a leaking seam is a replacement. We diagnose first and tell you honestly when a repair means paying twice.",
+      },
+      {
+        question: "How much does water heater replacement cost in Truckee?",
+        answer:
+          "It depends on tank or tankless, size, fuel type, venting, and whether the install needs code upgrades like expansion tanks or new venting. We price it after seeing the unit and the home.",
+      },
     ],
     related: ["tankless-water-heaters", "gas-services", "frozen-burst-pipes", "smart-leak-shutoff"],
   },
@@ -241,6 +251,16 @@ export const services: Service[] = [
         question: "Do tankless units need yearly maintenance?",
         answer:
           "Yes, especially here. Annual descaling and inspection counter hard water scale and keep the unit running at full output.",
+      },
+      {
+        question: "Do tankless water heaters work during a power outage?",
+        answer:
+          "No. Tankless units need electricity for ignition, controls, and freeze protection, so they shut down when the power goes out, just like any modern gas appliance. If outages are common at your home, that is part of the tank versus tankless conversation.",
+      },
+      {
+        question: "How much does tankless water heater installation cost in Truckee?",
+        answer:
+          "It depends on the unit size your home needs, the gas supply available, venting routes, and whether the job is a swap or a conversion from a tank. Conversions that need gas or venting upgrades cost more. We price the whole job after an assessment.",
       },
     ],
     related: ["water-heaters", "gas-services", "smart-leak-shutoff"],
@@ -345,6 +365,16 @@ export const services: Service[] = [
         answer:
           "A properly winterized system has no water left to freeze in the drained runs. That is the point of the visit, and why we document every fixture's state.",
       },
+      {
+        question: "What temperature should I leave my vacant Truckee home at in winter?",
+        answer:
+          "The common guidance is around 55 degrees, but heat alone is not a winterization plan. Furnaces fail and power goes out, and at Tahoe temperatures pipes freeze within hours. A drained system does not care what the thermostat says.",
+      },
+      {
+        question: "Can I winterize my plumbing myself?",
+        answer:
+          "You can shut off the main and drain what you can reach, but proper winterization means clearing every line, protecting every trap and fixture, and confirming the water heater is handled. Missed runs are the ones that burst. A professional visit once a year is cheap insurance.",
+      },
     ],
     related: ["frozen-burst-pipes", "smart-leak-shutoff", "water-heaters"],
   },
@@ -448,8 +478,227 @@ export const services: Service[] = [
         answer:
           "A quick recurrence tells us the blockage was not the whole story. Call us back and we will look deeper at the line itself rather than just clearing it again.",
       },
+      {
+        question: "What is the difference between drain snaking and hydro jetting?",
+        answer:
+          "Snaking cuts through a blockage with a cable, which is what we do. Hydro jetting blasts the line with high pressure water to scour the pipe walls. We do not offer hydro jetting. For most household clogs, a proper snaking plus diagnosing why it clogged is the right fix.",
+      },
+      {
+        question: "How often should drains be professionally cleaned?",
+        answer:
+          "Most homes never need scheduled drain cleaning. Clean them when they slow down, and call sooner if the same drain clogs twice. Recurring clogs mean the pipe needs attention, not just another clearing.",
+      },
     ],
     related: ["kitchen-bath-plumbing", "appliance-installation", "frozen-burst-pipes"],
+  },
+  {
+    slug: "leak-detection",
+    name: "Leak Detection",
+    shortName: "Leak detection",
+    title: "Leak Detection & Repair | Truckee & Tahoe",
+    description:
+      "Hidden leak detection in Truckee and North Lake Tahoe. Find the source without tearing open walls. Call 530-587-0733.",
+    h1: "Leak detection and repair in Truckee and North Lake Tahoe",
+    summary:
+      "We find hidden leaks and pin down the source before opening anything, so the repair is as small as the problem allows.",
+    bullets: [
+      "Hidden leak location with minimal intrusion",
+      "Moisture source diagnosis, not guesswork",
+      "Second-home leak checks after vacancy",
+      "Smart shutoff pairing to catch the next one",
+    ],
+    body: [
+      "A hidden leak rarely announces itself. It shows up as a water bill that climbed for no reason, a musty closet, a warm spot on a slab floor, or paint bubbling on a wall nobody looks at. In Tahoe second homes it can run for weeks between visits, which is how a pinhole becomes a mold remediation.",
+      "We work inward from the symptoms. Water meter behavior, moisture readings, and systematic isolation narrow the location before any wall or floor is opened. The goal is always the smallest repair that actually fixes it, and you see the evidence before we cut.",
+      "If your home sits empty, ask about pairing detection with a smart shutoff. Finding this leak matters; catching the next one automatically matters more.",
+    ],
+    sections: [
+      {
+        heading: "Hidden leak detection in Truckee homes",
+        copy: "Slab leaks, pinholes behind walls, and slow supply-line seeps are the usual hidden culprits here. We confirm there is a leak first, using the meter and the symptoms, then narrow the location methodically. You get a diagnosis you can see, not a recommendation to open walls and hope.",
+      },
+      {
+        heading: "Signs of a water leak in Tahoe second homes",
+        copy: "Vacant homes hide leaks the longest. Stains on ceilings below bathrooms, warped flooring near kitchens, the sound of running water with everything off, and a water bill that does not match occupancy are the signals. After any vacancy, a walkthrough beats a surprise.",
+      },
+      {
+        heading: "How we find leaks without tearing open walls",
+        copy: "Detection starts non-invasive: meter tests that prove water is moving, moisture mapping that shows where it is going, and isolation that tells us which line it is on. Openings happen only where the evidence points, and only as large as the repair needs.",
+      },
+      {
+        heading: "Slab and crawlspace leaks in mountain homes",
+        copy: "Homes on slabs and over crawlspaces hide leaks in the hardest places to look. Warm spots, damp soil under the house, and foundation staining are the tells. We trace these patiently, because digging in the wrong spot is the most expensive mistake in leak work.",
+      },
+    ],
+    commonIssues: [
+      {
+        heading: "Water bill climbing with no explanation",
+        copy: "The most common first sign of a hidden leak. A meter test confirms it in minutes.",
+      },
+      {
+        heading: "Musty smells and wall staining",
+        copy: "Moisture behind finishes announces itself slowly. We map how far it has spread before repairing.",
+      },
+      {
+        heading: "Sound of running water with fixtures off",
+        copy: "Water moving when nothing is on means a leak on a pressurized line. Isolation finds which one.",
+      },
+      {
+        heading: "Warm spots on floors",
+        copy: "A hot water line leaking under a slab telegraphs through the floor. We confirm before opening anything.",
+      },
+      {
+        heading: "Recurring damp in the same area",
+        copy: "Damp that returns after drying was never just surface moisture. We find the feed.",
+      },
+    ],
+    process: [
+      { step: "We confirm", copy: "Meter and symptom checks prove whether you have a leak and roughly what kind." },
+      { step: "We narrow", copy: "Moisture mapping and isolation pinpoint the line and the area before anything opens." },
+      { step: "You choose", copy: "You see the evidence and get repair options with a clear price." },
+      { step: "We repair", copy: "The smallest opening that fixes it, verified dry before we close up." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Hidden leaks we track down in Truckee",
+      process: "What leak detection looks like",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Suspect a hidden leak in Truckee",
+      reviews: "What homeowners say about leak detection",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Leak detection questions we get asked",
+      related: "Related plumbing services",
+    },
+    faqs: [
+      {
+        question: "What are the signs of a hidden water leak?",
+        answer:
+          "A water bill that climbs with no change in use, musty smells, staining on walls or ceilings, the sound of running water with everything off, and warm spots on floors. Any one of these is worth a meter test, which confirms a leak in minutes.",
+      },
+      {
+        question: "How does professional leak detection work without tearing open walls?",
+        answer:
+          "We start non-invasive. A meter test proves water is moving, moisture mapping shows where it is going, and isolating lines tells us which one is leaking. Walls and floors are opened only where the evidence points, and only as much as the repair needs.",
+      },
+      {
+        question: "How much does leak detection cost?",
+        answer:
+          "It depends on the symptoms, the size of the home, and how hidden the leak is. We price the diagnosis after seeing the situation, and the repair is quoted separately once we know the source.",
+      },
+      {
+        question: "Can a small leak wait?",
+        answer:
+          "Small leaks do not stay small. Water works on wood, drywall, and flooring every hour it runs, and in a vacant home nobody notices for weeks. A quick diagnosis now is almost always cheaper than the repair later.",
+      },
+      {
+        question: "Should I add a smart water shutoff after a leak?",
+        answer:
+          "It is the best protection against the next one, especially for second homes. A smart shutoff watches for abnormal flow around the clock and closes the main automatically. We install and set them up.",
+      },
+    ],
+    related: ["smart-leak-shutoff", "frozen-burst-pipes", "kitchen-bath-plumbing"],
+  },
+  {
+    slug: "emergency-plumber",
+    name: "Emergency Plumber",
+    shortName: "Emergency plumber",
+    title: "Emergency Plumber in Truckee & North Tahoe",
+    description:
+      "Emergency plumber in Truckee and North Lake Tahoe. Burst pipes, major leaks, gas smells, no water. Open 7 AM to 8 PM daily. Call 530-587-0733.",
+    h1: "Emergency plumber in Truckee and North Lake Tahoe",
+    summary:
+      "Burst pipes, major leaks, gas odors, and no-water calls get priority. Two-hour arrival windows, and a clear plan before work starts.",
+    bullets: [
+      "Burst pipes and major leaks prioritized",
+      "Gas odor response and line shutdowns",
+      "Two-hour arrival windows, never vague",
+      "Open 7:00 AM to 8:00 PM, every day",
+    ],
+    body: [
+      "Plumbing emergencies do not wait for business hours, and neither do we within ours. We are open 7:00 AM to 8:00 PM every day, and emergency calls jump the schedule. When you call, you get a two-hour arrival window, not a vague promise.",
+      "While you wait: know where your main water shutoff is, and turn it off if water is running where it should not be. If you smell gas, leave the house and call from outside. We will talk you through the immediate steps on the phone.",
+      "After hours, call any time and leave a message. We return emergency messages first. What counts as an emergency is simple: water going where it should not, gas you can smell, or no water at all.",
+    ],
+    sections: [
+      {
+        heading: "What counts as a plumbing emergency in Truckee",
+        copy: "A burst pipe, a leak you cannot stop, sewage backing into the house, the smell of gas, and a complete loss of water all qualify. A dripping faucet or a slow drain does not, and we will tell you honestly which one you have and schedule accordingly.",
+      },
+      {
+        heading: "Burst pipe emergency response in Tahoe",
+        copy: "Shut the main off first if you can do it safely, then call. We arrive in a two-hour window, stop the damage, and make the repair. Winter bursts in vacant homes are our most common emergency call, which is why we push winterization so hard in autumn.",
+      },
+      {
+        heading: "Gas odor calls in North Lake Tahoe",
+        copy: "If you smell gas, get out and call from outside. We respond to gas odors as emergencies during open hours: the line gets shut down, the source gets found, and nothing is turned back on until it is safe. Do not try to locate a gas leak yourself.",
+      },
+      {
+        heading: "What to do while you wait for us",
+        copy: "Turn off the main water if water is escaping, move valuables away from the wet area, and kill power to anything the water is reaching. Do not touch anything electrical that is wet. We will guide you by phone until the truck arrives.",
+      },
+    ],
+    commonIssues: [
+      {
+        heading: "Burst pipes",
+        copy: "Shut the main, call us, and keep clear of the water. We stop it and repair it.",
+      },
+      {
+        heading: "Major leaks you cannot stop",
+        copy: "A supply line that will not quit. The main shutoff is your first tool; we are the second.",
+      },
+      {
+        heading: "Sewage backing up",
+        copy: "Stop using water immediately and call. Backups are a health issue, not a wait-and-see issue.",
+      },
+      {
+        heading: "Smell of gas",
+        copy: "Leave the house and call from outside. We treat every gas odor as urgent during open hours.",
+      },
+      {
+        heading: "No water at all",
+        copy: "A frozen main, a failed well component, or a supply break. We diagnose and restore.",
+      },
+    ],
+    process: [
+      { step: "You call", copy: "You reach us at 530-587-0733, 7 AM to 8 PM daily. Emergency calls jump the schedule." },
+      { step: "We give a window", copy: "A two-hour arrival window, and phone guidance for what to do right now." },
+      { step: "We stop the damage", copy: "First priority is always stopping water, gas, or sewage from doing more harm." },
+      { step: "We repair", copy: "Then the actual fix, with a clear price before work starts." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Emergencies we answer in Truckee",
+      process: "What happens on an emergency call",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Plumbing emergency right now in Truckee",
+      reviews: "What homeowners say about emergency calls",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Emergency plumbing questions we get asked",
+      related: "Related plumbing services",
+    },
+    faqs: [
+      {
+        question: "What should I do first in a plumbing emergency?",
+        answer:
+          "Stop the damage first. Turn off the main water shutoff if water is escaping, get out and call from outside if you smell gas, and stop using water if sewage is backing up. Then call us at 530-587-0733 and we will guide you until we arrive.",
+      },
+      {
+        question: "How fast can you get to me?",
+        answer:
+          "Emergency calls jump the schedule and you get a two-hour arrival window, not a vague promise. We are open 7:00 AM to 8:00 PM every day. After hours, leave a message and emergency calls are returned first.",
+      },
+      {
+        question: "Do emergency calls cost more?",
+        answer:
+          "Emergency work is priced for the urgency, the scheduling disruption, and the after-hours reality of the job. You get a clear price before work starts, the same as any other visit.",
+      },
+      {
+        question: "What is your main water shutoff and where is it?",
+        answer:
+          "It is the valve that stops all water entering your home, usually near where the water line enters the house, in a garage, closet, or crawlspace access. If you do not know where yours is, ask us on any visit and we will show you. It is the single most useful thing to know in an emergency.",
+      },
+    ],
+    related: ["frozen-burst-pipes", "water-heaters", "gas-services"],
   },
   {
     slug: "frozen-burst-pipes",
@@ -540,6 +789,26 @@ export const services: Service[] = [
         question: "Do you offer emergency plumbing service?",
         answer:
           "Yes. Burst pipes, active leaks, and gas concerns are what the phone is for. Call 530-587-0733 any time. If we miss you, leave a message.",
+      },
+      {
+        question: "What should I do first if my pipes freeze in Truckee?",
+        answer:
+          "Open the faucet the frozen line feeds, then warm the pipe gently starting from the faucet end. A hair dryer or warm towels work; never an open flame. If you cannot find the freeze or get water moving, call us before the pipe bursts.",
+      },
+      {
+        question: "Will frozen pipes thaw on their own?",
+        answer:
+          "Sometimes, but waiting is a gamble. A frozen pipe can hold for hours and then burst as it thaws, when pressure returns to the weakened spot. If a pipe is frozen solid, assume it is damaged until proven otherwise.",
+      },
+      {
+        question: "Do frozen pipes always burst?",
+        answer:
+          "No. Many freeze and thaw without damage. But you cannot tell from the outside which ones were stressed, and a pipe that survived one freeze is weaker for the next. After any freeze, watch for damp spots and pressure changes.",
+      },
+      {
+        question: "Should I shut off the main water if my pipes are frozen?",
+        answer:
+          "If the pipe has already burst or you see water where it should not be, yes, shut the main off immediately. If it is just frozen with no leak, leave the main on but open the affected faucet, and call us. We will tell you which applies on the phone.",
       },
     ],
     related: ["winterization", "smart-leak-shutoff", "water-heaters", "gas-services"],
@@ -632,6 +901,21 @@ export const services: Service[] = [
         question: "How do I know if I have a gas leak?",
         answer:
           "Rotten-egg odor, hissing, or dead vegetation near an outdoor line are common signs. Leave the area and call the utility. Then call 530-587-0733.",
+      },
+      {
+        question: "Do I need a permit for gas line work in Truckee?",
+        answer:
+          "Most gas line installations and modifications require a permit through the Town of Truckee or the county building department, plus a pressure test and inspection. We handle the permit and the inspection as part of the job.",
+      },
+      {
+        question: "What should I do if I smell gas in my home?",
+        answer:
+          "Leave the house immediately and call from outside. Do not flip switches, light anything, or try to find the leak yourself. Call us at 530-587-0733 during open hours, or 911 if the smell is strong.",
+      },
+      {
+        question: "How much does gas line installation cost in Truckee?",
+        answer:
+          "It depends on the length of the run, trenching or wall access, the appliance being fed, and permit and inspection fees. We price the whole job after seeing the house so there are no surprises.",
       },
     ],
     related: ["water-heaters", "appliance-installation", "frozen-burst-pipes"],

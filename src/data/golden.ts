@@ -17,6 +17,8 @@ export const GOLDEN_SERVICE_SLUGS = [
   "tankless-water-heaters",
   "winterization",
   "drain-cleaning",
+  "leak-detection",
+  "emergency-plumber",
   "frozen-burst-pipes",
   "gas-services",
   "kitchen-bath-plumbing",
