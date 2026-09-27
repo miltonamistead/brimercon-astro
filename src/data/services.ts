@@ -243,6 +243,108 @@ export const services: Service[] = [
     related: ["water-heaters", "gas-services", "smart-leak-shutoff"],
   },
   {
+    slug: "winterization",
+    name: "Home Winterization",
+    shortName: "Winterization",
+    title: "Home Winterization & Pipe Protection | Truckee & Tahoe",
+    description:
+      "Plumbing winterization for Tahoe second homes and cabins. Pipe draining, freeze protection, and shutoff setup in Truckee and North Lake Tahoe. Call 530-587-0733.",
+    h1: "Plumbing winterization for Truckee and North Lake Tahoe second homes",
+    summary:
+      "Protect vacant homes from freeze damage with pipe draining, fixture protection, and water shutoff setup before winter arrives.",
+    bullets: [
+      "Full and partial winterization for seasonal homes",
+      "Pipe draining, blowouts, and fixture antifreeze",
+      "Main shutoff location and smart shutoff setup",
+      "Spring start-up and de-winterization",
+    ],
+    body: [
+      "Most burst pipe emergencies in Truckee happen in houses that sat empty. A weekend cabin that goes quiet in October and is not seen again until December is exactly where a small freeze becomes a flooded first floor. Winterization is the autumn visit that prevents the midwinter disaster.",
+      "We walk the whole plumbing system: supply lines, hose bibs, toilets, traps, the water heater, and any crawlspace or exterior runs. Pipes are drained or blown clear, fixtures get antifreeze where it belongs, and the main shutoff is confirmed working and shown to you. What stays pressurized and what does not is a decision we make with you, not for you.",
+      "Book before the first hard freeze, and ask us about spring start-up. Recommissioning in spring means fixtures are refilled, the water heater is brought back properly, and everything is checked before the season starts.",
+    ],
+    sections: [
+      {
+        heading: "Winterizing a second home in Truckee",
+        copy: "Seasonal homes are the highest risk properties we see, because a freeze has weeks to do its work unnoticed. A full winterization drains the supply system, protects every fixture and trap, and leaves the house in a state where a cold snap is a non event. If you visit through winter, a partial winterization keeps essential plumbing live while protecting everything else.",
+      },
+      {
+        heading: "What a full plumbing winterization includes",
+        copy: "Water off at the main and the system drained, compressed air through the lines where needed, antifreeze in toilets and traps, the water heater drained or set correctly, hose bibs and exterior lines cleared, and every shutoff tagged and tested. You get a written record of what was done and what state each fixture was left in.",
+      },
+      {
+        heading: "Partial winterization for homes with heat left on",
+        copy: "Some owners keep minimal heat running all winter. That helps but it is not a plan: furnaces fail and power goes out. A partial winterization protects the vulnerable runs, exterior walls, and crawlspace pipes while keeping kitchens and baths usable, so a heating failure does not become a plumbing failure.",
+      },
+      {
+        heading: "Spring start-up and de-winterization in Tahoe",
+        copy: "In spring we reverse the process: refill the system slowly, check every joint and valve as pressure returns, bring the water heater back into service, and confirm fixtures run clean. Catching a winter casualty at start-up beats discovering it at the first summer visit.",
+      },
+    ],
+    commonIssues: [
+      {
+        heading: "Burst pipes in vacant homes",
+        copy: "The classic Tahoe second home disaster. A freeze that nobody sees for weeks, then water running through floors and ceilings.",
+      },
+      {
+        heading: "Traps drying out over winter",
+        copy: "Unused drains let their trap seals evaporate, inviting sewer gas into the house. Antifreeze in traps prevents it.",
+      },
+      {
+        heading: "Water heater freeze damage",
+        copy: "A tank left full in an unheated space can split. Draining or proper vacation setup avoids a spring replacement.",
+      },
+      {
+        heading: "Hose bibs and exterior lines",
+        copy: "The first things to freeze and the most forgotten. Clearing them is part of every winterization we do.",
+      },
+      {
+        heading: "Crawlspace pipes with no heat",
+        copy: "Low, unconditioned runs freeze first. We identify them during the walkthrough and protect or drain them.",
+      },
+    ],
+    process: [
+      { step: "We walk the home", copy: "We map every fixture, shutoff, hose bib, and vulnerable run so nothing is missed." },
+      { step: "You choose", copy: "Full or partial winterization based on how you use the home through winter, with a clear price." },
+      { step: "We winterize", copy: "Drain, blow out, antifreeze, tag, and document. The house is left freeze safe." },
+      { step: "Spring start-up", copy: "We recommission in spring, checking every joint as pressure returns." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Freeze damage we prevent in Truckee",
+      process: "What a winterization visit looks like",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "Winterize before the first hard freeze",
+      reviews: "What homeowners say about winterization",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Winterization questions we get asked",
+      related: "Related plumbing services",
+    },
+    faqs: [
+      {
+        question: "When should I winterize my Tahoe home?",
+        answer:
+          "Before the first sustained freeze, which usually means October. Late bookings fill fast once temperatures drop, so earlier is better.",
+      },
+      {
+        question: "Should I drain my pipes or just leave the heat on?",
+        answer:
+          "Heat alone is not a plan. Furnaces fail and power goes out, and a heating failure becomes a plumbing failure within hours at Tahoe temperatures. Draining removes the risk entirely.",
+      },
+      {
+        question: "How much does winterization cost?",
+        answer:
+          "It depends on the size of the home, fixture count, and whether you need full or partial winterization. We price it after a walkthrough so there are no surprises.",
+      },
+      {
+        question: "Can pipes still freeze in a winterized home?",
+        answer:
+          "A properly winterized system has no water left to freeze in the drained runs. That is the point of the visit, and why we document every fixture's state.",
+      },
+    ],
+    related: ["frozen-burst-pipes", "smart-leak-shutoff", "water-heaters"],
+  },
+  {
     slug: "frozen-burst-pipes",
     name: "Frozen & Burst Pipes",
     shortName: "Frozen pipes",
@@ -332,7 +434,7 @@ export const services: Service[] = [
           "Yes. Burst pipes, active leaks, and gas concerns are what the phone is for. Call 530-587-0733 any time. If we miss you, leave a message.",
       },
     ],
-    related: ["smart-leak-shutoff", "water-heaters", "gas-services"],
+    related: ["winterization", "smart-leak-shutoff", "water-heaters", "gas-services"],
   },
   {
     slug: "gas-services",
