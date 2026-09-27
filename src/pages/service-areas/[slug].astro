@@ -16,6 +16,7 @@ import EmergencyBand from "@/components/EmergencyBand.astro";
 import Faq from "@/components/Faq.astro";
 import Schema from "@/components/Schema.astro";
 import ServiceAreaMap from "@/components/ServiceAreaMap.astro";
+import TownHero from "@/components/TownHero.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
 import { towns, getTown } from "@/data/towns";
 import { getTownContent } from "@/data/town-content";
@@ -69,6 +70,8 @@ const crumbs = [
     areaHref="/service-areas/"
     intro={content.lede}
   />
+
+  <TownHero src={`/images/areas/${town.slug}-hero.webp`} alt={`${town.name}, California`} />
 
   <section class="section">
     <div class="wrap">

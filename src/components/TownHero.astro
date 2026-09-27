@@ -1,0 +1,29 @@
+---
+/**
+ * Full-bleed local photo band for town pages, placed directly after the
+ * first screen. Fixed CSS height + object-fit: cover means zero layout shift;
+ * lazy loading keeps it out of the LCP path on mobile.
+ */
+interface Props {
+  src: string;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+---
+
+<figure class="town-hero">
+  <img src={src} alt={alt} width="1408" height="768" loading="lazy" decoding="async" />
+</figure>
+
+<style>
+  .town-hero {
+    margin: 0;
+  }
+  .town-hero img {
+    display: block;
+    width: 100%;
+    height: clamp(200px, 30vw, 400px);
+    object-fit: cover;
+  }
+</style>
