@@ -14,7 +14,7 @@
  * contract (PLAN.md section 3b), which puts the call button above the fold.
  */
 import Base from "@/layouts/Base.astro";
-import FirstScreen from "@/components/FirstScreen.astro";
+import VideoHero from "@/components/VideoHero.astro";
 import ServiceCard from "@/components/ServiceCard.astro";
 import ReviewsStrip from "@/components/ReviewsStrip.astro";
 import EmergencyBand from "@/components/EmergencyBand.astro";
@@ -127,21 +127,7 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
 <Base title={title} description={description}>
   <Schema slot="head" nodes={[plumberSchema(), faqSchema(faqs)]} />
 
-  <FirstScreen
-    h1="Plumbing, water heaters, and gas service in Truckee and Lake Tahoe."
-    intro="Water heaters, gas lines, leak repair, drains, burst pipe repair, and winterization for homes in Truckee and North Lake Tahoe. Tell us your idea or your problem and we will take it from there."
-  />
-
-  <figure class="banner">
-    <img
-      src="/images/hero-banner.webp"
-      alt="Brimer Plumbing van and technician in front of a stone mountain home above Lake Tahoe."
-      width="1024"
-      height="434"
-      fetchpriority="high"
-      decoding="async"
-    />
-  </figure>
+  <VideoHero />
 
   <section class="section">
     <div class="wrap">

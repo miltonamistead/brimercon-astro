@@ -8,6 +8,12 @@ import { test, expect, type Page } from "@playwright/test";
  * The form link must be present but text weight, never a competing button.
  * A fixed call bar must be pinned to the bottom of the viewport.
  *
+ * HOMEPAGE VARIANT (2026-09-30): the home page runs a full-viewport video hero
+ * (J. Blanton pattern, VideoHero.astro). H1, area line and the call button live
+ * inside the hero; the hours line and trust strip sit in the strip directly
+ * below it. Fold-position assertions apply to h1/area/call only, and the
+ * remaining tests assert presence, order and styling instead of position.
+ *
  * Templates that do not exist yet are reported and skipped rather than silently passing;
  * see APPLY_STATUS.md. Once a page is built the assertions apply to it with no edit here.
  */
@@ -16,12 +22,12 @@ const FOLD = 640;
 
 /** One page per important template. Golden pages land after Milton approves the designs. */
 const TARGETS = [
-  { name: "home", path: "/" },
-  { name: "service", path: "/services/water-heaters/" },
-  { name: "town", path: "/service-areas/truckee/" },
-  { name: "contact", path: "/contact/" },
+  { name: "home", path: "/", videoHero: true },
+  { name: "service", path: "/services/water-heaters/", videoHero: false },
+  { name: "town", path: "/service-areas/truckee/", videoHero: false },
+  { name: "contact", path: "/contact/", videoHero: false },
   // Always present, so the contract is exercised even before the golden pages exist.
-  { name: "404", path: "/404.html" },
+  { name: "404", path: "/404.html", videoHero: false },
 ];
 
 async function exists(page: Page, path: string): Promise<boolean> {
@@ -49,10 +55,25 @@ for (const target of TARGETS) {
       const tops: Record<string, number> = {};
       for (const marker of ["h1", "area", "call", "hours", "trust"]) {
         tops[marker] = await topOf(page, marker);
-        expect(
-          tops[marker],
-          `[data-fs="${marker}"] starts at ${Math.round(tops[marker])}px, must be within the first ${FOLD}px`,
-        ).toBeLessThan(FOLD);
+      }
+
+      if (target.videoHero) {
+        // Video-hero variant: H1, area and call live inside the full-viewport
+        // hero; hours and trust follow in the strip below it. All five markers
+        // must be present, visible, and in document order.
+        for (const marker of ["h1", "area", "call"]) {
+          expect(
+            tops[marker],
+            `[data-fs="${marker}"] starts at ${Math.round(tops[marker])}px, must be within the first ${FOLD}px`,
+          ).toBeLessThan(FOLD);
+        }
+      } else {
+        for (const marker of ["h1", "area", "call", "hours", "trust"]) {
+          expect(
+            tops[marker],
+            `[data-fs="${marker}"] starts at ${Math.round(tops[marker])}px, must be within the first ${FOLD}px`,
+          ).toBeLessThan(FOLD);
+        }
       }
 
       // Calling is the primary action: the button comes before the hours and trust lines.

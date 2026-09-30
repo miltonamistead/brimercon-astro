@@ -33,7 +33,10 @@ exactly once each, in that document order, with at least one
    `example.com`: headless rendering is broken in this sandbox.
 
 The FirstScreen component and its CSS are unchanged since the M0 green run, and
-all new pages reuse it, so pixel positions are not expected to have moved. **The
+all non-homepage templates reuse it, so pixel positions are not expected to have
+moved. **The homepage changed 2026-09-30**: `/` now uses `VideoHero.astro`
+(full-viewport video hero) instead of `FirstScreen`; the hours line and trust
+strip render in the strip below the hero. **The
 visual gate still needs a real run**: on the Vercel preview with
 `BASE_URL=https://<preview> VERCEL_PROTECTION_BYPASS=<token>
 npm run qa:first-screen`, at 390x844 and 1440x900, with screenshots referenced

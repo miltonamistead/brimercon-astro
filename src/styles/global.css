@@ -314,6 +314,145 @@ img {
   }
 }
 
+/* ---------- video hero (homepage only, J. Blanton pattern) ---------- */
+
+.video-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 34rem;
+  height: 100svh;
+  max-height: 58rem;
+  overflow: hidden;
+  background: #101c26 url("/video/hero-poster.jpg") center 60% / cover no-repeat;
+  color: #fff;
+}
+
+.video-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Darkens the lower-left where the copy sits so white text stays readable
+   over any frame of the reel. */
+.video-hero__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 14, 20, 0.8) 0%, rgba(8, 14, 20, 0.32) 48%, rgba(8, 14, 20, 0.04) 78%),
+    linear-gradient(to right, rgba(8, 14, 20, 0.35) 0%, rgba(8, 14, 20, 0) 55%);
+}
+
+.video-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  /* Clear the fixed mobile call bar so the hero CTA is never covered. */
+  padding-bottom: calc(3.5rem + var(--call-bar-h));
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+  /* H1 leads in the DOM for the first-screen marker order; the kicker is
+     pulled above it visually. */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.video-hero__kicker {
+  order: -1;
+}
+
+.video-hero__kicker {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.video-hero__kicker a {
+  color: #ffd9a8;
+  text-decoration: none;
+}
+
+.video-hero__kicker a:hover {
+  text-decoration: underline;
+}
+
+.video-hero__h1 {
+  margin: 0 0 0.75rem;
+  max-width: 16ch;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.video-hero__sub {
+  margin: 0 0 1.4rem;
+  max-width: 34ch;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.video-hero__call {
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Form link is text weight under the call button, never competing with it. */
+.video-hero__form-link {
+  display: block;
+  align-self: stretch;
+  margin: 0.7rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.video-hero__form-link:hover {
+  color: #fff;
+}
+
+.video-hero__strip {
+  padding: 1rem 0 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.video-hero__hours {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 48em) {
+  .video-hero__content {
+    /* No fixed call bar on desktop, but the in-flow sticky header eats ~93px
+       above the 100svh hero, so lift the copy enough to keep the form link
+       in view on a 900px-tall viewport. */
+    padding-bottom: 6.5rem;
+  }
+
+  .video-hero__call {
+    width: auto;
+    min-width: 20rem;
+  }
+
+  .video-hero__form-link {
+    text-align: left;
+  }
+}
+
+/* Reduced motion: the poster frame carries the hero, no autoplay. */
+@media (prefers-reduced-motion: reduce) {
+  .video-hero__media {
+    display: none;
+  }
+}
+
 /* ---------- fixed mobile call bar (CSS only, audit B1) ---------- */
 
 .call-bar {
