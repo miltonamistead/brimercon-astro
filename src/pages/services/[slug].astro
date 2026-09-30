@@ -18,6 +18,7 @@ import Schema from "@/components/Schema.astro";
 import ServiceAreaMap from "@/components/ServiceAreaMap.astro";
 import TownLink from "@/components/TownLink.astro";
 import { services, getService } from "@/data/services";
+import { servicePhotos } from "@/data/service-photos";
 import { site, napOneLine } from "@/data/site";
 import { towns } from "@/data/towns";
 import { GOLDEN_SERVICE_SLUGS } from "@/data/golden";
@@ -86,6 +87,23 @@ const articles = (serviceArticles[service.slug] ?? [])
       {service.body.map((para) => <p>{para}</p>)}
     </div>
   </section>
+
+  {
+    /* Photo band: the work, next to the words that describe it. Portrait
+       originals are cropped by object-fit: cover (see .service-photo-band). */
+    servicePhotos[service.slug] && (
+      <figure class="service-photo-band">
+        <img
+          src={servicePhotos[service.slug].src}
+          alt={servicePhotos[service.slug].alt}
+          width={servicePhotos[service.slug].width}
+          height={servicePhotos[service.slug].height}
+          loading="lazy"
+          style={servicePhotos[service.slug].position ? `object-position: ${servicePhotos[service.slug].position}` : undefined}
+        />
+      </figure>
+    )
+  }
 
   {
     /* One section per topic the live page gives its own H2 (PLAN.md section 3d rule 6):
