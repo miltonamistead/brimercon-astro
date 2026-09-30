@@ -205,58 +205,31 @@ img {
   }
 }
 
-/* ---------- first screen (audit B1) ---------- */
+/* ---------- homepage banner ---------- */
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
+.banner {
+  margin: 0;
 }
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+@media (max-width: 47.99em) {
+  .banner img {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ---------- first screen (audit B1) ---------- */
 
 .first-screen {
   padding: 1.25rem 0 1.5rem;
-}
-
-/* Homepage banner variant: the branded van photo sits behind the first screen.
-   Background only, so the B1 fold contract is untouched. */
-.first-screen--banner {
-  position: relative;
-  background-size: cover;
-  background-position: center 35%;
-  color: #fff;
-}
-
-.first-screen--banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(rgba(10, 18, 28, 0.62), rgba(10, 18, 28, 0.45));
-  pointer-events: none;
-}
-
-.first-screen--banner .wrap {
-  position: relative;
-}
-
-.first-screen--banner h1,
-.first-screen--banner .first-screen__area,
-.first-screen--banner .first-screen__intro,
-.first-screen--banner .first-screen__hours,
-.first-screen--banner .trust-strip {
-  color: #fff;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
-}
-
-.first-screen--banner .first-screen__area a,
-.first-screen--banner .first-screen__form-link,
-.first-screen--banner .trust-strip a {
-  color: #fff;
 }
 
 .first-screen__area {
