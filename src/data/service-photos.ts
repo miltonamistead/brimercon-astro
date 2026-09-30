@@ -33,27 +33,25 @@ export const servicePhotos: Record<string, ServicePhoto> = {
   },
   winterization: {
     src: "/images/work/winter-cabin-visit.webp",
-    alt: "Plumber carrying a tool bag up snowy steps to a Truckee A-frame cabin in winter",
+    alt: "Brimer plumber walking up to a well-kept Truckee home in winter, service van in the driveway",
     width: 1600,
     height: 1067,
   },
   "drain-cleaning": {
     src: "/images/work/crawlspace-work.webp",
-    alt: "Plumber with a headlamp working on copper pipes in a dark crawlspace",
+    alt: "Technician feeding a drum snake into a drain line under a Tahoe home",
     width: 1600,
     height: 1067,
   },
   "leak-detection": {
-    // [REAL] Brimer job site, Truckee 2026-07-22
     src: "/images/work/pressure-gauge-test.webp",
-    alt: "Pressure gauge threaded onto a line during a pressure test at a Truckee job site",
-    width: 900,
-    height: 1200,
-    position: "50% 40%",
+    alt: "Water pressure test gauge showing low pressure during leak detection",
+    width: 1600,
+    height: 1067,
   },
   "emergency-plumber": {
     src: "/images/work/van-snowy-driveway.webp",
-    alt: "Work van parked in a snowy Truckee driveway outside a log cabin",
+    alt: "Branded Brimer Plumbing Ford Transit van in a snowy Truckee driveway at a modern mountain home",
     width: 1600,
     height: 1067,
   },
