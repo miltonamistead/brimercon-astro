@@ -1,5 +1,6 @@
 ---
 import type { Service } from "@/data/services";
+import ServiceIcon from "./ServiceIcon.astro";
 
 interface Props {
   service: Service;
@@ -10,17 +11,25 @@ const { service, bullets = 3 } = Astro.props;
 const href = `/services/${service.slug}/`;
 ---
 
-<li class="card">
-  <h3 class="card__title"><a href={href}>{service.name}</a></h3>
-  <p class="card__summary">{service.summary}</p>
-  {
-    bullets > 0 && (
-      <ul class="card__bullets">
-        {service.bullets.slice(0, bullets).map((bullet) => (
-          <li>{bullet}</li>
-        ))}
-      </ul>
-    )
-  }
-  <p class="card__more"><a href={href}>Learn more about {service.shortName.toLowerCase()}</a></p>
+<li>
+  <a class="card" href={href}>
+    <span class="card__icon" aria-hidden="true">
+      <ServiceIcon slug={service.slug} />
+    </span>
+    <h3 class="card__title">{service.name}</h3>
+    <p class="card__summary">{service.summary}</p>
+    {
+      bullets > 0 && (
+        <ul class="card__bullets">
+          {service.bullets.slice(0, bullets).map((bullet) => (
+            <li>{bullet}</li>
+          ))}
+        </ul>
+      )
+    }
+    <span class="card__more">
+      Learn more about {service.shortName.toLowerCase()}
+      <span class="card__arrow" aria-hidden="true"> →</span>
+    </span>
+  </a>
 </li>

@@ -66,19 +66,20 @@ const itemList = {
           posts.map((post) => {
             const name = post.data.title.replace(/\s*\|\s*Brimer Plumbing Blog\s*$/, "");
             return (
-              <li class="card">
-                <p class="card__meta">
-                  <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
-                    {displayDate(post.data.pubDate)}
-                  </time>
-                </p>
-                <h3 class="card__title">
-                  <a href={`/blog/${post.id}/`}>{name}</a>
-                </h3>
-                <p class="card__summary">{post.data.description}</p>
-                <p class="card__more">
-                  <a href={`/blog/${post.id}/`}>Read article</a>
-                </p>
+              <li>
+                <a class="card" href={`/blog/${post.id}/`}>
+                  <p class="card__meta">
+                    <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
+                      {displayDate(post.data.pubDate)}
+                    </time>
+                  </p>
+                  <h3 class="card__title">{name}</h3>
+                  <p class="card__summary">{post.data.description}</p>
+                  <p class="card__more">
+                    Read article
+                    <span class="card__arrow" aria-hidden="true"> →</span>
+                  </p>
+                </a>
               </li>
             );
           })
