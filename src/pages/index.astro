@@ -51,6 +51,11 @@ const specialisms = [
     title: "Remote coordination",
     copy: "We work with owners, caretakers, and property managers, wherever you are.",
   },
+  {
+    title: "Permitting handled",
+    copy:
+      "We handle permitting and know how to work with the local jurisdictions. We take care of the details so you don't have to worry about it. Your house just works.",
+  },
 ];
 
 const process = [
@@ -70,21 +75,21 @@ const showcase = [
   {
     src: "/images/work/bathroom-outcome.webp",
     alt: "Finished mountain cabin bathroom with a glass-door tile shower.",
-    caption: "Spa-grade bath experiences",
+    caption: "Got a bathroom remodel in mind? We can plumb it.",
     width: 1024,
     height: 683,
   },
   {
     src: "/images/work/kitchen-faucet-outcome.webp",
     alt: "New brushed nickel kitchen faucet running over a stainless sink.",
-    caption: "Design-forward fixture performance",
+    caption: "Picked out new fixtures? We can install them.",
     width: 1024,
     height: 683,
   },
   {
     src: "/images/ready-to-get-started-bg.png",
     alt: "Lakeside mountain residence with mature pines.",
-    caption: "Reliability for every season",
+    caption: "Want it working when family or guests arrive? Done.",
     width: 1024,
     height: 683,
   },
@@ -125,6 +130,8 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
   <FirstScreen
     h1="Plumbing, water heaters, and gas service in Truckee and Lake Tahoe."
     intro="Precision planning, finish-first execution, and verified performance for homes in Truckee and North Lake Tahoe."
+    banner="/images/hero-banner.webp"
+    bannerAlt="Brimer Plumbing van and technician in front of a stone mountain home above Lake Tahoe."
   />
 
   <section class="section">
@@ -144,10 +151,10 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
 
   <section class="section section--soft">
     <div class="wrap">
-      <h2>Plumbing built for Truckee mountain homes</h2>
+      <h2>Your ideas built, your problems solved</h2>
       <p class="lede">
-        Steam showers, curated finishes, and high-performance systems require clean execution that protects every
-        detail.
+        You have got an idea for your home. We can help you do it. You have got a plumbing problem. We can fix it.
+        Either way, the stress is off your plate.
       </p>
       <ul class="showcase">
         {
@@ -233,13 +240,13 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
     <div class="wrap">
       <h2>Talk to a Truckee plumber today</h2>
       <p class="lede">
-        Share your project goals and timeline. We deliver polished execution, clear communication, and verified
-        results.
+        You have got an idea or a problem. Tell us about it and we will take it from there.
       </p>
       <ul class="ticks">
         <li>Clear communication throughout</li>
         <li>Finish protection and tidy jobsite</li>
         <li>Verified result before we wrap</li>
+        <li>We guarantee the work. If anything is not right, we fix it.</li>
       </ul>
       <p>
         <a class="btn-call" href={site.phoneHref}>

@@ -22,6 +22,10 @@ interface Props {
   intro?: string;
   formHref?: string;
   formLabel?: string;
+  /** Optional full-bleed banner photo behind the first screen (homepage). */
+  banner?: string;
+  /** Screen-reader description of the banner photo. */
+  bannerAlt?: string;
 }
 
 const {
@@ -31,6 +35,8 @@ const {
   intro,
   formHref = "/request-service/",
   formLabel = "Or send a service request",
+  banner,
+  bannerAlt,
 } = Astro.props;
 
 // site.afterHoursLine stays the single source of the sentence (audit H8); splitting on the
@@ -42,7 +48,11 @@ const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
 const rating = ratingSummary();
 ---
 
-<section class="first-screen">
+<section
+  class:list={["first-screen", banner && "first-screen--banner"]}
+  style={banner ? `background-image: url("${banner}")` : undefined}
+>
+  {banner && bannerAlt && <span class="visually-hidden">{bannerAlt}</span>}
   <div class="wrap">
     <h1 data-fs="h1">{h1}</h1>
 
