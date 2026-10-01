@@ -1,0 +1,555 @@
+[
+ {
+  "url": "https://www.brimercon.com/images/areas/agate-bay-hero.jpg",
+  "status": 200,
+  "bytes": 235535,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/agate-bay/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/alpine-meadows-hero.jpg",
+  "status": 200,
+  "bytes": 315424,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/alpine-meadows/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/carnelian-bay-hero.jpg",
+  "status": 200,
+  "bytes": 189992,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/carnelian-bay/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/dollar-point-hero.jpg",
+  "status": 200,
+  "bytes": 334495,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/dollar-point/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/donner-lake-hero.jpg",
+  "status": 200,
+  "bytes": 226150,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/donner-lake/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/donner-summit-serene-lakes-hero.jpg",
+  "status": 200,
+  "bytes": 243034,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/donner-summit-serene-lakes/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/glenshire-hero.jpg",
+  "status": 200,
+  "bytes": 207631,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/glenshire/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/grays-crossing-hero.jpg",
+  "status": 200,
+  "bytes": 285387,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/grays-crossing/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/homewood-hero.jpg",
+  "status": 200,
+  "bytes": 274528,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/homewood/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/kings-beach-hero.jpg",
+  "status": 200,
+  "bytes": 246014,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/kings-beach/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/lahontan-hero.jpg",
+  "status": 200,
+  "bytes": 194089,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/lahontan/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/martis-camp-hero.jpg",
+  "status": 200,
+  "bytes": 231692,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/martis-camp/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/meeks-bay-hero.jpg",
+  "status": 200,
+  "bytes": 185211,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/meeks-bay/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/norden-hero.jpg",
+  "status": 200,
+  "bytes": 268156,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/norden/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/northstar-hero.jpg",
+  "status": 200,
+  "bytes": 296738,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/northstar/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/old-greenwood-hero.jpg",
+  "status": 200,
+  "bytes": 224871,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/old-greenwood/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/olympic-valley-hero.jpg",
+  "status": 200,
+  "bytes": 264016,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/olympic-valley/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/schaffers-mill-hero.jpg",
+  "status": 200,
+  "bytes": 226637,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/schaffers-mill/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/soda-springs-hero.jpg",
+  "status": 200,
+  "bytes": 303051,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/soda-springs/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/tahoe-city-hero.jpg",
+  "status": 200,
+  "bytes": 174596,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/tahoe-city/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/tahoe-donner-hero.jpg",
+  "status": 200,
+  "bytes": 252878,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/tahoe-donner/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/tahoe-vista-hero.jpg",
+  "status": 200,
+  "bytes": 195871,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/tahoe-vista/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/tahoma-hero.jpg",
+  "status": 200,
+  "bytes": 246583,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/tahoma/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/areas/truckee-hero.jpg",
+  "status": 200,
+  "bytes": 227859,
+  "contentType": "image/jpeg",
+  "alts": [
+   ""
+  ],
+  "usedOn": [
+   "/service-areas/truckee/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/brimer-logo.png",
+  "status": 200,
+  "bytes": 124989,
+  "contentType": "image/png",
+  "alts": [
+   "Brimer Plumbing"
+  ],
+  "usedOn": [
+   "/",
+   "/about/",
+   "/blog/",
+   "/blog/common-kitchen-plumbing-problems-older-tahoe-homes/",
+   "/blog/gas-line-safety-checks-before-winter/",
+   "/blog/how-property-managers-prevent-plumbing-emergencies/",
+   "/blog/how-to-winterize-plumbing-tahoe-second-home/",
+   "/blog/preparing-plumbing-before-leaving-for-season/",
+   "/blog/signs-of-hidden-leak-what-to-do/",
+   "/blog/tankless-vs-tank-water-heaters-cold-climates/",
+   "/blog/water-heater-maintenance-tahoe-homeowner/",
+   "/blog/what-to-do-when-pipe-freezes/",
+   "/blog/why-smart-leak-shutoff-matters-mountain-homes/",
+   "/contact/",
+   "/faqs/",
+   "/membership/",
+   "/privacy-policy/",
+   "/request-service/",
+   "/resources/",
+   "/reviews/",
+   "/service-areas/",
+   "/service-areas/agate-bay/",
+   "/service-areas/alpine-meadows/",
+   "/service-areas/carnelian-bay/",
+   "/service-areas/dollar-point/",
+   "/service-areas/donner-lake/",
+   "/service-areas/donner-summit-serene-lakes/",
+   "/service-areas/glenshire/",
+   "/service-areas/grays-crossing/",
+   "/service-areas/homewood/",
+   "/service-areas/kings-beach/",
+   "/service-areas/lahontan/",
+   "/service-areas/martis-camp/",
+   "/service-areas/meeks-bay/",
+   "/service-areas/norden/",
+   "/service-areas/northstar/",
+   "/service-areas/old-greenwood/",
+   "/service-areas/olympic-valley/",
+   "/service-areas/schaffers-mill/",
+   "/service-areas/soda-springs/",
+   "/service-areas/tahoe-city/",
+   "/service-areas/tahoe-donner/",
+   "/service-areas/tahoe-vista/",
+   "/service-areas/tahoma/",
+   "/service-areas/truckee/",
+   "/services/",
+   "/services/appliance-installation/",
+   "/services/frozen-burst-pipes/",
+   "/services/gas-services/",
+   "/services/kitchen-bath-plumbing/",
+   "/services/smart-leak-shutoff/",
+   "/services/water-heaters/",
+   "/terms-of-use/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/design-forward-fixture-performance.png",
+  "status": 200,
+  "bytes": 167942,
+  "contentType": "image/png",
+  "alts": [
+   "High-end kitchen with custom fixtures and polished plumbing finishes.",
+   "High-end kitchen with premium fixture finishes."
+  ],
+  "usedOn": [
+   "/",
+   "/service-areas/agate-bay/",
+   "/service-areas/carnelian-bay/",
+   "/service-areas/dollar-point/",
+   "/service-areas/glenshire/",
+   "/service-areas/grays-crossing/",
+   "/service-areas/homewood/",
+   "/service-areas/kings-beach/",
+   "/service-areas/lahontan/",
+   "/service-areas/martis-camp/",
+   "/service-areas/meeks-bay/",
+   "/service-areas/northstar/",
+   "/service-areas/old-greenwood/",
+   "/service-areas/schaffers-mill/",
+   "/service-areas/tahoe-city/",
+   "/service-areas/tahoe-donner/",
+   "/service-areas/tahoe-vista/",
+   "/service-areas/tahoma/",
+   "/service-areas/truckee/",
+   "/services/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/footer-bg-premium.png",
+  "status": 200,
+  "bytes": 316031,
+  "contentType": "image/png",
+  "alts": [
+   "Waterfront luxury home exterior in Tahoe."
+  ],
+  "usedOn": [
+   "/service-areas/dollar-point/",
+   "/service-areas/glenshire/",
+   "/service-areas/kings-beach/",
+   "/service-areas/olympic-valley/",
+   "/service-areas/tahoe-donner/",
+   "/service-areas/truckee/",
+   "/services/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/hero-brimer-premium.png",
+  "status": 200,
+  "bytes": 194113,
+  "contentType": "image/png",
+  "alts": [
+   "Brimer Plumbing service van and technician in front of a high-end mountain home.",
+   "Brimer Plumbing van parked at a mountain home."
+  ],
+  "usedOn": [
+   "/",
+   "/service-areas/agate-bay/",
+   "/service-areas/alpine-meadows/",
+   "/service-areas/carnelian-bay/",
+   "/service-areas/dollar-point/",
+   "/service-areas/donner-lake/",
+   "/service-areas/donner-summit-serene-lakes/",
+   "/service-areas/glenshire/",
+   "/service-areas/grays-crossing/",
+   "/service-areas/homewood/",
+   "/service-areas/kings-beach/",
+   "/service-areas/lahontan/",
+   "/service-areas/martis-camp/",
+   "/service-areas/meeks-bay/",
+   "/service-areas/norden/",
+   "/service-areas/northstar/",
+   "/service-areas/old-greenwood/",
+   "/service-areas/olympic-valley/",
+   "/service-areas/schaffers-mill/",
+   "/service-areas/soda-springs/",
+   "/service-areas/tahoe-city/",
+   "/service-areas/tahoe-donner/",
+   "/service-areas/tahoe-vista/",
+   "/service-areas/tahoma/",
+   "/service-areas/truckee/",
+   "/services/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/og-default.jpg",
+  "status": 404,
+  "bytes": 79,
+  "contentType": "text/plain; charset=utf-8",
+  "alts": [
+   "(og:image)"
+  ],
+  "usedOn": [
+   "(meta)"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/ready-to-get-started-bg.png",
+  "status": 200,
+  "bytes": 316031,
+  "contentType": "image/png",
+  "alts": [
+   "Luxury mountain home at sunset with warm indoor lighting.",
+   "Lakeside mountain residence with mature pines."
+  ],
+  "usedOn": [
+   "/",
+   "/service-areas/alpine-meadows/",
+   "/service-areas/carnelian-bay/",
+   "/service-areas/donner-lake/",
+   "/service-areas/donner-summit-serene-lakes/",
+   "/service-areas/glenshire/",
+   "/service-areas/grays-crossing/",
+   "/service-areas/homewood/",
+   "/service-areas/lahontan/",
+   "/service-areas/martis-camp/",
+   "/service-areas/meeks-bay/",
+   "/service-areas/norden/",
+   "/service-areas/northstar/",
+   "/service-areas/old-greenwood/",
+   "/service-areas/olympic-valley/",
+   "/service-areas/schaffers-mill/",
+   "/service-areas/soda-springs/",
+   "/service-areas/tahoma/",
+   "/service-areas/truckee/",
+   "/services/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/reliability-for-every-season.png",
+  "status": 200,
+  "bytes": 227074,
+  "contentType": "image/png",
+  "alts": [
+   "Modern mountain residence exterior with large windows and warm evening lighting.",
+   "Mountain lodge in winter representing all-season reliability."
+  ],
+  "usedOn": [
+   "/",
+   "/service-areas/agate-bay/",
+   "/service-areas/alpine-meadows/",
+   "/service-areas/carnelian-bay/",
+   "/service-areas/dollar-point/",
+   "/service-areas/donner-lake/",
+   "/service-areas/donner-summit-serene-lakes/",
+   "/service-areas/grays-crossing/",
+   "/service-areas/lahontan/",
+   "/service-areas/martis-camp/",
+   "/service-areas/meeks-bay/",
+   "/service-areas/norden/",
+   "/service-areas/northstar/",
+   "/service-areas/old-greenwood/",
+   "/service-areas/olympic-valley/",
+   "/service-areas/schaffers-mill/",
+   "/service-areas/soda-springs/",
+   "/service-areas/tahoe-city/",
+   "/service-areas/tahoe-donner/",
+   "/service-areas/tahoe-vista/",
+   "/service-areas/truckee/",
+   "/services/"
+  ]
+ },
+ {
+  "url": "https://www.brimercon.com/images/spa-grade-bath-experiences.png",
+  "status": 200,
+  "bytes": 220083,
+  "contentType": "image/png",
+  "alts": [
+   "Luxury steam shower with natural stone walls and brass trim.",
+   "Luxury mountain bathroom with stone and wood finishes."
+  ],
+  "usedOn": [
+   "/",
+   "/service-areas/agate-bay/",
+   "/service-areas/alpine-meadows/",
+   "/service-areas/donner-lake/",
+   "/service-areas/donner-summit-serene-lakes/",
+   "/service-areas/grays-crossing/",
+   "/service-areas/homewood/",
+   "/service-areas/kings-beach/",
+   "/service-areas/lahontan/",
+   "/service-areas/martis-camp/",
+   "/service-areas/meeks-bay/",
+   "/service-areas/norden/",
+   "/service-areas/northstar/",
+   "/service-areas/old-greenwood/",
+   "/service-areas/olympic-valley/",
+   "/service-areas/schaffers-mill/",
+   "/service-areas/soda-springs/",
+   "/service-areas/tahoe-city/",
+   "/service-areas/tahoe-donner/",
+   "/service-areas/tahoe-vista/",
+   "/service-areas/tahoma/",
+   "/service-areas/truckee/",
+   "/services/"
+  ]
+ }
+]

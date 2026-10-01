@@ -1,0 +1,59 @@
+{
+  "source": "seed-google-business-profile",
+  "fetchedAt": "2026-09-19T14:55:00.000Z",
+  "placeId": "ChIJw3M9Pdp6SIERbHPE39fkPN8",
+  "displayName": "Brimer Plumbing",
+  "rating": 4.97,
+  "userRatingCount": 32,
+  "note": "Seed cache. The rating and count were read from the Truckee Google Business Profile record on 2026-09-19, not from the Places API, because GOOGLE_PLACES_API_KEY was not available. They are real and dated, not estimated. Review text is quoted from the live site, which quotes the public Google and Yelp listings. Running scripts/refresh-reviews.mjs with a key replaces this whole file with Places API data and sets source to google-places-api-v1.",
+  "reviews": [
+    {
+      "author": "K B.",
+      "location": "Alameda, CA",
+      "rating": 5,
+      "text": "Outstanding service from Brimer Plumbing at my cabin in Truckee! Responsive, easy to communicate with, and very patient as I sorted out my situation (including help locating the main water shut off). Wesley explained the issue and outlined repair recommendations in a way that was easy to understand, and Jamie was always available by text and phone. Highly recommend!",
+      "relativeTime": null,
+      "publishTime": null
+    },
+    {
+      "author": "Jill S.",
+      "location": "Truckee, CA",
+      "rating": 5,
+      "text": "Jamie is reliable, efficient and extremely pleasant to work with. He converted my home from propane to natural gas and took care of all the tedious steps, ensuring everything (permits, inspections, working with subcontractors) was taken care of and done well. I wasn't totally happy with an issue with my water heater and he agreed it wasn't ideal and came to make it right. I will always call Jamie first when in need of any job!",
+      "relativeTime": null,
+      "publishTime": null
+    },
+    {
+      "author": "Stephanie Y.",
+      "location": "Berkeley, CA",
+      "rating": 5,
+      "text": "A new gas fireplace was on the horizon and we needed someone to draw up the plan, get a permit and install the gas line. The store in Truckee recommended Jamie Brimer and I see why. Prompt, professional and efficient. We don't live full time in the area, but Jamie took photos of his work upon completion and it was well done. He also noticed something in our house and gave his recommendations for our safety. This man is thorough and obviously cares.",
+      "relativeTime": null,
+      "publishTime": null
+    },
+    {
+      "author": "Chris B.",
+      "location": "San Francisco, CA",
+      "rating": 5,
+      "text": "Had a gas leak during the major storm of winter '23. Jamie Brimer came out to locate the leak and do the necessary repairs. Being in the dead of winter without heat was a major issue obviously, but he quickly handled the permitting from the city of Truckee to get the job done as soon as possible. Definitely recommend.",
+      "relativeTime": null,
+      "publishTime": null
+    },
+    {
+      "author": "Larry L.",
+      "location": "Menlo Park, CA",
+      "rating": 5,
+      "text": "Jamie installed a new gas line for a new fireplace/stove. He arrived as scheduled for the estimate and performed the work as planned. His instructions how to handle the permit, gas company and city inspection made it a breeze. After discussing my 30+ year old water heater we decided to replace it. There was no sales pitch or hard sell. All the work was done correctly, on schedule and at a reasonable cost.",
+      "relativeTime": null,
+      "publishTime": null
+    },
+    {
+      "author": "Gregg H.",
+      "location": "Rocklin, CA",
+      "rating": 5,
+      "text": "Jamie installed a new gas line for our new propane stove, and it turned out great. He was extremely responsive in all communications, explained everything well, and took care of the permit process. I highly recommend Jamie and his company.",
+      "relativeTime": null,
+      "publishTime": null
+    }
+  ]
+}

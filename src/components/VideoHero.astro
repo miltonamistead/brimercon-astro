@@ -1,0 +1,83 @@
+---
+/**
+ * VideoHero: homepage-only video hero, J. Blanton pattern.
+ *
+ * Full-viewport looping reel with the copy bottom-left over a gradient shade.
+ * Keeps the data-fs contract markers h1, area and call inside the hero; hours
+ * and trust render in the slim strip below so the static QA gate
+ * (scripts/qa-first-screen-static.mjs) still sees all five markers in document
+ * order. The Playwright fold-position gate (tests/first-screen.spec.ts) carries
+ * the homepage video-hero variant.
+ *
+ * Accessibility: the video is decorative (aria-hidden); reduced-motion users get
+ * the poster frame instead of motion.
+ */
+import { site, trustPoints } from "@/data/site";
+import { ratingSummary } from "@/data/reviews";
+import Stars from "@/components/Stars.astro";
+
+const rating = ratingSummary();
+
+// site.afterHoursLine stays the single source of the sentence; splitting on the
+// number keeps the markup from wrapping mid-digits on a narrow screen.
+const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
+---
+
+<section class="video-hero" aria-label="Brimer Plumbing introduction">
+  <video
+    class="video-hero__media"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/video/hero-poster.jpg"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <source src="/video/hero-reel-mobile.mp4" media="(max-width: 47.99em)" type="video/mp4" />
+    <source src="/video/hero-reel.webm" type="video/webm" />
+    <source src="/video/hero-reel.mp4" type="video/mp4" />
+  </video>
+  <div class="video-hero__shade" aria-hidden="true"></div>
+
+  <div class="wrap video-hero__content">
+    <h1 class="video-hero__h1" data-fs="h1">
+      Plumbing, water heaters, and gas service in Truckee and Lake Tahoe.
+    </h1>
+    <p class="video-hero__kicker" data-fs="area">
+      <a href="/service-areas/">Serving Truckee and North Lake Tahoe since 1997</a>
+    </p>
+    <p class="video-hero__sub">Got a problem? We'll fix it. Got an idea? We'll make it happen.</p>
+    <a class="btn-call video-hero__call" href={site.phoneHref} data-fs="call">
+      <span aria-hidden="true">&#9742;</span>
+      <span>Call {site.phoneDisplay}</span>
+    </a>
+    <a class="video-hero__form-link" href="/request-service/" data-fs="form-link">Or send a service request</a>
+  </div>
+</section>
+
+<section class="video-hero__strip" aria-label="Hours and credentials">
+  <div class="wrap">
+    <p class="video-hero__hours" data-fs="hours">
+      {site.hoursLabel}. {beforePhone}<span class="nowrap">{site.phoneDisplay}</span>{afterPhone}
+    </p>
+    <ul class="trust-strip" data-fs="trust">
+      {trustPoints.map((point) => <li>{point.label}</li>)}
+      <li>
+        <a class="rating" href={site.googleReviewsUrl} rel="noopener">
+          {
+            rating ? (
+              <>
+                <Stars rating={rating.rating} />
+                <span class="nowrap">{rating.display} from {rating.total} Google reviews</span>
+              </>
+            ) : (
+              "Google reviews"
+            )
+          }
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

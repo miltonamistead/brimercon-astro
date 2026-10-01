@@ -1,0 +1,84 @@
+---
+/**
+ * First-screen contract (audit B1).
+ *
+ * Above roughly 640px at 390px wide, every important template shows, in this order:
+ *   H1, service-area line, full-width call button, hours line, trust strip.
+ * The form link is text weight underneath the call button. Calling is the primary action.
+ *
+ * The data-fs markers are what tests/first-screen.spec.ts asserts on, so do not rename
+ * them without updating that gate.
+ */
+import { site, serviceAreaLine, trustPoints } from "@/data/site";
+import { ratingSummary } from "@/data/reviews";
+import Stars from "@/components/Stars.astro";
+
+interface Props {
+  h1: string;
+  /** Town name on a town page, otherwise the default multi-town line. */
+  areaLabel?: string;
+  /** Link the area line somewhere useful; defaults to the service-area hub. */
+  areaHref?: string;
+  intro?: string;
+  formHref?: string;
+  formLabel?: string;
+}
+
+const {
+  h1,
+  areaLabel = serviceAreaLine,
+  areaHref = "/service-areas/",
+  intro,
+  formHref = "/request-service/",
+  formLabel = "Or send a service request",
+} = Astro.props;
+
+// site.afterHoursLine stays the single source of the sentence (audit H8); splitting on the
+// number only lets the markup keep it from wrapping mid-digits on a narrow screen.
+const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
+
+// Null when no rating has been fetched, in which case the strip shows a plain link
+// instead of a number nobody verified (audit H10).
+const rating = ratingSummary();
+---
+
+<section class="first-screen">
+  <div class="wrap">
+    <h1 data-fs="h1">{h1}</h1>
+
+    <p class="first-screen__area" data-fs="area">
+      <a href={areaHref}>{areaLabel}</a>
+    </p>
+
+    {intro && <p class="first-screen__intro">{intro}</p>}
+
+    <a class="btn-call" href={site.phoneHref} data-fs="call">
+      <span aria-hidden="true">&#9742;</span>
+      <span>Call {site.phoneDisplay}</span>
+    </a>
+
+    <a class="first-screen__form-link" href={formHref} data-fs="form-link">{formLabel}</a>
+
+    <p class="first-screen__hours" data-fs="hours">
+      {site.hoursLabel}. {beforePhone}<span class="nowrap">{site.phoneDisplay}</span>{afterPhone}
+    </p>
+
+    <ul class="trust-strip" data-fs="trust">
+      {trustPoints.map((point) => <li>{point.label}</li>)}
+      <li>
+        <a class="rating" href={site.googleReviewsUrl} rel="noopener">
+          {
+            rating ? (
+              <>
+                <Stars rating={rating.rating} />
+                <span class="nowrap">{rating.display} from {rating.total} Google reviews</span>
+              </>
+            ) : (
+              "Google reviews"
+            )
+          }
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,1126 @@
+/* Design tokens and base styles. No webfonts: system stack keeps the first screen fast.
+   Layout rules that matter for the audit are marked with the B1 first-screen contract. */
+
+:root {
+  --ink: #12181f;
+  --ink-soft: #46535f;
+  --line: #d9e0e6;
+  --bg: #ffffff;
+  --bg-soft: #f4f7f9;
+  --brand: #12466e;
+  --brand-dark: #0d3453;
+  --accent: #b4441f;
+  --focus: #12466e;
+  --radius: 8px;
+  --wrap: 68rem;
+  --call-bar-h: 4rem;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* Room for the fixed mobile call bar so it never covers page content. */
+@media (max-width: 47.99em) {
+  body {
+    padding-bottom: var(--call-bar-h);
+  }
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 5.2vw, 2.4rem);
+}
+
+h2 {
+  font-size: clamp(1.3rem, 3.6vw, 1.75rem);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--brand);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--brand);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+}
+
+.site-header__logo img {
+  display: block;
+  width: auto;
+  height: 2.25rem;
+}
+
+.site-header__call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-header__request {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+
+.site-header__request:hover {
+  background: var(--brand-dark);
+  color: #fff;
+}
+
+/* Keep logo, call, and request on one line at phone widths. */
+@media (max-width: 29.99em) {
+  .site-header__logo img {
+    height: 1.9rem;
+  }
+  .site-header__actions {
+    gap: 0.4rem;
+  }
+  .site-header__call {
+    font-size: 0.9rem;
+  }
+  .site-header__request {
+    min-height: 2.25rem;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.85rem;
+  }
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0.75rem;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+/* Nav sits below the fold-critical block on small screens so the first screen
+   stays: H1, area, call, hours, trust (B1). */
+@media (max-width: 47.99em) {
+  .site-nav {
+    display: none;
+  }
+}
+
+/* ---------- homepage banner ---------- */
+
+.banner {
+  margin: 0;
+}
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+@media (max-width: 47.99em) {
+  .banner img {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ---------- first screen (audit B1) ---------- */
+
+.first-screen {
+  padding: 1.25rem 0 1.5rem;
+}
+
+.first-screen__area {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.first-screen__area a {
+  color: var(--brand);
+}
+
+.first-screen__intro {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+}
+
+/* Full-width call button: the primary action on every important template. */
+.btn-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.btn-call:hover {
+  background: #93361a;
+}
+
+/* Form link is text weight and sits under the call button, never competing with it. */
+.first-screen__form-link {
+  display: block;
+  margin: 0.6rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.first-screen__hours {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.trust-strip li {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (min-width: 48em) {
+  .first-screen {
+    padding: 2rem 0 2.25rem;
+  }
+
+  .btn-call {
+    width: auto;
+    min-width: 20rem;
+  }
+
+  .first-screen__form-link {
+    text-align: left;
+  }
+}
+
+/* ---------- video hero (homepage only, J. Blanton pattern) ---------- */
+
+.video-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 34rem;
+  height: 100svh;
+  max-height: 58rem;
+  overflow: hidden;
+  background: #101c26 url("/video/hero-poster.jpg") center 60% / cover no-repeat;
+  color: #fff;
+}
+
+.video-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Darkens the lower-left where the copy sits so white text stays readable
+   over any frame of the reel. */
+.video-hero__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 14, 20, 0.8) 0%, rgba(8, 14, 20, 0.32) 48%, rgba(8, 14, 20, 0.04) 78%),
+    linear-gradient(to right, rgba(8, 14, 20, 0.35) 0%, rgba(8, 14, 20, 0) 55%);
+}
+
+.video-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  /* Clear the fixed mobile call bar so the hero CTA is never covered. */
+  padding-bottom: calc(3.5rem + var(--call-bar-h));
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+  /* H1 leads in the DOM for the first-screen marker order; the kicker is
+     pulled above it visually. */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.video-hero__kicker {
+  order: -1;
+}
+
+.video-hero__kicker {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.video-hero__kicker a {
+  color: #ffd9a8;
+  text-decoration: none;
+}
+
+.video-hero__kicker a:hover {
+  text-decoration: underline;
+}
+
+.video-hero__h1 {
+  margin: 0 0 0.75rem;
+  max-width: 16ch;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.video-hero__sub {
+  margin: 0 0 1.4rem;
+  max-width: 34ch;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.video-hero__call {
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Form link is text weight under the call button, never competing with it. */
+.video-hero__form-link {
+  display: block;
+  align-self: stretch;
+  margin: 0.7rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.video-hero__form-link:hover {
+  color: #fff;
+}
+
+.video-hero__strip {
+  padding: 1rem 0 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.video-hero__hours {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 48em) {
+  .video-hero__content {
+    /* No fixed call bar on desktop, but the in-flow sticky header eats ~93px
+       above the 100svh hero, so lift the copy enough to keep the form link
+       in view on a 900px-tall viewport. */
+    padding-bottom: 6.5rem;
+  }
+
+  .video-hero__call {
+    width: auto;
+    min-width: 20rem;
+  }
+
+  .video-hero__form-link {
+    text-align: left;
+  }
+}
+
+/* Reduced motion: the poster frame carries the hero, no autoplay. */
+@media (prefers-reduced-motion: reduce) {
+  .video-hero__media {
+    display: none;
+  }
+}
+
+/* ---------- fixed mobile call bar (CSS only, audit B1) ---------- */
+
+.call-bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: var(--call-bar-h);
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 -2px 10px rgb(0 0 0 / 18%);
+}
+
+@media (min-width: 48em) {
+  .call-bar {
+    display: none;
+  }
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  margin-top: 2.5rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--line);
+  background: var(--bg-soft);
+  font-size: 0.95rem;
+}
+
+.site-footer h2 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .site-footer__grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+}
+
+.site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer li + li {
+  margin-top: 0.2rem;
+}
+
+.site-footer a {
+  color: var(--brand);
+}
+
+.site-footer__legal {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+address {
+  font-style: normal;
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  padding: 1.75rem 0;
+}
+
+.section--soft {
+  background: var(--bg-soft);
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+/* No .eyebrow class: eyebrow labels above H2s are banned (PLAN.md section 3d rule 2).
+   The H2 carries the meaning on its own. */
+
+.prose-block {
+  margin-bottom: 1.25rem;
+}
+
+.prose-block h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.nap-line {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* Keeps a phone number from breaking across lines mid-digits. */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* ---------- breadcrumbs ---------- */
+
+.breadcrumbs {
+  padding-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 0.35rem;
+  color: var(--line);
+}
+
+/* ---------- lists and grids ---------- */
+
+.points,
+.cards,
+.showcase,
+.steps,
+.towns,
+.ticks,
+.reviews__list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.points,
+.cards,
+.showcase,
+.steps {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40em) {
+  .points,
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards,
+  .showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 60em) {
+  .points,
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards,
+  .showcase {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.points__title {
+  font-size: 1rem;
+  margin-bottom: 0.15rem;
+}
+
+.points li p,
+.steps li p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.steps {
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  padding-left: 2.25rem;
+  position: relative;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.card {
+  display: block;
+  height: 100%;
+  padding: 1.1rem 1rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+a.card {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+a.card:hover {
+  border-color: var(--brand);
+  box-shadow: 0 4px 16px rgba(18, 70, 110, 0.12);
+  transform: translateY(-2px);
+}
+
+a.card:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.6rem;
+  border-radius: 50%;
+  background: #e9f1f7;
+  color: var(--brand);
+}
+
+.card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.card__meta {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.card__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+}
+
+.card__summary {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.card__bullets {
+  margin: 0 0 0.6rem;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.card__more {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.card__arrow {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+a.card:hover .card__arrow {
+  transform: translateX(3px);
+}
+
+.showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.showcase__caption {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ---------- service / about photo band ---------- */
+/* Full-bleed band so the photo sits against the section edges like TownHero.
+   Portrait originals are cropped by object-fit: cover; all are crop-safe. */
+
+.service-photo-band {
+  margin: 0;
+}
+
+.service-photo-band img {
+  display: block;
+  width: 100%;
+  height: clamp(16rem, 38vw, 24rem);
+  object-fit: cover;
+}
+
+.towns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+.ticks {
+  font-size: 0.95rem;
+}
+
+.ticks li {
+  padding-left: 1.4rem;
+  position: relative;
+  margin-bottom: 0.3rem;
+}
+
+.ticks li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.facts {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 40em) {
+  .facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.facts dt {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.facts dd {
+  margin: 0.15rem 0 0;
+}
+
+/* ---------- emergency band ---------- */
+
+.band {
+  padding: 1.25rem 0;
+  background: var(--brand-dark);
+  color: #fff;
+}
+
+.band__inner {
+  display: grid;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (min-width: 48em) {
+  .band__inner {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.band__heading {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.band__note {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  color: #cfe0ec;
+}
+
+.band__call {
+  margin: 0;
+}
+
+/* ---------- reviews ---------- */
+
+.reviews__list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .reviews__list {
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+}
+
+.review {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.review blockquote {
+  margin: 0;
+}
+
+.review blockquote p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.review__who {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.review__who strong {
+  color: var(--ink);
+}
+
+.review__who span::before {
+  content: " \00b7 ";
+}
+
+.reviews__links {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- google rating ---------- */
+
+.stars {
+  letter-spacing: 0.04em;
+  color: #e8a33d;
+}
+
+.stars__off {
+  color: var(--line);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.reviews__rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.reviews__rating span {
+  color: var(--ink-soft);
+}
+
+/* ---------- faqs ---------- */
+
+.faqs__list {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.faq {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  padding: 0.85rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.faq[open] summary::after {
+  content: "\2013";
+}
+
+.faq p {
+  margin: 0 0 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ---------- lead form ---------- */
+
+.lead-form {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.lead-form__heading {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.lead-form .field {
+  margin-bottom: 1rem;
+}
+
+.lead-form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.lead-form .field__optional {
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.lead-form input[type="text"],
+.lead-form input[type="tel"],
+.lead-form input[type="email"],
+.lead-form textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.75rem;
+  min-height: 3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+}
+
+.lead-form textarea {
+  resize: vertical;
+}
+
+.lead-form input:focus-visible,
+.lead-form textarea:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+  border-color: var(--focus);
+}
+
+/* Honeypot: off-screen, not display:none, so naive bots still fill it. */
+.lead-form .hp {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: #93361a;
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.lead-form__error {
+  background: #fdf0ec;
+  border: 1px solid #d98a76;
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem;
+  color: #7a2d1a;
+}
+
+.lead-form__note {
+  margin: 0.9rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.lead-form__done {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+@media (min-width: 48em) {
+  .lead-form {
+    padding: 2rem;
+  }
+  .btn-submit {
+    width: auto;
+    min-width: 16rem;
+  }
+}

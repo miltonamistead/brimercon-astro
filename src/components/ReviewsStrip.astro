@@ -1,0 +1,58 @@
+---
+// Review cards, placed after the first screen so they never push the call button down.
+//
+// The rating line above the cards comes from the committed Places cache and disappears
+// entirely when no rating has been fetched. No AggregateRating schema is emitted: the SEO
+// brief forbids inventing a rating and Google does not surface self-serving review markup
+// on a LocalBusiness.
+import { site } from "@/data/site";
+import { topReviews, ratingSummary } from "@/data/reviews";
+import Stars from "@/components/Stars.astro";
+
+interface Props {
+  count?: number;
+  /** Must follow the H2 rules in PLAN.md section 3d. No eyebrow label above it. */
+  heading?: string;
+}
+const { count = 3, heading = "What homeowners say about our work" } = Astro.props;
+const items = topReviews(count);
+const rating = ratingSummary();
+---
+
+<section class="section reviews">
+  <div class="wrap">
+    <h2>{heading}</h2>
+
+    {
+      rating && (
+        <p class="reviews__rating">
+          <Stars rating={rating.rating} />
+          <strong>{rating.display}</strong>
+          <span>from {rating.total} Google reviews</span>
+        </p>
+      )
+    }
+
+    <ul class="reviews__list">
+      {
+        items.map((review) => (
+          <li class="review">
+            <blockquote>
+              <p>{review.quote}</p>
+            </blockquote>
+            <p class="review__who">
+              <strong>{review.author}</strong>
+              {review.location && <span>{review.location}</span>}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="reviews__links">
+      <a href={site.googleReviewsUrl} rel="noopener">Read the reviews on Google</a>
+      <span aria-hidden="true"> | </span>
+      <a href={site.yelpUrl} rel="noopener">Read the reviews on Yelp</a>
+    </p>
+  </div>
+</section>
