@@ -52,7 +52,7 @@ export const services: Service[] = [
     slug: "water-heaters",
     name: "Water Heaters",
     shortName: "Water heaters",
-    title: "Water Heater Replacement & Repair | Truckee & Tahoe",
+    title: "Water Heater Installation & Replacement | Truckee & Tahoe",
     description:
       "Water heater repair, replacement, and installation in Truckee and North Lake Tahoe. Tank and tankless sized for altitude. Call 530-587-0733.",
     h1: "Water heater repair and installation in Truckee and North Lake Tahoe",
@@ -602,7 +602,7 @@ export const services: Service[] = [
     slug: "emergency-plumber",
     name: "Emergency Plumber",
     shortName: "Emergency plumber",
-    title: "Emergency Plumber in Truckee & North Tahoe",
+    title: "Emergency Plumber in Truckee & North Lake Tahoe",
     description:
       "Emergency plumber in Truckee and North Lake Tahoe. Burst pipes, major leaks, gas smells, no water. Open 7 AM to 8 PM daily. Call 530-587-0733.",
     h1: "Emergency plumber in Truckee and North Lake Tahoe",
