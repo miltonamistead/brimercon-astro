@@ -52,7 +52,13 @@ const groupHeadings: Record<string, string> = {
     serviceAreaGroups.map((group, i) => (
       <section class={i % 2 === 0 ? "section section--soft" : "section"}>
         <div class="wrap">
-          <h2>{groupHeadings[group.label] ?? group.label}</h2>
+          <h2>
+            {"hub" in group && group.hub ? (
+              <a href={group.hub}>{groupHeadings[group.label] ?? group.label}</a>
+            ) : (
+              groupHeadings[group.label] ?? group.label
+            )}
+          </h2>
           <ul class="towns">
             {group.towns.map((slug) => (
               <li>

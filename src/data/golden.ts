@@ -10,6 +10,8 @@
 // Lives in its own module because Astro runs getStaticPaths in an isolated scope, where
 // only imported values are visible.
 
+import { getTownContent } from "./town-content";
+
 // All six services are released: each now has its own sections matching the topics its
 // live page gives an H2, plus common issues, process and why-us blocks.
 export const GOLDEN_SERVICE_SLUGS = [
@@ -60,7 +62,12 @@ export const GOLDEN_TOWN_SLUGS = [
  * Whether a town has a page in this build. The service-area hub, the footer and the
  * service pages use it to link only what exists and render the rest as plain text, so a
  * partially built twin has no dead links.
+ *
+ * A town counts as built only if it is in GOLDEN_TOWN_SLUGS *and* has a content entry
+ * in src/data/town-content.ts. Checking the slug list alone is not enough: the 6 towns
+ * without written content (homewood, tahoma, lahontan, northstar, glenshire, norden)
+ * must render as plain text until their briefs clear the similarity gate.
  */
 export function isTownBuilt(slug: string): boolean {
-  return GOLDEN_TOWN_SLUGS.includes(slug);
+  return GOLDEN_TOWN_SLUGS.includes(slug) && getTownContent(slug) !== undefined;
 }
