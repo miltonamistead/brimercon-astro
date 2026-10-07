@@ -77,7 +77,7 @@ export function napOneLine(): string {
  * link when no rating has been fetched.
  */
 export const trustPoints = [
-  { label: `Serving Truckee since ${site.founded}` },
+  { label: `Serving Truckee and North Lake Tahoe since ${site.founded}` },
   { label: site.cslbLine },
 ] as const;
 
