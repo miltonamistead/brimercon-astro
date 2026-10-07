@@ -21,7 +21,7 @@ is an existing real photo and stays.
 |---|---|---|
 | water-heaters | `water-heater-install.webp` | placeholder |
 | tankless-water-heaters | `tankless-install.webp` | placeholder |
-| winterization | `winter-cabin-visit.webp` | placeholder |
+| winterization | `winter-cabin-visit.webp` | v2: regenerated with natural van scale, real Brimer logo composited |
 | drain-cleaning | `crawlspace-work.webp` | placeholder |
 | leak-detection | `pressure-gauge-test.webp` | REAL Brimer job site, Truckee 2026-07-22 |
 | emergency-plumber | `van-snowy-driveway.webp` | placeholder, replace with the real branded truck |
