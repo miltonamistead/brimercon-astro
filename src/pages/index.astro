@@ -144,7 +144,7 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
     </div>
   </section>
 
-  <section class="section section--soft">
+  <section class="section section--warm">
     <div class="wrap">
       <h2>Your ideas built, your problems solved</h2>
       <p class="lede">
@@ -174,7 +174,7 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
       <ul class="cards">
         {services.map((service) => <ServiceCard service={service} />)}
       </ul>
-      <p><a href="/services/">View all services</a></p>
+      <p><a class="btn-secondary" href="/services/">View all services</a></p>
     </div>
   </section>
 
@@ -225,13 +225,13 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
       <ul class="towns">
         {featuredTowns.map((town) => <li><TownLink slug={town.slug} /></li>)}
       </ul>
-      <p><a href="/service-areas/">View all service areas</a></p>
+      <p><a class="btn-secondary" href="/service-areas/">View all service areas</a></p>
     </div>
   </section>
 
   <Faq heading="Common plumbing questions" faqs={faqs} />
 
-  <section class="section">
+  <section class="section section--deep">
     <div class="wrap">
       <h2>Talk to a Truckee plumber today</h2>
       <p class="lede">
