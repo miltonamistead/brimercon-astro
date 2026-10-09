@@ -8,7 +8,8 @@ import { test, expect, type Page } from "@playwright/test";
  * The form link must be present but text weight, never a competing button.
  * A fixed call bar must be pinned to the bottom of the viewport.
  *
- * HOMEPAGE VARIANT (2026-09-30): the home page runs a full-viewport video hero
+ * HOMEPAGE VARIANT (2026-10-09): the home page runs a full-viewport still-image
+ * hero (previously a video reel; swapped per Milton's direction).
  * (J. Blanton pattern, VideoHero.astro). H1, area line and the call button live
  * inside the hero; the hours line and trust strip sit in the strip directly
  * below it. Fold-position assertions apply to h1/area/call only, and the

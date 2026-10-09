@@ -1,16 +1,15 @@
 ---
 /**
- * VideoHero: homepage-only video hero, J. Blanton pattern.
+ * VideoHero: homepage-only hero (still-image variant since 2026-10-09).
  *
- * Full-viewport looping reel with the copy bottom-left over a gradient shade.
+ * Full-viewport hero with the copy bottom-left over a gradient shade.
+ * Previously a looping video reel; Milton asked for the gas-line still
+ * (crew + branded truck) as the primary hero image instead.
  * Keeps the data-fs contract markers h1, area and call inside the hero; hours
  * and trust render in the slim strip below so the static QA gate
  * (scripts/qa-first-screen-static.mjs) still sees all five markers in document
  * order. The Playwright fold-position gate (tests/first-screen.spec.ts) carries
- * the homepage video-hero variant.
- *
- * Accessibility: the video is decorative (aria-hidden); reduced-motion users get
- * the poster frame instead of motion.
+ * the homepage hero variant.
  */
 import { site, trustPoints } from "@/data/site";
 import { ratingSummary } from "@/data/reviews";
@@ -24,21 +23,13 @@ const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
 ---
 
 <section class="video-hero" aria-label="Brimer Plumbing introduction">
-  <video
+  <img
     class="video-hero__media"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="metadata"
-    poster="/video/hero-poster.jpg"
-    aria-hidden="true"
-    tabindex="-1"
-  >
-    <source src="/video/hero-reel-mobile.mp4" media="(max-width: 47.99em)" type="video/mp4" />
-    <source src="/video/hero-reel.webm" type="video/webm" />
-    <source src="/video/hero-reel.mp4" type="video/mp4" />
-  </video>
+    src="/video/hero-poster.jpg"
+    alt="Brimer Plumbing technicians installing a gas line at a snowy Truckee cabin, branded service van parked nearby."
+    fetchpriority="high"
+    decoding="async"
+  />
   <div class="video-hero__shade" aria-hidden="true"></div>
 
   <div class="wrap video-hero__content">
