@@ -424,6 +424,17 @@ img {
   order: -1;
 }
 
+/* Eyebrow above the kicker: "Gas, Service and Repair" positioning line. */
+.video-hero__topline {
+  order: -2;
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
 .video-hero__kicker {
   margin: 0 0 0.6rem;
   font-size: 0.82rem;
