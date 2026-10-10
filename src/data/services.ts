@@ -782,6 +782,10 @@ export const services: Service[] = [
         heading: "Freeze prevention with insulation and monitoring",
         copy: "Houses tend to freeze in the same place every year. Once we know where, better insulation on that run, and sometimes a change to crawl-space ventilation stop the annual repeat. A monitored shutoff on the main is the backstop for a house nobody is watching.",
       },
+      {
+        heading: "What affects the cost of a burst pipe repair",
+        copy: "Most people ask what it will cost before we get there. The honest answer is that it depends on what the water has done: an accessible line in a utility room is a straightforward repair, while a line inside a wall or a tight crawl space takes longer because we open, repair, and close up properly. A single split joint is one thing; a line that has been running for days behind drywall is another. We give you the price before we start the work, in writing, and if anything changes once we are in there we talk it through first.",
+      },
     ],
     commonIssues: [
       {
@@ -853,6 +857,16 @@ export const services: Service[] = [
         question: "Should I shut off the main water if my pipes are frozen?",
         answer:
           "If the pipe has already burst or you see water where it should not be, yes, shut the main off immediately. If it is just frozen with no leak, leave the main on but open the affected faucet, and call us. We will tell you which applies on the phone.",
+      },
+      {
+        question: "How much does a burst pipe repair cost?",
+        answer:
+          "It depends on where the pipe failed and how much water damage came with it. An accessible line is a straightforward repair; a line inside a wall or crawl space takes longer. We give you the price in writing before we start, and we talk it through first if anything changes once we are in there.",
+      },
+      {
+        question: "How long does a burst pipe repair take?",
+        answer:
+          "A simple accessible repair is often finished in one visit. Work inside walls or crawl spaces, or damage that needs restoration afterward, takes longer. When we arrive we will tell you honestly how long to expect, and we do not leave you guessing.",
       },
     ],
     related: ["winterization", "smart-leak-shutoff", "water-heaters", "gas-services"],
