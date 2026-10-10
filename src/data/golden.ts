@@ -26,6 +26,7 @@ export const GOLDEN_SERVICE_SLUGS = [
   "kitchen-bath-plumbing",
   "appliance-installation",
   "smart-leak-shutoff",
+  "repiping",
 ];
 
 // Towns stay deliberately at one. The remaining 23 need a written brief each

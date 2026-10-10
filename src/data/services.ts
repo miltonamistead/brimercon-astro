@@ -82,6 +82,18 @@ export const services: Service[] = [
         heading: "Annual water heater maintenance and flushing",
         copy: "A yearly visit covering a sediment flush, an anode check, a temperature and pressure valve test, and a look at venting and shutoff valves is the cheapest way to catch a tank before it soaks a closet. It matters most in houses that sit empty between visits, where a slow failure has weeks to become a floor replacement.",
       },
+      {
+        heading: "Water heater cost and timeline in Truckee",
+        copy: "What a water heater job costs comes down to a short list: tank or tankless, the size your home needs, gas or electric, the venting route, and whether the install needs code upgrades like an expansion tank, a drain pan, or seismic strapping. Access matters too. A unit in an open garage is a different job than one boxed into a tight closet. Most straightforward tank replacements are done in half a day. Tankless conversions take longer because gas sizing, venting, and condensate all get touched. Permit inspections add calendar days but not labor days, and we handle the permit side so you do not have to chase it. You get the full price before we start, after we have seen the unit and the home.",
+      },
+      {
+        heading: "Tank or tankless for your Tahoe home",
+        copy: "Tankless wins for seasonal homes and houses with high simultaneous demand, because there is no standby loss while nobody is there. Tanks win on simplicity, lower upfront cost, and tolerance for hard water neglect. The honest answer depends on fixture count, fuel, venting, and how the house is used across the year. We size both options for your home and lay out the tradeoffs plainly, including the cases where a tank is the better answer.",
+      },
+      {
+        heading: "Water heaters and Tahoe winters",
+        copy: "Winter is when water heaters fail here. Cold inlet water makes every unit work harder, vacation homes come back to life with tanks full of settled sediment, and a slow leak in an empty house has weeks to become a floor replacement before anyone notices. If your home sits empty, know where the main shutoff is before the first freeze, and consider a smart leak shutoff on the water heater line. An annual fall service visit, covering a flush, an anode check, and a valve test, catches most failures before they happen.",
+      },
     ],
     commonIssues: [
       {
@@ -149,6 +161,16 @@ export const services: Service[] = [
         answer:
           "It depends on tank or tankless, size, fuel type, venting, and whether the install needs code upgrades like expansion tanks or new venting. We price it after seeing the unit and the home.",
       },
+      {
+        question: "How often should I flush my water heater in Truckee?",
+        answer:
+          "Once a year is the right cadence here. Hard mountain water lays down sediment faster than soft city water, and seasonal vacancy lets it settle undisturbed. Annual flushing protects efficiency and the tank itself.",
+      },
+      {
+        question: "Why does my water heater run out faster in winter?",
+        answer:
+          "Groundwater arrives much colder in winter, so the unit has to work through a bigger temperature rise for every gallon. That is normal, but if recovery has gotten noticeably worse year over year, sediment or a failing component is usually the cause.",
+      },
     ],
     related: ["tankless-water-heaters", "gas-services", "frozen-burst-pipes", "smart-leak-shutoff"],
   },
@@ -189,6 +211,18 @@ export const services: Service[] = [
       {
         heading: "Tankless maintenance and descaling",
         copy: "Hard mountain water leaves scale inside any tankless heat exchanger, and scale is what kills efficiency and triggers error codes. An annual descale and inspection keeps output steady and stretches the life of the unit. It is a short visit and the cheapest insurance a tankless owner can buy.",
+      },
+      {
+        heading: "Tankless cost and timeline in Truckee",
+        copy: "A like for like tankless swap, where the gas supply and venting already suit the unit, is typically a one day job. A conversion from a tank usually takes longer because the gas line, venting, and condensate drain all need attention, and each of those is priced on what your house actually needs. What moves the number: the unit size your fixtures demand, the length and route of the venting, whether the gas meter and line can feed full fire, and permit and inspection fees. We price the whole job after the assessment, so the number you approve is the number you pay.",
+      },
+      {
+        heading: "Cold inlet water and the sizing math",
+        copy: "Tankless output is rated at a stated temperature rise, and Tahoe groundwater arrives much colder than the test conditions assume. That shrinks the real world flow rate, sometimes by a third or more in winter. Add thinner air derating combustion, and a unit that looks generous on paper can fall short at 6,000 feet. We size from your fixture count and realistic simultaneous use, then check against the manufacturer's altitude guidance. If the math says two units or a different approach, we tell you before you buy anything.",
+      },
+      {
+        heading: "Tankless descaling in hard mountain water",
+        copy: "Scale is the slow killer of tankless units here. Mineral deposits coat the heat exchanger, efficiency drops, and the unit starts throwing error codes. Annual descaling keeps output steady and is the difference between a unit that lasts twenty years and one that struggles at ten. It is a short visit, and for homes with the hardest water we will tell you honestly if a softener belongs in the conversation.",
       },
     ],
     commonIssues: [
@@ -261,6 +295,16 @@ export const services: Service[] = [
         question: "How much does tankless water heater installation cost in Truckee?",
         answer:
           "It depends on the unit size your home needs, the gas supply available, venting routes, and whether the job is a swap or a conversion from a tank. Conversions that need gas or venting upgrades cost more. We price the whole job after an assessment.",
+      },
+      {
+        question: "What size tankless do I need for my Tahoe home?",
+        answer:
+          "It depends on fixture count, how many run at once, and how cold your inlet water gets. Cold groundwater and altitude both shrink real world output, so Tahoe homes often need a larger unit than the same house at sea level. We size from your actual demand.",
+      },
+      {
+        question: "Can a tankless handle two showers at once here?",
+        answer:
+          "A properly sized unit can, but winter inlet water narrows the margin. That is why we size from realistic simultaneous use rather than the brochure rating. An undersized unit is the most common tankless disappointment we fix.",
       },
     ],
     related: ["water-heaters", "gas-services", "smart-leak-shutoff"],
@@ -596,7 +640,7 @@ export const services: Service[] = [
           "It is the best protection against the next one, especially for second homes. A smart shutoff watches for abnormal flow around the clock and closes the main automatically. We install and set them up.",
       },
     ],
-    related: ["smart-leak-shutoff", "frozen-burst-pipes", "kitchen-bath-plumbing"],
+    related: ["smart-leak-shutoff", "frozen-burst-pipes", "kitchen-bath-plumbing", "repiping"],
   },
   {
     slug: "emergency-plumber",
@@ -820,7 +864,7 @@ export const services: Service[] = [
     title: "Gas Line Installation & Leak Detection | Truckee & Tahoe",
     description:
       "Gas line installation, appliance hookups, leak detection, and safety inspections in Truckee and North Lake Tahoe. Call 530-587-0733.",
-    h1: "Gas line installation, leak detection, and safety",
+    h1: "Gas line installation, leak detection, and safety in Truckee and North Lake Tahoe",
     summary:
       "Gas lines, appliance hookups, leak checks, and permit-aware work for Truckee and North Lake Tahoe homes.",
     bullets: [
@@ -849,6 +893,18 @@ export const services: Service[] = [
       {
         heading: "Shutoff valves and emergency controls",
         copy: "Properly placed shutoffs are the difference between a problem and an emergency. We install and upgrade individual appliance shutoffs and whole-home emergency valves, so you and whoever looks after the house have clear control.",
+      },
+      {
+        heading: "Gas line cost and timeline in Truckee",
+        copy: "A simple appliance hookup, where the line is nearby and accessible, is often a same day job. A new run across the house costs more because length, wall and floor access, and trenching all add labor, and most gas work needs a permit with a pressure test and inspection. What moves the number: the length of the run, how we get there, the appliance being fed, and permit and inspection fees. Emergency leak work is priced on what we find, after we find it safely. You approve the scope and the price before we start.",
+      },
+      {
+        heading: "Signs your gas line needs attention",
+        copy: "Rotten egg odor is the one everyone knows, and it means leave first and call the utility. Quieter signs deserve attention too: a fireplace or range that will not stay lit, a yellow or lazy burner flame instead of blue, higher than usual gas bills with no change in use, or dead vegetation along an outdoor line route. Older pipework that predates current code is worth a scheduled inspection, especially before a seasonal home is occupied for winter.",
+      },
+      {
+        heading: "Gas permits and inspections in Truckee",
+        copy: "Most gas line installations and modifications in Truckee and North Lake Tahoe need a permit through the town or the county building department, followed by a pressure test witnessed at inspection. We pull the permit, schedule the inspection, and do not call the job done until it passes. Propane homes add a coordination step with the tank provider, and meter upsizes go through Southwest Gas. None of this is paperwork you should have to chase, so we handle it as part of the job.",
       },
     ],
     commonIssues: [
@@ -916,6 +972,16 @@ export const services: Service[] = [
         question: "How much does gas line installation cost in Truckee?",
         answer:
           "It depends on the length of the run, trenching or wall access, the appliance being fed, and permit and inspection fees. We price the whole job after seeing the house so there are no surprises.",
+      },
+      {
+        question: "How long does a gas line pressure test take?",
+        answer:
+          "The test itself usually takes under an hour, but it is scheduled as part of a permitted job with an inspection to follow. Every gas job we do ends with a pressure test and leak check before it is signed off.",
+      },
+      {
+        question: "Can you run a gas line to an outdoor fire pit or grill?",
+        answer:
+          "Yes. Outdoor runs are common here. We size the line for the appliance, route it safely, and handle the permit and pressure test the same as indoor work.",
       },
     ],
     related: ["water-heaters", "appliance-installation", "frozen-burst-pipes"],
@@ -1212,6 +1278,119 @@ export const services: Service[] = [
       },
     ],
     related: ["frozen-burst-pipes", "water-heaters", "kitchen-bath-plumbing"],
+  },
+  {
+    slug: "repiping",
+    name: "Whole-Home Repiping",
+    shortName: "Repiping",
+    title: "Whole-Home Repiping & Pipe Replacement | Truckee & Tahoe",
+    description:
+      "Whole-home repiping in Truckee and North Lake Tahoe. Replace aging galvanized and polybutylene supply lines with PEX or copper. Call 530-587-0733.",
+    h1: "Whole-home repiping in Truckee and North Lake Tahoe",
+    summary:
+      "Replace failing supply lines throughout the house with PEX or copper, permitted and inspected, with patch and paint coordination.",
+    bullets: [
+      "Full and partial repipes for older Tahoe homes",
+      "PEX or copper, sized and routed to code",
+      "Galvanized and polybutylene replacement",
+      "Permits, inspections, and drywall patching coordinated",
+    ],
+    body: [
+      "Many Truckee and North Lake Tahoe homes still carry their original supply lines, and mountain conditions are hard on old pipe. Galvanized steel corrodes from the inside, polybutylene gets brittle with age, and freeze cycles find every weak joint. When leaks stop being isolated events and start being a pattern, patching individual spots is paying twice.",
+      "A repipe replaces the supply system, not just the latest leak. We map the house, choose PEX or copper for each run, and replace the lines with minimal disruption. You get a clear scope and price before anything is opened up, and the job is permitted and inspected like any other plumbing work we do.",
+      "Most repipes here are driven by age and water quality rather than a single dramatic failure. If your home has galvanized pipe, discolored water, or pressure that keeps dropping, it is worth an assessment before the next leak picks the timing for you.",
+    ],
+    sections: [
+      {
+        heading: "When a Tahoe home needs repiping",
+        copy: "The pattern is familiar: a pinhole leak gets repaired, then another appears six months later somewhere else. Galvanized pipe narrows from the inside until pressure drops and rust colors the water. Polybutylene, common in homes built from the late seventies through the mid nineties, becomes brittle and fails at fittings. If your home has either, or if you are on your third spot repair, a repipe stops the cycle instead of feeding it.",
+      },
+      {
+        heading: "PEX or copper for mountain homes",
+        copy: "Both are code compliant and both last decades when installed right. PEX flexes through freeze cycles, resists scale, and routes through existing walls with fewer openings. Copper is rigid, familiar to every inspector, and handles UV exposed runs where PEX cannot go. We recommend per run rather than per religion, and we tell you why for your house.",
+      },
+      {
+        heading: "Repipe cost and timeline in Truckee",
+        copy: "What moves the number: the size of the house, the number of fixtures, how accessible the runs are, and the material you choose. A small cabin with open crawlspace access is a different job than a three story home with finished walls throughout. Most whole-home repipes take several days of active work, plus patch and paint after. You get the full scope and price before we start, after we have walked the house.",
+      },
+      {
+        heading: "What a repipe week looks like",
+        copy: "We start with water off and a clear plan, room by room. Lines are replaced in sections so the disruption stays contained, and we keep at least partial water service whenever the layout allows it. Openings are cut cleanly and kept as small as the routing allows. At the end the system is pressure tested, the water is back on, and patch work is scheduled so the walls close back up behind us.",
+      },
+    ],
+    commonIssues: [
+      {
+        heading: "Pinhole leaks that keep coming back",
+        copy: "One repair holds and the next weak spot lets go. Corrosion is systemic, so the fix has to be systemic too.",
+      },
+      {
+        heading: "Rust colored or metallic tasting water",
+        copy: "Galvanized pipe corroding from the inside. It only gets worse, and it stains fixtures along the way.",
+      },
+      {
+        heading: "Water pressure that keeps dropping",
+        copy: "Internal scaling narrows old pipe year by year. If cleaning the aerators no longer helps, the pipe itself is the problem.",
+      },
+      {
+        heading: "Polybutylene supply lines",
+        copy: "Brittle with age and prone to fitting failures. Replacement is a matter of when, and planned beats emergency.",
+      },
+      {
+        heading: "A remodel that exposes old pipe",
+        copy: "Open walls are the cheapest time to replace aging lines. We coordinate with your remodel schedule.",
+      },
+    ],
+    process: [
+      { step: "We walk the house", copy: "We map the existing lines, check access, and confirm whether a full or partial repipe is honest." },
+      { step: "You get a scope", copy: "A clear plan, material choice, timeline, and price before anything is opened." },
+      { step: "We replace", copy: "New lines run cleanly, section by section, with the disruption kept contained." },
+      { step: "We test and close", copy: "Pressure test, inspection, water back on, and patch work scheduled." },
+    ],
+    whyUs: WHY_BRIMER,
+    headings: {
+      commonIssues: "Pipe problems a repipe solves for good",
+      process: "How a repipe runs start to finish",
+      whyUs: "Why Truckee homeowners call Brimer",
+      emergency: "A leak that cannot wait",
+      reviews: "What homeowners say about repipe work",
+      towns: "Towns we cover around Lake Tahoe",
+      faqs: "Repiping questions we get asked",
+      related: "Related plumbing services",
+      map: "Repipes across Truckee and North Tahoe",
+    },
+    faqs: [
+      {
+        question: "How do I know if my house needs repiping?",
+        answer:
+          "Recurring pinhole leaks, rust colored water, steadily dropping pressure, or galvanized or polybutylene pipe are the signs. An assessment confirms whether a full repipe or a partial replacement is the honest answer.",
+      },
+      {
+        question: "How long does a whole-home repipe take?",
+        answer:
+          "Most take several days of active plumbing work, depending on house size and access, plus patch and paint afterward. We lay out the timeline in the scope before starting.",
+      },
+      {
+        question: "Will you have to tear open all my walls?",
+        answer:
+          "Openings are cut only where the routing needs them, kept as small as possible, and patched afterward. PEX in particular routes through existing cavities with fewer openings than rigid pipe.",
+      },
+      {
+        question: "Is PEX or copper better for Tahoe?",
+        answer:
+          "Both work here. PEX handles freeze cycles and routes easily; copper is rigid and time tested. We recommend per run based on your house, not a one size rule.",
+      },
+      {
+        question: "Do repipes need permits in Truckee?",
+        answer:
+          "Yes. Repiping is permitted work through the Town of Truckee or the county building department, with inspection at the end. We handle the permit as part of the job.",
+      },
+      {
+        question: "How much does repiping cost in Truckee?",
+        answer:
+          "It depends on house size, fixture count, access, and material. We price it after walking the house, so the number reflects your home rather than a guess.",
+      },
+    ],
+    related: ["leak-detection", "frozen-burst-pipes", "kitchen-bath-plumbing"],
   },
 ];
 
