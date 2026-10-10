@@ -23,13 +23,16 @@ const [beforePhone, afterPhone] = site.afterHoursLine.split(site.phoneDisplay);
 ---
 
 <section class="video-hero" aria-label="Brimer Plumbing introduction">
-  <img
-    class="video-hero__media"
-    src="/video/hero-poster.jpg"
-    alt="Brimer Plumbing technicians installing a gas line at a snowy Truckee cabin, branded service van parked nearby."
-    fetchpriority="high"
-    decoding="async"
-  />
+  <picture class="video-hero__media">
+    <source media="(max-width: 47.99em)" srcset="/video/hero-poster-mobile.jpg" />
+    <img
+      class="video-hero__media-img"
+      src="/video/hero-poster.jpg"
+      alt="Brimer Plumbing technicians installing a gas line at a snowy Truckee cabin, branded service van parked nearby."
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
   <div class="video-hero__shade" aria-hidden="true"></div>
 
   <div class="wrap video-hero__content">
