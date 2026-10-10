@@ -112,7 +112,7 @@ const featuredTownSlugs = [
 ];
 const featuredTowns = featuredTownSlugs.map((slug) => towns.find((town) => town.slug === slug)!);
 
-// The same five questions live puts on the home page, taken from the shared set so the
+// The same nine questions live puts on the home page, taken from the shared set so the
 // wording cannot drift between here and /faqs/.
 const HOME_FAQS = [
   "What areas do you serve?",
@@ -120,6 +120,20 @@ const HOME_FAQS = [
   "Do you work with property managers?",
   "What does your service process look like?",
   "Are you licensed and insured?",
+  "Why do mountain homes need a different kind of plumber?",
+  "What are your hours?",
+  "How long has Brimer Plumbing been around?",
+  "What should I do before you arrive for a scheduled visit?",
+  "Do you service vacation rentals?",
+  "What is the most common plumbing problem in Truckee?",
+  "How do I get the fastest service?",
+  "Are your plumbers licensed?",
+  "Do you work on condos and townhomes?",
+  "Do you service older homes with galvanized pipes?",
+  "Do you install water softeners?",
+  "Can I get an estimate over the phone?",
+  "Why choose a local Truckee plumber over an out-of-area company?",
+  "Do you help with insurance claims for water damage?",
 ];
 const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === question)!);
 ---

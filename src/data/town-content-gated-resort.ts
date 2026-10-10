@@ -720,6 +720,41 @@ export const townContentGatedResort: Record<string, TownContent> = {
         answer:
           "It depends on the size of the home, the number of fixtures, and the complexity of the plumbing system. A smaller Tahoe Donner cabin with a straightforward layout is less involved than winterizing a larger home with multiple bathrooms and outdoor plumbing. We evaluate the home's specific systems and give clear pricing before any work starts.",
       },
+      {
+        question: "Do I need Tahoe Donner HOA approval for plumbing work?",
+        answer:
+          "Interior plumbing repairs and replacements generally do not need architectural review, but exterior work can: trenching, exterior hose bibs, anything that changes the outside of the home. When a project touches the exterior we check the current HOA rules before starting so there are no surprises.",
+      },
+      {
+        question: "Why do Tahoe Donner homes have so many freeze problems?",
+        answer:
+          "Elevation and vacancy. The community runs 6,000 to 7,400 feet with roughly 400 inches of annual snow, and over 80 percent of homes sit empty for stretches of winter. An unheated crawl space at 7,000 feet in January is unforgiving. Winterization plus a monitored shutoff is the combination that actually works here.",
+      },
+      {
+        question: "My Tahoe Donner cabin is a 1970s original. What plumbing should I worry about?",
+        answer:
+          "Galvanized supply lines past their life, original shutoff valves that no longer shut off, and water heaters that were replaced without altitude configuration. We see all three regularly. A walkthrough tells you which ones your house has and which to address first.",
+      },
+      {
+        question: "Do you work with Tahoe Donner property managers?",
+        answer:
+          "Yes. Many Tahoe Donner homes are managed, and we coordinate access, diagnosis, and approvals with managers regularly. If your manager has a work order process, we fit into it. The owner gets the full picture either way.",
+      },
+      {
+        question: "Is the water in Tahoe Donner hard on plumbing?",
+        answer:
+          "TDPUD water is groundwater from the Martis Valley basin and it runs mineral-heavy. That means sediment in water heaters, scale on fixtures, and shorter anode life. An annual flush and anode check keeps it from becoming a replacement, and we will tell you honestly if a softener is worth it for your house.",
+      },
+      {
+        question: "Does Tahoe Donner have special plumbing codes?",
+        answer:
+          "Plumbing work in Tahoe Donner follows Town of Truckee building codes, with permits through the Town Building and Safety Division. On top of that, the HOA has architectural standards for anything affecting the exterior. We handle both: permits filed as part of the job, and HOA rules checked before exterior work starts.",
+      },
+      {
+        question: "Who do I call for a water main break at my Tahoe Donner home?",
+        answer:
+          "If the break is inside your house or on your side of the meter, call us at 530-587-0733. If water is coming up in the street or you suspect the service line from the main, call Truckee Donner Public Utility District. When in doubt, call us first and we will tell you which side it is on.",
+      },
     ],
     popularServices: ["water-heaters", "frozen-burst-pipes", "smart-leak-shutoff", "kitchen-bath-plumbing"],
   },

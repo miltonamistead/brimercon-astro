@@ -171,6 +171,46 @@ export const services: Service[] = [
         answer:
           "Groundwater arrives much colder in winter, so the unit has to work through a bigger temperature rise for every gallon. That is normal, but if recovery has gotten noticeably worse year over year, sediment or a failing component is usually the cause.",
       },
+      {
+        question: "How long does a water heater last at Truckee altitude?",
+        answer:
+          "Roughly 8 to 12 years for a tank, often on the shorter end here. Cold inlet water, hard water sediment, and altitude stress on gas burners all shorten life compared to sea level. If yours is past 8 years and acting up, have it looked at before it fails into a closet or garage.",
+      },
+      {
+        question: "Does Truckee hard water damage water heaters?",
+        answer:
+          "Yes. Mineral-heavy water leaves sediment in the tank that insulates the burner from the water, makes the unit work harder, and eats anode rods faster. An annual flush and anode check is the cheapest defense. In homes with very hard water we will tell you honestly when a softener is worth discussing.",
+      },
+      {
+        question: "Tank or tankless for a vacation home that sits empty?",
+        answer:
+          "It depends on how the house is used. Tankless has no standby loss during months of vacancy, which suits seasonal homes. Tanks are simpler, cost less upfront, and tolerate hard water neglect better. We size both for the house and lay out the tradeoffs, including the cases where a tank is the better answer.",
+      },
+      {
+        question: "My water heater is in an unheated garage. Is that a problem?",
+        answer:
+          "It can be. An unheated garage in a Truckee winter can drop below freezing, which risks the unit and the lines feeding it. Insulating the lines, keeping some heat in the space, and knowing where the shutoff is all help. When we replace a unit in that setup we talk through freeze protection as part of the job.",
+      },
+      {
+        question: "Do I need a permit to replace a water heater in Truckee?",
+        answer:
+          "Usually yes. The Town of Truckee and the county building departments treat water heater replacement as permitted work, and the inspection confirms venting, seismic strapping, and code details are right. We handle the permit side as part of the replacement so you do not have to chase it.",
+      },
+      {
+        question: "Why does my water heater run out so fast in winter?",
+        answer:
+          "Cold inlet water. Truckee groundwater arrives far colder in winter, so the unit works longer to reach temperature and the tank depletes faster. A unit sized for summer conditions can feel undersized by January. When we size replacements we size for winter inlet temperatures, not the catalog default.",
+      },
+      {
+        question: "What is that popping noise from my water heater?",
+        answer:
+          "Sediment boiling. Mineral-heavy Truckee water leaves sediment on the tank bottom, and water trapped under it flashes to steam with a popping sound. It means the tank needs flushing and the anode checked. Left alone it overheats the tank bottom and shortens the unit's life.",
+      },
+      {
+        question: "Can you move my water heater to a different spot?",
+        answer:
+          "Often yes, during remodels or when the current location causes problems. Moving a unit means new water, gas or electric, venting, and drain routing, all to code with permits. We look at the proposed spot and tell you plainly whether the move is straightforward or more trouble than it is worth.",
+      },
     ],
     related: ["tankless-water-heaters", "gas-services", "frozen-burst-pipes", "smart-leak-shutoff"],
   },
@@ -532,6 +572,41 @@ export const services: Service[] = [
         answer:
           "Most homes never need scheduled drain cleaning. Clean them when they slow down, and call sooner if the same drain clogs twice. Recurring clogs mean the pipe needs attention, not just another clearing.",
       },
+      {
+        question: "Why do drains clog more in vacation homes?",
+        answer:
+          "Grease and food residue sit in lines for weeks between visits and harden. Guest turnover means more use with less care than an owner gives. And a slow drain nobody is watching becomes a full blockage by the next trip. We see it most in rental-heavy areas like Northstar and Kings Beach.",
+      },
+      {
+        question: "What causes slow drains in older Truckee homes?",
+        answer:
+          "Age and roots. Older Glenshire and Tahoe City homes can still have original drain lines that have bellied or cracked over decades of freeze-thaw ground movement. Tree roots find the joints. A camera inspection shows whether it is a simple clog or a line problem, and we will tell you which before quoting anything.",
+      },
+      {
+        question: "Do you use cameras to find drain problems?",
+        answer:
+          "Yes. When a drain keeps clogging or the problem is past the trap, we run a camera to see the actual condition of the line. It takes the guessing out: you see what we see, and the fix matches the real problem instead of the assumed one.",
+      },
+      {
+        question: "How do I keep drains clear between visits?",
+        answer:
+          "Keep grease out of the kitchen sink, run hot water after use, and use strainers in showers where hair is the usual culprit. In a vacation rental, a short note for guests about what not to put down the disposal prevents most calls. If a drain is slowing down, call before it stops.",
+      },
+      {
+        question: "My rental guests keep clogging the kitchen sink. What actually helps?",
+        answer:
+          "A disposal that is properly sized and working, a clear note for guests about grease and food scraps, and a strainer in the drain. If it keeps happening with all of that in place, the line itself may be the problem and a camera inspection will show it. We work with property managers on exactly this.",
+      },
+      {
+        question: "Why does my shower drain smell?",
+        answer:
+          "Usually a dry trap. In seasonal homes the water in unused traps evaporates over weeks, letting sewer gas up. Running each fixture for a minute refills them. If the smell persists with full traps, the venting may be the issue and that is worth a visit.",
+      },
+      {
+        question: "Do you clear main sewer lines?",
+        answer:
+          "We clear drains inside the home and diagnose blockages out to the lateral connection. If the problem turns out to be in the sewer lateral to the street, we will show you what the camera found and help you find the right specialist rather than selling you a fix we are not built for.",
+      },
     ],
     related: ["kitchen-bath-plumbing", "appliance-installation", "frozen-burst-pipes"],
   },
@@ -639,6 +714,41 @@ export const services: Service[] = [
         answer:
           "It is the best protection against the next one, especially for second homes. A smart shutoff watches for abnormal flow around the clock and closes the main automatically. We install and set them up.",
       },
+      {
+        question: "How do I know if I have a hidden leak?",
+        answer:
+          "A water bill that climbs for no reason, a musty smell, warm spots on a floor, paint bubbling on a wall, or the sound of running water when nothing is on. In a second home, the first sign is often damage discovered on arrival. Any one of those is worth a call.",
+      },
+      {
+        question: "Can a leak go unnoticed in a vacation home for months?",
+        answer:
+          "Easily, and that is when small leaks become big repairs. A supply line failure in an empty house runs until somebody walks in. That is why we recommend a monitored shutoff for seasonal homes: it watches flow continuously and closes the main on its own when something is wrong.",
+      },
+      {
+        question: "What does leak detection involve?",
+        answer:
+          "We narrow it down systematically: meter tests to confirm water is moving, acoustic listening for pressurized leaks, thermal imaging for hot lines and wet areas, and moisture meters to map how far water traveled. You get the location of the leak and the options for repair, not a guess.",
+      },
+      {
+        question: "My water bill spiked but I do not see any water. What now?",
+        answer:
+          "Start with the meter. Turn everything off and watch it: if it moves, water is going somewhere. Check toilets with dye or by listening, then look at the water heater and under sinks. If the meter moves and you cannot find it, that is a hidden leak and we find those. Call 530-587-0733.",
+      },
+      {
+        question: "Do frozen pipes cause hidden leaks when they thaw?",
+        answer:
+          "Yes, and spring is when we find them. A pipe that froze and split over winter starts leaking at the first thaw, often inside a wall or crawl space where nobody looks. If your home sat through a hard winter, a spring check of the crawl space and under-sink areas catches it early.",
+      },
+      {
+        question: "Should I install a smart shutoff on my main water line?",
+        answer:
+          "For a seasonal home, yes, it is the single most useful protection you can add. It monitors flow, pressure, and temperature around the clock, shuts the water off automatically when it detects a problem, and alerts your phone. We install and set them up, and show you how the alerts work before we leave.",
+      },
+      {
+        question: "Can you find leaks under a concrete slab?",
+        answer:
+          "Yes. Pressurized slab leaks give themselves away through acoustic listening equipment and thermal imaging for hot lines, plus meter tests to confirm. We pinpoint the location so the repair opens the smallest possible area, then lay out repair options including rerouting around the slab when that is the smarter answer.",
+      },
     ],
     related: ["smart-leak-shutoff", "frozen-burst-pipes", "kitchen-bath-plumbing", "repiping"],
   },
@@ -679,6 +789,22 @@ export const services: Service[] = [
       {
         heading: "What to do while you wait for us",
         copy: "Turn off the main water if water is escaping, move valuables away from the wet area, and kill power to anything the water is reaching. Do not touch anything electrical that is wet. We will guide you by phone until the truck arrives.",
+      },
+      {
+        heading: "Emergency help for second homes and vacation rentals",
+        copy: "Most of our emergency calls come from houses nobody is living in. A pipe lets go in an empty house in January and runs until a neighbor notices or the owner arrives for a ski weekend. If you own a second home here, know where the main shutoff is before you need it, keep our number with the house information, and consider a monitored shutoff that closes the main on its own. When the call comes, we coordinate with caretakers and property managers for access and keep the owner updated by phone.",
+      },
+      {
+        heading: "What to do after our open hours",
+        copy: "We are open 7 AM to 8 PM every day. Outside those hours, shut the main water off if water is escaping, leave the house if you smell gas and call 911, and leave us a message at 530-587-0733. Emergency messages are returned first when we open. The steps above stop most damage before morning.",
+      },
+      {
+        heading: "What emergency plumbing costs in Truckee",
+        copy: "Emergency work is priced for the urgency and the disruption: a call that pulls a tech off scheduled work, the severity of the damage, how accessible the problem is, and whether parts are on the truck or need sourcing. Water damage multiplies everything, which is why shutting the main off fast saves money twice. You get a clear written price before work starts, the same as any other visit, and if the scope changes once we are in there we talk it through first.",
+      },
+      {
+        heading: "Why mountain plumbing emergencies are different",
+        copy: "In the city, an emergency is an inconvenience. Here it is often a vacant house filling with water for days before anyone knows. Freeze-thaw cycles split pipes in walls nobody opens, altitude and hard water kill water heaters younger, and second homes mean the owner is hours away when it happens. That is why our emergency process starts on the phone: shutting off water, coordinating with caretakers, and stopping damage before the truck arrives matter as much as the repair itself.",
       },
     ],
     commonIssues: [
@@ -740,6 +866,96 @@ export const services: Service[] = [
         question: "What is your main water shutoff and where is it?",
         answer:
           "It is the valve that stops all water entering your home, usually near where the water line enters the house, in a garage, closet, or crawlspace access. If you do not know where yours is, ask us on any visit and we will show you. It is the single most useful thing to know in an emergency.",
+      },
+      {
+        question: "What do I do if a pipe bursts in the middle of the night?",
+        answer:
+          "Shut the main water off first if you can do it safely. Move valuables away from the water and do not touch anything electrical that is wet. Then call us at 530-587-0733 and leave a message. We are open 7 AM to 8 PM daily, and emergency messages are the first ones we return each morning. If water is actively damaging the house and you cannot stop it, call a restoration company as well so drying starts before we arrive.",
+      },
+      {
+        question: "I smell gas. What should I do?",
+        answer:
+          "Leave the house right away and call from outside. Call 911 or Southwest Gas first, then call us at 530-587-0733 during open hours. Do not turn lights on or off, do not light anything, and do not try to find the leak yourself. We treat every gas odor as urgent: the line gets shut down, the source gets found, and nothing is turned back on until it is safe.",
+      },
+      {
+        question: "My vacation home has a leak and I am hours away. Can you help?",
+        answer:
+          "Yes, this is a call we get often. If you have a caretaker or property manager nearby, we coordinate with them for access. If the main shutoff is accessible and labeled, we can talk someone through shutting it off by phone. Call 530-587-0733 with the address, how to get in, and what you know. The sooner the water stops, the smaller the repair.",
+      },
+      {
+        question: "How do Tahoe winters cause plumbing emergencies?",
+        answer:
+          "Hard freezes split pipes in unheated crawl spaces and exterior walls, especially in homes that sat empty. When the thaw comes, the splits open and water runs until somebody walks in. Heavy snow can also shift exterior lines and bury cleanouts. Most winter emergencies we see started as a freeze weeks earlier, which is why fall winterization matters more than any emergency response.",
+      },
+      {
+        question: "Should I call you or my property manager first?",
+        answer:
+          "If water is running where it should not be, call us first at 530-587-0733. Stopping the water cannot wait for a callback chain. Then loop in your property manager so they know what is happening at the house. We work with managers across Truckee and North Lake Tahoe regularly and will keep them in the picture.",
+      },
+      {
+        question: "What is an emergency and what can wait until morning?",
+        answer:
+          "Water going where it should not, gas you can smell, sewage backing up, and no water at all are emergencies. A dripping faucet, a slow drain, a running toilet, or a water heater that is limping but working can wait for a scheduled visit. If you are unsure, call and describe it. We will tell you honestly which one you have.",
+      },
+      {
+        question: "Do you handle emergencies in Tahoe Donner, Northstar, and Kings Beach?",
+        answer:
+          "Yes. Emergency calls get priority across our whole service area: Truckee, Tahoe Donner, Donner Lake, Glenshire, Northstar, Kings Beach, Tahoe City, Olympic Valley, and the rest of North Lake Tahoe. You get a two-hour arrival window wherever you are.",
+      },
+      {
+        question: "What should I tell you when I call about an emergency?",
+        answer:
+          "The address, how to get in (gate codes help), where the water or gas issue is, whether the main shutoff is off, and a callback number. The more of that you have ready, the faster we move. If you do not know where the main shutoff is, tell us and we will find it when we arrive.",
+      },
+      {
+        question: "How do I shut off the water to my whole house?",
+        answer:
+          "Find the main shutoff where the water line enters the house, often in the garage, a closet, or at a crawl space access. Turn it clockwise until it stops. Some Truckee homes also have a curb stop at the street, but the inside valve is the one to know. If you own a second home here, learn where it is before an emergency, not during one. Ask us on any visit and we will show you.",
+      },
+      {
+        question: "What if sewage is backing up into the house?",
+        answer:
+          "Stop using all water immediately: no flushing, no laundry, no showers. Sewage coming up through tubs or floor drains is a health issue, not a wait-and-see issue, and every gallon used makes it worse. Call 530-587-0733. We prioritize backup calls for exactly that reason.",
+      },
+      {
+        question: "What if my water heater is leaking badly?",
+        answer:
+          "Find the cold water shutoff on top of the unit and turn it clockwise, then turn the unit itself off: the gas valve to pilot or off on a gas unit, the breaker off on electric. Put towels or a pan under it and call 530-587-0733. A leaking tank cannot be repaired, only replaced, so the sooner we see it the sooner hot water is back.",
+      },
+      {
+        question: "A pipe burst in my rental while guests are there. What do I tell them?",
+        answer:
+          "Tell them to shut the main water off if they can find it, stop using water, and stay clear of any electrical that is wet. Then call us at 530-587-0733 with the address and access details. We handle guest-occupied emergencies regularly and will coordinate with you and your property manager so the guests are not left guessing.",
+      },
+      {
+        question: "How do I find my main water shutoff?",
+        answer:
+          "Start where the water line enters the house: usually the garage, a utility closet, or a crawl space access. Look for a round wheel handle or a lever on the largest pipe. In condos it may be in a utility closet or behind an access panel. Turn it clockwise to close. If you cannot find it, call us on any visit and we will locate it with you.",
+      },
+      {
+        question: "What if I cannot find the shutoff during an emergency?",
+        answer:
+          "Call us at 530-587-0733 and keep looking while we talk. There is sometimes a second valve at the water heater or where the line enters. As a last resort the curb stop at the street shuts everything off, but it needs a special key. We carry one, and finding your inside shutoff is the first thing we do on arrival.",
+      },
+      {
+        question: "Is a running toilet an emergency?",
+        answer:
+          "No, but it is not nothing either. A running toilet can waste a large amount of water, which matters on a metered Tahoe bill. Shut the toilet supply valve behind it to stop the waste and schedule a visit. If water is also leaking onto the floor, that part is urgent.",
+      },
+      {
+        question: "My heat is out. Is that a plumbing problem?",
+        answer:
+          "Sometimes. If your hot water comes from a water heater we service, or a leak is affecting heating equipment, call us. If your heat runs through a boiler or radiant system, that is outside our work and you need an HVAC contractor. Describe the system when you call and we will tell you honestly whether it is ours.",
+      },
+      {
+        question: "What do I do about water damage after the leak is stopped?",
+        answer:
+          "Document everything with photos before cleanup for your insurance. Get air moving and call a restoration company for drying if flooring or drywall got wet: mold starts fast in a closed-up house. We handle the plumbing repair and coordinate with restoration people when the job needs both.",
+      },
+      {
+        question: "Should I try to fix a burst pipe myself?",
+        answer:
+          "Shutting the main off yourself is exactly right. Beyond that, a repair clamp can slow a pinhole leak temporarily, but a proper repair needs the pipe cut back to sound material and joined correctly, especially with freeze-weakened pipe. A bad repair fails at the next cold snap. Call 530-587-0733 and we will do it once, properly.",
       },
     ],
     related: ["frozen-burst-pipes", "water-heaters", "gas-services"],
@@ -867,6 +1083,31 @@ export const services: Service[] = [
         question: "How long does a burst pipe repair take?",
         answer:
           "A simple accessible repair is often finished in one visit. Work inside walls or crawl spaces, or damage that needs restoration afterward, takes longer. When we arrive we will tell you honestly how long to expect, and we do not leave you guessing.",
+      },
+      {
+        question: "How fast can pipes freeze in Truckee?",
+        answer:
+          "On a night well below zero, an unprotected pipe in a crawl space or exterior wall can freeze in a few hours. Homes that sit empty are the fastest to go because no heat is moving and no water is running. That is why a cold snap forecast matters more than the calendar date.",
+      },
+      {
+        question: "Which Truckee homes freeze most often?",
+        answer:
+          "Vacation cabins with unheated crawl spaces, older Glenshire and Donner Lake homes with original plumbing in exterior walls, and any house that was closed up for winter without a proper shutdown. We also see freezes in occupied homes during long stretches below zero, usually in the same spot that froze the year before.",
+      },
+      {
+        question: "Should I leave faucets dripping during a cold snap?",
+        answer:
+          "A slow drip on faucets fed by exposed runs can help during a hard freeze, because moving water resists freezing. It is a stopgap, not a fix. If you are dripping faucets every winter, the real answer is insulation on that run or a change to how the space is heated. And never leave a drip running in a house you are leaving empty.",
+      },
+      {
+        question: "Can you winterize my home before I leave for the season?",
+        answer:
+          "Yes. We drain the lines and fixtures, protect the traps, shut down the water heater, deal with the exterior hose bibs, and document everything so the spring startup reverses it correctly. Most Tahoe Donner, Northstar, and Kings Beach seasonal owners do this once a year. Call before the first hard freeze, because the schedule fills in October.",
+      },
+      {
+        question: "My cabin sat empty all winter. What should I check before turning the water back on?",
+        answer:
+          "Walk the house first and look for stains, warped flooring, or musty smells that suggest something let go over winter. Turn the main on slowly and watch the meter: if it moves with every fixture closed, something is leaking. Check under sinks, around the water heater, and in the crawl space access. If anything looks wrong, leave the main off and call us before the house fills.",
       },
     ],
     related: ["winterization", "smart-leak-shutoff", "water-heaters", "gas-services"],
@@ -996,6 +1237,31 @@ export const services: Service[] = [
         question: "Can you run a gas line to an outdoor fire pit or grill?",
         answer:
           "Yes. Outdoor runs are common here. We size the line for the appliance, route it safely, and handle the permit and pressure test the same as indoor work.",
+      },
+      {
+        question: "Do you run gas lines for fire pits and outdoor kitchens?",
+        answer:
+          "Yes. Outdoor living is big here and most of it wants gas: fire pits, patio heaters, grills, and outdoor kitchens. We size the line for everything it will feed, run it to code, and pressure-test before anything gets connected. Plan it before the patio or deck goes in, because trenching afterward costs more.",
+      },
+      {
+        question: "My home runs on propane. Do you work with propane systems?",
+        answer:
+          "Yes. Much of North Lake Tahoe is on propane rather than natural gas, and the work is the same discipline: proper sizing, code-compliant installation, and testing. If you are adding an appliance to a propane system we verify the tank and regulator can carry the added load.",
+      },
+      {
+        question: "How do I know if my gas line is big enough for a new appliance?",
+        answer:
+          "It comes down to total demand: every appliance on the line, the length of the run, and the pressure available. A tankless water heater or a standby generator can need more than the existing line delivers. We do the load calculation and tell you plainly whether the current line works or needs upsizing.",
+      },
+      {
+        question: "Should I have the gas lines inspected before buying a Truckee home?",
+        answer:
+          "It is smart, especially on older homes. We check for corroded fittings, deteriorated flex lines, unpermitted additions, and proper shutoff access. It is a short visit that either gives you peace of mind or gives your agent something real to negotiate with.",
+      },
+      {
+        question: "Can you add a gas stub for a future fireplace or grill?",
+        answer:
+          "Yes, and doing it during other work is the economical time. We run a properly sized, capped, and tested stub to where the future appliance will go, permitted and documented. When you are ready for the fireplace or grill, the hard part is already done.",
       },
     ],
     related: ["water-heaters", "appliance-installation", "frozen-burst-pipes"],

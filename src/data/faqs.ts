@@ -100,4 +100,87 @@ export const faqs: Faq[] = [
     answer:
       "Usually a partially closed valve, mineral buildup in the supply lines, undersized piping, or a failing pressure regulator. We diagnose the specific cause rather than guessing, then recommend the right fix.",
   },
+  {
+    question: "Why do mountain homes need a different kind of plumber?",
+    answer:
+      "Altitude, hard water, and seasonal vacancy change the work. Gas appliances need high-altitude configuration, water heaters wear out faster in mineral-heavy water, and a leak in an empty house runs for weeks. We have worked only in Truckee and North Lake Tahoe since 1997, so those conditions are the normal ones for us, not edge cases.",
+  },
+  {
+    question: "What are your hours?",
+    answer: `We are open 7 AM to 8 PM every day. When you call during those hours you reach a real person and get a two-hour arrival window. Emergency calls jump the schedule. ${site.afterHoursLine}`,
+  },
+  {
+    question: "How long has Brimer Plumbing been around?",
+    answer: `Since ${site.founded}. Nearly three decades working only on Truckee and North Lake Tahoe plumbing. The crew that shows up knows these houses, this water, and these winters because it is all we have ever done.`,
+  },
+  {
+    question: "What should I do before you arrive for a scheduled visit?",
+    answer:
+      "Clear access to the work area, know where the main water shutoff is in case we ask, and secure pets. If it is a second home, make sure we have the gate or lockbox code ahead of time. Anything else specific to your visit, we will tell you when we confirm.",
+  },
+  {
+    question: "Do you service vacation rentals?",
+    answer:
+      "Yes. We work with owners and property managers on vacation rentals across Truckee and North Lake Tahoe: winterization, spring startup, emergency response when guests are in the house, and the recurring maintenance rentals need. If your manager has a work order process, we fit into it.",
+  },
+  {
+    question: "What is the most common plumbing problem in Truckee?",
+    answer:
+      "Frozen and burst pipes, by a wide margin, especially in homes that sit empty between visits. After that: water heaters wearing out early in hard mineral-heavy water, and slow drains in older homes with aging lines. All three get worse when nobody is watching the house, which is why monitoring matters here.",
+  },
+  {
+    question: "How do I get the fastest service?",
+    answer:
+      "Call 530-587-0733 rather than using the form. Emergency calls like burst pipes, active leaks, and gas concerns jump the schedule, and you get a two-hour arrival window. For anything else, calling lets us ask the right questions and get the right tech lined up.",
+  },
+  {
+    question: "Are your plumbers licensed?",
+    answer:
+      "Yes. Brimer Plumbing is a licensed California plumbing contractor, CSLB 1149344, fully insured, and we have worked only in Truckee and North Lake Tahoe since 1997.",
+  },
+  {
+    question: "Do you work on condos and townhomes?",
+    answer:
+      "Yes. Condos and townhomes across Northstar, Tahoe Donner, Kings Beach, and Tahoe City are a big part of our work. We know the HOA coordination, the shared-wall considerations, and the shutoff locations that are different from single-family homes.",
+  },
+  {
+    question: "Can you help with a home inspection plumbing report?",
+    answer:
+      "Yes. If a buyer inspection flagged plumbing issues on a Truckee or North Tahoe home, we verify each item in person and tell you what actually needs doing, what can wait, and what was overstated. You get it in plain language your agent can use.",
+  },
+  {
+    question: "Do you service older homes with galvanized pipes?",
+    answer:
+      "Yes. Much of Glenshire, Tahoe City, Donner Lake, and original Tahoe Donner still has galvanized supply lines past their prime. We assess their condition honestly: sometimes a targeted repair is right, sometimes repiping the run is cheaper over five years. We will tell you which.",
+  },
+  {
+    question: "My home has low water pressure. Is that normal here?",
+    answer:
+      "Not necessarily. The usual causes are a failing pressure regulator, mineral buildup in older lines, or a partially closed valve. Truckee water pressure varies by neighborhood and elevation, so we measure it at your house and diagnose the actual cause rather than guessing.",
+  },
+  {
+    question: "Do you install water softeners?",
+    answer:
+      "We assess whether one makes sense for your house first. Truckee and North Tahoe water runs mineral-heavy, which shortens water heater and fixture life. If a softener is the right answer we size and install it; if an annual flush and anode program handles it, we will say that instead.",
+  },
+  {
+    question: "What does your service process look like?",
+    answer:
+      "You call and describe the problem. We diagnose before recommending anything, present your options with clear pricing, protect your home while we work, and verify everything before we leave. That sequence does not change whether it is a faucet or a full repipe.",
+  },
+  {
+    question: "Can I get an estimate over the phone?",
+    answer:
+      "Sometimes. For straightforward replacements we can often give you a range after a few questions and photos of the setup. Most work needs eyes on it first: we diagnose, then give you a written price before anything starts. That is true whether you call or use the form.",
+  },
+  {
+    question: "Why choose a local Truckee plumber over an out-of-area company?",
+    answer:
+      "Response time and mountain knowledge. In an emergency, a company driving up from out of town is water running the whole way here. And a company that does not work here daily does not know these houses: the hard water, the freeze patterns, the 1970s builds, the altitude adjustments. We are based in Truckee and this is all we do.",
+  },
+  {
+    question: "Do you help with insurance claims for water damage?",
+    answer:
+      "We document our plumbing repairs with photos and written descriptions your adjuster can use, and we put the cause and the fix in plain language. The plumbing repair is our work. Structural drying and restoration we coordinate with specialists, and we will tell you when that is what the job needs.",
+  },
 ];
