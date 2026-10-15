@@ -85,6 +85,8 @@ export function serviceSchema(opts: {
   path: string;
   /** A single town, or every California town we serve. */
   areaTown?: string;
+  /** ISO date (YYYY-MM-DD) the page content was last updated. */
+  dateModified?: string;
 }) {
   const areaServed = opts.areaTown
     ? [{ "@type": "City", name: opts.areaTown, containedInPlace: { "@type": "State", name: "California" } }]
@@ -103,6 +105,7 @@ export function serviceSchema(opts: {
     url: canonicalUrl(opts.path),
     provider: providerRef(),
     areaServed,
+    ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
   };
 }
 

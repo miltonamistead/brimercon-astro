@@ -69,7 +69,7 @@ const articles = (serviceArticles[service.slug] ?? [])
   <Schema
     slot="head"
     nodes={[
-      serviceSchema({ name: service.name, description: service.summary, path }),
+      serviceSchema({ name: service.name, description: service.summary, path, dateModified: service.updated }),
       faqSchema(service.faqs),
       breadcrumbSchema(crumbs),
     ]}
@@ -78,6 +78,20 @@ const articles = (serviceArticles[service.slug] ?? [])
   <Breadcrumbs crumbs={crumbs} />
 
   <FirstScreen h1={service.h1} intro={service.summary} />
+
+  {
+    service.updated && (
+      <p style="opacity: 0.65; font-size: 0.85rem; text-align: center; margin: 0.75rem 1.25rem 0;">
+        Last updated:{" "}
+        {new Date(service.updated + "T12:00:00").toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "America/Los_Angeles",
+        })}
+      </p>
+    )
+  }
 
   <section class="section">
     <div class="wrap">
