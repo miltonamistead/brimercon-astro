@@ -84,8 +84,10 @@ export const servicePhotos: Record<string, ServicePhoto> = {
     height: 1067,
   },
   "smart-leak-shutoff": {
+    // Product photo: Moen's own Flo marketing imagery (placeholder until the
+    // real shoot captures a Brimer-installed unit)
     src: "/images/work/leak-shutoff-install.webp",
-    alt: "Automatic leak shutoff valve installed on a home's main copper water line with a floor sensor",
+    alt: "Moen Flo Smart Water Monitor and Shutoff with the Moen app showing a leak alert",
     width: 1600,
     height: 1067,
   },
