@@ -1,0 +1,99 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { services } from "@/data/services";
+import { site, canonicalUrl } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Plumbing Services | Truckee & Tahoe | Brimer Plumbing";
+const description =
+  "Plumbing in Truckee and North Lake Tahoe: water heaters, gas lines, kitchen and bath, smart leak shutoff, emergency repairs. Call 530-587-0733.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services/" },
+];
+
+// Live's services hub has no JSON-LD at all. An ItemList of the six is the cheap fix.
+const itemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Plumbing services",
+  itemListElement: services.map((service, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: service.name,
+    url: canonicalUrl(`/services/${service.slug}/`),
+  })),
+};
+
+const expectations = [
+  { step: "We diagnose", copy: "We work out what is actually wrong before recommending anything." },
+  { step: "You choose", copy: "Clear options and a price before work starts." },
+  { step: "We protect", copy: "Floors and finishes covered, and a tidy site when we leave." },
+  { step: "We verify", copy: "Tested and confirmed working before the job is closed." },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[itemList, breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="Our services"
+    intro="Built for mountain homes in Truckee and North Lake Tahoe: disciplined diagnostics, clean execution, and clear communication."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Plumbing services in Truckee and Tahoe</h2>
+      <ul class="cards">
+        {services.map((service) => <ServiceCard service={service} />)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>What to expect when we arrive</h2>
+      <ol class="steps">
+        {
+          expectations.map((item) => (
+            <li>
+              <h3 class="points__title">{item.step}</h3>
+              <p>{item.copy}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Work that does not fit a category</h2>
+      <p>
+        Plenty of jobs do not land neatly in one of the six above: a shutoff valve nobody can find, a pressure problem
+        with no obvious cause, a sewer lateral question, or a house that needs a full look-over before a sale. Call and
+        describe it. If it is plumbing in this region, we have almost certainly seen it.
+      </p>
+    </div>
+  </section>
+
+  <EmergencyBand heading="Tell us what is happening at your Tahoe home" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Book a plumber in Truckee or Tahoe City</h2>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,88 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import LeadForm from "@/components/LeadForm.astro";
+import Schema from "@/components/Schema.astro";
+import { site, napOneLine, serviceAreaGroups } from "@/data/site";
+import { townName } from "@/data/towns";
+import { plumberSchema, breadcrumbSchema } from "@/lib/schema";
+
+const title = "Contact Brimer Plumbing | 530-587-0733";
+const description =
+  "Contact Brimer Plumbing for plumbing service in Truckee and North Lake Tahoe, CA. Call 530-587-0733, email us, or send a service request online.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact/" },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[plumberSchema(), breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="Contact us"
+    intro="Phone is the fastest way to reach us. Email and the request form both work when it can wait."
+    formLabel="Or send a service request"
+    formHref="#lead-form"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Call, email or find our Truckee office</h2>
+      <dl class="facts">
+        <div>
+          <dt>Phone</dt>
+          <dd><a href={site.phoneHref}>{site.phoneDisplay}</a></dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </div>
+        <div>
+          <dt>Office</dt>
+          <dd>
+            <address>{napOneLine()}</address>
+            <a href={site.mapsUrl} rel="noopener">Open in Google Maps</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Opening hours and after hours calls</h2>
+      <p>{site.hoursLabel}. {site.afterHoursLine}</p>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Send us a message</h2>
+      <LeadForm />
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>Towns we serve around North Lake Tahoe</h2>
+      <ul>
+        {
+          serviceAreaGroups.map((group) => (
+            <li>
+              <strong>{group.label}:</strong> {group.towns.map((slug) => townName(slug)).join(", ")}
+            </li>
+          ))
+        }
+      </ul>
+      <p><a href="/service-areas/">See all service areas</a></p>
+    </div>
+  </section>
+</Base>

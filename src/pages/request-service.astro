@@ -1,0 +1,69 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import LeadForm from "@/components/LeadForm.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { site } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Request Plumbing Service | Truckee & North Lake Tahoe";
+const description =
+  "Request plumbing service in Truckee and North Lake Tahoe, CA. Tell us what is wrong and we will get back to you with clear next steps. Call 530-587-0733.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Request service", path: "/request-service/" },
+];
+
+const next = [
+  { step: "We read it", copy: "We look at what you have told us and work out what the job actually involves." },
+  { step: "We call you", copy: "Expect a call or an email within one business day to talk through next steps and scheduling." },
+  { step: "We book it in", copy: "We agree a time that works, and you get a clear price before any work starts." },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="Request service"
+    intro="Tell us what is happening and where. If it is urgent, calling is faster than typing."
+    formLabel="Jump to the form"
+    formHref="#lead-form"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Send a service request</h2>
+      <LeadForm />
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <h2>What happens after you send it</h2>
+      <ol class="steps">
+        {
+          next.map((item) => (
+            <li>
+              <h3 class="points__title">{item.step}</h3>
+              <p>{item.copy}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <EmergencyBand heading="Or call a Truckee plumber now" />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="nap-line">
+        <strong>{site.name}</strong>, {site.street}, {site.city}, {site.region} {site.postal}. {site.hoursLabel}.
+        {site.afterHoursLine}
+      </p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,129 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { site } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Plumbing Resources | Tahoe & Truckee | Brimer Plumbing";
+const description =
+  "Practical plumbing guides and checklists for mountain homeowners: winterization, emergency shutoff, leaving for the season, water heater maintenance.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Resources", path: "/resources/" },
+];
+
+const guides = [
+  {
+    heading: "Tahoe winterization checklist",
+    intro: "Protect your mountain home's plumbing before winter arrives.",
+    steps: [
+      "Shut off the main water supply and drain all lines",
+      "Open all faucets and flush toilets to clear remaining water",
+      "Add antifreeze to all drain traps (sinks, tubs, toilets)",
+      "Shut down and drain the water heater",
+      "Disconnect and drain outdoor hoses and irrigation lines",
+      "Insulate exposed pipes in crawl spaces and exterior walls",
+      "Set the thermostat to at least 55°F",
+      "Consider a smart water monitor for remote freeze alerts",
+      "Document the process and share it with your property manager",
+      "Schedule a spring de-winterization visit",
+    ],
+  },
+  {
+    heading: "Emergency shutoff guide",
+    intro: "Know how to stop water flow quickly when it matters most.",
+    steps: [
+      "Locate your main water shutoff valve (typically where the main line enters the home)",
+      "Turn the valve clockwise to close (or perpendicular to the pipe for ball valves)",
+      "If you have a smart shutoff system, use the app to close the valve remotely",
+      "Open a faucet at the lowest point in the home to relieve pressure",
+      "If the leak involves hot water, also shut off the water heater",
+      "For gas leaks: leave the area immediately and call 911 or Southwest Gas at 1-877-860-6020",
+      "Call Brimer Plumbing at 530-587-0733",
+      "Move valuables and electronics away from the affected area",
+      "Take photos of any damage for insurance documentation",
+    ],
+  },
+  {
+    heading: "Leaving your second home for the season",
+    intro: "A plumbing checklist for homeowners heading out for an extended period.",
+    steps: [
+      "Shut off the main water supply (or set your smart shutoff to away mode)",
+      "Run faucets briefly to depressurize the system",
+      "Set the water heater to vacation mode or shut it down completely",
+      "Check under all sinks and around appliances for signs of leaks",
+      "Make sure all exterior hose bibs are shut off and drained",
+      "Verify your smart water monitor is connected and alerts are enabled",
+      "Confirm your property manager has emergency contact information",
+      "Set the thermostat to maintain at least 55°F",
+      "Schedule a professional winterization if leaving before or during winter",
+    ],
+  },
+  {
+    heading: "Truckee water heater maintenance calendar",
+    intro: "Keep your water heater running efficiently with regular maintenance.",
+    steps: [
+      "Monthly: check the area around the water heater for signs of leaks or corrosion",
+      "Monthly: test the temperature and pressure relief valve (lift and release the lever)",
+      "Every 6 months: listen for unusual sounds (popping, rumbling) that indicate sediment buildup",
+      "Annually: flush the tank to remove sediment (or schedule professional service)",
+      "Annually: inspect the anode rod and replace it if it is more than half depleted",
+      "Annually: check gas connections and venting (gas units) for corrosion or blockage",
+      "Annually: verify the thermostat is set to 120°F for safety and efficiency",
+      "Every 3 to 5 years: have a professional inspect the full system",
+      "Tankless units: descale annually (more often with hard water)",
+      "Before winter: make sure the unit is operational if the home will be occupied",
+    ],
+  },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <FirstScreen
+    h1="Resources"
+    intro="Practical guides and checklists for your mountain home's plumbing, and what to do when something goes wrong."
+  />
+
+  {
+    guides.map((guide, i) => (
+      <section class={i % 2 === 0 ? "section section--soft" : "section"}>
+        <div class="wrap">
+          <h2>{guide.heading}</h2>
+          <p class="lede">{guide.intro}</p>
+          <ol class="checklist">
+            {guide.steps.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    ))
+  }
+
+  <EmergencyBand heading="Need help with any of this" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>We do this work every day</h2>
+      <p>
+        These guides are a starting point. For winterization, hands-on service, or an
+        urgent problem, we are here to help.
+      </p>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+    </div>
+  </section>
+</Base>
