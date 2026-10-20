@@ -1,23 +1,83 @@
 ---
 import { site, navPrimary } from "@/data/site";
+import { services } from "@/data/services";
+import { towns } from "@/data/towns";
+
+// Single-row header (Milton, 2026-10-20, matching the reference layout): logo
+// left, primary nav centered with dropdowns on Services and Service areas,
+// phone as plain text and the Request service button on the right. On mobile
+// the nav collapses into a hamburger panel; logo and the button stay visible.
+const featuredTownSlugs = [
+  "truckee",
+  "tahoe-donner",
+  "donner-lake",
+  "northstar",
+  "kings-beach",
+  "tahoe-city",
+];
+const featuredTowns = featuredTownSlugs
+  .map((slug) => towns.find((town) => town.slug === slug))
+  .filter((town) => town !== undefined);
+const restNav = navPrimary.slice(2);
 ---
 
 <header class="site-header">
+  <input class="nav-toggle-input" type="checkbox" id="nav-toggle" />
   <div class="wrap site-header__inner">
     <a class="site-header__logo" href="/" aria-label={`${site.name} home`}>
       <img src="/images/brimer-logo.png" alt={site.name} width="564" height="210" fetchpriority="high" />
     </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li class="has-drop">
+          <a href={navPrimary[0].href} aria-haspopup="true">{navPrimary[0].label}<span class="caret" aria-hidden="true">&#9662;</span></a>
+          <div class="nav-drop">
+            <div class="nav-drop__card">
+              <ul>
+                {services.map((service) => <li><a href={`/services/${service.slug}/`}>{service.shortName}</a></li>)}
+                <li class="nav-drop__all"><a href="/services/">All services</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="has-drop">
+          <a href={navPrimary[1].href} aria-haspopup="true">{navPrimary[1].label}<span class="caret" aria-hidden="true">&#9662;</span></a>
+          <div class="nav-drop">
+            <div class="nav-drop__card">
+              <ul>
+                {featuredTowns.map((town) => <li><a href={`/service-areas/${town.slug}/`}>{town.name}</a></li>)}
+                <li class="nav-drop__all"><a href="/service-areas/">All service areas</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        {restNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+
     <div class="site-header__actions">
-      <a class="site-header__call" href={site.phoneHref}>
-        <span aria-hidden="true">&#9742;</span>
-        <span class="nowrap">{site.phoneDisplay}</span>
-      </a>
+      <a class="site-header__call" href={site.phoneHref}><span class="nowrap">{site.phoneDisplay}</span></a>
       <a class="site-header__request" href="/request-service/">Request service</a>
+      <label class="nav-toggle" for="nav-toggle" aria-label="Toggle menu"><span aria-hidden="true">&#9776;</span></label>
     </div>
   </div>
-  <nav class="site-nav wrap" aria-label="Primary">
-    <ul>
+
+  <nav class="site-nav-mobile" aria-label="Mobile">
+    <ul class="site-nav-mobile__main">
       {navPrimary.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
     </ul>
+    <p class="site-nav-mobile__label">Services</p>
+    <ul class="site-nav-mobile__sub">
+      {services.map((service) => <li><a href={`/services/${service.slug}/`}>{service.shortName}</a></li>)}
+    </ul>
+    <p class="site-nav-mobile__label">Service areas</p>
+    <ul class="site-nav-mobile__sub">
+      {featuredTowns.map((town) => <li><a href={`/service-areas/${town.slug}/`}>{town.name}</a></li>)}
+      <li><a href="/service-areas/">All service areas</a></li>
+    </ul>
+    <p class="site-nav-mobile__call">
+      <a href={site.phoneHref}>Call {site.phoneDisplay}</a>
+    </p>
   </nav>
 </header>
