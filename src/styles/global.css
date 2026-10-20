@@ -743,105 +743,143 @@ img {
 /* ---------- footer ---------- */
 
 .site-footer {
-  padding: 2.5rem 0 2rem;
+  padding: 3.5rem 0 2.5rem;
   border-top: 3px solid var(--accent);
   background: var(--brand-deep);
   color: var(--gold-soft);
-  font-size: 0.95rem;
-}
-
-.site-footer h2 {
   font-size: 1rem;
-  margin-bottom: 0.6rem;
-  color: #fff;
 }
 
+/* Four columns in one row (Milton spec, 2026-10-20, matching the previous
+   site's footer): brand and contact at about 30 percent, then Services,
+   Service areas, and Company link lists. Stacks in order on mobile. */
 .site-footer__grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 2.25rem;
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 48em) {
   .site-footer__grid {
-    grid-template-columns: 1.15fr 0.95fr 1.35fr;
-    gap: 2rem;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2.5rem;
   }
 }
 
-.site-footer ul {
+.site-footer__logo {
+  display: block;
+  width: auto;
+  height: 2.9rem;
+}
+
+.site-footer__tagline {
+  max-width: 21rem;
+  margin: 1.1rem 0 1.25rem;
+  line-height: 1.55;
+}
+
+.site-footer__contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.4rem 0;
+}
+
+.site-footer__contact-line span {
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.site-footer__contact-line a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-footer__contact-line a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__meta {
+  margin: 1.1rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted-on-dark);
+}
+
+.site-footer__meta a {
+  color: var(--gold-soft);
+}
+
+.site-footer__heading {
+  margin: 0 0 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.site-footer__list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.site-footer li + li {
-  margin-top: 0.2rem;
+.site-footer__list a {
+  color: var(--gold-soft);
+  font-size: 1rem;
+  line-height: 2.125;
+  text-decoration: none;
 }
 
-.site-footer a {
-  color: var(--gold);
+.site-footer__list a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
-.site-footer a:hover {
+.site-footer__request {
+  display: block;
+  margin-top: 1.4rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  background: var(--accent-deep);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.site-footer__request:hover {
+  background: var(--accent);
   color: #fff;
 }
 
-/* Services split into two sub-columns on wide screens so the column height
-   balances against the contact and areas columns. */
-@media (min-width: 64em) {
-  .site-footer__services {
-    columns: 2;
-    column-gap: 1.25rem;
-  }
-
-  .site-footer__services li {
-    break-inside: avoid;
-  }
-}
-
-/* Every town is a real link, grouped the same way as the rest of the site
-   (was comma-joined static text until 2026-10-20). */
-.site-footer__group-block + .site-footer__group-block {
-  margin-top: 0.8rem;
-}
-
-.site-footer__group {
-  margin: 0 0 0.25rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.site-footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2rem;
+  justify-content: space-between;
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.82rem;
   color: var(--muted-on-dark);
 }
 
-.site-footer__towns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.15rem 0.9rem;
-}
-
-.site-footer__towns li {
+.site-footer__bar p {
   margin: 0;
 }
 
-.site-footer__towns li + li {
-  margin-top: 0;
-}
-
-.site-footer__legal {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+.site-footer__bar a {
   color: var(--muted-on-dark);
-  font-size: 0.875rem;
+  text-decoration: none;
 }
 
-.site-footer__legal-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 1.25rem;
-  margin: 0.5rem 0;
+.site-footer__bar a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 address {

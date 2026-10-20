@@ -57,7 +57,14 @@ const FORBIDDEN_PLACES = [
   "Heavenly",
   "Reno",
 ];
-const NEVADA_ALLOWED_PHRASES = [/\bNevada County\b/g, /\bSierra Nevada\b/g];
+const NEVADA_ALLOWED_PHRASES = [
+  /\bNevada County\b/g,
+  /\bSierra Nevada\b/g,
+  // The footer licensing disclaimer (Milton spec, 2026-10-20, carried from the
+  // previous site): a statement of where Brimer is NOT licensed, not a service
+  // claim. Masked as one exact sentence so any other "Nevada" mention fails.
+  /Licensed in California only\. Not licensed in Nevada\./g,
+];
 
 const listHtml = async (dir) => {
   const out = [];
