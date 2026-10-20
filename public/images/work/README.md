@@ -26,7 +26,7 @@ is an existing real photo and stays.
 | leak-detection | `pressure-gauge-test.webp` | REAL Brimer job site, Truckee 2026-07-22 |
 | emergency-plumber | `van-snowy-driveway.webp` | placeholder, replace with the real branded truck |
 | frozen-burst-pipes | `pipe-soffit-install.webp` | REAL Brimer job site, Truckee 2026-07-22 |
-| gas-services | `fireplace-insert-install.webp` | REAL Brimer job site, Truckee 2026-07-22 |
+| gas-services | `gas-line-pressure-test.webp` | REAL Brimer job site, Truckee 2026-07-22 (swapped 2026-10-20: reads instantly as gas work) |
 | kitchen-bath-plumbing | `under-sink-work.webp` | placeholder |
 | appliance-installation | `dishwasher-install.webp` | placeholder |
 | smart-leak-shutoff | `leak-shutoff-install.webp` | placeholder |
@@ -47,6 +47,7 @@ portrait originals, set the position for the new file the same way.
 ## Reserve (not on any page yet)
 
 - `gas-fireplace-outcome.webp` — placeholder for a gas-services outcome shot or a second band
+- `fireplace-insert-install.webp` — REAL Brimer job site, Truckee 2026-07-22 (gas fireplace insert going in; was the gas-services band until 2026-10-20, when Milton judged it did not read as gas work)
 
 ## Do not fake with generation
 

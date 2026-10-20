@@ -975,6 +975,123 @@ a.card:hover .card__arrow {
   font-size: 0.95rem;
 }
 
+/* One header system for content sections (Dexter note, 2026-10-20): every section
+   heading aligns to the same left edge of the wrap with the same rhythm, the way
+   the live site presents its headers. */
+.section > .wrap > h2 {
+  text-align: left;
+  margin: 0 0 0.5em;
+}
+
+/* Service area section: featured town photo cards plus grouped pill buttons
+   (Milton and Dexter, 2026-10-20). Pills and cards are real links, no script. */
+.town-cards {
+  display: grid;
+  gap: 1rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40em) {
+  .town-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) {
+  .town-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.town-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+a.town-card:hover {
+  box-shadow: 0 6px 18px rgba(18, 70, 110, 0.22);
+  transform: translateY(-2px);
+}
+
+.town-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1408 / 768;
+  object-fit: cover;
+}
+
+.town-card__body {
+  display: block;
+  padding: 0.8rem 1rem 0.95rem;
+}
+
+.town-card__name {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.town-card__meta {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.town-group {
+  margin-top: 1.6rem;
+}
+
+.town-group__label {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.towns--pills {
+  gap: 0.5rem;
+}
+
+.towns--pills a,
+.towns--pills .town-pending {
+  display: inline-block;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.towns--pills a:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.towns--pills .town-pending {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
 .ticks {
   font-size: 0.95rem;
 }

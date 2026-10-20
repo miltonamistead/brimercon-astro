@@ -21,8 +21,9 @@ import EmergencyBand from "@/components/EmergencyBand.astro";
 import Faq from "@/components/Faq.astro";
 import Schema from "@/components/Schema.astro";
 import TownLink from "@/components/TownLink.astro";
+import TownCard from "@/components/TownCard.astro";
 import { services } from "@/data/services";
-import { site, napOneLine } from "@/data/site";
+import { site, napOneLine, serviceAreaGroups } from "@/data/site";
 import { towns } from "@/data/towns";
 import { faqs as allFaqs } from "@/data/faqs";
 import { plumberSchema, faqSchema } from "@/lib/schema";
@@ -95,22 +96,18 @@ const showcase = [
   },
 ];
 
-// The 12 towns the live homepage links, by slug.
-const featuredTownSlugs = [
-  "truckee",
-  "tahoe-city",
-  "kings-beach",
-  "tahoe-vista",
-  "carnelian-bay",
-  "homewood",
-  "olympic-valley",
-  "tahoe-donner",
-  "donner-lake",
-  "dollar-point",
-  "alpine-meadows",
-  "glenshire",
-];
-const featuredTowns = featuredTownSlugs.map((slug) => towns.find((town) => town.slug === slug)!);
+// Service area section (Milton and Dexter, 2026-10-20): the live homepage's grouped
+// town buttons read better than a plain word list, so the six most searched towns get
+// photo cards and every other town stays one tap away as a pill button in its group.
+// All 24 towns remain real links from the homepage; nothing is hidden behind a script.
+const cardTownSlugs = ["truckee", "tahoe-donner", "donner-lake", "northstar", "kings-beach", "tahoe-city"];
+const cardTowns = cardTownSlugs.map((slug) => towns.find((town) => town.slug === slug)!);
+const pillGroups = serviceAreaGroups
+  .map((group) => ({
+    label: group.label,
+    towns: group.towns.filter((slug) => !cardTownSlugs.includes(slug)),
+  }))
+  .filter((group) => group.towns.length > 0);
 
 // The same nine questions live puts on the home page, taken from the shared set so the
 // wording cannot drift between here and /faqs/.
@@ -236,9 +233,29 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
     <div class="wrap">
       <h2>Towns we serve around North Lake Tahoe</h2>
       <p class="lede">Serving Truckee and the communities around North Lake Tahoe.</p>
-      <ul class="towns">
-        {featuredTowns.map((town) => <li><TownLink slug={town.slug} /></li>)}
+      <ul class="town-cards">
+        {
+          cardTowns.map((town) => (
+            <li>
+              <TownCard town={town} />
+            </li>
+          ))
+        }
       </ul>
+      {
+        pillGroups.map((group) => (
+          <div class="town-group">
+            <h3 class="town-group__label">{group.label}</h3>
+            <ul class="towns towns--pills">
+              {group.towns.map((slug) => (
+                <li>
+                  <TownLink slug={slug} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
       <p><a class="btn-secondary" href="/service-areas/">View all service areas</a></p>
     </div>
   </section>

@@ -59,7 +59,7 @@ const groupHeadings: Record<string, string> = {
               groupHeadings[group.label] ?? group.label
             )}
           </h2>
-          <ul class="towns">
+          <ul class="towns towns--pills">
             {group.towns.map((slug) => (
               <li>
                 <TownLink slug={slug} />
