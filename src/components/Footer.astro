@@ -1,7 +1,7 @@
 ---
 import { site, navPrimary, serviceAreaGroups } from "@/data/site";
 import { services } from "@/data/services";
-import { townName } from "@/data/towns";
+import TownLink from "@/components/TownLink.astro";
 
 const year = new Date().getFullYear();
 ---
@@ -27,42 +27,34 @@ const year = new Date().getFullYear();
 
       <div>
         <h2>Services</h2>
-        <ul>
-          {services.map((service) => <li><a href={`/services/${service.slug}/`}>{service.name}</a></li>)}
+        <ul class="site-footer__services">
+          {services.map((service) => <li><a href={`/services/${service.slug}/`}>{service.shortName}</a></li>)}
         </ul>
       </div>
 
       <div>
         <h2>Service areas</h2>
-        <ul>
-          {
-            /* Group labels all point at the hub. Linking the first town in each group
-               would break whenever that town's page has not been built yet. */
-            serviceAreaGroups.map((group) => (
-              <li>
-                <strong>{group.label}</strong>: {group.towns.map((slug) => townName(slug)).join(", ")}
-              </li>
-            ))
-          }
-        </ul>
+        {
+          serviceAreaGroups.map((group) => (
+            <div class="site-footer__group-block">
+              <p class="site-footer__group">{group.label}</p>
+              <ul class="site-footer__towns">
+                {group.towns.map((slug) => <TownLink slug={slug} />)}
+              </ul>
+            </div>
+          ))
+        }
         <p><a href="/service-areas/">All service areas</a></p>
       </div>
     </div>
 
     <div class="site-footer__legal">
       <p>{site.cslbLine}</p>
-      <p>
-        {
-          navPrimary.map((item, i) => (
-            <>
-              {i > 0 && " | "}
-              <a href={item.href}>{item.label}</a>
-            </>
-          ))
-        }
-        {" | "}<a href="/privacy-policy/">Privacy Notice</a>
-        {" | "}<a href="/terms-of-use/">Terms of Use</a>
-      </p>
+      <nav class="site-footer__legal-links" aria-label="Legal">
+        {navPrimary.map((item) => <a href={item.href}>{item.label}</a>)}
+        <a href="/privacy-policy/">Privacy Notice</a>
+        <a href="/terms-of-use/">Terms of Use</a>
+      </nav>
       <p>&copy; {year} {site.legalName} dba {site.dba}. Established {site.founded}.</p>
     </div>
   </div>
