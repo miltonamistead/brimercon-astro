@@ -57,7 +57,7 @@ export const servicePhotos: Record<string, ServicePhoto> = {
   },
   "emergency-plumber": {
     src: "/images/work/van-snowy-driveway.webp",
-    alt: "Branded Brimer Plumbing Ford Transit van in a snowy Truckee driveway at a modern mountain home",
+    alt: "Brimer Plumbing Ford Transit van parked in snow outside a Truckee log-and-stone cabin, plumber walking toward the door",
     width: 1600,
     height: 1067,
     bandHeight: "66.69vw",
