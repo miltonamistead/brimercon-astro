@@ -896,6 +896,19 @@ address {
   background: var(--bg-soft);
 }
 
+/* Tight top gap, Smart Shutoff only (Milton, 2026-10-21): closes the gap
+   between the first-screen trust strip and the bullets checklist by ~45%
+   (section top padding 2.25rem -> 0.5rem, ticks top margin 1rem -> 0.5rem).
+   Applied only via the slug conditional in [slug].astro; no other page or
+   section uses this modifier. */
+.section--tight-top {
+  padding-top: 0.5rem;
+}
+
+.section--tight-top .ticks {
+  margin-top: 0.5rem;
+}
+
 /* Warm cream band: photos, reviews, and human moments sit best here. */
 .section--warm {
   background: var(--warm-tint);
