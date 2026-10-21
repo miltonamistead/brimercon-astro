@@ -62,12 +62,13 @@ export const servicePhotos: Record<string, ServicePhoto> = {
     height: 1067,
   },
   "frozen-burst-pipes": {
-    // [REAL] Brimer job site, Truckee 2026-07-22
+    // Generated frozen-pipe close-up (2026-10-21, Milton's spec). The previous
+    // [REAL] job-site photo is backed up at workspace/brimer/real-photos/
+    // pipe-soffit-install-real.webp and in git history.
     src: "/images/work/pipe-soffit-install.webp",
-    alt: "Painted metal pipe with an elbow and hanger running through a wood soffit",
-    width: 900,
-    height: 1200,
-    position: "50% 45%",
+    alt: "Frozen copper water pipe coated in frost and ice with icicles in a Truckee crawlspace",
+    width: 1600,
+    height: 1067,
   },
   "gas-services": {
     // [REAL] Brimer job site, Truckee 2026-07-22: pressure test on a gas line.
