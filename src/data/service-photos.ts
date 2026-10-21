@@ -71,15 +71,13 @@ export const servicePhotos: Record<string, ServicePhoto> = {
     height: 1067,
   },
   "gas-services": {
-    // [REAL] Brimer job site, Truckee 2026-07-22: pressure test on a gas line.
-    // Swapped 2026-10-20 (Milton): the previous shot showed the back of a fireplace
-    // insert and did not read as gas work. The gauge shot is unmistakably a gas
-    // line pressure test. The insert photo stays in reserve (see work/README.md).
+    // Generated gas-manifold photo (2026-10-21, Milton's spec, 16:9). The
+    // previous [REAL] pressure-test shot is backed up at
+    // workspace/brimer/real-photos/gas-line-pressure-test-real.webp and in git.
     src: "/images/work/gas-line-pressure-test.webp",
-    alt: "Pressure gauge threaded onto a gas line during a pressure test at a Truckee home",
-    width: 1200,
-    height: 1600,
-    position: "50% 38%",
+    alt: "Plumber testing a black iron gas line with a leak detector beside a manifold, tankless water heater and snowy Sierra view behind",
+    width: 1600,
+    height: 900,
   },
   "kitchen-bath-plumbing": {
     src: "/images/work/under-sink-work.webp",
