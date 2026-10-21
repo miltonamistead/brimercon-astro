@@ -61,6 +61,7 @@ export const servicePhotos: Record<string, ServicePhoto> = {
     alt: "Branded Brimer Plumbing Ford Transit van in a snowy Truckee driveway at a modern mountain home",
     width: 1600,
     height: 1067,
+    bandHeight: "66.69vw",
   },
   "frozen-burst-pipes": {
     // [REAL] Brimer job site, Truckee 2026-07-22
