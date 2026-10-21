@@ -16,6 +16,12 @@ export interface ServicePhoto {
   // are portrait phone shots; the band is a wide slice, so this keeps the
   // storytelling part of the frame visible instead of the default center.
   position?: string;
+  // Taller band height for this page only (a wide panorama whose full
+  // vehicle must stay visible). When set, the template applies it as the
+  // img height, overriding the shared clamp; width stays full-bleed and
+  // the value must match the file's aspect ratio so object-fit: cover
+  // shows the whole frame instead of cropping it.
+  bandHeight?: string;
 }
 
 export const servicePhotos: Record<string, ServicePhoto> = {
@@ -33,9 +39,10 @@ export const servicePhotos: Record<string, ServicePhoto> = {
   },
   winterization: {
     src: "/images/work/winter-cabin-visit.webp",
-    alt: "Brimer plumber walking up to a well-kept Truckee home in winter, service van in the driveway",
-    width: 1600,
-    height: 1067,
+    alt: "Brimer Plumbing Ford Transit van parked in snow in front of a Truckee mountain home",
+    width: 1500,
+    height: 724,
+    bandHeight: "48.27vw",
   },
   "drain-cleaning": {
     src: "/images/work/crawlspace-work.webp",

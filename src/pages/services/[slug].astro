@@ -113,7 +113,12 @@ const articles = (serviceArticles[service.slug] ?? [])
           width={servicePhotos[service.slug].width}
           height={servicePhotos[service.slug].height}
           loading="lazy"
-          style={servicePhotos[service.slug].position ? `object-position: ${servicePhotos[service.slug].position}` : undefined}
+          style={[
+            servicePhotos[service.slug].position ? `object-position: ${servicePhotos[service.slug].position}` : "",
+            servicePhotos[service.slug].bandHeight ? `height: ${servicePhotos[service.slug].bandHeight}` : "",
+          ]
+            .filter(Boolean)
+            .join("; ") || undefined}
         />
       </figure>
     )
