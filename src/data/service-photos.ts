@@ -94,6 +94,15 @@ export const servicePhotos: Record<string, ServicePhoto> = {
     width: 1600,
     height: 900,
   },
+  "repiping": {
+    // Generated PEX repipe photo (2026-10-21, Milton's spec, 16:9). New entry:
+    // Repiping previously had no banner image; this uses the shared
+    // service-photo-band figure like the other services.
+    src: "/images/work/repipe-pex-install.webp",
+    alt: "Plumber crimping a brass fitting onto new blue PEX beside red and blue runs through open studs, old galvanized pipe on the floor",
+    width: 1600,
+    height: 900,
+  },
   "smart-leak-shutoff": {
     // Product photo: Moen's own Flo marketing imagery (placeholder until the
     // real shoot captures a Brimer-installed unit)
