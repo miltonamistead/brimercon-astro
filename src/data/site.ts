@@ -87,6 +87,7 @@ export const navPrimary = [
   { href: "/about/", label: "About" },
   { href: "/reviews/", label: "Reviews" },
   { href: "/faqs/", label: "FAQs" },
+  { href: "/membership/", label: "Membership" },
   { href: "/contact/", label: "Contact" },
 ] as const;
 
