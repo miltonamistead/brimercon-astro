@@ -40,9 +40,8 @@ export const servicePhotos: Record<string, ServicePhoto> = {
   winterization: {
     src: "/images/work/winter-cabin-visit.webp",
     alt: "Brimer Plumbing Ford Transit van parked in snow in front of a Truckee mountain home",
-    width: 1500,
-    height: 724,
-    bandHeight: "48.27vw",
+    width: 1600,
+    height: 1067,
   },
   "drain-cleaning": {
     src: "/images/work/crawlspace-work.webp",
