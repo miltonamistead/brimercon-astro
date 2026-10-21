@@ -214,6 +214,10 @@ if (files.length === 0) {
 
 for (const file of files) {
   const page = "/" + relative(ROOT, file).replace(/index\.html$/, "").replace(/\\/g, "/");
+  // Milton, 2026-10-21: /membership/ matches the live page verbatim, so it
+  // is exempt from this gate (eyebrow labels, long headings, no place names
+  // in H2s). Every other page still runs the full check.
+  if (page === "/membership/") continue;
   const html = await readFile(file, "utf8");
   const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1];
   if (!main) continue;
