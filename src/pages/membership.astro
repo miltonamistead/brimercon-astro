@@ -1,8 +1,9 @@
 ---
 /**
- * Membership page, rebuilt WITHOUT dollar amounts (PLAN.md D2, url-map).
- * Tiers, benefits and "contact for pricing" at the same URL. No "priority"
- * language anywhere: it is an unapproved speed claim under the copy policy.
+ * Membership page.
+ * Pricing section added per Milton's 2026-10-21 spec (three tiers with
+ * annual/monthly prices, Steward featured). This supersedes the earlier
+ * PLAN.md D2 note that kept this page price-free.
  */
 import Base from "@/layouts/Base.astro";
 import FirstScreen from "@/components/FirstScreen.astro";
@@ -79,6 +80,272 @@ const tiers = [
       </p>
     </div>
   </section>
+
+  <section class="section plans-section">
+    <div class="wrap">
+      <h2>Membership plans</h2>
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <button type="button" class="billing-toggle__option is-selected" data-billing="annual" aria-pressed="true">Annual</button>
+        <button type="button" class="billing-toggle__option" data-billing="monthly" aria-pressed="false">Monthly</button>
+      </div>
+      <div class="plans">
+        <article class="plan" data-annual="149" data-monthly="15">
+          <h3 class="plan__name">Essential</h3>
+          <p class="plan__price"><span class="plan__amount">$149</span><span class="plan__period">/year</span></p>
+          <p class="plan__alt">or $15/month</p>
+          <p class="plan__save">Save 20% with annual billing</p>
+          <p class="plan__desc">Homeowners who want better pricing and faster access when something comes up.</p>
+          <ul class="plan__list">
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>10% off all plumbing service</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>No diagnostic fee on service visits</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Priority scheduling ahead of non-members</li>
+          </ul>
+          <div class="plan__foot">
+            <p class="plan__note">Essential pays for itself the first time you need a plumber.</p>
+            <a class="plan__btn plan__btn--outline" href="/request-service/">Join Essential</a>
+          </div>
+        </article>
+        <article class="plan plan--featured" data-annual="449" data-monthly="45">
+          <p class="plan__badge">Most popular</p>
+          <h3 class="plan__name">Steward</h3>
+          <p class="plan__price"><span class="plan__amount">$449</span><span class="plan__period">/year</span></p>
+          <p class="plan__alt">or $45/month</p>
+          <p class="plan__save">Save 20% with annual billing</p>
+          <p class="plan__desc">Homeowners who want proactive care, emergency access, and a clear picture of their plumbing system.</p>
+          <ul class="plan__list">
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>15% off all plumbing service</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>No diagnostic fee on service visits</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Priority scheduling ahead of non-members</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Annual whole-home plumbing review</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Member emergency access</li>
+          </ul>
+          <div class="plan__foot">
+            <a class="plan__btn plan__btn--solid" href="/request-service/">Join Steward</a>
+          </div>
+        </article>
+        <article class="plan" data-annual="749" data-monthly="75">
+          <h3 class="plan__name">Concierge</h3>
+          <p class="plan__price"><span class="plan__amount">$749</span><span class="plan__period">/year</span></p>
+          <p class="plan__alt">or $75/month</p>
+          <p class="plan__save">Save 20% with annual billing</p>
+          <p class="plan__desc">Homeowners who want complete coverage including water heater care and the highest level of access.</p>
+          <ul class="plan__list">
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Everything in Steward</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Annual water heater maintenance</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>$499 value included</li>
+          </ul>
+          <div class="plan__foot">
+            <a class="plan__btn plan__btn--outline" href="/request-service/">Join Concierge</a>
+          </div>
+        </article>
+      </div>
+      <p class="plans-disclaimer">Pricing is per residential home or unit. Annual and monthly options available. Services are subject to availability and scheduling. Membership does not constitute insurance coverage.</p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector(".billing-toggle");
+      if (!toggle) return;
+      var options = toggle.querySelectorAll(".billing-toggle__option");
+      var plans = document.querySelectorAll(".plan");
+      function setBilling(mode) {
+        options.forEach(function (btn) {
+          var selected = btn.dataset.billing === mode;
+          btn.classList.toggle("is-selected", selected);
+          btn.setAttribute("aria-pressed", selected ? "true" : "false");
+        });
+        plans.forEach(function (plan) {
+          var amount = plan.querySelector(".plan__amount");
+          var period = plan.querySelector(".plan__period");
+          var alt = plan.querySelector(".plan__alt");
+          var save = plan.querySelector(".plan__save");
+          if (mode === "annual") {
+            amount.textContent = "$" + plan.dataset.annual;
+            period.textContent = "/year";
+            alt.textContent = "or $" + plan.dataset.monthly + "/month";
+            if (save) save.hidden = false;
+          } else {
+            amount.textContent = "$" + plan.dataset.monthly;
+            period.textContent = "/month";
+            alt.textContent = "or $" + plan.dataset.annual + "/year";
+            if (save) save.hidden = true;
+          }
+        });
+      }
+      options.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setBilling(btn.dataset.billing);
+        });
+      });
+    })();
+  </script>
+
+  <style>
+    .plans-section {
+      background: #f5efe8;
+    }
+    .plans-section h2 {
+      text-align: center;
+    }
+    .billing-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0.25rem;
+      margin: 1.5rem 0 2.25rem;
+    }
+    .billing-toggle__option {
+      border: 0;
+      background: transparent;
+      padding: 0.6rem 1.5rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .billing-toggle__option.is-selected {
+      background: #12181f;
+      color: #fff;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+      padding-top: 1rem;
+    }
+    .plan {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 10px rgba(18, 70, 110, 0.08);
+      padding: 2rem 1.75rem;
+    }
+    .plan--featured {
+      border: 2px solid #b9714a;
+      margin-top: -1rem;
+    }
+    .plan__badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: #b9714a;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .plan__name {
+      margin: 0 0 0.75rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .plan__price {
+      margin: 0;
+      line-height: 1;
+    }
+    .plan__amount {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .plan__period {
+      margin-left: 0.25rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+    .plan__alt {
+      margin: 0.5rem 0 0;
+      color: var(--ink-soft);
+    }
+    .plan__save {
+      margin: 0.5rem 0 0;
+      font-weight: 700;
+      color: #b9714a;
+    }
+    .plan__desc {
+      margin: 1.25rem 0;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .plan__list {
+      margin: 0 0 1.5rem;
+      padding: 0;
+      list-style: none;
+    }
+    .plan__list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
+    }
+    .plan__list svg {
+      flex: none;
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-top: 0.15rem;
+      fill: none;
+      stroke: #b9714a;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .plan__foot {
+      margin-top: auto;
+    }
+    .plan__note {
+      margin: 0 0 1.25rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    .plan__btn {
+      display: block;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+    .plan__btn--outline {
+      border: 2px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+    }
+    .plan__btn--solid {
+      border: 2px solid #b9714a;
+      background: #b9714a;
+      color: #fff;
+    }
+    .plans-disclaimer {
+      margin: 2rem 0 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+    @media (max-width: 47.99em) {
+      .plans {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .plan--featured {
+        order: -1;
+        margin-top: 0;
+      }
+    }
+  </style>
 
   {
     tiers.map((tier, i) => (

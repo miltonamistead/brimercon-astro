@@ -160,8 +160,12 @@ for (const file of files) {
   if (/\sNV\s/.test(geoScan)) add(page, "geography", '" NV " appears in visible copy');
 
   // --- prices ------------------------------------------------------------
-  for (const m of text.matchAll(/\$\s?\d[\d,]*/g)) {
-    add(page, "price", `dollar figure "${m[0]}" in visible copy`);
+  // Milton, 2026-10-21: dollar figures are allowed on /membership/ only
+  // (the pricing section). Every other page still fails on any $ figure.
+  if (page !== "/membership/") {
+    for (const m of text.matchAll(/\$\s?\d[\d,]*/g)) {
+      add(page, "price", `dollar figure "${m[0]}" in visible copy`);
+    }
   }
 
   // --- dashes ------------------------------------------------------------
