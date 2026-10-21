@@ -86,10 +86,13 @@ export const servicePhotos: Record<string, ServicePhoto> = {
     height: 1067,
   },
   "appliance-installation": {
+    // Generated dishwasher install (2026-10-21, Milton's spec, 16:9). The
+    // previous image is backed up at workspace/brimer/real-photos/
+    // dishwasher-install-previous.webp and in git.
     src: "/images/work/dishwasher-install.webp",
-    alt: "Installer guiding a new stainless dishwasher into place under a cabin kitchen counter",
+    alt: "Plumber connecting a dishwasher braided supply line to the shutoff valve in a bright Truckee kitchen",
     width: 1600,
-    height: 1067,
+    height: 900,
   },
   "smart-leak-shutoff": {
     // Product photo: Moen's own Flo marketing imagery (placeholder until the
