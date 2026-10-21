@@ -896,11 +896,13 @@ address {
   background: var(--bg-soft);
 }
 
-/* Tight top gap, Smart Shutoff only (Milton, 2026-10-21): closes the gap
+/* Tight top gap, all service pages (Milton, 2026-10-21): closes the gap
    between the first-screen trust strip and the bullets checklist by ~45%
    (section top padding 2.25rem -> 0.5rem, ticks top margin 1rem -> 0.5rem).
-   Applied only via the slug conditional in [slug].astro; no other page or
-   section uses this modifier. */
+   Applied to the intro section of every service page via [slug].astro, so
+   every service page carries the same spacing; no non-service section uses
+   this modifier. Extended from Smart Shutoff only to all services 2026-10-21
+   at Milton's direction. */
 .section--tight-top {
   padding-top: 0.5rem;
 }

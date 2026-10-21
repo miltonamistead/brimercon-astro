@@ -93,7 +93,7 @@ const articles = (serviceArticles[service.slug] ?? [])
     )
   }
 
-  <section class={service.slug === "smart-leak-shutoff" ? "section section--tight-top" : "section"}>
+  <section class="section section--tight-top">
     <div class="wrap">
       <ul class="ticks">
         {service.bullets.map((bullet) => <li>{bullet}</li>)}
