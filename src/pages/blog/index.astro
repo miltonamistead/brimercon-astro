@@ -1,11 +1,12 @@
 ---
 /**
- * Blog index, matching the live blog hub 1:1 in wording and order:
- * title tag, meta description, kicker, H1, intro, and the 10 live posts
- * newest first, each card showing date, title, excerpt, tags, Read article.
+ * Blog index, matching the live blog hub in wording and order:
+ * title tag, meta description, kicker, H1, intro, and the posts newest
+ * first, each card showing date, title, excerpt, tags, Read article.
  * Two rebuild-only articles in the collection (frozen-pipe-prevention-checklist
  * and what-affects-plumbing-costs) are linked from service pages but are not
- * on the live blog hub, so they are filtered out of this grid.
+ * on the live blog hub, so they are filtered out of this grid. New posts
+ * Milton adds are included by adding their slug to the set below.
  */
 import { getCollection } from "astro:content";
 import Base from "@/layouts/Base.astro";
@@ -23,8 +24,10 @@ const crumbs = [
   { name: "Blog", path: "/blog/" },
 ];
 
-// The 10 posts on the live blog hub, newest first by pubDate.
+// The posts on the blog hub, newest first by pubDate: the 10 live posts
+// plus new posts Milton adds (winterize-your-pipes-truckee-tahoe, 2026-10-22).
 const liveSlugs = new Set([
+  "winterize-your-pipes-truckee-tahoe",
   "water-heater-maintenance-tahoe-homeowner",
   "how-property-managers-prevent-plumbing-emergencies",
   "common-kitchen-plumbing-problems-older-tahoe-homes",

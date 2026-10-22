@@ -42,8 +42,10 @@ const crumbs = [
   { name: h1, path },
 ];
 
-// Related services as named in each live post's footer.
+// Related services as named in each live post's footer. The new
+// 2026-10-22 post mirrors the winterize post's links (same topic).
 const relatedSlugs: Record<string, string[]> = {
+  "winterize-your-pipes-truckee-tahoe": ["frozen-burst-pipes", "smart-leak-shutoff"],
   "how-to-winterize-plumbing-tahoe-second-home": ["frozen-burst-pipes", "smart-leak-shutoff"],
   "tankless-vs-tank-water-heaters-cold-climates": ["water-heaters", "gas-services"],
   "signs-of-hidden-leak-what-to-do": ["smart-leak-shutoff", "kitchen-bath-plumbing"],
@@ -60,8 +62,10 @@ const related = (relatedSlugs[post.id] ?? [])
   .map((slug) => getService(slug))
   .filter((s) => s !== undefined);
 
-// Related areas as named in each live post's footer.
+// Related areas as named in each live post's footer. The new
+// 2026-10-22 post mirrors the winterize post's areas.
 const relatedAreaSlugs: Record<string, string[]> = {
+  "winterize-your-pipes-truckee-tahoe": ["truckee", "tahoe-donner", "tahoe-city"],
   "water-heater-maintenance-tahoe-homeowner": ["truckee", "tahoe-city", "tahoe-donner"],
   "how-property-managers-prevent-plumbing-emergencies": ["truckee", "tahoe-donner", "tahoe-city", "kings-beach"],
   "common-kitchen-plumbing-problems-older-tahoe-homes": ["tahoe-city", "kings-beach", "homewood", "tahoma"],
