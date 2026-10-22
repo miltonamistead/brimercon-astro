@@ -1691,6 +1691,11 @@ a.town-card:hover {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  /* Reserve one line even when the city is blank, so the name above it
+     lines up with name-plus-city cards in the same row. 1.6em matches the
+     inherited body line-height; non-empty single lines are already this
+     tall, so this changes nothing for them. */
+  min-height: 1.6em;
   font-size: 0.85rem;
   color: var(--ink-soft);
 }
