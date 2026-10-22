@@ -6,8 +6,10 @@
 // 2026-10-22 per Milton (his Yelp card stays, so he is not shown twice).
 // Guest Maps reads cap at the first five reviews, so Jos and Fajans came
 // from screenshots Milton supplied 2026-10-22. Maps does not publish
-// reviewer cities, so Google cards carry the posted date under the name —
-// except Jos, whose city Milton supplied (Tahoe City, CA).
+// reviewer cities, so Google cards show the city under the name only where
+// Milton supplied one (Jos: Tahoe City, CA); the other Google cards leave
+// that line blank rather than falling back to a date or a guessed city
+// (changed 2026-10-22 per Milton).
 // Fajans's "Reasonable price" line is a Maps price field, not review body
 // text, and a dollar figure would fail the site's qa-content price rule, so
 // it is not reproduced. Fajans's body as captured ends "easy to work with."
@@ -25,7 +27,7 @@
 export interface PlatformReview {
   author: string;
   initials: string;
-  /** City line on Yelp cards (and Jos), posted date on other Google cards. */
+  /** City line on Yelp cards (and Jos); blank on other Google cards. */
   subline: string;
   sublineIsCity: boolean;
   paragraphs: string[];
@@ -46,7 +48,7 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Michael Fajans",
     initials: "M",
-    subline: "4 weeks ago",
+    subline: "",
     sublineIsCity: false,
     paragraphs: [
       "I needed a Moen Flo device installed. It is difficult o get a plumber in Truckee's on a timely basis. Brimer was recommended by a friend and had excellent reviews. They came out and gave me an estimate within a few days and were able to do the install the next day. Wes and his crew were good guys and easy to work with.",
@@ -56,7 +58,7 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Tanner Egan",
     initials: "TE",
-    subline: "a month ago",
+    subline: "",
     sublineIsCity: false,
     paragraphs: [
       "Zach absolutely crushed it. Great customer service and super knowledgeable. So stoked guys like Zach are in the plumbing industry.",
@@ -66,7 +68,7 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Lynette Zeiter",
     initials: "LZ",
-    subline: "2 months ago",
+    subline: "",
     sublineIsCity: false,
     paragraphs: [
       "Zach was very professional and cordial, he saved the day! We had our water turned off to replace our shower valve and needed an emergency plumber. He came at 7 pm and had us up and running in less than an hour. We high recommend Zach and will call him again with any of our plumbing needs",
@@ -76,7 +78,7 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Sheila Scrivner",
     initials: "SS",
-    subline: "2 months ago",
+    subline: "",
     sublineIsCity: false,
     paragraphs: [
       "The response time was amazingly fast. Called them at 345 and they were at the house at our appointment time of 5. Both gentlemen were kind and helpful. They immediately went to work, diagnosed the problem, went to get parts and fixed it that evening. I was beyond grateful and highly recommended them. If in need again wouldn't hesitate to call Brimer",
@@ -86,7 +88,7 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Steve Thompson",
     initials: "ST",
-    subline: "2 months ago",
+    subline: "",
     sublineIsCity: false,
     paragraphs: [
       "Brimer plumbing is great! Great service, easy to work with. Wes was communicative through the whole project working outside in the snow. Would highly recommend!",
