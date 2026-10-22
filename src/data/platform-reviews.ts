@@ -118,6 +118,66 @@ export const aboutGoogleReviews: PlatformReview[] = [
   { ...googleReviews[3], subline: "Truckee, CA", sublineIsCity: true },
 ];
 
+/**
+ * Service page Google pairs (Milton, 2026-10-22). Pool: the 7 confirmed
+ * 5-star Google reviews — the 6 in googleReviews plus Chris Kruss's Google
+ * review, verbatim from the Maps five-star widget read (same review as
+ * Yelp's Chris K., with "google" in place of "Yelp"; his Google card was
+ * removed from the Reviews page so he is not shown twice there, but the
+ * Google review itself is a distinct review usable on service pages).
+ * Nothing else was usable under the source rules: the cache's remaining
+ * reviews (Chris B., Larry L., Gregg H.) mix Google and Yelp quotes with
+ * no per-review source, so their Google origin and rating can't be
+ * confirmed, and they were skipped. Each page's pair is distinct as a set;
+ * with 7 reviews for 12 pages, individual reviews repeat across pages in
+ * different pairings. Where a review matches the service it leads the pair
+ * (Kruss water heater, Zeiter emergency valve, Fajans Moen Flo shutoff,
+ * Jos stove, Thompson snow); tankless, drain, gas, and repipe have no
+ * matching 5-star review, so those pages get strong reviews instead of a
+ * forced match. Cities: Jos Tahoe City, CA; Fajans and Zeiter Truckee, CA
+ * (Milton-supplied, same copies as the About set); Kruss, Egan, Scrivner,
+ * and Thompson leave the line blank (no city supplied).
+ */
+const krussGoogle: PlatformReview = {
+  author: "Chris Kruss",
+  initials: "CK",
+  subline: "",
+  sublineIsCity: false,
+  paragraphs: [
+    "had my hot water heater go out a few days ago",
+    "it had been many years since I had a plumber service to my house so I looked up the best plumbers in Truckee on google",
+    "Brimer Plumbing was at the top of the list with a rating of five stars so I contacted them through google to schedule a technician to come over to give me a quote",
+    "a representative from Brimer Plumbing 10 minutes later we had the technicians scheduled for the next day",
+    "the following day I was contacted by one of their technicians named Zacha",
+    "due to his work schedule changing he was able to come over 2 hours earlier than scheduled which really helped me with my daily plans",
+    "when I met Zacha I knew I was in good hands he gave me a very fair quote and had the hot water heater installed.",
+    "when I looked at my home maintenance records I noticed that Jamie Brimer was the last plumber to work on my home over a decade ago.",
+    "I'm definitely giving Brimer Plumbing five stars and I'd highly recommend if you need any Plumbing work done to contact them and request Zacha as your technician!",
+    "Happy customer",
+    "Chris Kruss",
+    "Live in Truckee full-time for over 30years!",
+  ],
+  avatarColor: "#7a5c3e",
+};
+
+const fajansTruckee = aboutGoogleReviews[1];
+const zeiterTruckee = aboutGoogleReviews[2];
+
+export const servicePageGoogleReviews: Record<string, PlatformReview[]> = {
+  "water-heaters": [krussGoogle, googleReviews[0]],
+  "tankless-water-heaters": [fajansTruckee, googleReviews[5]],
+  winterization: [googleReviews[5], googleReviews[4]],
+  "drain-cleaning": [googleReviews[2], zeiterTruckee],
+  "leak-detection": [googleReviews[4], googleReviews[2]],
+  "emergency-plumber": [zeiterTruckee, googleReviews[4]],
+  "frozen-burst-pipes": [krussGoogle, googleReviews[5]],
+  "gas-services": [googleReviews[0], googleReviews[2]],
+  "kitchen-bath-plumbing": [zeiterTruckee, googleReviews[0]],
+  "appliance-installation": [googleReviews[0], fajansTruckee],
+  "smart-leak-shutoff": [fajansTruckee, googleReviews[4]],
+  repiping: [krussGoogle, googleReviews[4]],
+};
+
 export const yelpReviews: PlatformReview[] = [
   {
     author: "Genny F.",

@@ -19,6 +19,7 @@ import ServiceAreaMap from "@/components/ServiceAreaMap.astro";
 import TownLink from "@/components/TownLink.astro";
 import { services, getService } from "@/data/services";
 import { servicePhotos } from "@/data/service-photos";
+import { servicePageGoogleReviews } from "@/data/platform-reviews";
 import { site, napOneLine } from "@/data/site";
 import { towns } from "@/data/towns";
 import { GOLDEN_SERVICE_SLUGS } from "@/data/golden";
@@ -202,7 +203,13 @@ const articles = (serviceArticles[service.slug] ?? [])
 
   <EmergencyBand heading={service.headings.emergency} />
 
-  <ReviewsStrip count={2} heading={service.headings.reviews} />
+  <ReviewsStrip
+    count={2}
+    heading={service.headings.reviews}
+    platformCards
+    platformSource="google"
+    platformReviews={servicePageGoogleReviews[service.slug]}
+  />
 
   <section class="section">
     <div class="wrap">
