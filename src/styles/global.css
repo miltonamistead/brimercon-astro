@@ -980,6 +980,16 @@ address {
   color: var(--ink-soft);
 }
 
+/* Truckee CTA only (2026-10-22): even 24px spacing across the three text
+   blocks under the call button. The form link's bottom margin was 0, so
+   blocks 1 and 2 sat tight; the NAP line's top margin was 1.25rem. */
+.town-cta .first-screen__form-link {
+  margin-bottom: 24px;
+}
+.town-cta .nap-line {
+  margin-top: 24px;
+}
+
 /* Keeps a phone number from breaking across lines mid-digits. */
 .nowrap {
   white-space: nowrap;
