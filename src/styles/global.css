@@ -1121,6 +1121,12 @@ address {
   font-size: 0.9rem;
 }
 
+/* About page (2026-10-22): wider horizontal gap between numbered columns.
+   Column gap only, so the row gap and the equal 1fr widths stay as they are. */
+.steps--wide {
+  column-gap: 48px;
+}
+
 .card {
   display: block;
   height: 100%;
