@@ -1577,6 +1577,11 @@ a.town-card:hover {
   box-shadow: var(--shadow-card);
 }
 
+.platform-review--strip {
+  border-width: 0.5px;
+  border-radius: 12px;
+}
+
 .platform-review__badge {
   position: absolute;
   top: 1rem;

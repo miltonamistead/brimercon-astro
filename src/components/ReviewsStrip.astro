@@ -7,6 +7,8 @@
 // on a LocalBusiness.
 import { site } from "@/data/site";
 import { topReviews, ratingSummary } from "@/data/reviews";
+import type { PlatformReview } from "@/data/platform-reviews";
+import PlatformReviewCard from "@/components/PlatformReviewCard.astro";
 import Stars from "@/components/Stars.astro";
 
 interface Props {
@@ -15,10 +17,39 @@ interface Props {
   heading?: string;
   /** Show the live rating badges above the cards. Home and Reviews pages only. */
   badges?: boolean;
+  /** Rebuild the cards in the Reviews page platform format (Service Areas pages only). */
+  platformCards?: boolean;
 }
-const { count = 3, heading = "What homeowners say about our work", badges = false } = Astro.props;
+const {
+  count = 3,
+  heading = "What homeowners say about our work",
+  badges = false,
+  platformCards = false,
+} = Astro.props;
 const items = topReviews(count);
 const rating = ratingSummary();
+
+// Service Areas strip cards in platform format. Both current strip reviews
+// are Yelp reviews (Milton confirmed Jill S. 2026-10-22; K B. is in the
+// Reviews page Yelp set). Text stays the cache version verbatim; only the
+// card format changes. Avatar colors match the Reviews page where the
+// reviewer has a card there (K B. #3d5a45); Jill S. takes a muted taupe.
+const stripAvatarColors: Record<string, string> = {
+  "K B.": "#3d5a45",
+  "Jill S.": "#6b5b45",
+};
+const platformItems: PlatformReview[] = items.map((review) => ({
+  author: review.author,
+  initials: review.author
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase(),
+  subline: review.location ?? "",
+  sublineIsCity: Boolean(review.location),
+  paragraphs: [review.quote],
+  avatarColor: stripAvatarColors[review.author] ?? "#37474f",
+}));
 ---
 
 <section class="section section--warm reviews">
@@ -58,17 +89,21 @@ const rating = ratingSummary();
 
     <ul class="reviews__list">
       {
-        items.map((review) => (
-          <li class="review">
-            <blockquote>
-              <p>{review.quote}</p>
-            </blockquote>
-            <p class="review__who">
-              <strong>{review.author}</strong>
-              {review.location && <span>{review.location}</span>}
-            </p>
-          </li>
-        ))
+        platformCards
+          ? platformItems.map((review) => (
+              <PlatformReviewCard review={review} source="yelp" variant="strip" />
+            ))
+          : items.map((review) => (
+              <li class="review">
+                <blockquote>
+                  <p>{review.quote}</p>
+                </blockquote>
+                <p class="review__who">
+                  <strong>{review.author}</strong>
+                  {review.location && <span>{review.location}</span>}
+                </p>
+              </li>
+            ))
       }
     </ul>
 
@@ -79,3 +114,29 @@ const rating = ratingSummary();
     </p>
   </div>
 </section>
+
+{
+  // Same 8-line cap as the Reviews page (see reviews.astro): the clamp
+  // class goes on every quote first; quotes that still fit keep it off and
+  // show no toggle. Only included for the platform-card variant.
+  platformCards && (
+    <script>
+      document.querySelectorAll(".platform-review").forEach((card) => {
+        const quote = card.querySelector(".platform-review__quote");
+        const toggle = card.querySelector(".platform-review__more");
+        if (!quote || !toggle) return;
+        quote.classList.add("is-clamped");
+        if (quote.scrollHeight <= quote.clientHeight + 1) {
+          quote.classList.remove("is-clamped");
+          return;
+        }
+        toggle.classList.add("is-visible");
+        toggle.addEventListener("click", () => {
+          const clamped = quote.classList.toggle("is-clamped");
+          toggle.textContent = clamped ? "Read more" : "Read less";
+          toggle.setAttribute("aria-expanded", String(!clamped));
+        });
+      });
+    </script>
+  )
+}
