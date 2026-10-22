@@ -1194,10 +1194,17 @@ a.card:hover .card__icon {
   color: var(--brand);
 }
 
-/* Blog index only (2026-10-22): 24px between the tag row and "Read article".
-   Scoped here so service cards and other .card uses keep their own spacing. */
+/* Blog index only (2026-10-22): "Read article" links sit at the bottom of
+   each card so they line up across a row, with at least 24px between the
+   tag row and the link. Scoped here so service cards and other .card uses
+   keep their own spacing. */
+.blog-index__cards .card {
+  display: flex;
+  flex-direction: column;
+}
 .blog-index__cards .card__more {
-  margin-top: 24px;
+  margin-top: auto;
+  padding-top: 24px;
 }
 
 .card__arrow {
