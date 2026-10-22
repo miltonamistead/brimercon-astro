@@ -97,6 +97,24 @@ export const googleReviews: PlatformReview[] = [
   },
 ];
 
+/**
+ * The three Google reviews for the About page strip (Milton, 2026-10-22):
+ * the strongest confirmed 5-star reviews — each names a specific job and
+ * technician and shows clear communication or follow-through. Jos 3 (stove
+ * install, Wes and Zach, great communicator; Tahoe City, CA) and Michael
+ * Fajans (Moen Flo install, estimate within days, installed the next day)
+ * are confirmed 5-star from screenshots Milton supplied 2026-10-22;
+ * Lynette Zeiter (emergency shower valve, Zach at 7 pm, running in under
+ * an hour) comes from the Maps five-star widget read. No other Google
+ * review in the set carries a city, so the other two cards leave that
+ * line blank. Text is the same verbatim text as the Reviews page cards.
+ */
+export const aboutGoogleReviews: PlatformReview[] = [
+  googleReviews[0],
+  googleReviews[1],
+  googleReviews[3],
+];
+
 export const yelpReviews: PlatformReview[] = [
   {
     author: "Genny F.",

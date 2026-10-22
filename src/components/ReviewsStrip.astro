@@ -19,12 +19,18 @@ interface Props {
   badges?: boolean;
   /** Rebuild the cards in the Reviews page platform format (Service Areas pages only). */
   platformCards?: boolean;
+  /** Corner badge for platform cards. Service Areas strip cards are Yelp. */
+  platformSource?: "google" | "yelp";
+  /** Explicit platform cards (About page Google set). Defaults to the strip mapping. */
+  platformReviews?: PlatformReview[];
 }
 const {
   count = 3,
   heading = "What homeowners say about our work",
   badges = false,
   platformCards = false,
+  platformSource = "yelp",
+  platformReviews,
 } = Astro.props;
 const items = topReviews(count);
 const rating = ratingSummary();
@@ -32,13 +38,15 @@ const rating = ratingSummary();
 // Service Areas strip cards in platform format. Both current strip reviews
 // are Yelp reviews (Milton confirmed Jill S. 2026-10-22; K B. is in the
 // Reviews page Yelp set). Text stays the cache version verbatim; only the
-// card format changes. Avatar colors match the Reviews page where the
-// reviewer has a card there (K B. #3d5a45); Jill S. takes a muted taupe.
+// card format changes. An explicit platformReviews list (About page) bypasses
+// this mapping and carries its own source. Avatar colors match the Reviews
+// page where the reviewer has a card there (K B. #3d5a45); Jill S. takes a
+// muted taupe.
 const stripAvatarColors: Record<string, string> = {
   "K B.": "#3d5a45",
   "Jill S.": "#6b5b45",
 };
-const platformItems: PlatformReview[] = items.map((review) => ({
+const mappedStripItems: PlatformReview[] = items.map((review) => ({
   author: review.author,
   initials: review.author
     .split(/\s+/)
@@ -50,6 +58,7 @@ const platformItems: PlatformReview[] = items.map((review) => ({
   paragraphs: [review.quote],
   avatarColor: stripAvatarColors[review.author] ?? "#37474f",
 }));
+const resolvedPlatformItems = platformReviews ?? mappedStripItems;
 ---
 
 <section class="section section--warm reviews">
@@ -90,8 +99,12 @@ const platformItems: PlatformReview[] = items.map((review) => ({
     <ul class="reviews__list">
       {
         platformCards
-          ? platformItems.map((review) => (
-              <PlatformReviewCard review={review} source="yelp" variant="strip" />
+          ? resolvedPlatformItems.map((review) => (
+              <PlatformReviewCard
+                review={review}
+                source={platformSource}
+                variant="strip"
+              />
             ))
           : items.map((review) => (
               <li class="review">

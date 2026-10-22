@@ -6,6 +6,7 @@ import EmergencyBand from "@/components/EmergencyBand.astro";
 import Schema from "@/components/Schema.astro";
 import { site, napOneLine } from "@/data/site";
 import { towns } from "@/data/towns";
+import { aboutGoogleReviews } from "@/data/platform-reviews";
 import { breadcrumbSchema } from "@/lib/schema";
 
 const title = "About Brimer Plumbing | Truckee & North Lake Tahoe";
@@ -125,7 +126,13 @@ const values = [
 
   <EmergencyBand heading="Emergency plumber in Truckee and Tahoe" />
 
-  <ReviewsStrip count={3} heading="What homeowners say about our work" />
+  <ReviewsStrip
+    count={3}
+    heading="What homeowners say about our work"
+    platformCards
+    platformSource="google"
+    platformReviews={aboutGoogleReviews}
+  />
 
   <section class="section section--soft">
     <div class="wrap">
