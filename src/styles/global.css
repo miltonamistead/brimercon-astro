@@ -1634,6 +1634,13 @@ a.town-card:hover {
   overflow: hidden;
 }
 
+/* Service Areas strip cards sit in a two-column layout and need to stay
+   short, so their cap is 4 lines while the Reviews page keeps 8. */
+.platform-review--strip .platform-review__quote.is-clamped {
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
 .platform-review__more {
   display: none;
   margin-top: 0.75rem;

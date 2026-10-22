@@ -116,9 +116,11 @@ const platformItems: PlatformReview[] = items.map((review) => ({
 </section>
 
 {
-  // Same 8-line cap as the Reviews page (see reviews.astro): the clamp
-  // class goes on every quote first; quotes that still fit keep it off and
-  // show no toggle. Only included for the platform-card variant.
+  // Same in-place toggle as the Reviews page (see reviews.astro), with a
+  // tighter 4-line cap for these two-column strip cards via the
+  // platform-review--strip CSS override. The clamp class goes on every
+  // quote first; quotes that still fit keep it off and show no toggle.
+  // Only included for the platform-card variant.
   platformCards && (
     <script>
       document.querySelectorAll(".platform-review").forEach((card) => {
