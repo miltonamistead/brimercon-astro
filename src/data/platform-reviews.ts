@@ -105,14 +105,17 @@ export const googleReviews: PlatformReview[] = [
  * Fajans (Moen Flo install, estimate within days, installed the next day)
  * are confirmed 5-star from screenshots Milton supplied 2026-10-22;
  * Lynette Zeiter (emergency shower valve, Zach at 7 pm, running in under
- * an hour) comes from the Maps five-star widget read. No other Google
- * review in the set carries a city, so the other two cards leave that
- * line blank. Text is the same verbatim text as the Reviews page cards.
+ * an hour) comes from the Maps five-star widget read. Text is the same
+ * verbatim text as the Reviews page cards. Cities are Milton's, supplied
+ * for the About section 2026-10-22 (Fajans and Zeiter: Truckee, CA), so
+ * these are copies, not the shared Reviews page objects — the Reviews page
+ * cards keep their blank city lines per the earlier rule, since Maps
+ * itself publishes no city for those two reviewers.
  */
 export const aboutGoogleReviews: PlatformReview[] = [
   googleReviews[0],
-  googleReviews[1],
-  googleReviews[3],
+  { ...googleReviews[1], subline: "Truckee, CA", sublineIsCity: true },
+  { ...googleReviews[3], subline: "Truckee, CA", sublineIsCity: true },
 ];
 
 export const yelpReviews: PlatformReview[] = [
