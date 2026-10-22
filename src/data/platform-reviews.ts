@@ -6,10 +6,11 @@
 // 2026-10-22 per Milton (his Yelp card stays, so he is not shown twice).
 // Guest Maps reads cap at the first five reviews, so Jos and Fajans came
 // from screenshots Milton supplied 2026-10-22. Maps does not publish
-// reviewer cities, so Google cards show the city under the name only where
-// Milton supplied one (Jos: Tahoe City, CA); the other Google cards leave
-// that line blank rather than falling back to a date or a guessed city
-// (changed 2026-10-22 per Milton).
+// reviewer cities, so Google cards show the city Milton supplied: Jos
+// Tahoe City, CA; Kruss, Egan, Scrivner, and Thompson Truckee, CA (all
+// supplied 2026-10-22). Fajans and Zeiter keep a blank line on the Reviews
+// page per the earlier rule; their Truckee, CA lines live only on the
+// About and service-page copies below.
 // Fajans's "Reasonable price" line is a Maps price field, not review body
 // text, and a dollar figure would fail the site's qa-content price rule, so
 // it is not reproduced. Fajans's body as captured ends "easy to work with."
@@ -27,7 +28,7 @@
 export interface PlatformReview {
   author: string;
   initials: string;
-  /** City line on Yelp cards (and Jos); blank on other Google cards. */
+  /** City line where Milton supplied one; blank on Reviews page Fajans/Zeiter cards. */
   subline: string;
   sublineIsCity: boolean;
   paragraphs: string[];
@@ -58,8 +59,8 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Tanner Egan",
     initials: "TE",
-    subline: "",
-    sublineIsCity: false,
+    subline: "Truckee, CA",
+    sublineIsCity: true,
     paragraphs: [
       "Zach absolutely crushed it. Great customer service and super knowledgeable. So stoked guys like Zach are in the plumbing industry.",
     ],
@@ -78,8 +79,8 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Sheila Scrivner",
     initials: "SS",
-    subline: "",
-    sublineIsCity: false,
+    subline: "Truckee, CA",
+    sublineIsCity: true,
     paragraphs: [
       "The response time was amazingly fast. Called them at 345 and they were at the house at our appointment time of 5. Both gentlemen were kind and helpful. They immediately went to work, diagnosed the problem, went to get parts and fixed it that evening. I was beyond grateful and highly recommended them. If in need again wouldn't hesitate to call Brimer",
     ],
@@ -88,8 +89,8 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Steve Thompson",
     initials: "ST",
-    subline: "",
-    sublineIsCity: false,
+    subline: "Truckee, CA",
+    sublineIsCity: true,
     paragraphs: [
       "Brimer plumbing is great! Great service, easy to work with. Wes was communicative through the whole project working outside in the snow. Would highly recommend!",
     ],
@@ -136,13 +137,13 @@ export const aboutGoogleReviews: PlatformReview[] = [
  * matching 5-star review, so those pages get strong reviews instead of a
  * forced match. Cities: Jos Tahoe City, CA; Fajans and Zeiter Truckee, CA
  * (Milton-supplied, same copies as the About set); Kruss, Egan, Scrivner,
- * and Thompson leave the line blank (no city supplied).
+ * and Thompson Truckee, CA (Milton 2026-10-22).
  */
 const krussGoogle: PlatformReview = {
   author: "Chris Kruss",
   initials: "CK",
-  subline: "",
-  sublineIsCity: false,
+  subline: "Truckee, CA",
+  sublineIsCity: true,
   paragraphs: [
     "had my hot water heater go out a few days ago",
     "it had been many years since I had a plumber service to my house so I looked up the best plumbers in Truckee on google",
