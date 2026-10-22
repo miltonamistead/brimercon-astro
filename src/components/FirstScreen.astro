@@ -22,6 +22,9 @@ interface Props {
   intro?: string;
   formHref?: string;
   formLabel?: string;
+  /** Hide the Google rating item in the trust strip (Reviews page only:
+   * the rating badges below already carry it). */
+  showTrustRating?: boolean;
 }
 
 const {
@@ -31,6 +34,7 @@ const {
   intro,
   formHref = "/request-service/",
   formLabel = "Or send a service request",
+  showTrustRating = true,
 } = Astro.props;
 
 // site.afterHoursLine stays the single source of the sentence (audit H8); splitting on the
@@ -63,22 +67,24 @@ const rating = ratingSummary();
       {site.hoursLabel}. {beforePhone}<span class="nowrap">{site.phoneDisplay}</span>{afterPhone}
     </p>
 
-    <ul class="trust-strip" data-fs="trust">
+    <ul class={showTrustRating ? "trust-strip" : "trust-strip trust-strip--pair"} data-fs="trust">
       {trustPoints.map((point) => <li>{point.label}</li>)}
-      <li>
-        <a class="rating" href={site.googleReviewsUrl} rel="noopener">
-          {
-            rating ? (
-              <>
-                <Stars rating={rating.rating} />
-                <span class="nowrap">{rating.display} from {rating.total} Google reviews</span>
-              </>
-            ) : (
-              "Google reviews"
-            )
-          }
-        </a>
-      </li>
+      {showTrustRating && (
+        <li>
+          <a class="rating" href={site.googleReviewsUrl} rel="noopener">
+            {
+              rating ? (
+                <>
+                  <Stars rating={rating.rating} />
+                  <span class="nowrap">{rating.display} from {rating.total} Google reviews</span>
+                </>
+              ) : (
+                "Google reviews"
+              )
+            }
+          </a>
+        </li>
+      )}
     </ul>
   </div>
 </section>

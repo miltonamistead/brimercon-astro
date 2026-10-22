@@ -520,6 +520,31 @@ img {
   align-items: center;
 }
 
+/* Reviews first screen only (2026-10-22): with the rating item removed,
+   the two credential items sit on one centered line, separated by a thin
+   vertical divider with the same 1rem spacing on both sides (the strip's
+   column gap). On mobile they stack, centered, with the divider hidden. */
+.trust-strip--pair {
+  justify-content: center;
+}
+
+.trust-strip--pair li + li {
+  border-left: 1px solid var(--line);
+  padding-left: 1rem;
+}
+
+@media (max-width: 40em) {
+  .trust-strip--pair {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trust-strip--pair li + li {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
 @media (min-width: 48em) {
   .first-screen {
     padding: 2rem 0 2.25rem;
