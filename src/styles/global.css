@@ -1580,7 +1580,7 @@ a.town-card:hover {
   font-size: 1.1em;
 }
 
-.rating-badge span {
+.rating-badge__count {
   color: var(--ink-soft);
   font-weight: 400;
 }
