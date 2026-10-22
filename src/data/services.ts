@@ -1178,6 +1178,10 @@ export const services: Service[] = [
         heading: "Gas permits and inspections in Truckee",
         copy: "Most gas line installations and modifications in Truckee and North Lake Tahoe need a permit through the town or the county building department, followed by a pressure test witnessed at inspection. We pull the permit, schedule the inspection, and do not call the job done until it passes. Propane homes add a coordination step with the tank provider, and meter upsizes go through Southwest Gas. None of this is paperwork you should have to chase, so we handle it as part of the job.",
       },
+      {
+        heading: "Gas appliance sizing at Truckee altitude",
+        copy: "Gas appliances lose burner output as elevation rises, which is why manufacturers publish altitude derating guidance for installations above a certain elevation, and Truckee sits well above that threshold. Sizing a gas line and the appliance it feeds from a sea level chart undersizes the job here. We size the run and the appliance for Truckee elevation and for the coldest weeks of the year, so a tankless unit or a fireplace still gets full gas flow when demand is highest.",
+      },
     ],
     commonIssues: [
       {
@@ -1256,6 +1260,11 @@ export const services: Service[] = [
           "Yes. Outdoor runs are common here. We size the line for the appliance, route it safely, and handle the permit and pressure test the same as indoor work.",
       },
       {
+        question: "Why does altitude matter for a gas appliance?",
+        answer:
+          "Gas burners put out less heat as elevation rises, so manufacturers publish altitude derating guidance for their appliances. Truckee sits well above the elevation where that guidance starts to apply. We size the gas line and the appliance for Truckee elevation rather than copying a sea level chart, so the unit still gets full gas flow on the coldest weeks of the year.",
+      },
+      {
         question: "Do you run gas lines for fire pits and outdoor kitchens?",
         answer:
           "Yes. Outdoor living is big here and most of it wants gas: fire pits, patio heaters, grills, and outdoor kitchens. We size the line for everything it will feed, run it to code, and pressure-test before anything gets connected. Plan it before the patio or deck goes in, because trenching afterward costs more.",
@@ -1282,6 +1291,7 @@ export const services: Service[] = [
       },
     ],
     related: ["water-heaters", "appliance-installation", "frozen-burst-pipes"],
+    updated: "2026-10-22",
   },
   {
     slug: "kitchen-bath-plumbing",
