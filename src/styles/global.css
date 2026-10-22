@@ -1607,6 +1607,33 @@ a.town-card:hover {
   margin-bottom: 0;
 }
 
+/* 8-line cap: applied by the page script only to quotes that overflow it,
+   so short reviews show in full with no toggle. Expansion is plain document
+   flow, so the grid reflows around an expanded card. */
+.platform-review__quote.is-clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.platform-review__more {
+  display: none;
+  margin-top: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--brand);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.platform-review__more.is-visible {
+  display: inline;
+}
+
 .platform-review__footer {
   display: flex;
   align-items: center;

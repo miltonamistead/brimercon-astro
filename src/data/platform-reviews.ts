@@ -1,16 +1,23 @@
 // Platform review sets for the Reviews page, in the live testimonial card format.
 //
-// Google set: read 2026-10-22 from the Brimer Plumbing Google Maps listing.
-// The listing's displayed order is used: Maps would not apply a newest-first
-// sort without signing in, so this is the current five-star set in displayed
-// order, not a verified newest-first sort across all 36 reviews. Maps does not
-// publish reviewer cities, so Google cards carry the posted relative date
-// under the name instead of a city.
+// Google set, newest first by the dates Maps shows: Jos (2 days ago), Fajans
+// (4 weeks ago), Egan (a month ago), then the 2-months-ago group in displayed
+// order (Zeiter, Scrivner, Thompson). Chris Kruss's Google card was removed
+// 2026-10-22 per Milton (his Yelp card stays, so he is not shown twice).
+// Guest Maps reads cap at the first five reviews, so Jos and Fajans came
+// from screenshots Milton supplied 2026-10-22. Maps does not publish
+// reviewer cities, so Google cards carry the posted date under the name —
+// except Jos, whose city Milton supplied (Tahoe City, CA).
+// Fajans's "Reasonable price" line is a Maps price field, not review body
+// text, and a dollar figure would fail the site's qa-content price rule, so
+// it is not reproduced. Fajans's body as captured ends "easy to work with."
+// (confirmed by Milton 2026-10-22).
 //
 // Yelp set: verbatim from screenshots Milton supplied 2026-10-22, newest
 // first by the dates Yelp shows. Cities per Milton 2026-10-22: Genny F. and
-// Chris K. are Truckee; the other three use the locations on the existing
-// live Reviews page testimonial cards.
+// Chris K. are Truckee; the other four use the locations on the existing
+// live Reviews page testimonial cards or the Yelp profile (Greg O.,
+// San Francisco, CA, per his Yelp profile via Milton).
 //
 // Review text is quoted verbatim and must not be edited, trimmed, or cleaned
 // up. Paragraph breaks follow the published line breaks.
@@ -18,7 +25,7 @@
 export interface PlatformReview {
   author: string;
   initials: string;
-  /** City line on Yelp cards, posted date on Google cards. */
+  /** City line on Yelp cards (and Jos), posted date on other Google cards. */
   subline: string;
   sublineIsCity: boolean;
   paragraphs: string[];
@@ -27,35 +34,24 @@ export interface PlatformReview {
 
 export const googleReviews: PlatformReview[] = [
   {
-    author: "Chris Kruss",
-    initials: "CK",
-    subline: "a month ago",
-    sublineIsCity: false,
+    author: "Jos 3",
+    initials: "JP",
+    subline: "Tahoe City, CA",
+    sublineIsCity: true,
     paragraphs: [
-      "had my hot water heater go out a few days ago",
-      "it had been many years since I had a plumber service to my house so I looked up the best plumbers in Truckee on google",
-      "Brimer Plumbing was at the top of the list with a rating of five stars so I contacted them through google to schedule a technician to come over to give me a quote",
-      "a representative from Brimer Plumbing 10 minutes later we had the technicians scheduled for the next day",
-      "the following day I was contacted by one of their technicians named Zacha",
-      "due to his work schedule changing he was able to come over 2 hours earlier than scheduled which really helped me with my daily plans",
-      "when I met Zacha I knew I was in good hands he gave me a very fair quote and had the hot water heater installed.",
-      "when I looked at my home maintenance records I noticed that Jamie Brimer was the last plumber to work on my home over a decade ago.",
-      "I'm definitely giving Brimer Plumbing five stars and I'd highly recommend if you need any Plumbing work done to contact them and request Zacha as your technician!",
-      "Happy customer",
-      "Chris Kruss",
-      "Live in Truckee full-time for over 30years!",
+      "Wes and Zach installed a new stove for us and took care of a couple of other plumbing projects. Wes is super knowledgeable, helpful, and a great communicator. We feel confident in their work and really appreciate their help!",
     ],
-    avatarColor: "#b85c38",
+    avatarColor: "#12181f",
   },
   {
-    author: "Lynette Zeiter",
-    initials: "LZ",
-    subline: "2 months ago",
+    author: "Michael Fajans",
+    initials: "M",
+    subline: "4 weeks ago",
     sublineIsCity: false,
     paragraphs: [
-      "Zach was very professional and cordial, he saved the day! We had our water turned off to replace our shower valve and needed an emergency plumber. He came at 7 pm and had us up and running in less than an hour. We high recommend Zach and will call him again with any of our plumbing needs",
+      "I needed a Moen Flo device installed. It is difficult o get a plumber in Truckee's on a timely basis. Brimer was recommended by a friend and had excellent reviews. They came out and gave me an estimate within a few days and were able to do the install the next day. Wes and his crew were good guys and easy to work with.",
     ],
-    avatarColor: "#7a5c3e",
+    avatarColor: "#1a73e8",
   },
   {
     author: "Tanner Egan",
@@ -66,6 +62,16 @@ export const googleReviews: PlatformReview[] = [
       "Zach absolutely crushed it. Great customer service and super knowledgeable. So stoked guys like Zach are in the plumbing industry.",
     ],
     avatarColor: "#b03a2e",
+  },
+  {
+    author: "Lynette Zeiter",
+    initials: "LZ",
+    subline: "2 months ago",
+    sublineIsCity: false,
+    paragraphs: [
+      "Zach was very professional and cordial, he saved the day! We had our water turned off to replace our shower valve and needed an emergency plumber. He came at 7 pm and had us up and running in less than an hour. We high recommend Zach and will call him again with any of our plumbing needs",
+    ],
+    avatarColor: "#7a5c3e",
   },
   {
     author: "Sheila Scrivner",
@@ -158,5 +164,15 @@ export const yelpReviews: PlatformReview[] = [
       "Overall, we found our guy. I'd recommend and glad we have him and the team on deck should anything come up.",
     ],
     avatarColor: "#37474f",
+  },
+  {
+    author: "Greg O.",
+    initials: "GO",
+    subline: "San Francisco, CA",
+    sublineIsCity: true,
+    paragraphs: [
+      "I hired Jamie Brimer to do the plumbing aspects of a furnace install. Not only did Jamie do an exceptional job with the work itself, but also he was professional, courteous and completely dependable. The real value of service extends beyond that. He is extremely helpful with permitting and navigating building departments. When a subsequent project required a few questions a couple years after Jamie did his work, he was super helpful answering questions and piecing together what the scope of work was. The consummate professional and I'll hire him every time.",
+    ],
+    avatarColor: "#7a6a53",
   },
 ];

@@ -26,6 +26,9 @@ const { review, source } = Astro.props;
   <blockquote class="platform-review__quote">
     {review.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
   </blockquote>
+  <button type="button" class="platform-review__more" aria-expanded="false">
+    Read more
+  </button>
   <div class="platform-review__footer">
     <span class="platform-review__avatar" style={`background: ${review.avatarColor}`}>
       {review.initials}
