@@ -980,9 +980,10 @@ address {
   color: var(--ink-soft);
 }
 
-/* Truckee CTA only (2026-10-22): even 24px spacing across the three text
-   blocks under the call button. The form link's bottom margin was 0, so
-   blocks 1 and 2 sat tight; the NAP line's top margin was 1.25rem. */
+/* Town CTA sections (2026-10-22, rolled out to all service areas): even
+   24px spacing across the text blocks under the call button. The form
+   link's bottom margin was 0, so the first two blocks sat tight; the NAP
+   line's top margin was 1.25rem. */
 .town-cta .first-screen__form-link {
   margin-bottom: 24px;
 }
