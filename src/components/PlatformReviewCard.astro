@@ -23,12 +23,14 @@ const { review, source } = Astro.props;
   <p class="platform-review__stars" aria-label="Five out of five stars">
     <Stars rating={5} />
   </p>
-  <blockquote class="platform-review__quote">
-    {review.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-  </blockquote>
-  <button type="button" class="platform-review__more" aria-expanded="false">
-    Read more
-  </button>
+  <div class="platform-review__text">
+    <blockquote class="platform-review__quote">
+      {review.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </blockquote>
+    <button type="button" class="platform-review__more" aria-expanded="false">
+      Read more
+    </button>
+  </div>
   <div class="platform-review__footer">
     <span class="platform-review__avatar" style={`background: ${review.avatarColor}`}>
       {review.initials}

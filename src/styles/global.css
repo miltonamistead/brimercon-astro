@@ -1567,6 +1567,9 @@ a.town-card:hover {
 
 .platform-review {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1.75rem;
   border: 1px solid var(--line-deep);
   border-radius: 14px;
@@ -1591,6 +1594,14 @@ a.town-card:hover {
 .platform-review__stars {
   margin: 0;
   font-size: 1.05rem;
+}
+
+/* The text block flexes to fill the card, so the footer below stays pinned
+   to the card bottom in every card of a row. The Read more toggle lives
+   inside this block directly under the quote, so it stays attached to the
+   text rather than dropping to the footer. */
+.platform-review__text {
+  flex: 1;
 }
 
 .platform-review__quote {
