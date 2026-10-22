@@ -176,14 +176,25 @@ const articles = (serviceArticles[service.slug] ?? [])
       <section class="section">
         <div class="wrap">
           <h2>{service.headings.whyUs}</h2>
-          <ul class="points">
-            {service.whyUs.map((item) => (
-              <li>
-                <h3 class="points__title">{item.heading}</h3>
-                <p>{item.copy}</p>
-              </li>
-            ))}
-          </ul>
+          {service.whyUsNumbered ? (
+            <ol class="steps">
+              {service.whyUs.map((item) => (
+                <li>
+                  <h3 class="points__title">{item.heading}</h3>
+                  <p>{item.copy}</p>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <ul class="points">
+              {service.whyUs.map((item) => (
+                <li>
+                  <h3 class="points__title">{item.heading}</h3>
+                  <p>{item.copy}</p>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
     )

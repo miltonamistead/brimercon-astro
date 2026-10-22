@@ -19,6 +19,12 @@ export type Service = {
   process?: { step: string; copy: string }[];
   whyUs?: { heading: string; copy: string }[];
   /**
+   * When true, the why-us block renders as the numbered steps row (the same
+   * .steps styling as the process block) instead of the dashed points list.
+   * Water-heaters only; every other service keeps the shared points rendering.
+   */
+  whyUsNumbered?: boolean;
+  /**
    * Headings for the shared blocks. Written per service rather than templated from the
    * service name, for the same reason town headings are written per town: interpolating
    * a name into one string puts the identical frame on every page. Each service also
@@ -130,11 +136,17 @@ export const services: Service[] = [
       { step: "We work clean", copy: "We protect floors and finishes, work efficiently, and keep you posted while we do it." },
       { step: "We verify", copy: "We confirm proper operation, check for leaks, and leave the area as we found it." },
     ],
-    whyUs: WHY_BRIMER,
+    whyUs: [
+      { heading: "Clean work", copy: "We protect floors, cabinetry, and finishes while we work, and leave the area tidy." },
+      { heading: "Clear options", copy: "You understand the problem, the choices, and the cost before anything starts." },
+      { heading: "Mountain-home experience since 1997", copy: "Nearly three decades on Truckee and North Lake Tahoe plumbing. Altitude, seasonal use, and hard water are normal conditions here, not edge cases." },
+      { heading: "Licensed and local", copy: "CA CSLB License #1149344, and the crew is our own people. Wes and Zach work these houses every day, not contractors sent in from out of town." },
+    ],
+    whyUsNumbered: true,
     headings: {
       commonIssues: "Common water heater problems we fix",
       process: "What happens when we arrive",
-      whyUs: "Why Truckee homeowners call Brimer",
+      whyUs: "Why Truckee homeowners call Brimer Plumbing",
       emergency: "Get hot water back on in Truckee",
       reviews: "What homeowners say about water heater work",
       towns: "Towns we cover around Lake Tahoe",
@@ -220,6 +232,7 @@ export const services: Service[] = [
       },
     ],
     related: ["tankless-water-heaters", "gas-services", "frozen-burst-pipes", "smart-leak-shutoff"],
+    updated: "2026-10-22",
   },
   {
     slug: "tankless-water-heaters",
