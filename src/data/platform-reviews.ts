@@ -6,11 +6,10 @@
 // 2026-10-22 per Milton (his Yelp card stays, so he is not shown twice).
 // Guest Maps reads cap at the first five reviews, so Jos and Fajans came
 // from screenshots Milton supplied 2026-10-22. Maps does not publish
-// reviewer cities, so Google cards show the city Milton supplied: Jos
-// Tahoe City, CA; Kruss, Egan, Scrivner, and Thompson Truckee, CA (all
-// supplied 2026-10-22). Fajans and Zeiter keep a blank line on the Reviews
-// page per the earlier rule; their Truckee, CA lines live only on the
-// About and service-page copies below.
+// reviewer cities, so every Google city line below comes from Milton:
+// Jos Tahoe City, CA; Fajans, Zeiter, Kruss, Egan, Scrivner, and Thompson
+// all Truckee, CA (Fajans and Zeiter confirmed 2026-10-22). No Google card
+// is left with a blank city line.
 // Fajans's "Reasonable price" line is a Maps price field, not review body
 // text, and a dollar figure would fail the site's qa-content price rule, so
 // it is not reproduced. Fajans's body as captured ends "easy to work with."
@@ -28,7 +27,7 @@
 export interface PlatformReview {
   author: string;
   initials: string;
-  /** City line where Milton supplied one; blank on Reviews page Fajans/Zeiter cards. */
+  /** City line, supplied by Milton for every reviewer. */
   subline: string;
   sublineIsCity: boolean;
   paragraphs: string[];
@@ -49,8 +48,8 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Michael Fajans",
     initials: "M",
-    subline: "",
-    sublineIsCity: false,
+    subline: "Truckee, CA",
+    sublineIsCity: true,
     paragraphs: [
       "I needed a Moen Flo device installed. It is difficult o get a plumber in Truckee's on a timely basis. Brimer was recommended by a friend and had excellent reviews. They came out and gave me an estimate within a few days and were able to do the install the next day. Wes and his crew were good guys and easy to work with.",
     ],
@@ -69,8 +68,8 @@ export const googleReviews: PlatformReview[] = [
   {
     author: "Lynette Zeiter",
     initials: "LZ",
-    subline: "",
-    sublineIsCity: false,
+    subline: "Truckee, CA",
+    sublineIsCity: true,
     paragraphs: [
       "Zach was very professional and cordial, he saved the day! We had our water turned off to replace our shower valve and needed an emergency plumber. He came at 7 pm and had us up and running in less than an hour. We high recommend Zach and will call him again with any of our plumbing needs",
     ],
@@ -108,10 +107,9 @@ export const googleReviews: PlatformReview[] = [
  * Lynette Zeiter (emergency shower valve, Zach at 7 pm, running in under
  * an hour) comes from the Maps five-star widget read. Text is the same
  * verbatim text as the Reviews page cards. Cities are Milton's, supplied
- * for the About section 2026-10-22 (Fajans and Zeiter: Truckee, CA), so
- * these are copies, not the shared Reviews page objects — the Reviews page
- * cards keep their blank city lines per the earlier rule, since Maps
- * itself publishes no city for those two reviewers.
+ * for the About section 2026-10-22 (Fajans and Zeiter: Truckee, CA); the
+ * shared Reviews page objects now carry the same cities, so these copies
+ * simply preserve the About set as it was built.
  */
 export const aboutGoogleReviews: PlatformReview[] = [
   googleReviews[0],
