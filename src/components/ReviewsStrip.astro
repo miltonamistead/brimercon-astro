@@ -13,8 +13,10 @@ interface Props {
   count?: number;
   /** Must follow the H2 rules in PLAN.md section 3d. No eyebrow label above it. */
   heading?: string;
+  /** Show the live rating badges above the cards. Home and Reviews pages only. */
+  badges?: boolean;
 }
-const { count = 3, heading = "What homeowners say about our work" } = Astro.props;
+const { count = 3, heading = "What homeowners say about our work", badges = false } = Astro.props;
 const items = topReviews(count);
 const rating = ratingSummary();
 ---
@@ -30,6 +32,27 @@ const rating = ratingSummary();
           <strong>{rating.display}</strong>
           <span>from {rating.total} Google reviews</span>
         </p>
+      )
+    }
+
+    {
+      // Rating numbers read from the live Reviews page on 2026-10-22
+      // (Google 5.0, 36 reviews; Yelp 4.9, 22 reviews). Live's "Google"
+      // word is a single dark color, not multicolor brand letters.
+      badges && (
+        <div class="rating-badges">
+          <a class="rating-badge" href={site.googleReviewsUrl} rel="noopener">
+            <strong>Google</strong>
+            <Stars rating={5} />
+            <strong>5.0</strong>
+            <span>(36 reviews)</span>
+          </a>
+          <a class="rating-badge" href={site.yelpUrl} rel="noopener">
+            <Stars rating={5} />
+            <strong>4.9 on Yelp</strong>
+            <span>(22 reviews)</span>
+          </a>
+        </div>
       )
     }
 
