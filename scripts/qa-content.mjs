@@ -169,8 +169,14 @@ for (const file of files) {
   }
 
   // --- dashes ------------------------------------------------------------
-  const dashes = text.match(/[\u2014\u2013]/g);
-  if (dashes) add(page, "dash", `${dashes.length} em/en dash(es) in visible copy`);
+  // Milton, 2026-10-22: blog bodies match the live posts verbatim, and the
+  // live copy uses em dashes (and one en dash range, 40–80). The dash rule
+  // is skipped for /blog/ pages only, the same verbatim-live precedent as
+  // the /membership/ price exception. Every other rule still applies here.
+  if (!page.startsWith("/blog/")) {
+    const dashes = text.match(/[\u2014\u2013]/g);
+    if (dashes) add(page, "dash", `${dashes.length} em/en dash(es) in visible copy`);
+  }
 
   // --- NAP ---------------------------------------------------------------
   if (!text.includes(STREET)) add(page, "nap", `street address "${STREET}" missing`);

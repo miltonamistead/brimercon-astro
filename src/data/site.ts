@@ -86,6 +86,7 @@ export const navPrimary = [
   { href: "/service-areas/", label: "Service areas" },
   { href: "/about/", label: "About" },
   { href: "/reviews/", label: "Reviews" },
+  { href: "/blog/", label: "Blog" },
   { href: "/faqs/", label: "FAQs" },
   { href: "/membership/", label: "Membership" },
   { href: "/contact/", label: "Contact" },
