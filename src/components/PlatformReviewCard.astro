@@ -1,0 +1,50 @@
+---
+// One platform review card in the live Reviews page testimonial format:
+// five orange stars, quote, divider, circular initials avatar with the
+// reviewer's name and city (or posted date for Google, which publishes no
+// city) below it. A small source badge sits in the card's top corner so a
+// card stays identifiable on its own.
+import Stars from "@/components/Stars.astro";
+import GoogleMark from "@/components/GoogleMark.astro";
+import YelpMark from "@/components/YelpMark.astro";
+import type { PlatformReview } from "@/data/platform-reviews";
+
+interface Props {
+  review: PlatformReview;
+  source: "google" | "yelp";
+}
+const { review, source } = Astro.props;
+---
+
+<li class="platform-review">
+  <span class="platform-review__badge" aria-hidden="true">
+    {source === "google" ? <GoogleMark /> : <YelpMark />}
+  </span>
+  <p class="platform-review__stars" aria-label="Five out of five stars">
+    <Stars rating={5} />
+  </p>
+  <blockquote class="platform-review__quote">
+    {review.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </blockquote>
+  <div class="platform-review__footer">
+    <span class="platform-review__avatar" style={`background: ${review.avatarColor}`}>
+      {review.initials}
+    </span>
+    <span class="platform-review__who">
+      <strong>{review.author}</strong>
+      <span>
+        {
+          review.sublineIsCity && (
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+              ></path>
+            </svg>
+          )
+        }
+        {review.subline}
+      </span>
+    </span>
+  </div>
+</li>
