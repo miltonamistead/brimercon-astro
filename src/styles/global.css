@@ -1446,6 +1446,14 @@ a.town-card:hover {
   font-weight: 400;
 }
 
+/* Homepage service-areas CTA (Milton, 2026-10-23): a clear 36px gap
+   between the last pill group and the button, on all widths. Scoped to
+   this button only; the button style, size, and left alignment are
+   untouched, and the service-page link is unaffected. */
+.service-areas-cta {
+  margin-top: 36px;
+}
+
 .ticks {
   font-size: 0.95rem;
 }
