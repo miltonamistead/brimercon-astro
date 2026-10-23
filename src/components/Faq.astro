@@ -5,11 +5,13 @@ interface Props {
   /** Must follow the H2 rules in PLAN.md section 3d. No eyebrow label above it. */
   heading?: string;
   faqs: Array<{ question: string; answer: string }>;
+  /** True only on the FAQs page, where this section sits directly after the hero. */
+  tightAfterHero?: boolean;
 }
-const { heading = "Common plumbing questions", faqs } = Astro.props;
+const { heading = "Common plumbing questions", faqs, tightAfterHero = false } = Astro.props;
 ---
 
-<section class="section faqs">
+<section class={tightAfterHero ? "section faqs section--tight-after-hero" : "section faqs"}>
   <div class="wrap">
     <h2>{heading}</h2>
     <div class="faqs__list">

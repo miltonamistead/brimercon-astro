@@ -94,7 +94,7 @@ const guides = [
 
   {
     guides.map((guide, i) => (
-      <section class={i % 2 === 0 ? "section section--soft" : "section"}>
+      <section class={i === 0 ? "section section--soft section--tight-after-hero" : i % 2 === 0 ? "section section--soft" : "section"}>
         <div class="wrap">
           <h2>{guide.heading}</h2>
           <p class="lede">{guide.intro}</p>
