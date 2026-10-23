@@ -1,0 +1,135 @@
+---
+// Short lead form (audit H3): name, phone and what is wrong are the only required fields.
+// Everything else is optional, because every extra required field costs leads and the
+// rest can be asked on the phone. The timing dropdown that live carries is gone.
+//
+// Works with JavaScript off: it posts to /api/lead/ and the server redirects. With
+// JavaScript it submits in place and swaps in the confirmation. Calling stays primary,
+// so this form never appears above the fold.
+import { site } from "@/data/site";
+import { townNames } from "@/data/towns";
+
+interface Props {
+  serviceContext?: string;
+  townContext?: string;
+  /** Prefills the town field on a town page. */
+  townValue?: string;
+  heading?: string;
+}
+const { serviceContext, townContext, townValue, heading } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<div class="lead-form" id="lead-form" data-lead-form>
+  {heading && <h3 class="lead-form__heading">{heading}</h3>}
+
+  <p class="lead-form__error" data-lead-error hidden>
+    We could not send that. Please try again, or call <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+  </p>
+
+  <form method="post" action="/api/lead/" novalidate data-lead-fields>
+    <input type="hidden" name="source_path" value={path} />
+    {serviceContext && <input type="hidden" name="service_context" value={serviceContext} />}
+    {townContext && <input type="hidden" name="town_context" value={townContext} />}
+    <input type="hidden" name="ts" value="" data-lead-ts />
+
+    <div class="field">
+      <label for="lf-name">Your name</label>
+      <input id="lf-name" name="name" type="text" autocomplete="name" required />
+    </div>
+
+    <div class="field">
+      <label for="lf-phone">Phone</label>
+      <input id="lf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+    </div>
+
+    <div class="field">
+      <label for="lf-message">What is wrong?</label>
+      <textarea id="lf-message" name="message" rows="4" required></textarea>
+    </div>
+
+    <div class="field">
+      <label for="lf-town">Town <span class="field__optional">optional</span></label>
+      <input id="lf-town" name="town" type="text" list="lf-towns" value={townValue ?? ""} autocomplete="address-level2" />
+      <datalist id="lf-towns">
+        {townNames.map((name) => <option value={name}></option>)}
+      </datalist>
+    </div>
+
+    <div class="field">
+      <label for="lf-email">Email <span class="field__optional">optional</span></label>
+      <input id="lf-email" name="email" type="email" autocomplete="email" />
+    </div>
+
+    <div class="field">
+      <label for="lf-address">Service address <span class="field__optional">optional</span></label>
+      <input id="lf-address" name="address" type="text" autocomplete="street-address" />
+    </div>
+
+    {/* Honeypot. Hidden from people and from assistive technology, irresistible to bots. */}
+    <div class="hp" aria-hidden="true">
+      <label for="lf-company">Company website</label>
+      <input id="lf-company" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <button class="btn-submit" type="submit">Send request</button>
+    <p class="lead-form__note">
+      Prefer to talk? Call <a href={site.phoneHref}>{site.phoneDisplay}</a>. {site.afterHoursLine.replace(`Call ${site.phoneDisplay} any time. `, "")}
+    </p>
+  </form>
+
+  <div class="lead-form__done" data-lead-done hidden>
+    <h3>Request received</h3>
+    <p>
+      We will review your request and get back to you. If this is an emergency, please call
+      <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+    </p>
+  </div>
+</div>
+
+<script>
+  // Progressive enhancement only. Without this the form posts normally and the server
+  // redirects to /thank-you/, so the lead path never depends on JavaScript.
+  for (const root of document.querySelectorAll("[data-lead-form]")) {
+    const form = root.querySelector("[data-lead-fields]") as HTMLFormElement | null;
+    const done = root.querySelector("[data-lead-done]") as HTMLElement | null;
+    const error = root.querySelector("[data-lead-error]") as HTMLElement | null;
+    const ts = root.querySelector("[data-lead-ts]") as HTMLInputElement | null;
+    if (!form || !done || !error) continue;
+
+    if (ts) ts.value = String(Date.now());
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector("button[type=submit]") as HTMLButtonElement | null;
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Sending...";
+      }
+      error.hidden = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        });
+        const data = await res.json().catch(() => ({ ok: false }));
+        if (res.ok && data.ok) {
+          form.hidden = true;
+          done.hidden = false;
+          done.scrollIntoView({ block: "center", behavior: "smooth" });
+          return;
+        }
+        error.hidden = false;
+      } catch {
+        error.hidden = false;
+      }
+
+      if (button) {
+        button.disabled = false;
+        button.textContent = "Send request";
+      }
+    });
+  }
+</script>

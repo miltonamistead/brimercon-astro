@@ -1,0 +1,51 @@
+---
+import { site } from "@/data/site";
+
+interface Props {
+  heading: string;
+}
+
+const { heading } = Astro.props;
+const embedSrc =
+  "https://www.google.com/maps?q=" +
+  encodeURIComponent("Brimer Plumbing, 10647 Manchester Dr, Truckee, CA 96161") +
+  "&z=11&output=embed";
+---
+<section class="section">
+  <div class="wrap">
+    <h2>{heading}</h2>
+    <div class="map-embed">
+      <iframe
+        title="Map of the Brimer Plumbing service area around Truckee and North Lake Tahoe"
+        src={embedSrc}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <p>
+      <a href={site.mapsUrl} rel="noopener" target="_blank">Open in Google Maps</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .map-embed {
+    position: relative;
+    margin-top: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line, #e5e0d8);
+  }
+  .map-embed iframe {
+    display: block;
+    width: 100%;
+    height: 380px;
+    border: 0;
+  }
+  @media (max-width: 640px) {
+    .map-embed iframe {
+      height: 300px;
+    }
+  }
+</style>

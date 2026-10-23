@@ -1,0 +1,116 @@
+---
+import Base from "@/layouts/Base.astro";
+import FirstScreen from "@/components/FirstScreen.astro";
+import PlatformReviewCard from "@/components/PlatformReviewCard.astro";
+import Stars from "@/components/Stars.astro";
+import GoogleMark from "@/components/GoogleMark.astro";
+import YelpMark from "@/components/YelpMark.astro";
+import EmergencyBand from "@/components/EmergencyBand.astro";
+import Schema from "@/components/Schema.astro";
+import { ratingSummary } from "@/data/reviews";
+import { googleReviews, yelpReviews } from "@/data/platform-reviews";
+import { site } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Plumber Reviews | Truckee & Tahoe | Brimer Plumbing";
+const description =
+  "Read what Truckee and North Lake Tahoe homeowners say about Brimer Plumbing. Clear communication, clean work, and dependable outcomes since 1997.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Reviews", path: "/reviews/" },
+];
+
+const rating = ratingSummary();
+// No AggregateRating schema here on purpose, even though this is the reviews page.
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <FirstScreen
+    h1="What homeowners say"
+    intro={
+      rating
+        ? `${rating.display} from ${rating.total} Google reviews, plus what people have written on Yelp.`
+        : "What homeowners across Truckee and North Lake Tahoe say about working with us."
+    }
+    showTrustRating={false}
+  />
+
+  <section class="section section--warm section--tight-after-hero">
+    <div class="wrap">
+      <h2>Google reviews</h2>
+      <p>
+        <a class="review-source" href={site.googleReviewsUrl} rel="noopener">
+          <span class="review-source__logo"><GoogleMark /></span>
+          <Stars rating={5} />
+          <strong>5.0</strong>
+          <span>(36 reviews)</span>
+        </a>
+      </p>
+      <p class="review-disclaimer">
+        Reviews are not verified by Google.
+        <a href="https://support.google.com/contributionpolicy/answer/7400114" rel="noopener">Review policy</a>
+      </p>
+      <ul class="platform-review__grid">
+        {googleReviews.map((review) => <PlatformReviewCard review={review} source="google" />)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section review-section--divided">
+    <div class="wrap">
+      <h2>Yelp reviews</h2>
+      <p>
+        <a class="review-source" href={site.yelpUrl} rel="noopener">
+          <span class="review-source__logo"><YelpMark /></span>
+          <Stars rating={5} />
+          <strong>4.9</strong>
+          <span>(22 reviews)</span>
+        </a>
+      </p>
+      <ul class="platform-review__grid">
+        {yelpReviews.map((review) => <PlatformReviewCard review={review} source="yelp" />)}
+      </ul>
+    </div>
+  </section>
+
+  <EmergencyBand heading="Emergency plumber in Truckee and Tahoe" />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>See why homeowners call us back</h2>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+      <p class="first-screen__form-link"><a href="/request-service/">Or send a service request</a></p>
+    </div>
+  </section>
+
+  <script>
+    // 8-line cap on review quotes. The clamp class goes on every quote first;
+    // quotes that still fit keep it off and show no toggle, so short reviews
+    // render in full. Toggling only adds or removes the class, so the grid
+    // reflows in normal flow and an expanded card never overlaps its neighbors.
+    document.querySelectorAll(".platform-review").forEach((card) => {
+      const quote = card.querySelector(".platform-review__quote");
+      const toggle = card.querySelector(".platform-review__more");
+      if (!quote || !toggle) return;
+      quote.classList.add("is-clamped");
+      if (quote.scrollHeight <= quote.clientHeight + 1) {
+        quote.classList.remove("is-clamped");
+        return;
+      }
+      toggle.classList.add("is-visible");
+      toggle.addEventListener("click", () => {
+        const clamped = quote.classList.toggle("is-clamped");
+        toggle.textContent = clamped ? "Read more" : "Read less";
+        toggle.setAttribute("aria-expanded", String(!clamped));
+      });
+    });
+  </script>
+</Base>

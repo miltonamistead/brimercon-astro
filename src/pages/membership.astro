@@ -1,0 +1,642 @@
+---
+/**
+ * Membership page, rebuilt to match the live page at
+ * https://www.brimercon.com/membership/ (Milton, 2026-10-21).
+ * Section order, headings, and copy follow the live page. Three deliberate
+ * deviations, all flagged to Milton: (1) Join buttons link to
+ * /request-service/ because staging has no signup modal; (2) checkmarks and
+ * the savings line use brand orange per Milton's spec, where the live page
+ * renders them dark green/teal; (3) three dash glyphs from the live copy
+ * are replaced to satisfy the site's no-dash QA rule (see notes inline).
+ * Dollar figures are allowed on this page only (QA exception, 2026-10-21).
+ */
+import Base from "@/layouts/Base.astro";
+import Schema from "@/components/Schema.astro";
+import { site } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Brimer Membership | Priority Plumbing Service in Truckee & Lake Tahoe";
+const description =
+  "A standing service relationship with a local plumber who knows your property. Tiers for homeowners, second homes, and HOA properties.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Membership", path: "/membership/" },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <section class="hero-dark">
+    <div class="wrap">
+      <p class="eyebrow-pill">30+ years serving Truckee and Tahoe · Licensed · Insured</p>
+      <h1>Priority plumbing service in Truckee &amp; Lake Tahoe.</h1>
+      <p class="hero-intro">
+        A standing relationship with a local plumber who knows your property, picks up
+        first when something goes wrong, and helps you stay ahead of the failures that
+        cost the most. For homeowners, second homes, and HOA properties across Truckee
+        and the North Shore.
+      </p>
+      <p class="hero-cta">
+        <a class="btn-solid" href="#tiers">View Membership Options</a>
+        <a class="btn-ghost" href="/request-service/">Talk with Brimer</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section plans-section" id="tiers">
+    <div class="wrap">
+      <p class="eyebrow">Membership levels</p>
+      <h2>Three levels of coverage. One trusted local partner.</h2>
+      <p class="plans-intro">All tiers are annual, per home. HOA bulk pricing available below.</p>
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <button type="button" class="billing-toggle__option is-selected" data-billing="annual" aria-pressed="true">Annual</button>
+        <button type="button" class="billing-toggle__option" data-billing="monthly" aria-pressed="false">Monthly</button>
+      </div>
+      <div class="plans">
+        <article class="plan" data-annual="149" data-monthly="15">
+          <h3 class="plan__name">Essential</h3>
+          <p class="plan__price"><span class="plan__amount">$149</span><span class="plan__period">/year</span></p>
+          <p class="plan__alt">or $15/month</p>
+          <p class="plan__save">Save 20% with annual billing</p>
+          <p class="plan__desc">Homeowners who want better pricing and faster access when something comes up.</p>
+          <ul class="plan__list">
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>10% off all plumbing service</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>No diagnostic fee on service visits</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Priority scheduling ahead of non-members</li>
+          </ul>
+          <div class="plan__foot">
+            <p class="plan__note">Essential pays for itself the first time you need a plumber.</p>
+            <a class="plan__btn plan__btn--outline" href="/request-service/">Join Essential</a>
+          </div>
+        </article>
+        <article class="plan plan--featured" data-annual="449" data-monthly="45">
+          <p class="plan__badge">Most popular</p>
+          <h3 class="plan__name">Steward</h3>
+          <p class="plan__price"><span class="plan__amount">$449</span><span class="plan__period">/year</span></p>
+          <p class="plan__alt">or $45/month</p>
+          <p class="plan__save">Save 20% with annual billing</p>
+          <p class="plan__desc">Homeowners who want proactive care, emergency access, and a clear picture of their plumbing system.</p>
+          <ul class="plan__list">
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>15% off all plumbing service</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>No diagnostic fee on service visits</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Priority scheduling ahead of non-members</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Annual whole-home plumbing review</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Member emergency access</li>
+          </ul>
+          <div class="plan__foot">
+            <a class="plan__btn plan__btn--solid" href="/request-service/">Join Steward</a>
+          </div>
+        </article>
+        <article class="plan" data-annual="749" data-monthly="75">
+          <h3 class="plan__name">Concierge</h3>
+          <p class="plan__price"><span class="plan__amount">$749</span><span class="plan__period">/year</span></p>
+          <p class="plan__alt">or $75/month</p>
+          <p class="plan__save">Save 20% with annual billing</p>
+          <p class="plan__desc">Homeowners who want complete coverage including water heater care and the highest level of access.</p>
+          <ul class="plan__list">
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Everything in Steward</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Annual water heater maintenance</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>$499 value included</li>
+          </ul>
+          <div class="plan__foot">
+            <a class="plan__btn plan__btn--outline" href="/request-service/">Join Concierge</a>
+          </div>
+        </article>
+      </div>
+      <p class="plans-disclaimer">Pricing is per residential home or unit. Annual and monthly options available. Services are subject to availability and scheduling. Membership does not constitute insurance coverage.</p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector(".billing-toggle");
+      if (!toggle) return;
+      var options = toggle.querySelectorAll(".billing-toggle__option");
+      var plans = document.querySelectorAll(".plan");
+      function setBilling(mode) {
+        options.forEach(function (btn) {
+          var selected = btn.dataset.billing === mode;
+          btn.classList.toggle("is-selected", selected);
+          btn.setAttribute("aria-pressed", selected ? "true" : "false");
+        });
+        plans.forEach(function (plan) {
+          var amount = plan.querySelector(".plan__amount");
+          var period = plan.querySelector(".plan__period");
+          var alt = plan.querySelector(".plan__alt");
+          var save = plan.querySelector(".plan__save");
+          if (mode === "annual") {
+            amount.textContent = "$" + plan.dataset.annual;
+            period.textContent = "/year";
+            alt.textContent = "or $" + plan.dataset.monthly + "/month";
+            if (save) save.hidden = false;
+          } else {
+            amount.textContent = "$" + plan.dataset.monthly;
+            period.textContent = "/month";
+            alt.textContent = "or $" + plan.dataset.annual + "/year";
+            if (save) save.hidden = true;
+          }
+        });
+      }
+      options.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setBilling(btn.dataset.billing);
+        });
+      });
+    })();
+  </script>
+
+  <section class="section section--deep">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--light">Member emergency access</p>
+      <h2>When it goes wrong after hours, Steward and Concierge members come first.</h2>
+      <p>
+        Steward and Concierge members get priority response for after-hours emergencies,
+        active leaks, floods, and freeze events. Service is performed at member rates with
+        the member discount applied. Essential members and non-members are scheduled
+        during regular business hours only.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Why membership</p>
+      <h2>Mountain homes need a different kind of plumbing relationship.</h2>
+      <p>
+        In Truckee and Lake Tahoe, the gap between a small plumbing issue and a serious
+        water-damage claim is shorter than most homeowners expect. Freeze risk, seasonal
+        vacancy, aging crawlspace systems, and the distance from a trusted contractor all
+        compound the exposure. A one-off service call is not the same as having someone
+        who knows your home.
+      </p>
+      <p>
+        Brimer Membership creates an ongoing service relationship, not a coupon program.
+        Members receive priority scheduling, preferred pricing, and regular plumbing
+        visibility so small issues get caught before they become expensive ones. For
+        second-home owners and property managers, that continuity is especially valuable.
+      </p>
+      <p>
+        For HOA boards and condo communities, the same model applies at building scale:
+        a cleaner building-wide protection strategy, a defined service relationship, and
+        a single trusted contractor for water-damage prevention across all units.
+      </p>
+    </div>
+  </section>
+
+  <section class="section hoa-section">
+    <div class="wrap">
+      <p class="eyebrow">For HOA-managed properties</p>
+      <h2>The same protection model, applied at building scale.</h2>
+      <p>
+        Brimer can structure building-wide service plans that combine recurring unit-level
+        membership benefits with project pricing for water-damage prevention upgrades,
+        including Moen Flo installations and seismic valves. After-hours emergency response
+        is included as a member benefit for HOA properties. In many condo communities, each
+        unit has its own water main, meter, and plumbing conditions, so protection is often
+        needed at the unit level rather than only at the building level.
+      </p>
+      <div class="hoa-cards">
+        <article class="hoa-card">
+          <h3>Per-unit member benefits</h3>
+          <ul class="hoa-list">
+            <li>Annual maintenance visit</li>
+            <li>15% off all plumbing service</li>
+            <li>No diagnostic fee on service visits</li>
+            <li>Priority scheduling</li>
+            <li>Member emergency access</li>
+          </ul>
+        </article>
+        <article class="hoa-card">
+          <h3>HOA pricing reference</h3>
+          <p class="hoa-price">$350 <span>/ unit / year</span></p>
+          <p class="hoa-sub">Individual unit enrollment</p>
+          <hr />
+          <p class="hoa-price">$12,250 <span>/ year</span></p>
+          <p class="hoa-sub">Example: 35-unit HOA bulk pricing</p>
+        </article>
+        <article class="hoa-card">
+          <h3>Bulk project option</h3>
+          <ul class="hoa-list">
+            <li>10 to 15% group discount for HOA-approved building-wide Moen Flo installation</li>
+            <li>Defined install schedule across all units</li>
+            <li>Proposal delivered based on property layout and scope</li>
+          </ul>
+        </article>
+      </div>
+      <p>
+        <a class="btn-solid" href="/contact/">Request an HOA proposal</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section works-section">
+    <div class="wrap">
+      <p class="eyebrow">Why it works</p>
+      <h2>Built for how mountain properties are actually owned and managed.</h2>
+      <div class="works-grid">
+        <article class="works-card">
+          <h3>Better pricing for members</h3>
+          <p>Consistent discounts on services and no diagnostic fees add up meaningfully over the course of a year, especially for active properties.</p>
+        </article>
+        <article class="works-card">
+          <h3>Faster service when it matters most</h3>
+          <p>Priority scheduling means members move to the front of the line. That is critical when a freeze event or leak needs same-week attention.</p>
+        </article>
+        <article class="works-card">
+          <h3>An ongoing relationship, not a one-off call</h3>
+          <p>Brimer learns your home's systems over time. That continuity leads to better diagnostics, fewer surprises, and more informed decisions.</p>
+        </article>
+        <article class="works-card">
+          <h3>Better fit for second homes</h3>
+          <p>Vacant and seasonally used properties carry higher risk. Membership creates a regular check-in structure and a defined point of contact.</p>
+        </article>
+        <article class="works-card">
+          <h3>Cleaner solution for HOA boards</h3>
+          <p>One trusted contractor, defined pricing, and a building-wide protection strategy simplifies vendor management for boards and property managers.</p>
+        </article>
+        <article class="works-card">
+          <h3>Asset protection, not just plumbing</h3>
+          <p>Water damage is one of the most common and costly homeowner claims in mountain communities. Preventative support reduces that exposure.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="emergency-strip">
+    <div class="wrap emergency-strip__inner">
+      <p class="emergency-strip__text">Emergency plumbing help available</p>
+      <a class="btn-solid btn-solid--small" href={site.phoneHref}>Call {site.phoneDisplay}</a>
+    </div>
+  </section>
+
+  <section class="section get-started">
+    <div class="wrap">
+      <p class="eyebrow">Get started</p>
+      <h2>Let's put together the right plan for your home or property.</h2>
+      <p>
+        Whether you're a homeowner, a second-home owner, or an HOA board member, Brimer
+        can walk you through the options and put together a proposal that fits your
+        situation.
+      </p>
+      <p class="cta-row">
+        <a class="btn-solid" href="#tiers">Choose a Plan</a>
+        <a class="btn-outline-light" href="/request-service/">Talk with Brimer</a>
+        <a class="btn-outline-light" href={site.phoneHref}>Call {site.phoneDisplay}</a>
+      </p>
+    </div>
+  </section>
+
+  <style>
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b9714a;
+    }
+    .eyebrow--light {
+      color: var(--gold);
+    }
+    .hero-dark {
+      background: var(--brand-deep);
+      color: #fff;
+      padding: 4rem 0;
+    }
+    .hero-dark h1 {
+      color: #fff;
+      font-size: 2.75rem;
+      line-height: 1.15;
+      max-width: 40rem;
+    }
+    .eyebrow-pill {
+      display: inline-block;
+      margin: 0 0 1.25rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .hero-intro {
+      max-width: 44rem;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.75rem 0 0;
+    }
+    .btn-solid {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius);
+      background: #b9714a;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-solid--small {
+      padding: 0.65rem 1.25rem;
+    }
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-outline-light {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .plans-section {
+      background: #f5efe8;
+    }
+    .plans-section h2 {
+      text-align: center;
+    }
+    .plans-intro {
+      text-align: center;
+    }
+    .billing-toggle {
+      display: flex;
+      width: max-content;
+      margin: 1.5rem auto 2.25rem;
+      padding: 0.25rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+    }
+    .billing-toggle__option {
+      border: 0;
+      background: transparent;
+      padding: 0.6rem 1.5rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .billing-toggle__option.is-selected {
+      background: #12181f;
+      color: #fff;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+      padding-top: 1rem;
+    }
+    .plan {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 10px rgba(18, 70, 110, 0.08);
+      padding: 2rem 1.75rem;
+    }
+    .plan--featured {
+      border: 2px solid #b9714a;
+      margin-top: -1rem;
+      box-shadow: 0 10px 28px rgba(18, 70, 110, 0.16);
+    }
+    .plan__badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: #b9714a;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .plan__name {
+      margin: 0 0 0.75rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .plan__price {
+      margin: 0;
+      line-height: 1;
+    }
+    .plan__amount {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .plan__period {
+      margin-left: 0.25rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+    .plan__alt {
+      margin: 0.5rem 0 0;
+      color: var(--ink-soft);
+    }
+    .plan__save {
+      margin: 0.5rem 0 0;
+      font-weight: 700;
+      color: #b9714a;
+    }
+    .plan__desc {
+      margin: 1.25rem 0;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .plan__list {
+      margin: 0 0 1.5rem;
+      padding: 0;
+      list-style: none;
+    }
+    .plan__list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
+    }
+    .plan__list svg {
+      flex: none;
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-top: 0.15rem;
+      fill: none;
+      stroke: #b9714a;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .plan__foot {
+      margin-top: auto;
+    }
+    .plan__note {
+      margin: 0 0 1.25rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    .plan__btn {
+      display: block;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+    .plan__btn--outline {
+      border: 2px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+    }
+    .plan__btn--solid {
+      border: 2px solid #b9714a;
+      background: #b9714a;
+      color: #fff;
+    }
+    .plans-disclaimer {
+      margin: 2rem 0 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+    .hoa-section {
+      background: #f5efe8;
+    }
+    .hoa-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .hoa-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 10px rgba(18, 70, 110, 0.08);
+      padding: 1.75rem;
+    }
+    .hoa-card h3 {
+      margin-top: 0;
+    }
+    .hoa-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      line-height: 1.7;
+    }
+    .hoa-price {
+      margin: 0;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .hoa-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+    .hoa-sub {
+      margin: 0.25rem 0 1rem;
+      color: var(--ink-soft);
+    }
+    .hoa-card hr {
+      margin: 1.25rem 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+    }
+    .works-section {
+      background: #f5efe8;
+    }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .works-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 10px rgba(18, 70, 110, 0.08);
+      padding: 1.75rem;
+    }
+    .works-card h3 {
+      margin-top: 0;
+    }
+    .emergency-strip {
+      background: var(--warm-tint);
+      padding: 1.5rem 0;
+    }
+    .emergency-strip__inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 2rem;
+    }
+    .emergency-strip__text {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .get-started {
+      text-align: center;
+    }
+    .get-started .eyebrow {
+      text-align: center;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.75rem 0 0;
+    }
+    @media (max-width: 47.99em) {
+      .plans {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .plan--featured {
+        order: -1;
+        margin-top: 0;
+      }
+      .hoa-cards {
+        grid-template-columns: 1fr;
+      }
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-dark h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</Base>

@@ -1,0 +1,110 @@
+---
+/**
+ * Blog index, matching the live blog hub in wording and order:
+ * title tag, meta description, kicker, H1, intro, and the posts newest
+ * first, each card showing date, title, excerpt, tags, Read article.
+ * Two rebuild-only articles in the collection (frozen-pipe-prevention-checklist
+ * and what-affects-plumbing-costs) are linked from service pages but are not
+ * on the live blog hub, so they are filtered out of this grid. New posts
+ * Milton adds are included by adding their slug to the set below.
+ */
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Schema from "@/components/Schema.astro";
+import { breadcrumbSchema } from "@/lib/schema";
+import { canonicalUrl } from "@/data/site";
+
+const title = "Plumbing Blog | Tips for Tahoe & Truckee Homeowners | Brimer Plumbing";
+const description =
+  "Practical plumbing tips for Tahoe and Truckee mountain homeowners. Winterization, water heaters, freeze prevention, and more from Brimer Plumbing.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog/" },
+];
+
+// The posts on the blog hub, newest first by pubDate: the 10 live posts
+// plus new posts Milton adds (winterize-your-pipes-truckee-tahoe, 2026-10-22).
+const liveSlugs = new Set([
+  "winterize-your-pipes-truckee-tahoe",
+  "water-heater-maintenance-tahoe-homeowner",
+  "how-property-managers-prevent-plumbing-emergencies",
+  "common-kitchen-plumbing-problems-older-tahoe-homes",
+  "preparing-plumbing-before-leaving-for-season",
+  "why-smart-leak-shutoff-matters-mountain-homes",
+  "what-to-do-when-pipe-freezes",
+  "gas-line-safety-checks-before-winter",
+  "signs-of-hidden-leak-what-to-do",
+  "tankless-vs-tank-water-heaters-cold-climates",
+  "how-to-winterize-plumbing-tahoe-second-home",
+]);
+
+const posts = (await getCollection("blog"))
+  .filter((post) => liveSlugs.has(post.id))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+function displayDate(d: Date) {
+  return d.toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+const itemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Brimer Plumbing blog",
+  itemListElement: posts.map((post, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: post.data.title,
+    url: canonicalUrl(`/blog/${post.id}/`),
+  })),
+};
+---
+
+<Base title={title} description={description} noindex>
+  <Schema slot="head" nodes={[itemList, breadcrumbSchema(crumbs)]} />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="card__meta">Insights & guides</p>
+      <h1>Blog</h1>
+      <p>
+        Practical plumbing guidance for mountain homeowners, property managers, and anyone who wants
+        to keep their Tahoe or Truckee home running smoothly.
+      </p>
+      <ul class="cards blog-index__cards">
+        {
+          posts.map((post) => (
+            <li>
+              <a class="card" href={`/blog/${post.id}/`}>
+                <p class="card__meta">
+                  <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
+                    {displayDate(post.data.pubDate)}
+                  </time>
+                </p>
+                <h3 class="card__title">{post.data.title}</h3>
+                <p class="card__summary">{post.data.description}</p>
+                <ul class="towns blog-tags">
+                  {post.data.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+                <p class="card__more">
+                  Read article
+                  <span class="card__arrow" aria-hidden="true"> →</span>
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>

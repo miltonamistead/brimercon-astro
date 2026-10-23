@@ -1,0 +1,181 @@
+---
+/**
+ * Blog post template, matching the live post page structure:
+ * breadcrumb, H1, byline, tag row, verbatim body, divider, related
+ * services, related areas, emergency block, closing CTA. Paths match
+ * live exactly: /blog/<slug>/. Related services and areas come from
+ * each live post's footer.
+ */
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Schema from "@/components/Schema.astro";
+import ServiceCard from "@/components/ServiceCard.astro";
+import { breadcrumbSchema } from "@/lib/schema";
+import { site, canonicalUrl } from "@/data/site";
+import { getService } from "@/data/services";
+import { townName } from "@/data/towns";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const { title, description, pubDate, tags } = post.data;
+const h1 = title;
+const path = `/blog/${post.id}/`;
+const isoDate = pubDate.toISOString().slice(0, 10);
+const displayDate = pubDate.toLocaleDateString("en-US", {
+  timeZone: "UTC",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog/" },
+  { name: h1, path },
+];
+
+// Related services as named in each live post's footer. The new
+// 2026-10-22 post mirrors the winterize post's links (same topic).
+const relatedSlugs: Record<string, string[]> = {
+  "winterize-your-pipes-truckee-tahoe": ["frozen-burst-pipes", "smart-leak-shutoff"],
+  "how-to-winterize-plumbing-tahoe-second-home": ["frozen-burst-pipes", "smart-leak-shutoff"],
+  "tankless-vs-tank-water-heaters-cold-climates": ["water-heaters", "gas-services"],
+  "signs-of-hidden-leak-what-to-do": ["smart-leak-shutoff", "kitchen-bath-plumbing"],
+  "gas-line-safety-checks-before-winter": ["gas-services", "water-heaters"],
+  "what-to-do-when-pipe-freezes": ["frozen-burst-pipes", "smart-leak-shutoff"],
+  "why-smart-leak-shutoff-matters-mountain-homes": ["smart-leak-shutoff", "frozen-burst-pipes"],
+  "preparing-plumbing-before-leaving-for-season": ["frozen-burst-pipes", "smart-leak-shutoff", "water-heaters"],
+  "common-kitchen-plumbing-problems-older-tahoe-homes": ["kitchen-bath-plumbing", "appliance-installation"],
+  "how-property-managers-prevent-plumbing-emergencies": ["smart-leak-shutoff", "frozen-burst-pipes", "water-heaters"],
+  "water-heater-maintenance-tahoe-homeowner": ["water-heaters", "gas-services"],
+  "frozen-pipe-prevention-checklist-tahoe": ["frozen-burst-pipes", "winterization"],
+};
+const related = (relatedSlugs[post.id] ?? [])
+  .map((slug) => getService(slug))
+  .filter((s) => s !== undefined);
+
+// Related areas as named in each live post's footer. The new
+// 2026-10-22 post mirrors the winterize post's areas.
+const relatedAreaSlugs: Record<string, string[]> = {
+  "winterize-your-pipes-truckee-tahoe": ["truckee", "tahoe-donner", "tahoe-city"],
+  "water-heater-maintenance-tahoe-homeowner": ["truckee", "tahoe-city", "tahoe-donner"],
+  "how-property-managers-prevent-plumbing-emergencies": ["truckee", "tahoe-donner", "tahoe-city", "kings-beach"],
+  "common-kitchen-plumbing-problems-older-tahoe-homes": ["tahoe-city", "kings-beach", "homewood", "tahoma"],
+  "preparing-plumbing-before-leaving-for-season": ["truckee", "tahoe-city", "homewood"],
+  "why-smart-leak-shutoff-matters-mountain-homes": ["truckee", "tahoe-donner", "dollar-point"],
+  "what-to-do-when-pipe-freezes": ["truckee", "donner-lake", "soda-springs", "norden"],
+  "gas-line-safety-checks-before-winter": ["truckee", "tahoe-donner", "olympic-valley"],
+  "signs-of-hidden-leak-what-to-do": ["truckee", "kings-beach", "tahoe-city"],
+  "tankless-vs-tank-water-heaters-cold-climates": ["truckee", "tahoe-city"],
+  "how-to-winterize-plumbing-tahoe-second-home": ["truckee", "tahoe-donner", "tahoe-city"],
+};
+const relatedAreas = relatedAreaSlugs[post.id] ?? [];
+
+const blogPosting = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: h1,
+  description,
+  datePublished: isoDate,
+  author: { "@type": "Organization", name: site.name, url: canonicalUrl("/") },
+  publisher: {
+    "@type": "Organization",
+    name: site.name,
+    logo: { "@type": "ImageObject", url: canonicalUrl("/images/brimer-logo.png") },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl(path) },
+};
+---
+
+<Base title={title} description={description} ogType="article" noindex>
+  <Schema slot="head" nodes={[blogPosting, breadcrumbSchema(crumbs)]} />
+
+  <Breadcrumbs crumbs={crumbs} />
+
+  <article class="section">
+    <div class="wrap">
+      <h1>{h1}</h1>
+      <p class="card__meta">
+        <time datetime={isoDate}>{displayDate}</time> · Brimer Plumbing
+      </p>
+      <ul class="towns blog-tags blog-tags--article">
+        {tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+      <Content />
+      <hr />
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="section section--soft">
+        <div class="wrap">
+          <h2>Related services</h2>
+          <ul class="cards">
+            {related.map((service) => (
+              <ServiceCard service={service} bullets={0} />
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    relatedAreas.length > 0 && (
+      <section class="section">
+        <div class="wrap">
+          <h2>Related areas</h2>
+          <ul class="towns blog-tags">
+            {relatedAreas.map((slug) => (
+              <li>
+                <a href={`/service-areas/${slug}/`}>{townName(slug)}, CA</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Need emergency plumbing help?</h3>
+      <p>
+        For urgent issues like burst pipes, active leaks, or gas concerns, call us directly for the
+        fastest response.
+      </p>
+      <p>
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Need plumbing help?</h3>
+      <p>We're here for homeowners across Truckee and North Lake Tahoe.</p>
+      <p>
+        <a class="btn-secondary" href="/request-service/">Request Service</a>
+        {" "}
+        <a class="btn-call" href={site.phoneHref}>
+          <span aria-hidden="true">&#9742;</span>
+          <span>Call {site.phoneDisplay}</span>
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>
