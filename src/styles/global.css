@@ -982,6 +982,16 @@ address {
   color: var(--gold);
 }
 
+/* Homepage closing CTA (Milton, 2026-10-23): restore the site's standard
+   1rem body-to-button separation between the checklist and the Call
+   button. The checklist's tight 0.3rem item gap left the button flush;
+   1rem matches the first-screen intro-to-button gap and the global
+   paragraph rhythm. Checklist item spacing and the button itself are
+   untouched, and the rem value holds on narrow screens. */
+.closing-cta-call {
+  margin-top: 1rem;
+}
+
 .lede {
   font-size: 1.1rem;
   color: var(--ink-soft);
