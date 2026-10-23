@@ -1294,6 +1294,39 @@ a.card:hover .card__arrow {
   font-size: 0.95rem;
 }
 
+/* Blog keyword pills (Milton, 2026-10-22): the listing card is already a
+   single anchor, so the pills are styled <li> text, never nested links —
+   the parent card link handles every click. Colors rotate by position
+   through three existing theme tints only, all with dark text; the
+   hover shift lives on the card, where the click lives. The article-page
+   tag row shares the class (same pills, no parent link there, so no
+   hover shift). Related-areas lists keep plain .towns and are untouched. */
+.blog-tags {
+  gap: 0.5rem;
+}
+
+.blog-tags li {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--brand-tint);
+  color: var(--ink);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.blog-tags li:nth-child(3n + 2) {
+  background: var(--warm-tint);
+}
+
+.blog-tags li:nth-child(3n + 3) {
+  background: var(--gold);
+}
+
+.blog-index__cards .card:hover .blog-tags li {
+  border-color: var(--line-deep);
+}
+
 /* One header system for content sections (Dexter note, 2026-10-20): every section
    heading aligns to the same left edge of the wrap with the same rhythm, the way
    the live site presents its headers. */
