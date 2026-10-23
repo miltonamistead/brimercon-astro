@@ -1322,9 +1322,19 @@ a.card:hover .card__arrow {
    through three existing theme tints only, all with dark text; the
    hover shift lives on the card, where the click lives. The article-page
    tag row shares the class (same pills, no parent link there, so no
-   hover shift). Related-areas lists keep plain .towns and are untouched. */
+   hover shift). Blog Related-areas lists share the class too (Milton,
+   2026-10-23), so the area links render as the same pills. */
 .blog-tags {
   gap: 0.5rem;
+}
+
+/* Related-areas pills are real links, unlike the top tag row: the pill
+   geometry, fill, radius, and gap all come from .blog-tags above, and
+   this only normalizes the link text itself (ink color, no underline)
+   so it matches the pill text. No new pill styling lives here. */
+.blog-tags a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .blog-tags li {
