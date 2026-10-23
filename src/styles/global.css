@@ -940,10 +940,11 @@ address {
    the shared .section top padding (2.25rem), so changing the shared rule
    would shift every page. This About-only modifier steps that section's
    top padding down the theme's section scale, 2.25rem -> 1.5rem, then
-   1.25rem on Milton's second tighten (2026-10-23). Hero spacing,
-   heading/paragraph spacing, and everything below are untouched. */
+   1.25rem, then 1rem on Milton's third tighten (2026-10-23). Hero
+   spacing, heading/paragraph spacing, and everything below are
+   untouched. */
 .section--tight-about {
-  padding-top: 1.25rem;
+  padding-top: 1rem;
 }
 
 /* Warm cream band: photos, reviews, and human moments sit best here. */
