@@ -936,14 +936,15 @@ address {
   margin-top: 0.5rem;
 }
 
-/* About intro only (Milton, 2026-10-23): the gap below the hero comes from
-   the shared .section top padding (2.25rem), so changing the shared rule
-   would shift every page. This About-only modifier steps that section's
-   top padding down the theme's section scale, 2.25rem -> 1.5rem, then
-   1.25rem, then 1rem on Milton's third tighten (2026-10-23). Hero
-   spacing, heading/paragraph spacing, and everything below are
-   untouched. */
-.section--tight-about {
+/* Tight section directly after the hero (Milton, 2026-10-23): the gap
+   below the hero comes from the shared .section top padding (2.25rem),
+   so changing the shared rule would shift every page. This shared
+   modifier steps a post-hero section's top padding down the theme's
+   section scale to 1rem, and is the single token for that gap: About
+   and Contact both use it, so the two pages match. Hero spacing,
+   heading/paragraph spacing, and everything below are untouched.
+   Service pages keep their own tighter .section--tight-top instead. */
+.section--tight-after-hero {
   padding-top: 1rem;
 }
 
