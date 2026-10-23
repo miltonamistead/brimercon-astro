@@ -1518,6 +1518,16 @@ a.town-card:hover {
   color: var(--ink-soft);
 }
 
+/* Center each stat inside its equal third (Milton, 2026-10-23): the
+   columns were already repeat(3, 1fr), but left-aligned text of
+   different lengths made the gaps look uneven and left a wide blank
+   strip after the short last value. Centering keeps the equal thirds
+   and makes the left/right edge padding visually equal. Box, padding,
+   margins, and label/value styling are untouched. */
+.facts > div {
+  text-align: center;
+}
+
 .facts dd {
   margin: 0.15rem 0 0;
 }
