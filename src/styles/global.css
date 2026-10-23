@@ -939,11 +939,11 @@ address {
 /* About intro only (Milton, 2026-10-23): the gap below the hero comes from
    the shared .section top padding (2.25rem), so changing the shared rule
    would shift every page. This About-only modifier steps that section's
-   top padding down one step on the theme's section scale, 2.25rem ->
-   1.5rem (the first-screen's bottom padding value). Hero spacing,
+   top padding down the theme's section scale, 2.25rem -> 1.5rem, then
+   1.25rem on Milton's second tighten (2026-10-23). Hero spacing,
    heading/paragraph spacing, and everything below are untouched. */
 .section--tight-about {
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
 }
 
 /* Warm cream band: photos, reviews, and human moments sit best here. */
