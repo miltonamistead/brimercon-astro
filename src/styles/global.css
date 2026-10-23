@@ -1328,6 +1328,17 @@ a.card:hover .card__arrow {
   gap: 0.5rem;
 }
 
+/* Article tag row breathing room (Milton, 2026-10-23): the gap above the
+   pills is 1.35rem (byline 0.35rem + list 1rem top margin) while the gap
+   below was 0, so the first paragraph bumped against the pills. This
+   scoped 1.5rem bottom margin — one scale step up, slightly more than
+   the gap above — applies only to the article tag row, so listing
+   cards and Related areas pills are untouched. Pill styling, title,
+   byline, and paragraph spacing are unchanged. */
+.blog-tags--article {
+  margin-bottom: 1.5rem;
+}
+
 /* Related-areas pills are real links, unlike the top tag row: the pill
    geometry, fill, radius, and gap all come from .blog-tags above, and
    this only normalizes the link text itself (ink color, no underline)
