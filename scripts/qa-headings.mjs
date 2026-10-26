@@ -155,8 +155,11 @@ const PROPER = new Set([
  * Pages exempt from the place-name ratio. Rule 3 exists so marketing pages carry local
  * signal without stuffing; a privacy notice heading like "What we collect" has no local
  * intent and should not be forced to name a town. The other rules still apply here.
+ * One-post exemption (Milton, 2026-10-26): /blog/heat-tape-check-before-first-freeze/
+ * is exempt from rule 3 only, because its five H2s are Milton's verbatim copy and none
+ * names a place. No other page is affected, and the post's other heading rules still apply.
  */
-const RATIO_EXEMPT = [/^\/privacy-policy\//, /^\/terms-of-use\//, /^\/thank-you\//, /^\/404/];
+const RATIO_EXEMPT = [/^\/privacy-policy\//, /^\/terms-of-use\//, /^\/thank-you\//, /^\/404/, /^\/blog\/heat-tape-check-before-first-freeze\//];
 
 const listHtml = async (dir) => {
   const out = [];
