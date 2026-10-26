@@ -45,6 +45,7 @@ const crumbs = [
 // Related services as named in each live post's footer. The new
 // 2026-10-22 post mirrors the winterize post's links (same topic).
 const relatedSlugs: Record<string, string[]> = {
+  "heat-tape-check-before-first-freeze": ["frozen-burst-pipes", "winterization", "smart-leak-shutoff"],
   "winterize-your-pipes-truckee-tahoe": ["frozen-burst-pipes", "smart-leak-shutoff"],
   "how-to-winterize-plumbing-tahoe-second-home": ["frozen-burst-pipes", "smart-leak-shutoff"],
   "tankless-vs-tank-water-heaters-cold-climates": ["water-heaters", "gas-services"],
@@ -65,6 +66,7 @@ const related = (relatedSlugs[post.id] ?? [])
 // Related areas as named in each live post's footer. The new
 // 2026-10-22 post mirrors the winterize post's areas.
 const relatedAreaSlugs: Record<string, string[]> = {
+  "heat-tape-check-before-first-freeze": ["truckee", "tahoe-donner", "donner-lake"],
   "winterize-your-pipes-truckee-tahoe": ["truckee", "tahoe-donner", "tahoe-city"],
   "water-heater-maintenance-tahoe-homeowner": ["truckee", "tahoe-city", "tahoe-donner"],
   "how-property-managers-prevent-plumbing-emergencies": ["truckee", "tahoe-donner", "tahoe-city", "kings-beach"],
@@ -74,7 +76,7 @@ const relatedAreaSlugs: Record<string, string[]> = {
   "what-to-do-when-pipe-freezes": ["truckee", "donner-lake", "soda-springs", "norden"],
   "gas-line-safety-checks-before-winter": ["truckee", "tahoe-donner", "olympic-valley"],
   "signs-of-hidden-leak-what-to-do": ["truckee", "kings-beach", "tahoe-city"],
-  "tankless-vs-tank-water-heaters-cold-climates": ["truckee", "tahoe-city"],
+  "tankless-vs-tank-water-heaters-cold-climates": ["truckee", "tahoe-city", "tahoe-donner"],
   "how-to-winterize-plumbing-tahoe-second-home": ["truckee", "tahoe-donner", "tahoe-city"],
 };
 const relatedAreas = relatedAreaSlugs[post.id] ?? [];
