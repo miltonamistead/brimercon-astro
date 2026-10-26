@@ -459,6 +459,19 @@ img {
   color: #fff;
 }
 
+/* Blog closing CTA (Milton, 2026-10-26): the Request Service and Call
+   buttons stack with a 1rem gap between them, matching the paragraph's
+   own 1rem bottom margin, so the paragraph-to-button and
+   button-to-button gaps are identical. flex-start keeps both buttons
+   at the paragraph's left margin without changing either button's size.
+   Template-only: the closing CTA <p> in [...slug].astro. */
+.blog-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
 /* Secondary action: filled white, brand outline — unmistakable as a button,
    never competing with the call CTA. */
 .btn-secondary {
