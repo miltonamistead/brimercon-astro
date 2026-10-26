@@ -76,8 +76,8 @@ const resolvedPlatformItems = platformReviews ?? mappedStripItems;
     }
 
     {
-      // Rating numbers read from the live Reviews page on 2026-10-22
-      // (Google 5.0, 36 reviews; Yelp 4.9, 22 reviews). Live's "Google"
+      // Google count reads from the committed Places cache (see src/data/reviews).
+      // Yelp 4.9 with 22 reviews is the live Yelp figure, kept separate. Live's "Google"
       // word is a single dark color, not multicolor brand letters.
       badges && (
         <div class="rating-badges">
@@ -85,7 +85,7 @@ const resolvedPlatformItems = platformReviews ?? mappedStripItems;
             <strong>Google</strong>
             <Stars rating={5} />
             <strong>5.0</strong>
-            <span class="rating-badge__count">(36 reviews)</span>
+            {rating && <span class="rating-badge__count">({rating.total} reviews)</span>}
           </a>
           <a class="rating-badge" href={site.yelpUrl} rel="noopener">
             <Stars rating={5} />

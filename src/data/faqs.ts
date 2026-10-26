@@ -78,11 +78,6 @@ export const faqs: Faq[] = [
       "Yes. We handle rough-in for remodels, including relocating supply and drain lines, setting new fixtures, and coordinating with your contractor on timing and access.",
   },
   {
-    question: "What does your service process look like?",
-    answer:
-      "We diagnose carefully, present clear options with pricing before work begins, protect your home's finishes while we work, and verify everything is working properly before we leave.",
-  },
-  {
     question: "Are you licensed and insured?",
     answer: `Yes. We are licensed plumbing contractors in California, fully insured, and have been serving Truckee and North Lake Tahoe since ${site.founded}. ${site.cslbLine}.`,
   },

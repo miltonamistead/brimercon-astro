@@ -105,6 +105,7 @@ const cardTowns = cardTownSlugs.map((slug) => towns.find((town) => town.slug ===
 const pillGroups = serviceAreaGroups
   .map((group) => ({
     label: group.label,
+    hub: "hub" in group ? group.hub : undefined,
     towns: group.towns.filter((slug) => !cardTownSlugs.includes(slug)),
   }))
   .filter((group) => group.towns.length > 0);
@@ -146,7 +147,7 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
         {
           trustPoints.map((point) => (
             <li>
-              <h3 class="points__title">{point.title}</h3>
+              <p class="points__title">{point.title}</p>
               <p>{point.copy}</p>
             </li>
           ))
@@ -245,7 +246,7 @@ const faqs = HOME_FAQS.map((question) => allFaqs.find((faq) => faq.question === 
       {
         pillGroups.map((group) => (
           <div class="town-group">
-            <h3 class="town-group__label">{group.label}</h3>
+            <h3 class="town-group__label">{group.hub ? <a href={group.hub}>{group.label}</a> : group.label}</h3>
             <ul class="towns towns--pills">
               {group.towns.map((slug) => (
                 <li>

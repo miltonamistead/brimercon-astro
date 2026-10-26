@@ -2,7 +2,7 @@
 import { site } from "@/data/site";
 
 interface Props {
-  heading: string;
+  heading?: string;
 }
 
 const { heading } = Astro.props;
@@ -13,7 +13,7 @@ const embedSrc =
 ---
 <section class="section">
   <div class="wrap">
-    <h2>{heading}</h2>
+    {heading && <h2>{heading}</h2>}
     <div class="map-embed">
       <iframe
         title="Map of the Brimer Plumbing service area around Truckee and North Lake Tahoe"

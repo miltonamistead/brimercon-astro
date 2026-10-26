@@ -84,6 +84,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
           "Running toilets, dripping faucets, sewer line issues, and failing shutoff valves are the everyday work. In homes with plumbing spread across multiple zones and long piping runs, diagnosing a problem takes a systems-level view rather than a component guess.",
           "Sewer collection is managed by Truckee Sanitary District, with regional treatment by TTSA. When a drain issue turns out to sit at the lateral connection to the TSD main rather than inside the house, we work out where the boundary falls and help you coordinate the next step instead of digging first.",
         ],
+        link: { label: "Plumbing in Martis Valley", href: "/service-areas/martis-valley/" },
       },
     ],
     headings: {
@@ -203,6 +204,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
           "Lahontan's homes span early builds dating to the late 1990s through recent custom construction, and each generation presents its own plumbing characteristics and maintenance patterns. Running toilets, dripping faucets, failing shutoff valves, and slow drains show up differently in each era.",
           "Sewer collection is managed by Truckee Sanitary District, with regional treatment by TTSA. When a drain issue turns out to sit at the lateral connection to the TSD main rather than inside the house, we work out where the boundary falls and help you coordinate the next step.",
         ],
+        link: { label: "Plumbing in Martis Valley", href: "/service-areas/martis-valley/" },
       },
     ],
     headings: {
@@ -322,6 +324,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
           "Schaffer's Mill's housing stock is newer than many Truckee communities, but plumbing components still wear, and homes from the earliest phases now need the kind of maintenance that comes with fifteen to twenty years of use. Running toilets, dripping faucets, failing shutoff valves, and slow drains turn up on a predictable schedule.",
           "Sewer collection is managed by Truckee Sanitary District, with regional treatment by TTSA. When a drain issue turns out to sit at the lateral connection to the TSD main, we work out where the boundary falls and help you coordinate the next step.",
         ],
+        link: { label: "Plumbing in Martis Valley", href: "/service-areas/martis-valley/" },
       },
     ],
     headings: {
@@ -441,6 +444,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
           "Gray's Crossing's housing stock is relatively new, with most homes built from the mid-2000s onward, but plumbing components still wear, and the mountain modern construction style brings its own access and service considerations. Running toilets, dripping faucets, failing shutoff valves, and slow drains are the everyday calls.",
           "Sewer collection is managed by Truckee Sanitary District, with regional treatment by TTSA. When a drain issue turns out to sit at the lateral connection to the TSD main, we work out where the boundary falls and help you coordinate the next step.",
         ],
+        link: { label: "Plumbing in Martis Valley", href: "/service-areas/martis-valley/" },
       },
     ],
     headings: {
@@ -560,6 +564,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
           "The range of property types means we work on systems from townhome plumbing to custom estate installations, each with its own access and service patterns. For fractional ownership properties, we coordinate maintenance and winterization procedures with the management company so coverage holds between owner rotations.",
           "Sewer collection is managed by Truckee Sanitary District, with regional treatment by TTSA. When a drain issue turns out to sit at the lateral connection to the TSD main, we work out where the boundary falls and help you coordinate the next step.",
         ],
+        link: { label: "Plumbing in Martis Valley", href: "/service-areas/martis-valley/" },
       },
     ],
     headings: {
@@ -833,6 +838,7 @@ export const townContentGatedResort: Record<string, TownContent> = {
           "The variety of property types means we work on systems ranging from original condo plumbing to modern PEX installations in recently built custom homes. Running toilets, dripping faucets, failing shutoff valves, and slow drains turn up across all of it.",
           "Water and sewer service are both provided by Northstar Community Services District, with wastewater conveyed to Truckee Sanitary District and treated regionally by TTSA. When a drain issue turns out to sit at the lateral connection to the NCSD collection system, we work out where the boundary falls and help you coordinate the next step.",
         ],
+        link: { label: "Plumbing in Martis Valley", href: "/service-areas/martis-valley/" },
       },
     ],
     headings: {

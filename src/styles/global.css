@@ -1145,6 +1145,8 @@ address {
 
 .points__title {
   font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
   margin-bottom: 0.15rem;
   color: var(--brand-dark);
 }

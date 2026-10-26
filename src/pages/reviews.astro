@@ -46,7 +46,7 @@ const rating = ratingSummary();
           <span class="review-source__logo"><GoogleMark /></span>
           <Stars rating={5} />
           <strong>5.0</strong>
-          <span>(36 reviews)</span>
+          {rating && <span>({rating.total} reviews)</span>}
         </a>
       </p>
       <p class="review-disclaimer">
