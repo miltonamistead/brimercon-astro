@@ -30,3 +30,8 @@ Scheduled work during open hours costs less than emergency work, for the same re
 ## How to get a real number from a Truckee plumber
 
 The only accurate price comes from seeing the home. When you call, describe the symptoms and the access as best you can, and expect questions back. A plumber who asks good questions before quoting is the one who will not surprise you later. We price every job after an assessment, in writing, before work starts.
+
+Phone: [530-587-0733](tel:+15305870733)<br>
+Email: [service@brimerplumbing.com](mailto:service@brimerplumbing.com)<br>
+Website: [https://www.brimercon.com/](https://www.brimercon.com/)<br>
+License #: 1149344

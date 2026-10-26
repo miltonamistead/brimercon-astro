@@ -8,3 +8,8 @@ tags: ["smart home", "leak prevention", "second homes"]
 Smart leak shutoff systems—like Moen Flo—install at your main water entry and monitor flow 24/7. They learn your home’s normal usage patterns and can detect anomalies: a toilet running continuously, a burst pipe, or a slow leak under a slab. When something’s wrong, the system can automatically shut off the water and send an alert to your phone. For a primary residence, that’s convenient. For a second home in Tahoe or Truckee, it can be transformative. A burst pipe at 2 a.m. in an empty house can run for days before anyone notices. By the time you arrive, water may have flooded multiple levels, damaged finishes, and created conditions for mold. A smart shutoff stops the flow within minutes and notifies you immediately.
 
 The value extends beyond damage prevention. Many insurers offer discounts for homes with leak detection and automatic shutoff—the reduction in claim severity is significant. For property managers overseeing multiple vacation rentals, these systems provide visibility without constant physical checks. Installation is straightforward for a licensed plumber: the unit goes on the main line after the meter, and the app connects via Wi-Fi. Some models also monitor water temperature, which helps catch freezing conditions before pipes burst. If you own a seasonal home and haven’t considered one, it’s worth a conversation. The cost is modest compared to the damage a single undetected leak can cause.
+
+Phone: [530-587-0733](tel:+15305870733)<br>
+Email: [service@brimerplumbing.com](mailto:service@brimerplumbing.com)<br>
+Website: [https://www.brimercon.com/](https://www.brimercon.com/)<br>
+License #: 1149344

@@ -42,9 +42,9 @@ Insulate the pipe properly. Seal up the obvious drafts in the crawl space. Then 
 
 If you cannot find your heat tape, cannot get it to warm up, or it looks like it has been down there a long time, call us. We will look at your crawl space before the first real storm and tell you straight whether it needs replacing.
 
-Phone: [530-587-0733](tel:+15305870733)
-Email: [service@brimerplumbing.com](mailto:service@brimerplumbing.com)
-Website: [https://www.brimercon.com/](https://www.brimercon.com/)
+Phone: [530-587-0733](tel:+15305870733)<br>
+Email: [service@brimerplumbing.com](mailto:service@brimerplumbing.com)<br>
+Website: [https://www.brimercon.com/](https://www.brimercon.com/)<br>
 License #: 1149344
 
 Checking takes twenty minutes. Replacing a split pipe takes a lot longer.

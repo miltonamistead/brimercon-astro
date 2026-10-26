@@ -34,9 +34,9 @@ We live up here too, and we know what these winters do to pipes. We handle winte
 
 Our schedule fills up fast once the snow starts. Call us now and get on the calendar.
 
-Phone: 530-587-0733
-Email: service@brimerplumbing.com
-Website: https://www.brimercon.com/
+Phone: [530-587-0733](tel:+15305870733)<br>
+Email: [service@brimerplumbing.com](mailto:service@brimerplumbing.com)<br>
+Website: [https://www.brimercon.com/](https://www.brimercon.com/)<br>
 License #: 1149344
 
 A little prep now saves a lot of damage later. Let's get your home ready for winter.

@@ -61,3 +61,8 @@ Print this page and keep it with your winter supplies.
 - Wi-Fi thermostat or temperature alarm active for empty homes.
 - Every adult in the house knows where the shutoff is.
 - Plumber's number saved in your phone before you need it.
+
+Phone: [530-587-0733](tel:+15305870733)<br>
+Email: [service@brimerplumbing.com](mailto:service@brimerplumbing.com)<br>
+Website: [https://www.brimercon.com/](https://www.brimercon.com/)<br>
+License #: 1149344
