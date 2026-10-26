@@ -489,6 +489,23 @@ img {
   transform: translateY(-1px);
 }
 
+/* Homepage services CTA (Milton, 2026-10-26): the "View all services"
+   button is its own centered block below the six service cards, not a
+   grid child. 64px above the button on desktop (40px on mobile) and
+   80px below it, so it reads as a section-level action rather than
+   part of the last card row. Button styling itself is untouched. */
+.services-cta {
+  margin-top: 64px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+@media (max-width: 47.99em) {
+  .services-cta {
+    margin-top: 40px;
+  }
+}
+
 /* Form link is text weight and sits under the call button, never competing with it. */
 .first-screen__form-link {
   display: block;
