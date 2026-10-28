@@ -72,14 +72,11 @@ const crumbs = [
       <LeadForm heading="Request this plan" serviceContext="Essential membership" />
       <p class="other-plans">
         Compare all three plans on the <a href="/membership/#tiers">membership page</a>,
-        or see the other plans: <a href="/membership/steward/">Steward</a> and
-        <a href="/membership/concierge/">Concierge</a>.
+        or see the other plans: <a href="/membership/steward/">Steward</a> and <a href="/membership/concierge/">Concierge</a>.
       </p>
       <p class="nap-line">
         <strong>{site.name}</strong>, {site.street}, {site.city}, {site.region} {site.postal}.
-        Call <a href={site.phoneHref}>{site.phoneDisplay}</a> or email
-        <a href={`mailto:${site.email}`}>{site.email}</a>. CA CSLB License #: 1149344.
-        {site.hoursLabel}.
+        Call <a href={site.phoneHref}>{site.phoneDisplay}</a> or email <a href={`mailto:${site.email}`}>{site.email}</a>. CA CSLB License #: 1149344. {site.hoursLabel}.
       </p>
     </div>
   </section>
