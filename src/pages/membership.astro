@@ -4,7 +4,8 @@
  * https://www.brimercon.com/membership/ (Milton, 2026-10-21).
  * Section order, headings, and copy follow the live page. Three deliberate
  * deviations, all flagged to Milton: (1) Join buttons link to
- * /request-service/ because staging has no signup modal; (2) checkmarks and
+ * /membership/essential/, /membership/steward/, and /membership/concierge/
+ * because Stripe Checkout is not wired on staging yet; (2) checkmarks and
  * the savings line use brand orange per Milton's spec, where the live page
  * renders them dark green/teal; (3) three dash glyphs from the live copy
  * are replaced to satisfy the site's no-dash QA rule (see notes inline).
@@ -68,7 +69,7 @@ const crumbs = [
           </ul>
           <div class="plan__foot">
             <p class="plan__note">Essential pays for itself the first time you need a plumber.</p>
-            <a class="plan__btn plan__btn--outline" href="/request-service/">Join Essential</a>
+            <a class="plan__btn plan__btn--outline" href="/membership/essential/">Join Essential</a>
           </div>
         </article>
         <article class="plan plan--featured" data-annual="449" data-monthly="45">
@@ -86,7 +87,7 @@ const crumbs = [
             <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Member emergency access</li>
           </ul>
           <div class="plan__foot">
-            <a class="plan__btn plan__btn--solid" href="/request-service/">Join Steward</a>
+            <a class="plan__btn plan__btn--solid" href="/membership/steward/">Join Steward</a>
           </div>
         </article>
         <article class="plan" data-annual="749" data-monthly="75">
@@ -101,7 +102,7 @@ const crumbs = [
             <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>$499 value included</li>
           </ul>
           <div class="plan__foot">
-            <a class="plan__btn plan__btn--outline" href="/request-service/">Join Concierge</a>
+            <a class="plan__btn plan__btn--outline" href="/membership/concierge/">Join Concierge</a>
           </div>
         </article>
       </div>

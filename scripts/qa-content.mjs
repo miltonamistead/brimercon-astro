@@ -161,8 +161,10 @@ for (const file of files) {
 
   // --- prices ------------------------------------------------------------
   // Milton, 2026-10-21: dollar figures are allowed on /membership/ only
-  // (the pricing section). Every other page still fails on any $ figure.
-  if (page !== "/membership/") {
+  // (the pricing section). Milton, 2026-10-28: scoped exception approved
+  // for the three membership plan subpages as well.
+  // Every other page still fails on any $ figure.
+  if (!page.startsWith("/membership/")) {
     for (const m of text.matchAll(/\$\s?\d[\d,]*/g)) {
       add(page, "price", `dollar figure "${m[0]}" in visible copy`);
     }

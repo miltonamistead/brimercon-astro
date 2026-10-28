@@ -1,0 +1,257 @@
+---
+import Base from "@/layouts/Base.astro";
+import LeadForm from "@/components/LeadForm.astro";
+import Schema from "@/components/Schema.astro";
+import { site } from "@/data/site";
+import { breadcrumbSchema } from "@/lib/schema";
+
+const title = "Steward membership | Brimer Plumbing in Truckee and North Lake Tahoe";
+const description =
+  "Steward membership from Brimer Plumbing: $449 per year or $45 per month, 15% off plumbing service, annual whole-home plumbing review, and member emergency access in Truckee and North Lake Tahoe.";
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Membership", path: "/membership/" },
+  { name: "Steward", path: "/membership/steward/" },
+];
+---
+
+<Base title={title} description={description}>
+  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+
+  <section class="hero-dark">
+    <div class="wrap">
+      <h1>Steward membership</h1>
+      <p class="hero-intro">
+        Steward is for homeowners who want proactive care, emergency access, and a
+        clear picture of their plumbing system. It is the most popular level of
+        Brimer Membership, and it adds a yearly review and after hours emergency
+        access to the Essential benefits.
+      </p>
+      <p class="hero-cta">
+        <a class="btn-solid" href="#plan">See the plan</a>
+        <a class="btn-ghost" href={site.phoneHref}>Call {site.phoneDisplay}</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section plans-section" id="plan">
+    <div class="wrap">
+      <h2>Your plan at a glance</h2>
+      <div class="plan-single">
+        <article class="plan plan--featured">
+          <p class="plan__badge">Most popular</p>
+          <h3 class="plan__name">Steward</h3>
+          <p class="plan__price"><span class="plan__amount">$449</span><span class="plan__period">/year</span></p>
+          <p class="plan__alt">or $45/month. $37.42 per month billed annually.</p>
+          <p class="plan__save">Save 20% with annual billing</p>
+          <p class="plan__desc">Homeowners who want proactive care, emergency access, and a clear picture of their plumbing system.</p>
+          <ul class="plan__list">
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>15% off all plumbing service</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>No diagnostic fee on service visits</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Priority scheduling ahead of non-members</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Annual whole-home plumbing review</li>
+            <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Member emergency access</li>
+          </ul>
+          <div class="plan__foot">
+            <p class="plan__note">Steward and Concierge members get priority response for after hours emergencies, active leaks, floods, and freeze events.</p>
+          </div>
+        </article>
+      </div>
+      <p class="plans-disclaimer">Pricing is per residential home or unit. Annual and monthly options available. Services are subject to availability and scheduling. Membership does not constitute insurance coverage.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>How to start this plan</h2>
+      <p>
+        To start Steward, send a request below and Steward membership will be noted
+        on it, or call {site.phoneDisplay} and ask for Steward membership. Online
+        payment is not connected on this staging page yet, so this request form and
+        the phone call are the next steps here. We will confirm the plan and the
+        billing period with you before anything is charged.
+      </p>
+      <LeadForm heading="Request this plan" serviceContext="Steward membership" />
+      <p class="other-plans">
+        Compare all three plans on the <a href="/membership/#tiers">membership page</a>,
+        or see the other plans: <a href="/membership/essential/">Essential</a> and
+        <a href="/membership/concierge/">Concierge</a>.
+      </p>
+      <p class="nap-line">
+        <strong>{site.name}</strong>, {site.street}, {site.city}, {site.region} {site.postal}.
+        Call <a href={site.phoneHref}>{site.phoneDisplay}</a> or email
+        <a href={`mailto:${site.email}`}>{site.email}</a>. CA CSLB License #: 1149344.
+        {site.hoursLabel}.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .hero-dark {
+      background: var(--brand-deep);
+      color: #fff;
+      padding: 4rem 0;
+    }
+    .hero-dark h1 {
+      color: #fff;
+      font-size: 2.75rem;
+      line-height: 1.15;
+      max-width: 40rem;
+    }
+    .hero-intro {
+      max-width: 44rem;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.75rem 0 0;
+    }
+    .btn-solid {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius);
+      background: #b9714a;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .plans-section {
+      background: #f5efe8;
+    }
+    .plans-section h2 {
+      text-align: center;
+    }
+    .plan-single {
+      max-width: 32rem;
+      margin: 2rem auto 0;
+    }
+    .plan {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 10px rgba(18, 70, 110, 0.08);
+      padding: 2rem 1.75rem;
+    }
+    .plan--featured {
+      border: 2px solid #b9714a;
+      box-shadow: 0 10px 28px rgba(18, 70, 110, 0.16);
+    }
+    .plan__badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: #b9714a;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .plan__name {
+      margin: 0 0 0.75rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .plan__price {
+      margin: 0;
+      line-height: 1;
+    }
+    .plan__amount {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .plan__period {
+      margin-left: 0.25rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+    .plan__alt {
+      margin: 0.5rem 0 0;
+      color: var(--ink-soft);
+    }
+    .plan__save {
+      margin: 0.5rem 0 0;
+      font-weight: 700;
+      color: #b9714a;
+    }
+    .plan__desc {
+      margin: 1.25rem 0;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .plan__list {
+      margin: 0 0 1.5rem;
+      padding: 0;
+      list-style: none;
+    }
+    .plan__list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
+    }
+    .plan__list svg {
+      flex: none;
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-top: 0.15rem;
+      fill: none;
+      stroke: #b9714a;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .plan__foot {
+      margin-top: auto;
+    }
+    .plan__note {
+      margin: 0 0 1.25rem;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    .plans-disclaimer {
+      margin: 2rem 0 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+    .other-plans {
+      margin: 2rem 0 0;
+    }
+    @media (max-width: 47.99em) {
+      .hero-dark h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</Base>
