@@ -1006,6 +1006,10 @@ export const services: Service[] = [
         copy: "When a line lets go, the first job is stopping the water. Shut the main if you can reach it safely and call 530-587-0733. On site we contain the leak, work out how far the water travelled, and repair or replace the failed section properly rather than patching it to get through the week.",
       },
       {
+        heading: "When to call right away, and what can wait until morning",
+        copy: "Active water where it should not be, a burst line, and no water at all during a cold snap are call right away problems. Shut the main if you can reach it safely and call 530-587-0733. A slow drip from a single faucet, one slow drain while the rest of the house drains normally, or a toilet that runs on can usually wait until morning if you can shut the supply to that fixture and the problem is not spreading. When you are unsure, call and describe what you see. We would rather talk you through shutting a valve on the phone than have you wait on something that is getting worse.",
+      },
+      {
         heading: "Signs your pipe has frozen or burst in Truckee",
         copy: "A faucet that slows to a trickle or stops during a cold snap is the classic sign of ice in the line. Frost or ice on an exposed pipe, a whistling or banging sound when water runs, and a damp smell in a wall cavity all point the same way. If a pipe has already burst, look for water stains spreading on drywall, paint or flooring that bulges, a water meter that keeps turning with every fixture off, and rooms that feel damp for no reason. Any of these is worth a call at 530-587-0733 before a small problem becomes a restoration job.",
       },
@@ -1074,6 +1078,11 @@ export const services: Service[] = [
           "Shut the main if you can. Do not use open flame. Call 530-587-0733. We use controlled methods and repair anything that has already split.",
       },
       {
+        question: "How do I know if a plumbing problem can wait until morning?",
+        answer:
+          "If water is actively leaking, a pipe has burst, or you have no water during a freeze, call right away and shut the main if you can reach it safely. If it is a slow drip, one slow drain, or a running toilet, and you can shut the supply to that fixture, it can usually wait until morning. When you are unsure, call 530-587-0733 and describe what you see. If we miss you, leave a message with the address and what is happening.",
+      },
+      {
         question: "Do you offer emergency plumbing service?",
         answer:
           "Yes. Burst pipes, active leaks, and gas concerns are what the phone is for. Call 530-587-0733 any time. If we miss you, leave a message.",
@@ -1140,7 +1149,7 @@ export const services: Service[] = [
       },
     ],
     related: ["winterization", "smart-leak-shutoff", "water-heaters", "gas-services"],
-    updated: "2026-10-15",
+    updated: "2026-10-29",
   },
   {
     slug: "gas-services",
