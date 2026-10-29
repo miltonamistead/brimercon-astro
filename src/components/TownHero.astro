@@ -1,0 +1,41 @@
+---
+/**
+ * Full-bleed local photo band for town pages, placed directly after the
+ * first screen. Fixed CSS height + object-fit: cover means zero layout shift;
+ * lazy loading keeps it out of the LCP path on mobile.
+ */
+interface Props {
+  src: string;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+// Narrow viewports get the 800w variant; the 1408w file serves larger screens.
+// The -800 files are generated from the -hero originals (same WebP, same crop).
+const smallSrc = src.replace("-hero.webp", "-hero-800.webp");
+---
+
+<figure class="town-hero">
+  <img
+    src={src}
+    srcset={`${smallSrc} 800w, ${src} 1408w`}
+    sizes="100vw"
+    alt={alt}
+    width="1408"
+    height="768"
+    loading="lazy"
+    decoding="async"
+  />
+</figure>
+
+<style>
+  .town-hero {
+    margin: 0;
+  }
+  .town-hero img {
+    display: block;
+    width: 100%;
+    height: clamp(200px, 30vw, 400px);
+    object-fit: cover;
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import CallBar from "@/components/CallBar.astro";
+import { canonicalUrl, isIndexable, site } from "@/data/site";
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Force noindex regardless of environment (thank-you, 404). */
+  noindex?: boolean;
+  ogType?: string;
+}
+
+const { title, description, noindex = false, ogType = "website" } = Astro.props;
+
+const path = Astro.url.pathname;
+const canonical = canonicalUrl(path);
+const ogImage = canonicalUrl("/images/og-default.jpg");
+
+// Two independent keys hold staging out of the index: this meta tag and the
+// X-Robots-Tag header in vercel.json (PLAN.md section 5). robots.txt stays
+// Allow so crawlers can actually read this tag (audit H1).
+const robots = noindex || !isIndexable() ? "noindex, nofollow" : "index, follow";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <CallBar />
+  </body>
+</html>
