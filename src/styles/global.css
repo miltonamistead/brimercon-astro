@@ -1,0 +1,2099 @@
+/* Design tokens and base styles. No webfonts: system stack keeps the first screen fast.
+   Layout rules that matter for the audit are marked with the B1 first-screen contract. */
+
+:root {
+  --ink: #12181f;
+  --ink-soft: #46535f;
+  --line: #c9d4dc;
+  --line-deep: #a9bdcc;
+  --bg: #ffffff;
+  --bg-soft: #e9eff5;
+  --brand: #12466e;
+  --brand-dark: #0d3453;
+  --brand-deep: #0a2b45;
+  --brand-tint: #e3ebf2;
+  --warm-tint: #faf4eb;
+  --accent: #b4441f;
+  --accent-deep: #93361a;
+  --accent-bright: #c2501f;
+  --gold: #ffd9a8;
+  --gold-soft: #cfe0ec;
+  --muted-on-dark: #9db4c8;
+  --focus: #12466e;
+  --radius: 8px;
+  --wrap: 68rem;
+  --call-bar-h: 4rem;
+  --shadow-card: 0 2px 10px rgba(18, 70, 110, 0.08);
+  --shadow-card-hover: 0 10px 28px rgba(18, 70, 110, 0.16);
+  --shadow-cta: 0 4px 20px rgba(147, 54, 26, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  --shadow-cta-hover: 0 8px 28px rgba(147, 54, 26, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* Room for the fixed mobile call bar so it never covers page content. */
+@media (max-width: 47.99em) {
+  body {
+    padding-bottom: var(--call-bar-h);
+  }
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 5.2vw, 2.4rem);
+}
+
+h2 {
+  font-size: clamp(1.3rem, 3.6vw, 1.75rem);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--brand);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--brand);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- header ---------- */
+
+/* ---------- header ---------- */
+
+/* Single row (Milton, 2026-10-20): logo left, nav centered, phone and the
+   Request service button right, thin accent line across the very top. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-top: 3px solid var(--accent);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-height: 3.75rem;
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+}
+
+.site-header__logo img {
+  display: block;
+  width: auto;
+  height: 2.4rem;
+}
+
+.site-header__call {
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header__call:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.site-header__request {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.5rem 1.05rem;
+  background: var(--accent-deep);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(147, 54, 26, 0.35);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.site-header__request:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(147, 54, 26, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ---------- primary nav (desktop row + dropdowns) ---------- */
+
+.site-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.site-nav > ul {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.site-nav .caret {
+  margin-left: 0.2rem;
+  font-size: 0.7em;
+  color: var(--ink-soft);
+}
+
+.site-nav .has-drop {
+  position: relative;
+}
+
+.nav-drop {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  padding-top: 0.55rem;
+  z-index: 110;
+}
+
+.has-drop:hover .nav-drop,
+.has-drop:focus-within .nav-drop {
+  display: block;
+}
+
+.nav-drop__card {
+  min-width: 15.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--line-deep);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-card-hover);
+}
+
+.nav-drop__card ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-drop__card a {
+  display: block;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.nav-drop__card a:hover {
+  background: var(--brand-tint);
+  text-decoration: none;
+}
+
+.nav-drop__all {
+  margin-top: 0.35rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.35rem;
+}
+
+.nav-drop__all a {
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+/* ---------- mobile nav (hamburger panel) ---------- */
+
+.nav-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line-deep);
+  border-radius: var(--radius);
+  color: var(--brand-dark);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.site-nav-mobile {
+  display: none;
+}
+
+@media (max-width: 47.99em) {
+  .site-nav,
+  .site-header__call {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-toggle-input:checked ~ .site-nav-mobile {
+    display: block;
+  }
+
+  .site-nav-mobile {
+    max-height: calc(100dvh - 4.5rem);
+    overflow-y: auto;
+    border-top: 1px solid var(--line);
+    padding: 0.75rem 1rem 1rem;
+    background: var(--bg);
+  }
+
+  .site-nav-mobile ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-nav-mobile a {
+    display: block;
+    padding: 0.5rem 0;
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .site-nav-mobile__label {
+    margin: 0.9rem 0 0.15rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .site-nav-mobile__sub a {
+    padding: 0.35rem 0 0.35rem 0.75rem;
+    font-weight: 500;
+  }
+
+  .site-nav-mobile__call {
+    margin: 1rem 0 0;
+    border-top: 1px solid var(--line);
+    padding-top: 0.5rem;
+  }
+
+  .site-nav-mobile__call a {
+    color: var(--brand-dark);
+    font-weight: 700;
+  }
+}
+
+/* Keep logo and request on one line at phone widths. */
+@media (max-width: 29.99em) {
+  .site-header__logo img {
+    height: 1.9rem;
+  }
+  .site-header__actions {
+    gap: 0.5rem;
+  }
+  .site-header__request {
+    min-height: 2.25rem;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------- homepage banner ---------- */
+
+.banner {
+  margin: 0;
+}
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+@media (max-width: 47.99em) {
+  .banner img {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ---------- first screen (audit B1) ---------- */
+
+.first-screen {
+  padding: 1.25rem 0 1.5rem;
+}
+
+.first-screen__area {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.first-screen__area a {
+  color: var(--brand);
+}
+
+.first-screen__intro {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+}
+
+/* Full-width call button: the primary action on every important template.
+   Solid deep-rust fill for maximum contrast (7.55:1 white on #93361a) —
+   benchmarks all use solid saturated CTAs, and Milton asked for more pop. */
+.btn-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--accent-deep);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-cta);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn-call:hover {
+  background: #7c2d16;
+  box-shadow: var(--shadow-cta-hover);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* Blog closing CTA (Milton, 2026-10-26): the Request Service and Call
+   buttons stack with a 1rem gap between them, matching the paragraph's
+   own 1rem bottom margin, so the paragraph-to-button and
+   button-to-button gaps are identical. flex-start keeps both buttons
+   at the paragraph's left margin without changing either button's size.
+   Template-only: the closing CTA <p> in [...slug].astro. */
+.blog-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Secondary action: filled white, brand outline — unmistakable as a button,
+   never competing with the call CTA. */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.1rem;
+  border: 2px solid var(--brand-dark);
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: #fff;
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+/* Homepage services CTA (Milton, 2026-10-26): the "View all services"
+   button is its own centered block below the six service cards, not a
+   grid child. 64px above the button on desktop (40px on mobile) and
+   80px below it, so it reads as a section-level action rather than
+   part of the last card row. Button styling itself is untouched. */
+.services-cta {
+  margin-top: 64px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+@media (max-width: 47.99em) {
+  .services-cta {
+    margin-top: 40px;
+  }
+}
+
+/* Form link is text weight and sits under the call button, never competing with it. */
+.first-screen__form-link {
+  display: block;
+  margin: 0.6rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.first-screen__hours {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.trust-strip li {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Reviews first screen only (2026-10-22): with the rating item removed,
+   the two credential items sit on one centered line, separated by a thin
+   vertical divider with the same 1rem spacing on both sides (the strip's
+   column gap). On mobile they stack, centered, with the divider hidden. */
+.trust-strip--pair {
+  justify-content: center;
+}
+
+.trust-strip--pair li + li {
+  border-left: 1px solid var(--line);
+  padding-left: 1rem;
+}
+
+@media (max-width: 40em) {
+  .trust-strip--pair {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trust-strip--pair li + li {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 48em) {
+  .first-screen {
+    padding: 2rem 0 2.25rem;
+  }
+
+  .btn-call {
+    width: auto;
+    min-width: 20rem;
+  }
+
+  .first-screen__form-link {
+    text-align: left;
+  }
+}
+
+/* ---------- video hero (homepage only, J. Blanton pattern) ---------- */
+
+.video-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 34rem;
+  height: 100svh;
+  max-height: 58rem;
+  overflow: hidden;
+  background: #101c26 url("/video/hero-poster.jpg") center 60% / cover no-repeat;
+  color: #fff;
+}
+
+.video-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-hero__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Darkens the lower-left where the copy sits so white text stays readable
+   over any frame of the reel. */
+.video-hero__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 14, 20, 0.8) 0%, rgba(8, 14, 20, 0.32) 48%, rgba(8, 14, 20, 0.04) 78%),
+    linear-gradient(to right, rgba(8, 14, 20, 0.35) 0%, rgba(8, 14, 20, 0) 55%);
+}
+
+.video-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  /* Clear the fixed mobile call bar so the hero CTA is never covered. */
+  padding-bottom: calc(3.5rem + var(--call-bar-h));
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+  /* H1 leads in the DOM for the first-screen marker order; the kicker is
+     pulled above it visually. */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.video-hero__kicker {
+  order: -1;
+}
+
+/* Eyebrow above the kicker: "Gas, Service and Repair" positioning line. */
+.video-hero__topline {
+  order: -2;
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.video-hero__kicker {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.video-hero__kicker a {
+  color: #ffd9a8;
+  text-decoration: none;
+}
+
+.video-hero__kicker a:hover {
+  text-decoration: underline;
+}
+
+.video-hero__h1 {
+  margin: 0 0 0.75rem;
+  max-width: 16ch;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+/* Review proof next to the H1 — every benchmark shows stars + count above the fold. */
+.video-hero__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding: 0.42rem 0.85rem;
+  background: rgba(8, 14, 20, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.video-hero__rating .stars {
+  color: #ffd9a8;
+}
+
+.video-hero__rating .stars__off {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.video-hero__sub {
+  margin: 0 0 1.4rem;
+  max-width: 34ch;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.video-hero__call {
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Form link is text weight under the call button, never competing with it. */
+.video-hero__form-link {
+  display: block;
+  align-self: stretch;
+  margin: 0.7rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.video-hero__form-link:hover {
+  color: #fff;
+}
+
+.video-hero__strip {
+  padding: 1rem 0 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.video-hero__hours {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 48em) {
+  .video-hero__content {
+    /* No fixed call bar on desktop, but the in-flow sticky header eats ~93px
+       above the 100svh hero, so lift the copy enough to keep the form link
+       in view on a 900px-tall viewport. */
+    padding-bottom: 6.5rem;
+  }
+
+  .video-hero__call {
+    width: auto;
+    min-width: 20rem;
+  }
+
+  .video-hero__form-link {
+    text-align: left;
+  }
+}
+
+/* Reduced motion: the poster frame carries the hero, no autoplay. */
+@media (prefers-reduced-motion: reduce) {
+  .video-hero__media {
+    display: none;
+  }
+}
+
+/* ---------- fixed mobile call bar (CSS only, audit B1) ---------- */
+
+.call-bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: var(--call-bar-h);
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 -2px 10px rgb(0 0 0 / 18%);
+}
+
+@media (min-width: 48em) {
+  .call-bar {
+    display: none;
+  }
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  padding: 3.5rem 0 2.5rem;
+  border-top: 3px solid var(--accent);
+  background: var(--brand-deep);
+  color: var(--gold-soft);
+  font-size: 1rem;
+}
+
+/* Four columns in one row (Milton spec, 2026-10-20, matching the previous
+   site's footer): brand and contact at about 30 percent, then Services,
+   Service areas, and Company link lists. Stacks in order on mobile. */
+.site-footer__grid {
+  display: grid;
+  gap: 2.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .site-footer__grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.site-footer__logo {
+  display: block;
+  width: auto;
+  height: 2.9rem;
+}
+
+.site-footer__tagline {
+  max-width: 21rem;
+  margin: 1.1rem 0 1.25rem;
+  line-height: 1.55;
+}
+
+.site-footer__contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.4rem 0;
+}
+
+.site-footer__contact-line span {
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.site-footer__contact-line a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-footer__contact-line a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__meta {
+  margin: 1.1rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted-on-dark);
+}
+
+.site-footer__meta a {
+  color: var(--gold-soft);
+}
+
+.site-footer__heading {
+  margin: 0 0 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.site-footer__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__list a {
+  color: var(--gold-soft);
+  font-size: 1rem;
+  line-height: 2.125;
+  text-decoration: none;
+}
+
+.site-footer__list a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.site-footer__request {
+  display: block;
+  margin-top: 1.4rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  background: var(--accent-deep);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.site-footer__request:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.site-footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2rem;
+  justify-content: space-between;
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.82rem;
+  color: var(--muted-on-dark);
+}
+
+.site-footer__bar p {
+  margin: 0;
+}
+
+.site-footer__bar a {
+  color: var(--muted-on-dark);
+  text-decoration: none;
+}
+
+.site-footer__bar a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+address {
+  font-style: normal;
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  padding: 2.25rem 0;
+}
+
+.section--soft {
+  background: var(--bg-soft);
+}
+
+/* Tight top gap, all service pages (Milton, 2026-10-21): closes the gap
+   between the first-screen trust strip and the bullets checklist by ~45%
+   (section top padding 2.25rem -> 0.5rem, ticks top margin 1rem -> 0.5rem).
+   Applied to the intro section of every service page via [slug].astro, so
+   every service page carries the same spacing; no non-service section uses
+   this modifier. Extended from Smart Shutoff only to all services 2026-10-21
+   at Milton's direction. */
+.section--tight-top {
+  padding-top: 0.5rem;
+}
+
+.section--tight-top .ticks {
+  margin-top: 0.5rem;
+}
+
+/* Tight section directly after the hero (Milton, 2026-10-23): the gap
+   below the hero comes from the shared .section top padding (2.25rem),
+   so changing the shared rule would shift every page. This shared
+   modifier steps a post-hero section's top padding down the theme's
+   section scale to 1rem, and is the single token for that gap: About
+   and Contact both use it, so the two pages match. Hero spacing,
+   heading/paragraph spacing, and everything below are untouched.
+   Service pages keep their own tighter .section--tight-top instead. */
+.section--tight-after-hero {
+  padding-top: 1rem;
+}
+
+/* Warm cream band: photos, reviews, and human moments sit best here. */
+.section--warm {
+  background: var(--warm-tint);
+}
+
+/* Deep navy band: the premium conversion anchor. White text throughout. */
+.section--deep {
+  background: var(--brand-deep);
+  color: #fff;
+}
+
+.section--deep h2,
+.section--deep h3,
+.section--deep .points__title {
+  color: #fff;
+}
+
+.section--deep .lede,
+.section--deep p {
+  color: var(--gold-soft);
+}
+
+.section--deep a:not(.btn-call):not(.btn-secondary) {
+  color: var(--gold);
+}
+
+.section--deep .ticks li {
+  color: #eef4f8;
+}
+
+.section--deep .ticks li::before {
+  color: var(--gold);
+}
+
+.section--deep .nap-line {
+  color: var(--muted-on-dark);
+}
+
+.section--deep .nap-line strong {
+  color: #fff;
+}
+
+.section--deep .first-screen__form-link a {
+  color: var(--gold);
+}
+
+/* Homepage closing CTA (Milton, 2026-10-23): restore the site's standard
+   1rem body-to-button separation between the checklist and the Call
+   button. The checklist's tight 0.3rem item gap left the button flush;
+   1rem matches the first-screen intro-to-button gap and the global
+   paragraph rhythm. Checklist item spacing and the button itself are
+   untouched, and the rem value holds on narrow screens. */
+.closing-cta-call {
+  margin-top: 1rem;
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+/* No .eyebrow class: eyebrow labels above H2s are banned (PLAN.md section 3d rule 2).
+   The H2 carries the meaning on its own. */
+
+.prose-block {
+  margin-bottom: 1.25rem;
+}
+
+.prose-block h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.nap-line {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* Town CTA sections (2026-10-22, rolled out to all service areas): even
+   24px spacing across the text blocks under the call button. The form
+   link's bottom margin was 0, so the first two blocks sat tight; the NAP
+   line's top margin was 1.25rem. */
+.town-cta .first-screen__form-link {
+  margin-bottom: 24px;
+}
+.town-cta .nap-line {
+  margin-top: 24px;
+}
+
+/* Keeps a phone number from breaking across lines mid-digits. */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* ---------- breadcrumbs ---------- */
+
+.breadcrumbs {
+  padding-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 0.35rem;
+  color: var(--line);
+}
+
+/* ---------- lists and grids ---------- */
+
+.points,
+.cards,
+.showcase,
+.steps,
+.towns,
+.ticks,
+.reviews__list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.points,
+.cards,
+.showcase,
+.steps {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40em) {
+  .points,
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards,
+  .showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 60em) {
+  .points,
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards,
+  .showcase {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.points__title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  color: var(--brand-dark);
+}
+
+.points li {
+  position: relative;
+  padding-top: 0.85rem;
+}
+
+.points li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.25rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.points li p,
+.steps li p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.steps {
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  padding-left: 2.25rem;
+  position: relative;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* About page (2026-10-22): wider horizontal gap between numbered columns.
+   Column gap only, so the row gap and the equal 1fr widths stay as they are. */
+.steps--wide {
+  column-gap: 48px;
+}
+
+.card {
+  display: block;
+  height: 100%;
+  padding: 1.25rem 1.1rem 1.1rem;
+  border: 1px solid var(--line-deep);
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-shadow: var(--shadow-card);
+}
+
+a.card {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+a.card:hover {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+a.card:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.7rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(18, 70, 110, 0.3);
+}
+
+a.card:hover .card__icon {
+  background: var(--accent);
+  box-shadow: 0 2px 10px rgba(180, 68, 31, 0.35);
+}
+
+.card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.card__meta {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.card__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+}
+
+.card__summary {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.card__bullets {
+  margin: 0 0 0.6rem;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.card__more {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+/* Blog index only (2026-10-22): "Read article" links sit at the bottom of
+   each card so they line up across a row, with at least 24px between the
+   tag row and the link. Scoped here so service cards and other .card uses
+   keep their own spacing. */
+.blog-index__cards .card {
+  display: flex;
+  flex-direction: column;
+}
+.blog-index__cards .card__more {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.card__arrow {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+a.card:hover .card__arrow {
+  transform: translateX(3px);
+}
+
+.showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(18, 70, 110, 0.14);
+}
+
+.showcase__caption {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ---------- service / about photo band ---------- */
+/* Full-bleed band so the photo sits against the section edges like TownHero.
+   Portrait originals are cropped by object-fit: cover; all are crop-safe. */
+
+.service-photo-band {
+  margin: 0;
+}
+
+.service-photo-band img {
+  display: block;
+  width: 100%;
+  height: clamp(16rem, 38vw, 24rem);
+  object-fit: cover;
+}
+
+.towns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* Blog keyword pills (Milton, 2026-10-22): the listing card is already a
+   single anchor, so the pills are styled <li> text, never nested links —
+   the parent card link handles every click. Colors rotate by position
+   through three existing theme tints only, all with dark text; the
+   hover shift lives on the card, where the click lives. The article-page
+   tag row shares the class (same pills, no parent link there, so no
+   hover shift). Blog Related-areas lists share the class too (Milton,
+   2026-10-23), so the area links render as the same pills. */
+.blog-tags {
+  gap: 0.5rem;
+}
+
+/* Article tag row breathing room (Milton, 2026-10-23): the gap above the
+   pills is 1.35rem (byline 0.35rem + list 1rem top margin) while the gap
+   below was 0, so the first paragraph bumped against the pills. This
+   scoped 1.5rem bottom margin — one scale step up, slightly more than
+   the gap above — applies only to the article tag row, so listing
+   cards and Related areas pills are untouched. Pill styling, title,
+   byline, and paragraph spacing are unchanged. */
+.blog-tags--article {
+  margin-bottom: 1.5rem;
+}
+
+/* Related-areas pills are real links, unlike the top tag row: the pill
+   geometry, fill, radius, and gap all come from .blog-tags above, and
+   this only normalizes the link text itself (ink color, no underline)
+   so it matches the pill text. No new pill styling lives here. */
+.blog-tags a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-tags li {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--brand-tint);
+  color: var(--ink);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.blog-tags li:nth-child(3n + 2) {
+  background: var(--warm-tint);
+}
+
+.blog-tags li:nth-child(3n + 3) {
+  background: var(--gold);
+}
+
+.blog-index__cards .card:hover .blog-tags li {
+  border-color: var(--line-deep);
+}
+
+/* One header system for content sections (Dexter note, 2026-10-20): every section
+   heading aligns to the same left edge of the wrap with the same rhythm, the way
+   the live site presents its headers. */
+.section > .wrap > h2 {
+  text-align: left;
+  margin: 0 0 0.5em;
+}
+
+/* Service area section: featured town photo cards plus grouped pill buttons
+   (Milton and Dexter, 2026-10-20). Pills and cards are real links, no script. */
+.town-cards {
+  display: grid;
+  gap: 1rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40em) {
+  .town-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) {
+  .town-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.town-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line-deep);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+a.town-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.town-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1408 / 768;
+  object-fit: cover;
+}
+
+.town-card__body {
+  display: block;
+  padding: 0.8rem 1rem 0.95rem;
+}
+
+.town-card__name {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.town-card__meta {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.town-group {
+  margin-top: 1.6rem;
+}
+
+.town-group__label {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.towns--pills {
+  gap: 0.5rem;
+}
+
+.towns--pills a,
+.towns--pills .town-pending {
+  display: inline-block;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--line-deep);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--brand-dark);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(18, 70, 110, 0.14);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.towns--pills a:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.towns--pills .town-pending {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+/* Homepage service-areas CTA (Milton, 2026-10-23): a clear 36px gap
+   between the last pill group and the button, on all widths. Scoped to
+   this button only; the button style, size, and left alignment are
+   untouched, and the service-page link is unaffected. */
+.service-areas-cta {
+  margin-top: 36px;
+}
+
+.ticks {
+  font-size: 0.95rem;
+}
+
+.ticks li {
+  padding-left: 1.4rem;
+  position: relative;
+  margin-bottom: 0.3rem;
+}
+
+.ticks li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.facts {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 40em) {
+  .facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.facts dt {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Center each stat inside its equal third (Milton, 2026-10-23): the
+   columns were already repeat(3, 1fr), but left-aligned text of
+   different lengths made the gaps look uneven and left a wide blank
+   strip after the short last value. Centering keeps the equal thirds
+   and makes the left/right edge padding visually equal. Box, padding,
+   margins, and label/value styling are untouched. */
+.facts > div {
+  text-align: center;
+}
+
+.facts dd {
+  margin: 0.15rem 0 0;
+}
+
+/* ---------- emergency band ---------- */
+
+.band {
+  padding: 1.25rem 0;
+  background: var(--brand-dark);
+  color: #fff;
+}
+
+.band__inner {
+  display: grid;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (min-width: 48em) {
+  .band__inner {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.band__heading {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.band__note {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  color: #cfe0ec;
+}
+
+.band__call {
+  margin: 0;
+}
+
+/* ---------- reviews ---------- */
+
+.reviews__list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .reviews__list {
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+}
+
+.review {
+  padding: 1.1rem 1rem;
+  border: 1px solid var(--line-deep);
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-shadow: var(--shadow-card);
+}
+
+.review blockquote {
+  margin: 0;
+}
+
+.review blockquote p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.review__who {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.review__who strong {
+  color: var(--ink);
+}
+
+.review__who span::before {
+  content: " \00b7 ";
+}
+
+.reviews__links {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- platform review cards (Reviews page) ---------- */
+/* Live testimonial format: stars, quote, divider, initials avatar + name
+   and city. Corner badge keeps each card identifiable on its own. */
+
+.platform-review__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 48em) {
+  .platform-review__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.platform-review {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.75rem;
+  border: 1px solid var(--line-deep);
+  border-radius: 14px;
+  background: var(--bg);
+  box-shadow: var(--shadow-card);
+}
+
+.platform-review--strip {
+  border-width: 0.5px;
+  border-radius: 12px;
+}
+
+.platform-review__badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 22px;
+  height: 22px;
+}
+
+.platform-review__badge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.platform-review__stars {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+/* The text block flexes to fill the card, so the footer below stays pinned
+   to the card bottom in every card of a row. The Read more toggle lives
+   inside this block directly under the quote, so it stays attached to the
+   text rather than dropping to the footer. */
+.platform-review__text {
+  flex: 1;
+}
+
+.platform-review__quote {
+  margin: 1rem 0 0;
+}
+
+.platform-review__quote p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.platform-review__quote p:last-child {
+  margin-bottom: 0;
+}
+
+/* 8-line cap: applied by the page script only to quotes that overflow it,
+   so short reviews show in full with no toggle. Expansion is plain document
+   flow, so the grid reflows around an expanded card. */
+.platform-review__quote.is-clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Service Areas strip cards sit in a two-column layout and need to stay
+   short, so their cap is 4 lines while the Reviews page keeps 8. */
+.platform-review--strip .platform-review__quote.is-clamped {
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
+.platform-review__more {
+  display: none;
+  margin-top: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--brand);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.platform-review__more.is-visible {
+  display: inline;
+}
+
+.platform-review__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.platform-review__avatar {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.platform-review__who {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-review__who strong {
+  font-size: 0.95rem;
+}
+
+.platform-review__who span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  /* Reserve one line even when the city is blank, so the name above it
+     lines up with name-plus-city cards in the same row. 1.6em matches the
+     inherited body line-height; non-empty single lines are already this
+     tall, so this changes nothing for them. */
+  min-height: 1.6em;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.platform-review__who svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.review-source {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.review-source__logo {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.review-source__logo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.review-disclaimer {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.review-section--divided {
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- google rating ---------- */
+
+.stars {
+  letter-spacing: 0.04em;
+  color: #e8a33d;
+}
+
+.stars__off {
+  color: var(--line);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.reviews__rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.reviews__rating span {
+  color: var(--ink-soft);
+}
+
+/* Rating badges (2026-10-22): pill pair recreating the live Reviews page
+   badges. White fill, thin light border, fully rounded ends, centered as a
+   pair with a 16px gap. Live's "Google" word is one dark color, not
+   multicolor brand letters, so the badge text stays a single ink color. */
+.rating-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.rating-badge .stars {
+  font-size: 1.1em;
+}
+
+.rating-badge__count {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+/* ---------- faqs ---------- */
+
+.faqs__list {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.faq {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  padding: 0.85rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.faq[open] summary::after {
+  content: "\2013";
+}
+
+.faq p {
+  margin: 0 0 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ---------- lead form ---------- */
+
+.lead-form {
+  background: var(--bg-soft);
+  border: 1px solid var(--line-deep);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.lead-form__heading {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.lead-form .field {
+  margin-bottom: 1rem;
+}
+
+.lead-form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.lead-form .field__optional {
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.lead-form input[type="text"],
+.lead-form input[type="tel"],
+.lead-form input[type="email"],
+.lead-form textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.75rem;
+  min-height: 3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+}
+
+.lead-form textarea {
+  resize: vertical;
+}
+
+.lead-form input:focus-visible,
+.lead-form textarea:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+  border-color: var(--focus);
+}
+
+/* Honeypot: off-screen, not display:none, so naive bots still fill it. */
+.lead-form .hp {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--accent-deep);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: var(--shadow-cta);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn-submit:hover {
+  background: #7c2d16;
+  box-shadow: var(--shadow-cta-hover);
+  transform: translateY(-2px);
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.lead-form__error {
+  background: #fdf0ec;
+  border: 1px solid #d98a76;
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem;
+  color: #7a2d1a;
+}
+
+.lead-form__note {
+  margin: 0.9rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.lead-form__done {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+@media (min-width: 48em) {
+  .lead-form {
+    padding: 2rem;
+  }
+  .btn-submit {
+    width: auto;
+    min-width: 16rem;
+  }
+}

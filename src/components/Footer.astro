@@ -1,0 +1,98 @@
+---
+import { site } from "@/data/site";
+
+// Four-column footer matching the previous site's structure (Milton spec,
+// 2026-10-20): brand and contact, a short Services list, a short Service
+// areas list, Company links with the Request Service button, and a slim
+// bottom bar. Deliberately few links: the full town and service lists live
+// on their hub pages, not down here.
+const year = new Date().getFullYear();
+
+const footerServices = [
+  { label: "Water Heaters", href: "/services/water-heaters/" },
+  { label: "Drain Cleaning", href: "/services/drain-cleaning/" },
+  { label: "Leak Detection", href: "/services/leak-detection/" },
+  { label: "Gas Services", href: "/services/gas-services/" },
+  { label: "Kitchen & Bath", href: "/services/kitchen-bath-plumbing/" },
+  { label: "Frozen & Burst Pipes", href: "/services/frozen-burst-pipes/" },
+  { label: "Emergency Plumber", href: "/services/emergency-plumber/" },
+];
+
+const footerAreas = [
+  { label: "Truckee", href: "/service-areas/truckee/" },
+  { label: "Tahoe City", href: "/service-areas/tahoe-city/" },
+  { label: "Kings Beach", href: "/service-areas/kings-beach/" },
+  { label: "Tahoe Vista", href: "/service-areas/tahoe-vista/" },
+  { label: "Olympic Valley", href: "/service-areas/olympic-valley/" },
+  { label: "All Areas", href: "/service-areas/" },
+];
+
+const footerCompany = [
+  { label: "About", href: "/about/" },
+  { label: "Reviews", href: "/reviews/" },
+  { label: "Blog", href: "/blog/" },
+  { label: "FAQs", href: "/faqs/" },
+  { label: "Resources", href: "/resources/" },
+  { label: "Membership", href: "/membership/" },
+  { label: "Contact", href: "/contact/" },
+  { label: "Privacy Notice", href: "/privacy-policy/" },
+  { label: "Terms of Use", href: "/terms-of-use/" },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a href="/" aria-label={`${site.name} home`}>
+          <img class="site-footer__logo" src="/images/brimer-logo.png" alt={site.name} width="564" height="210" />
+        </a>
+        <p class="site-footer__tagline">
+          Serving Truckee and North Lake Tahoe since 1997. Licensed plumbing contractors delivering finish-first standards for mountain homes.
+        </p>
+        <p class="site-footer__contact-line">
+          <span aria-hidden="true">&#9742;</span>
+          <a href={site.phoneHref}>{site.phoneDisplay}</a>
+        </p>
+        <p class="site-footer__contact-line">
+          <span aria-hidden="true">&#9993;</span>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+        <p class="site-footer__meta">
+          {site.street}, {site.city}, {site.region} {site.postal}<br />
+          Open 7:00 AM to 8:00 PM, every day<br />
+          <a href={site.mapsUrl} rel="noopener">Find us on Google Maps</a>
+        </p>
+      </div>
+
+      <nav aria-label="Footer services">
+        <h2 class="site-footer__heading">Services</h2>
+        <ul class="site-footer__list">
+          {footerServices.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav aria-label="Footer service areas">
+        <h2 class="site-footer__heading">Service areas</h2>
+        <ul class="site-footer__list">
+          {footerAreas.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav aria-label="Footer company">
+        <h2 class="site-footer__heading">Company</h2>
+        <ul class="site-footer__list">
+          {footerCompany.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+        <a class="site-footer__request" href="/request-service/">Request Service</a>
+      </nav>
+    </div>
+
+    <div class="site-footer__bar">
+      <p>&copy; {year} Brimer Plumbing. All rights reserved.</p>
+      <p>
+        <a href="/privacy-policy/">Privacy Notice</a> &middot; <a href="/terms-of-use/">Terms of Use</a> &middot; CA CSLB License #: 1149344 &middot; Licensed in California only. Not licensed in Nevada.
+      </p>
+    </div>
+  </div>
+</footer>

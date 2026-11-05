@@ -1,0 +1,157 @@
+---
+// Review cards, placed after the first screen so they never push the call button down.
+//
+// The rating line above the cards comes from the committed Places cache and disappears
+// entirely when no rating has been fetched. No AggregateRating schema is emitted: the SEO
+// brief forbids inventing a rating and Google does not surface self-serving review markup
+// on a LocalBusiness.
+import { site } from "@/data/site";
+import { topReviews, ratingSummary } from "@/data/reviews";
+import type { PlatformReview } from "@/data/platform-reviews";
+import PlatformReviewCard from "@/components/PlatformReviewCard.astro";
+import Stars from "@/components/Stars.astro";
+
+interface Props {
+  count?: number;
+  /** Must follow the H2 rules in PLAN.md section 3d. No eyebrow label above it. */
+  heading?: string;
+  /** Show the live rating badges above the cards. Home and Reviews pages only. */
+  badges?: boolean;
+  /** Rebuild the cards in the Reviews page platform format (Service Areas pages only). */
+  platformCards?: boolean;
+  /** Corner badge for platform cards. Service Areas strip cards are Yelp. */
+  platformSource?: "google" | "yelp";
+  /** Explicit platform cards (About page Google set). Defaults to the strip mapping. */
+  platformReviews?: PlatformReview[];
+}
+const {
+  count = 3,
+  heading = "What homeowners say about our work",
+  badges = false,
+  platformCards = false,
+  platformSource = "yelp",
+  platformReviews,
+} = Astro.props;
+const items = topReviews(count);
+const rating = ratingSummary();
+
+// Service Areas strip cards in platform format. Both current strip reviews
+// are Yelp reviews (Milton confirmed Jill S. 2026-10-22; K B. is in the
+// Reviews page Yelp set). Text stays the cache version verbatim; only the
+// card format changes. An explicit platformReviews list (About page) bypasses
+// this mapping and carries its own source. Avatar colors match the Reviews
+// page where the reviewer has a card there (K B. #3d5a45); Jill S. takes a
+// muted taupe.
+const stripAvatarColors: Record<string, string> = {
+  "K B.": "#3d5a45",
+  "Jill S.": "#6b5b45",
+};
+const mappedStripItems: PlatformReview[] = items.map((review) => ({
+  author: review.author,
+  initials: review.author
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase(),
+  subline: review.location ?? "",
+  sublineIsCity: Boolean(review.location),
+  paragraphs: [review.quote],
+  avatarColor: stripAvatarColors[review.author] ?? "#37474f",
+}));
+const resolvedPlatformItems = platformReviews ?? mappedStripItems;
+---
+
+<section class="section section--warm reviews">
+  <div class="wrap">
+    <h2>{heading}</h2>
+
+    {
+      rating && (
+        <p class="reviews__rating">
+          <Stars rating={rating.rating} />
+          <strong>{rating.display}</strong>
+          <span>from {rating.total} Google reviews</span>
+        </p>
+      )
+    }
+
+    {
+      // Google count reads from the committed Places cache (see src/data/reviews).
+      // Yelp 4.9 with 22 reviews is the live Yelp figure, kept separate. Live's "Google"
+      // word is a single dark color, not multicolor brand letters.
+      badges && (
+        <div class="rating-badges">
+          <a class="rating-badge" href={site.googleReviewsUrl} rel="noopener">
+            <strong>Google</strong>
+            <Stars rating={5} />
+            <strong>5.0</strong>
+            {rating && <span class="rating-badge__count">({rating.total} reviews)</span>}
+          </a>
+          <a class="rating-badge" href={site.yelpUrl} rel="noopener">
+            <Stars rating={5} />
+            <strong>4.9 on Yelp</strong>
+            <span class="rating-badge__count">(22 reviews)</span>
+          </a>
+        </div>
+      )
+    }
+
+    <ul class="reviews__list">
+      {
+        platformCards
+          ? resolvedPlatformItems.map((review) => (
+              <PlatformReviewCard
+                review={review}
+                source={platformSource}
+                variant="strip"
+              />
+            ))
+          : items.map((review) => (
+              <li class="review">
+                <blockquote>
+                  <p>{review.quote}</p>
+                </blockquote>
+                <p class="review__who">
+                  <strong>{review.author}</strong>
+                  {review.location && <span>{review.location}</span>}
+                </p>
+              </li>
+            ))
+      }
+    </ul>
+
+    <p class="reviews__links">
+      <a href={site.googleReviewsUrl} rel="noopener">Read the reviews on Google</a>
+      <span aria-hidden="true"> | </span>
+      <a href={site.yelpUrl} rel="noopener">Read the reviews on Yelp</a>
+    </p>
+  </div>
+</section>
+
+{
+  // Same in-place toggle as the Reviews page (see reviews.astro), with a
+  // tighter 4-line cap for these two-column strip cards via the
+  // platform-review--strip CSS override. The clamp class goes on every
+  // quote first; quotes that still fit keep it off and show no toggle.
+  // Only included for the platform-card variant.
+  platformCards && (
+    <script>
+      document.querySelectorAll(".platform-review").forEach((card) => {
+        const quote = card.querySelector(".platform-review__quote");
+        const toggle = card.querySelector(".platform-review__more");
+        if (!quote || !toggle) return;
+        quote.classList.add("is-clamped");
+        if (quote.scrollHeight <= quote.clientHeight + 1) {
+          quote.classList.remove("is-clamped");
+          return;
+        }
+        toggle.classList.add("is-visible");
+        toggle.addEventListener("click", () => {
+          const clamped = quote.classList.toggle("is-clamped");
+          toggle.textContent = clamped ? "Read more" : "Read less";
+          toggle.setAttribute("aria-expanded", String(!clamped));
+        });
+      });
+    </script>
+  )
+}
