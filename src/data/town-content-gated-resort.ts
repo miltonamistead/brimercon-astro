@@ -639,6 +639,15 @@ export const townContentGatedResort: Record<string, TownContent> = {
         link: { label: "More on tankless systems", href: "/services/water-heaters/" },
       },
       {
+        heading: "What happens when you call",
+        paragraphs: [
+          "Call 530-587-0733 and Dexter or a member of the office team answers. Tell us what is happening and where the house is, and we will talk through what to do next.",
+          "For a water heater that has stopped working, we ask a few questions about the unit and the symptoms, then set a two hour arrival window. The technician checks the unit, explains what is wrong, and gives a written estimate before any work starts.",
+          "When the work is done, we test the unit at more than one tap and confirm the hot water is back before we leave.",
+        ],
+        link: { label: "More on water heater repair", href: "/services/water-heaters/" },
+      },
+      {
         heading: "Gas line repair after decades of temperature swings",
         paragraphs: [
           "Gas lines in Tahoe Donner supply furnaces, water heaters, fireplaces, cooktops, dryers, and outdoor appliances, and many have been through decades of seasonal temperature swings. That cycling loosens connections, corrodes fittings, and deteriorates flex lines.",
@@ -759,6 +768,11 @@ export const townContentGatedResort: Record<string, TownContent> = {
         question: "Who do I call for a water main break at my Tahoe Donner home?",
         answer:
           "If the break is inside your house or on your side of the meter, call us at 530-587-0733. If water is coming up in the street or you suspect the service line from the main, call Truckee Donner Public Utility District. When in doubt, call us first and we will tell you which side it is on.",
+      },
+      {
+        question: "My Tahoe Donner home sits empty most of the winter. How do I know the water heater is still working?",
+        answer:
+          "A Moen Flo monitor on the main line watches flow, pressure, and temperature and can shut the water off on its own if something goes wrong, with alerts to your phone. For a longer vacancy, winterization plus a monitored shutoff is the combination that works here. Call 530-587-0733 and we will walk the house and tell you which of those it actually needs.",
       },
     ],
     popularServices: ["water-heaters", "frozen-burst-pipes", "smart-leak-shutoff", "kitchen-bath-plumbing"],
