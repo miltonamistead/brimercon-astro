@@ -128,13 +128,22 @@ img {
   background: var(--bg);
 }
 
+/* The row is wider than the page column (audit H1, H2): with the logo at its true
+   width it needs 1114px (logo 102 + nav 687 + phone and button 285 + two gaps 40),
+   and the 68rem column leaves 1056px. So the header gets its own 75rem cap. */
 .site-header__inner {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  max-width: 75rem;
   min-height: 3.75rem;
   padding-top: 0.55rem;
   padding-bottom: 0.55rem;
+}
+
+/* Never let the row squeeze the logo: it is shown at its own proportions or not at all. */
+.site-header__logo {
+  flex-shrink: 0;
 }
 
 .site-header__logo img {
@@ -308,9 +317,10 @@ img {
   display: none;
 }
 
-@media (max-width: 47.99em) {
-  .site-nav,
-  .site-header__call {
+/* Below 75em the full row no longer fits, so the nav collapses to the menu button.
+   The phone number stays in the header down to 48em (see the next block). */
+@media (max-width: 74.99em) {
+  .site-nav {
     display: none;
   }
 
@@ -367,6 +377,13 @@ img {
   .site-nav-mobile__call a {
     color: var(--brand-dark);
     font-weight: 700;
+  }
+}
+
+/* Phones: the fixed call bar carries the number, so the header drops it. */
+@media (max-width: 47.99em) {
+  .site-header__call {
+    display: none;
   }
 }
 
