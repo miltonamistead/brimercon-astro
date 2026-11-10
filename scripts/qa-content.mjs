@@ -11,6 +11,7 @@
 //   prices     no dollar figure in visible marketing copy
 //   dashes     no em dash or en dash (audit B4: clean dashes only)
 //   nap        street address and CSLB number present on every page
+//   claims     no blanket "guarantee" and no "same day" in Brimer's own copy (audit H3)
 
 import { readdir, readFile, writeFile, mkdir, stat } from "node:fs/promises";
 import { join, relative, dirname } from "node:path";
@@ -65,6 +66,25 @@ const NEVADA_ALLOWED_PHRASES = [
   // claim. Masked as one exact sentence so any other "Nevada" mention fails.
   /Licensed in California only\. Not licensed in Nevada\./g,
 ];
+
+/**
+ * Never-claim phrases (audit H3, Milton 2026-11-09). Both rules read Brimer's own
+ * copy only: customer review quotes sit in <blockquote> and are the customer's words,
+ * so they are removed before these two tests.
+ *
+ * guarantee  Any form of the word fails ("guarantee the work", "guaranteed",
+ *            "satisfaction guarantee") except the one approved policy sentence, in
+ *            exactly this wording, and the two Terms of Use lines that say what is
+ *            NOT guaranteed. Each is masked as an exact phrase, so any other use fails.
+ * same day   "same day" or "same-day" is a scheduling promise and always fails.
+ */
+const APPROVED_GUARANTEE_PHRASES = [/One-year guarantee on all installations/g];
+const GUARANTEE_DISCLAIMERS_BY_PAGE = {
+  "/terms-of-use/": [
+    /a guarantee of availability/g,
+    /cannot guarantee uninterrupted or error-free access/g,
+  ],
+};
 
 const listHtml = async (dir) => {
   const out = [];
@@ -180,6 +200,20 @@ for (const file of files) {
     if (dashes) add(page, "dash", `${dashes.length} em/en dash(es) in visible copy`);
   }
 
+  // --- claims ------------------------------------------------------------
+  const ownCopy = visibleText(html.replace(/<blockquote[\s\S]*?<\/blockquote>/gi, " "));
+  let guaranteeScan = ownCopy;
+  for (const approved of APPROVED_GUARANTEE_PHRASES) guaranteeScan = guaranteeScan.replace(approved, " ");
+  for (const disclaimer of GUARANTEE_DISCLAIMERS_BY_PAGE[page] ?? []) {
+    guaranteeScan = guaranteeScan.replace(disclaimer, " ");
+  }
+  for (const m of guaranteeScan.matchAll(/\bguarant\w*/gi)) {
+    add(page, "claims", `"${m[0]}" in Brimer's own copy (only the one-year installation wording is approved)`);
+  }
+  for (const m of ownCopy.matchAll(/\bsame[\s-]day\b/gi)) {
+    add(page, "claims", `"${m[0]}" in Brimer's own copy (scheduling promise)`);
+  }
+
   // --- NAP ---------------------------------------------------------------
   if (!text.includes(STREET)) add(page, "nap", `street address "${STREET}" missing`);
   if (!text.includes(CSLB)) add(page, "nap", `CSLB ${CSLB} missing`);
@@ -189,7 +223,7 @@ const byRule = {};
 for (const v of violations) (byRule[v.rule] ??= []).push(v);
 
 console.log(`qa-content: ${files.length} page(s) checked under ${ROOT}/`);
-for (const rule of ["phone", "geography", "price", "dash", "nap"]) {
+for (const rule of ["phone", "geography", "price", "dash", "nap", "claims"]) {
   const hits = byRule[rule] ?? [];
   console.log(`  ${hits.length === 0 ? "PASS" : "FAIL"}  ${rule.padEnd(9)} ${hits.length} violation(s)`);
 }
@@ -203,7 +237,7 @@ if (REPORT) {
     "",
     "| Rule | Result | Violations |",
     "|---|---|---|",
-    ...["phone", "geography", "price", "dash", "nap"].map((r) => {
+    ...["phone", "geography", "price", "dash", "nap", "claims"].map((r) => {
       const n = (byRule[r] ?? []).length;
       return `| ${r} | ${n === 0 ? "PASS" : "FAIL"} | ${n} |`;
     }),

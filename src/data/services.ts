@@ -1190,7 +1190,7 @@ export const services: Service[] = [
       },
       {
         heading: "Gas line cost and timeline in Truckee",
-        copy: "A simple appliance hookup, where the line is nearby and accessible, is often a same day job. A new run across the house costs more because length, wall and floor access, and trenching all add labor, and most gas work needs a permit with a pressure test and inspection. What moves the number: the length of the run, how we get there, the appliance being fed, and permit and inspection fees. Emergency leak work is priced on what we find, after we find it safely. You approve the scope and the price before we start.",
+        copy: "A simple appliance hookup, where the line is nearby and accessible, is often finished in a single visit. A new run across the house costs more because length, wall and floor access, and trenching all add labor, and most gas work needs a permit with a pressure test and inspection. What moves the number: the length of the run, how we get there, the appliance being fed, and permit and inspection fees. Emergency leak work is priced on what we find, after we find it safely. You approve the scope and the price before we start.",
       },
       {
         heading: "Signs your gas line needs attention",
