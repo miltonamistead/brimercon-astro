@@ -1,11 +1,16 @@
 ---
-import { site } from "@/data/site";
+import { site, serviceAreaGroups } from "@/data/site";
+import { getTown, towns } from "@/data/towns";
 
-// Four-column footer matching the previous site's structure (Milton spec,
-// 2026-10-20): brand and contact, a short Services list, a short Service
-// areas list, Company links with the Request Service button, and a slim
-// bottom bar. Deliberately few links: the full town and service lists live
-// on their hub pages, not down here.
+// Four-column footer (Milton spec, 2026-10-20): brand and contact, a short Services
+// list, Service areas, Company links with the Request Service button, and a slim
+// bottom bar.
+//
+// The Service areas column lists all 24 towns, grouped by service area, because the
+// town pages need sitewide links (audit H4): with only five towns here, sixteen town
+// pages were linked from two to four pages each. Groups, order and names come from
+// serviceAreaGroups (site.ts) and towns (towns.ts), so a town added there appears
+// here. The build fails if any town is missing from the groups or listed twice.
 const year = new Date().getFullYear();
 
 const footerServices = [
@@ -18,14 +23,22 @@ const footerServices = [
   { label: "Emergency Plumber", href: "/services/emergency-plumber/" },
 ];
 
-const footerAreas = [
-  { label: "Truckee", href: "/service-areas/truckee/" },
-  { label: "Tahoe City", href: "/service-areas/tahoe-city/" },
-  { label: "Kings Beach", href: "/service-areas/kings-beach/" },
-  { label: "Tahoe Vista", href: "/service-areas/tahoe-vista/" },
-  { label: "Olympic Valley", href: "/service-areas/olympic-valley/" },
-  { label: "All Areas", href: "/service-areas/" },
-];
+const footerAreaGroups = serviceAreaGroups.map((group) => ({
+  label: group.label,
+  hub: "hub" in group ? group.hub : undefined,
+  towns: group.towns.map((slug) => {
+    const town = getTown(slug);
+    if (!town) throw new Error(`Footer: serviceAreaGroups names "${slug}", which is not in towns.ts`);
+    return { label: town.name, href: `/service-areas/${town.slug}/` };
+  }),
+}));
+
+const footerTownHrefs = footerAreaGroups.flatMap((group) => group.towns.map((town) => town.href));
+if (footerTownHrefs.length !== towns.length || new Set(footerTownHrefs).size !== towns.length) {
+  throw new Error(
+    `Footer: expected each of the ${towns.length} towns exactly once, got ${footerTownHrefs.length} links (${new Set(footerTownHrefs).size} unique)`,
+  );
+}
 
 const footerCompany = [
   { label: "About", href: "/about/" },
@@ -72,11 +85,23 @@ const footerCompany = [
         </ul>
       </nav>
 
-      <nav aria-label="Footer service areas">
+      <nav class="site-footer__areas-nav" aria-label="Footer service areas">
         <h2 class="site-footer__heading">Service areas</h2>
-        <ul class="site-footer__list">
-          {footerAreas.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-        </ul>
+        <div class="site-footer__areas">
+          {
+            footerAreaGroups.map((group) => (
+              <div class="site-footer__group">
+                <p class="site-footer__group-label">
+                  {group.hub ? <a href={group.hub}>{group.label}</a> : group.label}
+                </p>
+                <ul class="site-footer__list">
+                  {group.towns.map((town) => <li><a href={town.href}>{town.label}</a></li>)}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+        <p class="site-footer__all-areas"><a href="/service-areas/">All Areas</a></p>
       </nav>
 
       <nav aria-label="Footer company">
