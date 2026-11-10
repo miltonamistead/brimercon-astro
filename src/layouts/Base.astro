@@ -23,6 +23,12 @@ const ogImage = canonicalUrl("/images/og-default.jpg");
 // X-Robots-Tag header in vercel.json (PLAN.md section 5). robots.txt stays
 // Allow so crawlers can actually read this tag (audit H1).
 const robots = noindex || !isIndexable() ? "noindex, nofollow" : "index, follow";
+
+// Analytics (audit B2). Nothing loads unless PUBLIC_GA4_ID is set, so a build without
+// it ships no third-party script. With it, GA4 loads and two events are sent: a tap on
+// any phone link (phone_call_click) and a delivered form lead (generate_lead, fired by
+// LeadForm). The Privacy Notice wording follows the same variable.
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 ---
 
 <!doctype html>
@@ -48,6 +54,31 @@ const robots = noindex || !isIndexable() ? "noindex, nofollow" : "index, follow"
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <slot name="head" />
+    {
+      ga4Id && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />
+          <script is:inline define:vars={{ ga4Id }}>
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () {
+              window.dataLayer.push(arguments);
+            };
+            window.gtag("js", new Date());
+            window.gtag("config", ga4Id);
+            document.addEventListener("click", function (event) {
+              var target = event.target;
+              var link = target && target.closest ? target.closest('a[href^="tel:"]') : null;
+              if (!link) return;
+              window.gtag("event", "phone_call_click", {
+                link_url: link.getAttribute("href"),
+                page_path: window.location.pathname,
+                transport_type: "beacon",
+              });
+            });
+          </script>
+        </>
+      )
+    }
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

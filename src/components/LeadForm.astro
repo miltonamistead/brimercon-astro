@@ -116,6 +116,12 @@ const path = Astro.url.pathname;
         });
         const data = await res.json().catch(() => ({ ok: false }));
         if (res.ok && data.ok) {
+          // A lead id means the server delivered it. Silent drops return id null and
+          // are not counted. gtag only exists when PUBLIC_GA4_ID is set (Base.astro).
+          const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+          if (data.id && typeof gtag === "function") {
+            gtag("event", "generate_lead", { page_path: window.location.pathname });
+          }
           form.hidden = true;
           done.hidden = false;
           done.scrollIntoView({ block: "center", behavior: "smooth" });
