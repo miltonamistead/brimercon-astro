@@ -1,0 +1,15 @@
+---
+// Links a town only if its page exists in this build, otherwise renders the name as plain
+// text. Keeps a partially built twin free of dead links without hiding the town from the
+// list, and turns every name into a link automatically once the remaining towns ship.
+import { townName } from "@/data/towns";
+import { isTownBuilt } from "@/data/golden";
+
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const name = townName(slug);
+---
+
+{isTownBuilt(slug) ? <a href={`/service-areas/${slug}/`}>{name}</a> : <span class="town-pending">{name}</span>}

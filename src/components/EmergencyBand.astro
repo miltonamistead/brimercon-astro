@@ -1,0 +1,23 @@
+---
+// Repeats the call path partway down long pages. The after-hours line sets the real
+// expectation instead of promising a response time nobody approved.
+import { site } from "@/data/site";
+
+interface Props {
+  heading?: string;
+}
+const { heading = "Emergency plumbing help available" } = Astro.props;
+---
+
+<section class="band">
+  <div class="wrap band__inner">
+    <div>
+      <h2 class="band__heading">{heading}</h2>
+      <p class="band__note">{site.afterHoursLine}</p>
+    </div>
+    <a class="btn-call band__call" href={site.phoneHref}>
+      <span aria-hidden="true">&#9742;</span>
+      <span>Call {site.phoneDisplay}</span>
+    </a>
+  </div>
+</section>

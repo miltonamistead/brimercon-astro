@@ -1,0 +1,14 @@
+---
+// Star row for a Google rating. Text glyphs, no images and no JavaScript, so it costs
+// nothing on the first screen. The number beside it carries the meaning for screen
+// readers, so the glyphs themselves are hidden from the accessibility tree.
+interface Props {
+  rating: number;
+}
+const { rating } = Astro.props;
+const filled = Math.round(rating);
+---
+
+<span class="stars" aria-hidden="true">
+  {Array.from({ length: 5 }, (_, i) => <span class={i < filled ? "stars__on" : "stars__off"}>&#9733;</span>)}
+</span>
