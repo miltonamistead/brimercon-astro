@@ -275,6 +275,10 @@ export const services: Service[] = [
         copy: "Tankless output is rated at a stated temperature rise, and Tahoe groundwater arrives much colder than the test conditions assume. That shrinks the real world flow rate, sometimes by a third or more in winter. Add thinner air derating combustion, and a unit that looks generous on paper can fall short at 6,000 feet. We size from your fixture count and realistic simultaneous use, then check against the manufacturer's altitude guidance. If the math says two units or a different approach, we tell you before you buy anything.",
       },
       {
+        heading: "How to estimate your peak demand",
+        copy: "The sizing question has a simple answer you can work out before anyone visits. List the fixtures that could run at the same time on a busy morning, then add up their flow. A shower runs about 2 gallons per minute, a dishwasher about 1.5, a washing machine about 2 to 3, a kitchen faucet about 1.5 to 2, and a bathroom faucet about 1. Add the ones that run together and you have your peak demand in gallons per minute. Then remember the Tahoe catch. A unit rated at a warm weather temperature rise delivers less when the inlet water is at its winter coldest, and thinner air derates gas combustion at our elevation. We take your number, correct it for winter inlet temperature and altitude, and check it against the manufacturer guidance before recommending a unit. If the math says the house needs more than one unit, or a tank is the better answer, we say so before you buy anything.",
+      },
+      {
         heading: "Tankless descaling in hard mountain water",
         copy: "Scale is the slow killer of tankless units here. Mineral deposits coat the heat exchanger, efficiency drops, and the unit starts throwing error codes. Annual descaling keeps output steady and is the difference between a unit that lasts twenty years and one that struggles at ten. It is a short visit, and for homes with the hardest water we will tell you honestly if a softener belongs in the conversation.",
       },
@@ -355,6 +359,11 @@ export const services: Service[] = [
         question: "What size tankless do I need for my Tahoe home?",
         answer:
           "It depends on fixture count, how many run at once, and how cold your inlet water gets. Cold groundwater and altitude both shrink real world output, so Tahoe homes often need a larger unit than the same house at sea level. We size from your actual demand.",
+      },
+      {
+        question: "How do I figure out what size tankless my house needs?",
+        answer:
+          "Add up the fixtures that run at the same time on a busy morning. A shower is about 2 gallons per minute, a dishwasher about 1.5, a washing machine about 2 to 3. The total is your peak demand. Then correct it for Tahoe conditions, because cold inlet water and altitude both shrink what a unit delivers. We run that math with you during the assessment and check it against the manufacturer guidance, so the unit you buy is the unit your house actually needs.",
       },
       {
         question: "Can a tankless handle two showers at once here?",
