@@ -668,7 +668,15 @@ export const services: Service[] = [
       },
       {
         heading: "How we find leaks without tearing open walls",
-        copy: "Detection starts non-invasive: meter tests that prove water is moving, moisture mapping that shows where it is going, and isolation that tells us which line it is on. Openings happen only where the evidence points, and only as large as the repair needs.",
+        copy: "Detection starts non-invasive and works in stages. A meter test proves water is moving, isolating lines tells us which one it is on, and a pressure test confirms the section. Acoustic listening and thermal imaging then narrow the location, and moisture mapping shows how far water has traveled. Openings happen only where the evidence points, and only as large as the repair needs.",
+      },
+      {
+        heading: "Yard and service line leaks",
+        copy: "The line from the meter to the house can leak for months with nothing visible inside. The signs are a meter that spins with everything off, a damp patch or a lush strip in the yard, low pressure at the fixtures, or a bill that climbs in a vacant home. We trace the line before digging, so the repair opens one spot instead of a trench.",
+      },
+      {
+        heading: "Gas line leak detection",
+        copy: "If you smell gas, leave the house first and call Southwest Gas at 1-877-860-6020 or 911 from outside. Once the utility has made it safe, we trace the line. Pressure testing finds the section, and each joint is checked before the line goes back in service. Gas work is never guessed at, and it is never rushed.",
       },
       {
         heading: "Slab and crawlspace leaks in mountain homes",
@@ -696,10 +704,14 @@ export const services: Service[] = [
         heading: "Recurring damp in the same area",
         copy: "Damp that returns after drying was never just surface moisture. We find the feed.",
       },
+      {
+        heading: "Low pressure and a damp patch in the yard",
+        copy: "A service line leak between the meter and the house shows up outside first. We trace it before digging.",
+      },
     ],
     process: [
       { step: "We confirm", copy: "Meter and symptom checks prove whether you have a leak and roughly what kind." },
-      { step: "We narrow", copy: "Moisture mapping and isolation pinpoint the line and the area before anything opens." },
+      { step: "We narrow", copy: "Moisture mapping, isolation, and pressure testing pinpoint the line and the area before anything opens." },
       { step: "You choose", copy: "You see the evidence and get repair options with a clear price." },
       { step: "We repair", copy: "The smallest opening that fixes it, verified dry before we close up." },
     ],
@@ -775,6 +787,11 @@ export const services: Service[] = [
         question: "Can you find leaks under a concrete slab?",
         answer:
           "Yes. Pressurized slab leaks give themselves away through acoustic listening equipment and thermal imaging for hot lines, plus meter tests to confirm. We pinpoint the location so the repair opens the smallest possible area, then lay out repair options including rerouting around the slab when that is the smarter answer.",
+      },
+      {
+        question: "Do you detect gas line leaks?",
+        answer:
+          "Yes, once the situation is safe. If you smell gas, leave the house first and call Southwest Gas at 1-877-860-6020 or 911 from outside. After the utility has made it safe, we pressure test the line to find the section and check each joint before the line goes back in service.",
       },
     ],
     related: ["smart-leak-shutoff", "frozen-burst-pipes", "kitchen-bath-plumbing", "repiping"],
