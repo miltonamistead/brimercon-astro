@@ -1,24 +1,34 @@
 ---
 /**
  * Membership page, rebuilt to match the live page at
- * https://www.brimercon.com/membership/ (Milton, 2026-10-21).
- * Section order, headings, and copy follow the live page. Three deliberate
- * deviations, all flagged to Milton: (1) Join buttons link to
- * /membership/essential/, /membership/steward/, and /membership/concierge/
- * because Stripe Checkout is not wired on staging yet; (2) checkmarks and
- * the savings line use brand orange per Milton's spec, where the live page
- * renders them dark green/teal; (3) three dash glyphs from the live copy
- * are replaced to satisfy the site's no-dash QA rule (see notes inline).
+ * https://www.brimercon.com/membership/ (Milton, 2026-10-21; re-verified
+ * against the live page 2026-11-24 with Playwright: meta/OG/Twitter tags,
+ * hero eyebrow, badge case, Talk with Brimer href, toggle behavior, and
+ * the checkout-status banner mechanism all checked against live).
+ * Section order, headings, and copy follow the live page. Deliberate
+ * deviations, all flagged to Milton: (1) Join buttons link to the staging
+ * checkout mockups via src/data/membership-checkout.ts (PAYMENT_LINKS) —
+ * swap those six URLs for the real Stripe Payment Links when they exist;
+ * (2) checkmarks and the savings line use brand terracotta per Milton's
+ * spec, where the live page renders them dark green (#2f5d4f); (3) dash
+ * glyphs from the live copy are replaced to satisfy the site's no-dash QA
+ * rule (see notes inline), including the two checkout-status banners;
+ * (4) headings use the rebuild's Georgia/system stack, where live uses
+ * Cormorant Garamond/Manrope (no webfonts on staging); (5) the dark
+ * sections use live's charcoal #1f2422, not the rebuild's brand-deep navy.
  * Dollar figures are allowed on this page only (QA exception, 2026-10-21).
+ * Status banners: shown only for ?checkout=success / ?checkout=canceled
+ * (Milton's params) or ?success=true / ?canceled=true (live parity).
  */
 import Base from "@/layouts/Base.astro";
 import Schema from "@/components/Schema.astro";
 import { site } from "@/data/site";
+import { PAYMENT_LINKS } from "@/data/membership-checkout";
 import { breadcrumbSchema } from "@/lib/schema";
 
 const title = "Brimer Membership | Priority Plumbing Service in Truckee & Lake Tahoe";
 const description =
-  "A standing service relationship with a local plumber who knows your property. Tiers for homeowners, second homes, and HOA properties.";
+  "Join Brimer Membership for priority plumbing service, member pricing, and proactive care for homes, second homes, and HOA properties across Truckee and North Lake Tahoe.";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -28,10 +38,17 @@ const crumbs = [
 
 <Base title={title} description={description}>
   <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+  <meta slot="head" name="twitter:title" content={title} />
+  <meta slot="head" name="twitter:description" content={description} />
+
+  <div id="membership-status" class="status-wrap" hidden>
+    <p id="status-success" class="status-banner status-banner--success" role="status" hidden>Thank you. Your membership is confirmed. We&rsquo;ll be in touch shortly to get you set up.</p>
+    <p id="status-canceled" class="status-banner status-banner--canceled" role="status" hidden>Checkout was canceled. No charge was made. Pick a plan below whenever you&rsquo;re ready, or talk with Brimer.</p>
+  </div>
 
   <section class="hero-dark">
     <div class="wrap">
-      <p class="eyebrow-pill">Serving Truckee and North Lake Tahoe since 1997 · Licensed · Insured</p>
+      <p class="eyebrow-pill"><span class="eyebrow-dot" aria-hidden="true"></span>30+ years serving Truckee and Tahoe &middot; Licensed &middot; Insured</p>
       <h1>Priority plumbing service in Truckee &amp; Lake Tahoe.</h1>
       <p class="hero-intro">
         A standing relationship with a local plumber who knows your property, picks up
@@ -41,7 +58,7 @@ const crumbs = [
       </p>
       <p class="hero-cta">
         <a class="btn-solid" href="#tiers">View Membership Options</a>
-        <a class="btn-ghost" href="/request-service/">Talk with Brimer</a>
+        <a class="btn-ghost" href="/contact/">Talk with Brimer</a>
       </p>
     </div>
   </section>
@@ -69,11 +86,11 @@ const crumbs = [
           </ul>
           <div class="plan__foot">
             <p class="plan__note">Essential pays for itself the first time you need a plumber.</p>
-            <a class="plan__btn plan__btn--outline" href="/membership/essential/">Join Essential</a>
+            <a class="plan__btn plan__btn--outline" href={PAYMENT_LINKS.essentialAnnual} data-annual={PAYMENT_LINKS.essentialAnnual} data-monthly={PAYMENT_LINKS.essentialMonthly}>Join Essential</a>
           </div>
         </article>
         <article class="plan plan--featured" data-annual="449" data-monthly="45">
-          <p class="plan__badge">Most popular</p>
+          <p class="plan__badge">Most Popular</p>
           <h3 class="plan__name">Steward</h3>
           <p class="plan__price"><span class="plan__amount">$449</span><span class="plan__period">/year</span></p>
           <p class="plan__alt">or $45/month</p>
@@ -87,7 +104,7 @@ const crumbs = [
             <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Member emergency access</li>
           </ul>
           <div class="plan__foot">
-            <a class="plan__btn plan__btn--solid" href="/membership/steward/">Join Steward</a>
+            <a class="plan__btn plan__btn--solid" href={PAYMENT_LINKS.stewardAnnual} data-annual={PAYMENT_LINKS.stewardAnnual} data-monthly={PAYMENT_LINKS.stewardMonthly}>Join Steward</a>
           </div>
         </article>
         <article class="plan" data-annual="749" data-monthly="75">
@@ -102,7 +119,7 @@ const crumbs = [
             <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>$499 value included</li>
           </ul>
           <div class="plan__foot">
-            <a class="plan__btn plan__btn--outline" href="/membership/concierge/">Join Concierge</a>
+            <a class="plan__btn plan__btn--outline" href={PAYMENT_LINKS.conciergeAnnual} data-annual={PAYMENT_LINKS.conciergeAnnual} data-monthly={PAYMENT_LINKS.conciergeMonthly}>Join Concierge</a>
           </div>
         </article>
       </div>
@@ -116,6 +133,7 @@ const crumbs = [
       if (!toggle) return;
       var options = toggle.querySelectorAll(".billing-toggle__option");
       var plans = document.querySelectorAll(".plan");
+      var joinLinks = document.querySelectorAll(".plan__btn");
       function setBilling(mode) {
         options.forEach(function (btn) {
           var selected = btn.dataset.billing === mode;
@@ -139,6 +157,13 @@ const crumbs = [
             if (save) save.hidden = true;
           }
         });
+        // Join buttons follow the toggle: annual links to the annual
+        // checkout mockup, monthly to the monthly one. Both come from
+        // src/data/membership-checkout.ts (PAYMENT_LINKS).
+        joinLinks.forEach(function (link) {
+          var href = link.dataset[mode];
+          if (href) link.setAttribute("href", href);
+        });
       }
       options.forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -146,13 +171,34 @@ const crumbs = [
         });
       });
     })();
+
+    // Checkout status banners: hidden by default; shown only when the URL
+    // carries ?checkout=success / ?checkout=canceled (Milton's params) or
+    // ?success=true / ?canceled=true (the live site's params, kept so a
+    // Stripe return to either form still shows the banner).
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var wrap = document.getElementById("membership-status");
+      if (!wrap) return;
+      var show = function (id) {
+        var banner = document.getElementById(id);
+        if (!banner) return;
+        wrap.hidden = false;
+        banner.hidden = false;
+      };
+      if (params.get("checkout") === "success" || params.get("success") === "true") {
+        show("status-success");
+      } else if (params.get("checkout") === "canceled" || params.get("canceled") === "true") {
+        show("status-canceled");
+      }
+    })();
   </script>
 
   <section class="section section--deep">
     <div class="wrap">
       <p class="eyebrow eyebrow--light">Member emergency access</p>
       <h2>When it goes wrong after hours, Steward and Concierge members come first.</h2>
-      <p>
+      <p class="measure">
         Steward and Concierge members get priority response for after-hours emergencies,
         active leaks, floods, and freeze events. Service is performed at member rates with
         the member discount applied. Essential members and non-members are scheduled
@@ -165,20 +211,20 @@ const crumbs = [
     <div class="wrap">
       <p class="eyebrow">Why membership</p>
       <h2>Mountain homes need a different kind of plumbing relationship.</h2>
-      <p>
+      <p class="measure">
         In Truckee and Lake Tahoe, the gap between a small plumbing issue and a serious
         water-damage claim is shorter than most homeowners expect. Freeze risk, seasonal
         vacancy, aging crawlspace systems, and the distance from a trusted contractor all
         compound the exposure. A one-off service call is not the same as having someone
         who knows your home.
       </p>
-      <p>
+      <p class="measure">
         Brimer Membership creates an ongoing service relationship, not a coupon program.
         Members receive priority scheduling, preferred pricing, and regular plumbing
         visibility so small issues get caught before they become expensive ones. For
         second-home owners and property managers, that continuity is especially valuable.
       </p>
-      <p>
+      <p class="measure">
         For HOA boards and condo communities, the same model applies at building scale:
         a cleaner building-wide protection strategy, a defined service relationship, and
         a single trusted contractor for water-damage prevention across all units.
@@ -190,7 +236,7 @@ const crumbs = [
     <div class="wrap">
       <p class="eyebrow">For HOA-managed properties</p>
       <h2>The same protection model, applied at building scale.</h2>
-      <p>
+      <p class="measure">
         Brimer can structure building-wide service plans that combine recurring unit-level
         membership benefits with project pricing for water-damage prevention upgrades,
         including Moen Flo installations and seismic valves. After-hours emergency response
@@ -267,7 +313,7 @@ const crumbs = [
 
   <section class="emergency-strip">
     <div class="wrap emergency-strip__inner">
-      <p class="emergency-strip__text">Emergency plumbing help available</p>
+      <p class="emergency-strip__text"><svg class="emergency-strip__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 22 20H2L12 3zm0 6v4m0 3v.5" /></svg>Emergency plumbing help available</p>
       <a class="btn-solid btn-solid--small" href={site.phoneHref}>Call {site.phoneDisplay}</a>
     </div>
   </section>
@@ -276,14 +322,14 @@ const crumbs = [
     <div class="wrap">
       <p class="eyebrow">Get started</p>
       <h2>Let's put together the right plan for your home or property.</h2>
-      <p>
+      <p class="measure">
         Whether you're a homeowner, a second-home owner, or an HOA board member, Brimer
         can walk you through the options and put together a proposal that fits your
         situation.
       </p>
       <p class="cta-row">
         <a class="btn-solid" href="#tiers">Choose a Plan</a>
-        <a class="btn-outline-light" href="/request-service/">Talk with Brimer</a>
+        <a class="btn-outline-light" href="/contact/">Talk with Brimer</a>
         <a class="btn-outline-light" href={site.phoneHref}>Call {site.phoneDisplay}</a>
       </p>
     </div>
@@ -293,27 +339,61 @@ const crumbs = [
     h1, h2, h3 {
       font-family: Georgia, "Times New Roman", serif;
     }
+    .measure {
+      max-width: 44rem;
+    }
+    .get-started .measure {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .status-wrap[hidden],
+    .status-banner[hidden] {
+      display: none;
+    }
+    .status-banner {
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .status-banner--success {
+      background: #e7f4ec;
+      color: #14532d;
+    }
+    .status-banner--canceled {
+      background: #fdf3e3;
+      color: #7a4a00;
+    }
     .eyebrow {
       margin: 0 0 0.75rem;
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #b9714a;
+      color: #b8734a;
     }
     .eyebrow--light {
       color: var(--gold);
     }
     .hero-dark {
-      background: var(--brand-deep);
+      background: #1f2422;
       color: #fff;
       padding: 4rem 0;
     }
     .hero-dark h1 {
       color: #fff;
-      font-size: 2.75rem;
+      font-size: 3.75rem;
       line-height: 1.15;
       max-width: 40rem;
+    }
+    .eyebrow-dot {
+      display: inline-block;
+      width: 0.45rem;
+      height: 0.45rem;
+      margin-right: 0.5rem;
+      border-radius: 50%;
+      background: #b8734a;
+      vertical-align: middle;
     }
     .eyebrow-pill {
       display: inline-block;
@@ -341,7 +421,7 @@ const crumbs = [
       display: inline-block;
       padding: 0.85rem 1.5rem;
       border-radius: var(--radius);
-      background: #b9714a;
+      background: #b8734a;
       color: #fff;
       font-weight: 700;
       text-decoration: none;
@@ -419,7 +499,7 @@ const crumbs = [
       padding: 2rem 1.75rem;
     }
     .plan--featured {
-      border: 2px solid #b9714a;
+      border: 2px solid #b8734a;
       margin-top: -1rem;
       box-shadow: 0 10px 28px rgba(18, 70, 110, 0.16);
     }
@@ -431,7 +511,7 @@ const crumbs = [
       margin: 0;
       padding: 0.4rem 1rem;
       border-radius: 999px;
-      background: #b9714a;
+      background: #b8734a;
       color: #fff;
       font-size: 0.8rem;
       font-weight: 700;
@@ -467,7 +547,7 @@ const crumbs = [
     .plan__save {
       margin: 0.5rem 0 0;
       font-weight: 700;
-      color: #b9714a;
+      color: #b8734a;
     }
     .plan__desc {
       margin: 1.25rem 0;
@@ -492,7 +572,7 @@ const crumbs = [
       height: 1.1rem;
       margin-top: 0.15rem;
       fill: none;
-      stroke: #b9714a;
+      stroke: #b8734a;
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -519,8 +599,8 @@ const crumbs = [
       color: var(--ink);
     }
     .plan__btn--solid {
-      border: 2px solid #b9714a;
-      background: #b9714a;
+      border: 2px solid #b8734a;
+      background: #b8734a;
       color: #fff;
     }
     .plans-disclaimer {
@@ -528,6 +608,9 @@ const crumbs = [
       text-align: center;
       font-size: 0.85rem;
       color: var(--ink-soft);
+    }
+    .section--deep {
+      background: #1f2422;
     }
     .hoa-section {
       background: #f5efe8;
@@ -576,6 +659,10 @@ const crumbs = [
     .works-section {
       background: #f5efe8;
     }
+    .works-section .eyebrow,
+    .works-section h2 {
+      text-align: center;
+    }
     .works-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -600,12 +687,27 @@ const crumbs = [
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
       gap: 1rem 2rem;
+      text-align: center;
     }
     .emergency-strip__text {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
       margin: 0;
       font-size: 1.25rem;
       font-weight: 700;
+    }
+    .emergency-strip__icon {
+      width: 1.4rem;
+      height: 1.4rem;
+      flex: none;
+      fill: none;
+      stroke: #b8734a;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     .get-started {
       text-align: center;
@@ -626,7 +728,6 @@ const crumbs = [
         gap: 1.25rem;
       }
       .plan--featured {
-        order: -1;
         margin-top: 0;
       }
       .hoa-cards {
@@ -636,7 +737,7 @@ const crumbs = [
         grid-template-columns: 1fr;
       }
       .hero-dark h1 {
-        font-size: 2rem;
+        font-size: 2.75rem;
       }
     }
   </style>

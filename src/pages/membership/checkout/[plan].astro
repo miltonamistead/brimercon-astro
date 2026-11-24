@@ -1,0 +1,17 @@
+---
+/**
+ * One checkout mockup per plan, generated from src/data/membership-checkout.ts.
+ * VISUAL MOCKUPS ONLY: no payment processor is connected, nothing is
+ * collected or submitted. Payment links live in that one data file.
+ */
+import CheckoutMockup from "@/components/CheckoutMockup.astro";
+import { CHECKOUT_PLANS } from "@/data/membership-checkout";
+
+export function getStaticPaths() {
+  return CHECKOUT_PLANS.map((plan) => ({ params: { plan: plan.slug }, props: { plan } }));
+}
+
+const { plan } = Astro.props;
+---
+
+<CheckoutMockup plan={plan} />
