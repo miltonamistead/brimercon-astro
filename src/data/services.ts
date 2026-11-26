@@ -680,7 +680,7 @@ export const services: Service[] = [
       },
       {
         heading: "Slab and crawlspace leaks in mountain homes",
-        copy: "Homes on slabs and over crawlspaces hide leaks in the hardest places to look. Warm spots, damp soil under the house, and foundation staining are the tells. We trace these patiently, because digging in the wrong spot is the most expensive mistake in leak work.",
+        copy: "Homes on slabs and over crawlspaces hide leaks in the hardest places to look. Warm spots, damp soil under the house, and foundation staining are the tells. A shutoff test narrows it fast. Turn the house valve off and watch the meter. If it stops, the leak is inside the house. If it keeps moving, the line from the meter to the house is at fault. Once we find it, the repair is either a spot repair through one small opening or a reroute around the slab, and we show you the failed section we removed so you can see what happened. We trace these patiently, because digging in the wrong spot is the most expensive mistake in leak work.",
       },
     ],
     commonIssues: [
@@ -707,6 +707,10 @@ export const services: Service[] = [
       {
         heading: "Low pressure and a damp patch in the yard",
         copy: "A service line leak between the meter and the house shows up outside first. We trace it before digging.",
+      },
+      {
+        heading: "Meter moving after a hard freeze",
+        copy: "A pipe that froze and split over winter starts leaking at the first thaw, often where nobody looks. A meter check after a hard freeze catches it before the bill does.",
       },
     ],
     process: [
@@ -787,6 +791,11 @@ export const services: Service[] = [
         question: "Can you find leaks under a concrete slab?",
         answer:
           "Yes. Pressurized slab leaks give themselves away through acoustic listening equipment and thermal imaging for hot lines, plus meter tests to confirm. We pinpoint the location so the repair opens the smallest possible area, then lay out repair options including rerouting around the slab when that is the smarter answer.",
+      },
+      {
+        question: "How do I check for a leak when I arrive at my second home?",
+        answer:
+          "Read the meter when you arrive, with everything off, and photograph the dial. Read it again after fifteen minutes. If the number moved, water is going somewhere. Turn the house valve off and check once more. If the meter stops, the leak is inside. If it keeps moving, the line from the meter to the house is at fault. Call us with what you found and we take it from there.",
       },
       {
         question: "Do you detect gas line leaks?",
