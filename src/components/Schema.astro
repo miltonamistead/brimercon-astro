@@ -1,0 +1,9 @@
+---
+interface Props {
+  /** One or more JSON-LD objects; each is emitted as its own script tag. */
+  nodes: unknown[];
+}
+const { nodes } = Astro.props;
+---
+
+{nodes.map((node) => <script type="application/ld+json" set:html={JSON.stringify(node)} />)}

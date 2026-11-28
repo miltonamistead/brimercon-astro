@@ -1,0 +1,9 @@
+---
+// Fixed bottom call bar, mobile only, CSS only (audit B1). No JavaScript.
+import { site } from "@/data/site";
+---
+
+<a class="call-bar" href={site.phoneHref} data-fs="call-bar" aria-label={`Call Brimer Plumbing at ${site.phoneDisplay}`}>
+  <span aria-hidden="true">&#9742;</span>
+  <span>Call {site.phoneDisplay}</span>
+</a>

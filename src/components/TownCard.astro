@@ -1,0 +1,54 @@
+---
+// Photo card for one featured town in the homepage service area section.
+// Milton and Dexter, 2026-10-20: the live site's grouped town buttons beat a
+// plain word list, so featured towns get a real photo card and the rest get
+// pill buttons (see index.astro). The whole card is one link to the town page.
+// Facts come from towns.ts only: elevation and permit authority, nothing invented.
+import type { Town } from "@/data/towns";
+import { isTownBuilt } from "@/data/golden";
+
+interface Props {
+  town: Town;
+}
+const { town } = Astro.props;
+
+const permitShort = town.permitAuthority.includes("Town of Truckee")
+  ? "Town of Truckee"
+  : town.permitAuthority.includes("Placer County")
+    ? "Placer County"
+    : town.permitAuthority.includes("El Dorado County")
+      ? "El Dorado County"
+      : "Nevada County";
+const meta = [
+  town.elevationFt ? `Elevation ${town.elevationFt} ft` : null,
+  `Permits through ${permitShort}`,
+]
+  .filter(Boolean)
+  .join(" · ");
+---
+
+{
+  isTownBuilt(town.slug) ? (
+    <a class="town-card" href={`/service-areas/${town.slug}/`}>
+      <img
+        src={`/images/areas/${town.slug}-hero.webp`}
+        alt={`${town.name}, California`}
+        width="1408"
+        height="768"
+        loading="lazy"
+        decoding="async"
+      />
+      <span class="town-card__body">
+        <span class="town-card__name">{town.name}</span>
+        <span class="town-card__meta">{meta}</span>
+      </span>
+    </a>
+  ) : (
+    <span class="town-card town-card--pending">
+      <span class="town-card__body">
+        <span class="town-card__name">{town.name}</span>
+        <span class="town-card__meta">{meta}</span>
+      </span>
+    </span>
+  )
+}
