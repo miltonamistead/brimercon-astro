@@ -6,9 +6,9 @@
  * hero eyebrow, badge case, Talk with Brimer href, toggle behavior, and
  * the checkout-status banner mechanism all checked against live).
  * Section order, headings, and copy follow the live page. Deliberate
- * deviations, all flagged to Milton: (1) Join buttons link to the staging
- * checkout mockups via src/data/membership-checkout.ts (PAYMENT_LINKS) —
- * swap those six URLs for the real Stripe Payment Links when they exist;
+ * deviations, all flagged to Milton: (1) Join buttons link to the plan
+ * request pages (/membership/essential/, /steward/, /concierge/) until
+ * real Stripe Payment Links are wired;
  * (2) checkmarks and the savings line use brand terracotta per Milton's
  * spec, where the live page renders them dark green (#2f5d4f); (3) dash
  * glyphs from the live copy are replaced to satisfy the site's no-dash QA
@@ -23,7 +23,6 @@
 import Base from "@/layouts/Base.astro";
 import Schema from "@/components/Schema.astro";
 import { site } from "@/data/site";
-import { PAYMENT_LINKS } from "@/data/membership-checkout";
 import { breadcrumbSchema } from "@/lib/schema";
 
 const title = "Brimer Membership | Priority Plumbing Service in Truckee & Lake Tahoe";
@@ -86,7 +85,7 @@ const crumbs = [
           </ul>
           <div class="plan__foot">
             <p class="plan__note">Essential pays for itself the first time you need a plumber.</p>
-            <a class="plan__btn plan__btn--outline" href={PAYMENT_LINKS.essentialAnnual} data-annual={PAYMENT_LINKS.essentialAnnual} data-monthly={PAYMENT_LINKS.essentialMonthly}>Join Essential</a>
+            <a class="plan__btn plan__btn--outline" href="/membership/essential/">Join Essential</a>
           </div>
         </article>
         <article class="plan plan--featured" data-annual="449" data-monthly="45">
@@ -104,7 +103,7 @@ const crumbs = [
             <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>Member emergency access</li>
           </ul>
           <div class="plan__foot">
-            <a class="plan__btn plan__btn--solid" href={PAYMENT_LINKS.stewardAnnual} data-annual={PAYMENT_LINKS.stewardAnnual} data-monthly={PAYMENT_LINKS.stewardMonthly}>Join Steward</a>
+            <a class="plan__btn plan__btn--solid" href="/membership/steward/">Join Steward</a>
           </div>
         </article>
         <article class="plan" data-annual="749" data-monthly="75">
@@ -119,7 +118,7 @@ const crumbs = [
             <li><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3 8.5 6.5 12 13 4.5" /></svg>$499 value included</li>
           </ul>
           <div class="plan__foot">
-            <a class="plan__btn plan__btn--outline" href={PAYMENT_LINKS.conciergeAnnual} data-annual={PAYMENT_LINKS.conciergeAnnual} data-monthly={PAYMENT_LINKS.conciergeMonthly}>Join Concierge</a>
+            <a class="plan__btn plan__btn--outline" href="/membership/concierge/">Join Concierge</a>
           </div>
         </article>
       </div>
@@ -133,7 +132,6 @@ const crumbs = [
       if (!toggle) return;
       var options = toggle.querySelectorAll(".billing-toggle__option");
       var plans = document.querySelectorAll(".plan");
-      var joinLinks = document.querySelectorAll(".plan__btn");
       function setBilling(mode) {
         options.forEach(function (btn) {
           var selected = btn.dataset.billing === mode;
@@ -156,13 +154,6 @@ const crumbs = [
             alt.textContent = "or $" + plan.dataset.annual + "/year";
             if (save) save.hidden = true;
           }
-        });
-        // Join buttons follow the toggle: annual links to the annual
-        // checkout mockup, monthly to the monthly one. Both come from
-        // src/data/membership-checkout.ts (PAYMENT_LINKS).
-        joinLinks.forEach(function (link) {
-          var href = link.dataset[mode];
-          if (href) link.setAttribute("href", href);
         });
       }
       options.forEach(function (btn) {

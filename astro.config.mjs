@@ -12,7 +12,7 @@ const indexable = process.env.PUBLIC_INDEXABLE === "true";
 const adapter = process.env.VERCEL ? vercel() : node({ mode: "standalone" });
 
 // Never indexed, never in a sitemap — even after a production swap.
-const NEVER_INDEX = new Set(["/thank-you/", "/404/"]);
+const NEVER_INDEX = new Set(["/thank-you/", "/404/", "/membership/checkout/"]);
 
 export default defineConfig({
   site: canonicalOrigin,
@@ -24,7 +24,10 @@ export default defineConfig({
     sitemap({
       // Staging builds emit no sitemap at all (PLAN.md §5). Indexable builds exclude
       // utility routes; /api/* is on-demand and never prerendered, so it is never listed.
-      filter: (page) => indexable && !NEVER_INDEX.has(new URL(page).pathname),
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        return indexable && !NEVER_INDEX.has(pathname) && !pathname.startsWith("/membership/checkout/");
+      },
       changefreq: "weekly",
       priority: 0.7,
     }),
