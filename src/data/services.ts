@@ -379,7 +379,7 @@ export const services: Service[] = [
     shortName: "Winterization",
     title: "Home Winterization & Pipe Protection | Truckee & Tahoe",
     description:
-      "Plumbing winterization for Tahoe second homes and cabins. Pipe draining, freeze protection, and shutoff setup in Truckee and North Lake Tahoe. Call 530-587-0733.",
+      "Plumbing winterization for Tahoe second homes and cabins. Pipe draining, freeze protection, and shutoff setup in Truckee and Tahoe. Call 530-587-0733.",
     h1: "Plumbing winterization for Truckee and North Lake Tahoe second homes",
     summary:
       "Protect vacant homes from freeze damage with pipe draining, fixture protection, and water shutoff setup before winter arrives.",

@@ -123,6 +123,37 @@ function trippedTimeTrap(ts: unknown): boolean {
   return age < 3000 || age > 86_400_000;
 }
 
+/**
+ * Soft rate limit (docs/lead-capture.md §2 step 7): 5 submissions per ipHash
+ * per 10 minutes. In-memory per function instance: on serverless each warm
+ * instance keeps its own counters, so this is a soft limit, not a global one.
+ * Checked after honeypot and validation, so automated junk never fills a bucket.
+ */
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const rateLimitBuckets = new Map<string, number[]>();
+
+/** Hashed with a daily salt: enough to rate limit, never a stored IP address. */
+export function ipHashFor(ip: string | null): string | null {
+  return ip
+    ? createHash("sha256").update(`${ip}:${new Date().toISOString().slice(0, 10)}`).digest("hex").slice(0, 16)
+    : null;
+}
+
+/** True when this ipHash may submit now; false when it is over the limit. */
+export function checkRateLimit(ipHash: string | null): boolean {
+  if (!ipHash) return true;
+  const now = Date.now();
+  const hits = (rateLimitBuckets.get(ipHash) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  if (hits.length >= RATE_LIMIT_MAX) {
+    rateLimitBuckets.set(ipHash, hits);
+    return false;
+  }
+  hits.push(now);
+  rateLimitBuckets.set(ipHash, hits);
+  return true;
+}
+
 export function buildRecord(v: Validation["values"], meta: { sourcePath: string; serviceContext?: string; townContext?: string; userAgent?: string | null; ip?: string | null }): LeadRecord {
   return {
     id: `ld_${randomUUID().replace(/-/g, "").slice(0, 12)}`,
@@ -138,8 +169,7 @@ export function buildRecord(v: Validation["values"], meta: { sourcePath: string;
     serviceContext: meta.serviceContext || null,
     townContext: meta.townContext || null,
     userAgent: meta.userAgent ?? null,
-    // Hashed with a daily salt: enough to rate limit, never a stored IP address.
-    ipHash: meta.ip ? createHash("sha256").update(`${meta.ip}:${new Date().toISOString().slice(0, 10)}`).digest("hex").slice(0, 16) : null,
+    ipHash: ipHashFor(meta.ip ?? null),
     site: process.env.LEAD_SITE_LABEL || "brimercon-astro-staging",
   };
 }

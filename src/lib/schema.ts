@@ -109,6 +109,51 @@ export function serviceSchema(opts: {
   };
 }
 
+/**
+ * Membership Service node, matching the live /membership/ JSON-LD: a Service
+ * with the Plumber provider and one Offer per tier. The prices are the annual
+ * prices the membership page itself displays; keep them in step with the plan
+ * cards on /membership/ and the tier pages.
+ */
+export function membershipSchema() {
+  const tiers = [
+    { name: "Essential", price: 149 },
+    { name: "Steward", price: 449 },
+    { name: "Concierge", price: 749 },
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Plumbing membership and priority service plan",
+    provider: {
+      "@type": "Plumber",
+      "@id": BUSINESS_ID,
+      name: site.name,
+      url: canonicalUrl("/"),
+      telephone: site.phoneTel,
+    },
+    areaServed: "Truckee and North Lake Tahoe, CA",
+    offers: tiers.map((tier) => ({
+      "@type": "Offer",
+      name: `Brimer Membership ${tier.name}`,
+      price: tier.price,
+      priceCurrency: "USD",
+    })),
+  };
+}
+
+/** Single-tier Offer node for a tier page, matching the live offer shape. */
+export function membershipOfferSchema(tier: { name: string; price: number; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Offer",
+    name: `Brimer Membership ${tier.name}`,
+    price: tier.price,
+    priceCurrency: "USD",
+    url: canonicalUrl(tier.path),
+  };
+}
+
 export function faqSchema(faqs: Array<{ question: string; answer: string }>) {
   return {
     "@context": "https://schema.org",

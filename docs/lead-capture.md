@@ -33,7 +33,7 @@ Markup rules: a real `<label for>` on every control; `inputmode="tel"` and `auto
 ### Progressive enhancement
 
 - **No JavaScript:** `<form method="post" action="/api/lead/">`. Success → `303` to `/thank-you/?ref=<leadId>`. Failure → `303` back to `<source_path>?form=error#lead-form`, or `?form=unavailable` when delivery failed, so the page can lead with the phone number.
-- **With JavaScript** (≤ 5 KB, `src/scripts/lead-form.ts`): intercepts submit, posts to `/api/lead/` with `Accept: application/json`, disables the button while pending, then swaps in the confirmation panel or the error panel. Both panels carry the call button.
+- **With JavaScript** (≤ 5 KB, inline script in `src/components/LeadForm.astro`): intercepts submit, posts to `/api/lead/` with `Accept: application/json`, disables the button while pending, then swaps in the confirmation panel or the error panel. Both panels carry the call button.
 
 The endpoint path is always written **with a trailing slash** (`/api/lead/`, audit H4) to match `trailingSlash: 'always'`. A POST to `/api/lead` would take a redirect, and a redirected POST is where form submissions quietly die.
 
@@ -47,17 +47,17 @@ Accepts `application/x-www-form-urlencoded`, `multipart/form-data` or `applicati
 
 Same-origin check: when `Origin` or `Referer` is present its host must match the request host. `source_path` is validated as a same-site path and is otherwise discarded.
 
-Pipeline (`src/lib/leads/`):
+Pipeline (all in `src/lib/leads.ts`, a single module):
 
-1. `parse.ts` — body to a plain object regardless of encoding.
-2. `validate.ts` — rules above. Honeypot filled or time trap tripped: respond as success but deliver nothing. Phone normalised to E.164, raw string kept.
-3. `enrich.ts` — `id` (`ld_` + 12 chars), `receivedAt`, `sourcePath`, `serviceContext`, `townContext`, `userAgent`, `ipHash` (SHA-256 of IP plus a daily salt; no raw IP stored).
-4. `deliver.ts` — every configured adapter via `Promise.allSettled`, 8 s timeout each.
+1. Parse — body to a plain object regardless of encoding.
+2. Validate — rules above. Honeypot filled or time trap tripped: respond as success but deliver nothing. Phone normalised to E.164, raw string kept.
+3. Enrich — `id` (`ld_` + 12 chars), `receivedAt`, `sourcePath`, `serviceContext`, `townContext`, `userAgent`, `ipHash` (SHA-256 of IP plus a daily salt; no raw IP stored).
+4. Deliver — every configured adapter via `Promise.allSettled`, 8 s timeout each.
 5. Decide (audit H2): if **no delivery channel accepted the lead** and `LEAD_REQUIRE_DELIVERY` is true, return `503` and render the call-us page. Never show "Request received" for a lead that went nowhere.
 6. Always write one JSON line to stdout, so Vercel function logs hold a record even when every adapter fails.
 7. Soft rate limit: 5 submissions per `ipHash` per 10 minutes.
 
-Lead record (`src/lib/leads/types.ts`):
+Lead record (type `LeadRecord` in `src/lib/leads.ts`):
 
 ```json
 {
@@ -92,7 +92,7 @@ Lead record (`src/lib/leads/types.ts`):
 
 **No new GoHighLevel webhook** (audit H7, decision D6). GHL belongs to the outgoing agency; pointing the new site's leads into an account Brimer does not own would rebuild the dependency this project exists to remove. GHL is not cancelled and live is untouched — the twin simply does not depend on it.
 
-`LEAD_REQUIRE_DELIVERY` **defaults to true**. Two independent channels (email plus Sheet or HCP) must be live and tested before the swap, so one provider outage cannot silently swallow a lead.
+`LEAD_REQUIRE_DELIVERY` **defaults to true**. Email delivery must be live and tested before the swap (Nov 28 scope: leads land as email only; no second channel required). A file store never counts, so a failed delivery fails loudly instead of silently swallowing a lead.
 
 ### Ownership
 
@@ -100,9 +100,9 @@ Lead record (`src/lib/leads/types.ts`):
 |---|---|---|
 | GoHighLevel account and webhooks | Outgoing agency | Not used by the twin; Milton decides separately whether to cancel |
 | Resend account and API key | — | Milton |
-| Zapier/Make and the Google Sheet, or Housecall Pro | — | Milton |
+| Zapier/Make and the Google Sheet, or Housecall Pro | — | Not used — email-only scope (Nov 28) |
 | Vercel project and env vars | — | Milton |
-| Lead records | GHL (agency-controlled) | Milton's inbox plus Milton's Sheet or HCP |
+| Lead records | GHL (agency-controlled) | Milton's inbox (email only) |
 
 Also recorded in `docs/swap-runbook.md`.
 
@@ -111,16 +111,16 @@ Also recorded in `docs/swap-runbook.md`.
 In the **new** Vercel project for this repo, never the live one: Settings → Environment Variables.
 
 1. **Email.** Create a Resend account and an API key. Set `RESEND_API_KEY` and `LEAD_TO_EMAIL`. Until a sending domain is verified, Resend's test sender only delivers to the account owner's own address, so set `LEAD_TO_EMAIL` to that address for QA and switch to `service@brimerplumbing.com` after verification.
-2. **Second channel.** Create a Zapier or Make catch hook that appends a row to a Google Sheet Milton owns (or a Housecall Pro intake endpoint). Paste the URL into `LEAD_WEBHOOK_URL`. Optionally set `LEAD_WEBHOOK_SECRET` and verify the signature on the receiving side.
+2. **Second channel — not required.** Email-only scope (Nov 28): leave `LEAD_WEBHOOK_URL` unset. The webhook channel stays available in code if a second channel is ever wanted.
 3. Set `LEAD_STORE=none`. Leave `LEAD_REQUIRE_DELIVERY=true`.
 4. Redeploy so the function picks up the variables.
-5. Submit a test from the preview URL and confirm it arrives in both the inbox and the Sheet, then check `vercel logs`.
+5. Submit a test from the preview URL and confirm it arrives in the inbox, then check `vercel logs`.
 
 All reversible, all inside the new project.
 
 ## 5. Spam and abuse
 
-Honeypot, time trap, strict validation, soft rate limit, same-origin check. No Google reCAPTCHA: it is a third-party script on every page and it costs real leads from older homeowners. If spam appears after the swap, add Cloudflare Turnstile (`PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`); the adapter slot is reserved in `validate.ts`.
+Honeypot, time trap, strict validation, soft rate limit, same-origin check. No Google reCAPTCHA: it is a third-party script on every page and it costs real leads from older homeowners. If spam appears after the swap, add Cloudflare Turnstile (`PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`); the adapter slot is reserved in `src/lib/leads.ts`.
 
 ## 6. Privacy
 

@@ -5,7 +5,7 @@ Source: `docs/crawl/`, regenerated read-only with `npm run crawl` on 2026-09-19 
 Rules applied here:
 
 - Same path string for every live URL. Trailing slash always. Canonical `https://www.brimercon.com/<path>`.
-- Titles preserved by default. H1 changes only where `docs/source/2026-08-31_website_seo_for_rebuild.md` calls for one.
+- Titles were rewritten during the rebuild (52 of 53 live titles differ; audit 2026-11-28), not preserved by default, and sign-off is pending. H1 changes only where `docs/source/2026-08-31_website_seo_for_rebuild.md` calls for one.
 - **The homepage keeps its live title, H1 and body copy** (it ranks position 1 for `truckee plumber`); dash cleanup is the only permitted edit. Service and town copy may be rewritten only after Milton approves the golden pages. See `PLAN.md` §3c.
 - No new town URLs. No out-of-area place names. No public prices.
 - Status column is filled in by the executor (✅ built and parity-checked by `scripts/qa-links.mjs`).

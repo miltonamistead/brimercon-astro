@@ -1,6 +1,6 @@
 ---
 title: "Winter Is Coming. Is Your Home Ready?"
-description: "Frozen pipes are the most common winter call we get in Truckee and Tahoe — and the easiest to prevent. Four simple steps to winterize your home before the first freeze."
+description: "Frozen pipes are the most common winter call we get in Truckee and Tahoe, and the easiest to prevent. Four steps to winterize your home before the first freeze."
 pubDate: 2026-10-22
 tags: ["winterization", "freeze prevention", "second homes"]
 ---

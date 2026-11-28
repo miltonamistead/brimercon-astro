@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { buildRecord, deliver, safeSourcePath, validate, type LeadInput } from "@/lib/leads";
+import { buildRecord, checkRateLimit, deliver, ipHashFor, safeSourcePath, validate, type LeadInput } from "@/lib/leads";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
 
 // The only route in the project that is not prerendered.
@@ -49,7 +49,10 @@ export const GET: APIRoute = ({ request }) =>
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   const json = wantsJson(request);
 
-  // Same-origin check. Absent headers are allowed so a no-JS submit still works.
+  // Same-origin check. Astro's built-in checkOrigin (on by default) already
+  // rejects Origin-less form POSTs with 403 before this route runs, so an
+  // absent Origin here only ever happens on a JSON post; real browsers always
+  // send Origin on a form submit.
   const origin = request.headers.get("origin") ?? request.headers.get("referer");
   if (origin) {
     try {
@@ -91,6 +94,15 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return json
       ? new Response(JSON.stringify({ ok: false, errors: result.errors }), { status: 400, headers: { "Content-Type": "application/json" } })
       : new Response(null, { status: 303, headers: { Location: `${sourcePath}?form=error#lead-form` } });
+  }
+
+  // Soft rate limit: 5 submissions per ipHash per 10 minutes
+  // (docs/lead-capture.md §2 step 7). Over the limit, nothing is delivered.
+  const ipHash = ipHashFor(clientAddress ?? null);
+  if (!checkRateLimit(ipHash)) {
+    return json
+      ? new Response(JSON.stringify({ ok: false, error: "rate_limited" }), { status: 429, headers: { "Content-Type": "application/json" } })
+      : htmlResponse(429, "Too many requests just now", `Please wait a few minutes and try again, or call ${PHONE_DISPLAY}.`, sourcePath);
   }
 
   const lead = buildRecord(result.values, {

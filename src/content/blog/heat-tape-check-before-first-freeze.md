@@ -1,6 +1,6 @@
 ---
 title: "Heat Tape Fails More Often Than People Think"
-description: "Heat tape is the one thing standing between your pipes and a hard freeze, and most of it in Truckee is older than people realize. How to test yours before the first storm."
+description: "Heat tape stands between your pipes and a hard freeze, and most of it in Truckee is older than people realize. Test yours before the first storm."
 pubDate: 2026-10-26
 tags: ["freeze prevention", "heat tape", "home maintenance"]
 ---

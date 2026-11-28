@@ -3,8 +3,8 @@
  * Membership page, rebuilt to match the live page at
  * https://www.brimercon.com/membership/ (Milton, 2026-10-21; re-verified
  * against the live page 2026-11-24 with Playwright: meta/OG/Twitter tags,
- * hero eyebrow, badge case, Talk with Brimer href, toggle behavior, and
- * the checkout-status banner mechanism all checked against live).
+ * hero eyebrow, badge case, Talk with Brimer href, and toggle behavior all
+ * checked against live).
  * Section order, headings, and copy follow the live page. Deliberate
  * deviations, all flagged to Milton: (1) Join buttons link to the plan
  * request pages (/membership/essential/, /steward/, /concierge/) until
@@ -12,22 +12,20 @@
  * (2) checkmarks and the savings line use brand terracotta per Milton's
  * spec, where the live page renders them dark green (#2f5d4f); (3) dash
  * glyphs from the live copy are replaced to satisfy the site's no-dash QA
- * rule (see notes inline), including the two checkout-status banners;
- * (4) headings use the rebuild's Georgia/system stack, where live uses
- * Cormorant Garamond/Manrope (no webfonts on staging); (5) the dark
- * sections use live's charcoal #1f2422, not the rebuild's brand-deep navy.
+ * rule (see notes inline); (4) headings use the rebuild's Georgia/system
+ * stack, where live uses Cormorant Garamond/Manrope (no webfonts on
+ * staging); (5) the dark sections use live's charcoal #1f2422, not the
+ * rebuild's brand-deep navy.
  * Dollar figures are allowed on this page only (QA exception, 2026-10-21).
- * Status banners: shown only for ?checkout=success / ?checkout=canceled
- * (Milton's params) or ?success=true / ?canceled=true (live parity).
  */
 import Base from "@/layouts/Base.astro";
 import Schema from "@/components/Schema.astro";
 import { site } from "@/data/site";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, membershipSchema } from "@/lib/schema";
 
 const title = "Brimer Membership | Priority Plumbing Service in Truckee & Lake Tahoe";
 const description =
-  "Join Brimer Membership for priority plumbing service, member pricing, and proactive care for homes, second homes, and HOA properties across Truckee and North Lake Tahoe.";
+  "Join Brimer Membership for priority plumbing service, member pricing, and proactive care for homes, second homes, and HOA properties in Truckee and Tahoe.";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -36,14 +34,9 @@ const crumbs = [
 ---
 
 <Base title={title} description={description}>
-  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+  <Schema slot="head" nodes={[membershipSchema(), breadcrumbSchema(crumbs)]} />
   <meta slot="head" name="twitter:title" content={title} />
   <meta slot="head" name="twitter:description" content={description} />
-
-  <div id="membership-status" class="status-wrap" hidden>
-    <p id="status-success" class="status-banner status-banner--success" role="status" hidden>Thank you. Your membership is confirmed. We&rsquo;ll be in touch shortly to get you set up.</p>
-    <p id="status-canceled" class="status-banner status-banner--canceled" role="status" hidden>Checkout was canceled. No charge was made. Pick a plan below whenever you&rsquo;re ready, or talk with Brimer.</p>
-  </div>
 
   <section class="hero-dark">
     <div class="wrap">
@@ -161,27 +154,6 @@ const crumbs = [
           setBilling(btn.dataset.billing);
         });
       });
-    })();
-
-    // Checkout status banners: hidden by default; shown only when the URL
-    // carries ?checkout=success / ?checkout=canceled (Milton's params) or
-    // ?success=true / ?canceled=true (the live site's params, kept so a
-    // Stripe return to either form still shows the banner).
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      var wrap = document.getElementById("membership-status");
-      if (!wrap) return;
-      var show = function (id) {
-        var banner = document.getElementById(id);
-        if (!banner) return;
-        wrap.hidden = false;
-        banner.hidden = false;
-      };
-      if (params.get("checkout") === "success" || params.get("success") === "true") {
-        show("status-success");
-      } else if (params.get("checkout") === "canceled" || params.get("canceled") === "true") {
-        show("status-canceled");
-      }
     })();
   </script>
 
@@ -336,24 +308,6 @@ const crumbs = [
     .get-started .measure {
       margin-left: auto;
       margin-right: auto;
-    }
-    .status-wrap[hidden],
-    .status-banner[hidden] {
-      display: none;
-    }
-    .status-banner {
-      margin: 0;
-      padding: 1rem;
-      text-align: center;
-      font-weight: 600;
-    }
-    .status-banner--success {
-      background: #e7f4ec;
-      color: #14532d;
-    }
-    .status-banner--canceled {
-      background: #fdf3e3;
-      color: #7a4a00;
     }
     .eyebrow {
       margin: 0 0 0.75rem;

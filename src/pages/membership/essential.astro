@@ -3,11 +3,11 @@ import Base from "@/layouts/Base.astro";
 import LeadForm from "@/components/LeadForm.astro";
 import Schema from "@/components/Schema.astro";
 import { site } from "@/data/site";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, membershipOfferSchema } from "@/lib/schema";
 
 const title = "Essential membership | Brimer Plumbing in Truckee and North Lake Tahoe";
 const description =
-  "Essential membership from Brimer Plumbing: $149 per year or $15 per month, 10% off plumbing service, no diagnostic fee, and priority scheduling in Truckee and North Lake Tahoe.";
+  "Essential membership: $149 per year or $15 per month, 10% off plumbing service, no diagnostic fee, and priority scheduling in Truckee and North Lake Tahoe.";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -17,7 +17,7 @@ const crumbs = [
 ---
 
 <Base title={title} description={description}>
-  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+  <Schema slot="head" nodes={[membershipOfferSchema({ name: "Essential", price: 149, path: "/membership/essential/" }), breadcrumbSchema(crumbs)]} />
 
   <section class="hero-dark">
     <div class="wrap">

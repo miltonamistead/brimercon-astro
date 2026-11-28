@@ -97,7 +97,7 @@ const blogPosting = {
 };
 ---
 
-<Base title={title} description={description} ogType="article" noindex>
+<Base title={title} description={description} ogType="article">
   <Schema slot="head" nodes={[blogPosting, breadcrumbSchema(crumbs)]} />
 
   <Breadcrumbs crumbs={crumbs} />

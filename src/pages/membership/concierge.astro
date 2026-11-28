@@ -3,11 +3,11 @@ import Base from "@/layouts/Base.astro";
 import LeadForm from "@/components/LeadForm.astro";
 import Schema from "@/components/Schema.astro";
 import { site } from "@/data/site";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, membershipOfferSchema } from "@/lib/schema";
 
 const title = "Concierge membership | Brimer Plumbing in Truckee and North Lake Tahoe";
 const description =
-  "Concierge membership from Brimer Plumbing: $749 per year or $75 per month, everything in Steward, annual water heater maintenance, and the highest level of access in Truckee and North Lake Tahoe.";
+  "Concierge membership: $749/year or $75/month, everything in Steward, annual water heater maintenance, and the highest access in Truckee and North Lake Tahoe.";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -17,7 +17,7 @@ const crumbs = [
 ---
 
 <Base title={title} description={description}>
-  <Schema slot="head" nodes={[breadcrumbSchema(crumbs)]} />
+  <Schema slot="head" nodes={[membershipOfferSchema({ name: "Concierge", price: 749, path: "/membership/concierge/" }), breadcrumbSchema(crumbs)]} />
 
   <section class="hero-dark">
     <div class="wrap">

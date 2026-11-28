@@ -12,7 +12,15 @@ const indexable = process.env.PUBLIC_INDEXABLE === "true";
 const adapter = process.env.VERCEL ? vercel() : node({ mode: "standalone" });
 
 // Never indexed, never in a sitemap — even after a production swap.
-const NEVER_INDEX = new Set(["/thank-you/", "/404/", "/membership/checkout/"]);
+const NEVER_INDEX = new Set(["/thank-you/", "/404/"]);
+
+// Blog posts linked from service pages but deliberately not on the blog hub
+// (src/pages/blog/index.astro): they stay out of the sitemap too, so the hub
+// and the sitemap agree on which posts are listed.
+const SITEMAP_EXCLUDED = new Set([
+  "/blog/frozen-pipe-prevention-checklist-tahoe/",
+  "/blog/what-affects-plumbing-costs-truckee/",
+]);
 
 export default defineConfig({
   site: canonicalOrigin,
@@ -26,7 +34,7 @@ export default defineConfig({
       // utility routes; /api/* is on-demand and never prerendered, so it is never listed.
       filter: (page) => {
         const pathname = new URL(page).pathname;
-        return indexable && !NEVER_INDEX.has(pathname) && !pathname.startsWith("/membership/checkout/");
+        return indexable && !NEVER_INDEX.has(pathname) && !SITEMAP_EXCLUDED.has(pathname) && !pathname.startsWith("/membership/checkout/");
       },
       changefreq: "weekly",
       priority: 0.7,
