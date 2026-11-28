@@ -148,9 +148,14 @@ const withTimeout = (promise: Promise<Response>, ms = 8000): Promise<Response> =
   Promise.race([promise, new Promise<Response>((_, reject) => setTimeout(() => reject(new Error("timeout")), ms))]);
 
 async function deliverEmail(lead: LeadRecord): Promise<DeliveryResult> {
-  const key = process.env.RESEND_API_KEY;
-  const to = process.env.LEAD_TO_EMAIL;
+  const key = process.env.RESEND_API_KEY?.trim();
+  const to = process.env.LEAD_TO_EMAIL?.trim();
   if (!key || !to) return "skipped";
+
+  const from = process.env.LEAD_FROM_EMAIL?.trim() || "Brimer Website <onboarding@resend.dev>";
+  const fallbackReplyTo = process.env.LEAD_REPLY_TO?.trim() || to.split(",")[0].trim();
+  const replyTo = lead.email || fallbackReplyTo;
+  const endpoint = process.env.RESEND_API_URL?.trim() || "https://api.resend.com/emails";
 
   const lines = [
     `Name:    ${lead.name}`,
@@ -169,21 +174,26 @@ async function deliverEmail(lead: LeadRecord): Promise<DeliveryResult> {
 
   try {
     const res = await withTimeout(
-      fetch("https://api.resend.com/emails", {
+      fetch(endpoint, {
         method: "POST",
         headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
         body: JSON.stringify({
-          from: process.env.LEAD_FROM_EMAIL || "Brimer Website <onboarding@resend.dev>",
+          from,
           to: [to],
-          ...(process.env.LEAD_CC_EMAIL ? { cc: [process.env.LEAD_CC_EMAIL] } : {}),
-          ...(lead.email ? { reply_to: lead.email } : {}),
+          ...(process.env.LEAD_CC_EMAIL?.trim() ? { cc: [process.env.LEAD_CC_EMAIL.trim()] } : {}),
+          reply_to: replyTo,
           subject: `New service request - ${lead.town ?? "Tahoe/Truckee"} - ${lead.name}`,
           text: lines.join("\n"),
         }),
       }),
     );
-    return res.ok ? "sent" : "failed";
-  } catch {
+    if (!res.ok) {
+      console.error(JSON.stringify({ event: "lead_email_error", id: lead.id, status: res.status }));
+      return "failed";
+    }
+    return "sent";
+  } catch (err) {
+    console.error(JSON.stringify({ event: "lead_email_error", id: lead.id, error: err instanceof Error ? err.message : "unknown" }));
     return "failed";
   }
 }
